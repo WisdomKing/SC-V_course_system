@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.core.env.Environment;
 
+/**
+ * @author 曾晓明
+ * @date 2021/2/1
+ */
 @SpringBootApplication
 //在启动类上使用@EnableEurekaServer，可以将项目作为SpringCloud中的注册中心
 @EnableEurekaServer
@@ -18,6 +22,6 @@ public class EurekaApplication {
         SpringApplication app = new SpringApplication(EurekaApplication.class);
         Environment env = app.run(args).getEnvironment();
         LOG.info("启动成功");
-        LOG.info("Eureka地址：\thttp://127.0.0.1:{}", env.getProperty("server.port"));
+        LOG.info("Eureka 地址：\thttp://127.0.0.1:{}", env.getProperty("server.port"));
     }
 }
