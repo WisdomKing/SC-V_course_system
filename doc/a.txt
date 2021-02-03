@@ -12,7 +12,7 @@ mybatis.mapper-locations=classpath:/mapper/*.xml
 #优化mybatis日志,logging.level.包名=日志级别
 logging.level.com.csii.ants.management.system.mapper=trace
 
-
+generater插件需要连接数据库获得表结构，使用要加载驱动包依赖
 
 
 

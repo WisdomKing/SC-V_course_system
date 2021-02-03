@@ -1,14 +1,31 @@
 package com.csii.ants.management.server.mapper;
 
 import com.csii.ants.management.server.domain.Test;
+import com.csii.ants.management.server.domain.TestExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-/**
- * @author ZxM
- * @date 2021/2/3
- * @Description:
- */
 public interface TestMapper {
-    public List<Test> list();
+    long countByExample(TestExample example);
+
+    int deleteByExample(TestExample example);
+
+    int deleteByPrimaryKey(String id);
+
+    int insert(Test record);
+
+    int insertSelective(Test record);
+
+    List<Test> selectByExample(TestExample example);
+
+    Test selectByPrimaryKey(String id);
+
+    int updateByExampleSelective(@Param("record") Test record, @Param("example") TestExample example);
+
+    int updateByExample(@Param("record") Test record, @Param("example") TestExample example);
+
+    int updateByPrimaryKeySelective(Test record);
+
+    int updateByPrimaryKey(Test record);
 }
