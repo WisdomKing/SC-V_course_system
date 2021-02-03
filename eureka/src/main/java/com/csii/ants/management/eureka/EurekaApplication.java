@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.core.env.Environment;
 
 /**
- * @author 曾晓明
+ * @author ZxM
  * @date 2021/2/1
  */
 @SpringBootApplication

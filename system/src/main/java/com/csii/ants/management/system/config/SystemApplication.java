@@ -1,4 +1,4 @@
-package com.csii.ants.management.system;
+package com.csii.ants.management.system.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
 /**
- * @author 曾晓明
+ * @author ZxM
  * @date 2021/2/1
  */
 @SpringBootApplication
