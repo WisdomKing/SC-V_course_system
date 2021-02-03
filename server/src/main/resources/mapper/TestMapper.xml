@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.csii.ants.management.system.mapper.TestMapper">
-    <select id="list" resultType="com.csii.ants.management.system.domain.Test">
+<mapper namespace="com.csii.ants.management.TestMapper">
+    <select id="list" resultType="com.csii.ants.management.server.domain.Test">
         select t.id,t.name from test t
     </select>
 </mapper>
