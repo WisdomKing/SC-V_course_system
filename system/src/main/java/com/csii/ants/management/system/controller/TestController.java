@@ -1,7 +1,7 @@
 package com.csii.ants.management.system.controller;
 
-import com.csii.ants.management.system.domain.Test;
-import com.csii.ants.management.system.service.TestService;
+import com.csii.ants.management.server.domain.Test;
+import com.csii.ants.management.server.service.TestService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
