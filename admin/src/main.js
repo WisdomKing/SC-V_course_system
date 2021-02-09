@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import $ from 'jquery'
 import App from './app.vue'
 import router from './router'
 
