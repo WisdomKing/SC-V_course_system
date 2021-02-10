@@ -2,9 +2,8 @@ package com.csii.ants.management.server.mapper;
 
 import com.csii.ants.management.server.domain.Test;
 import com.csii.ants.management.server.domain.TestExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface TestMapper {
     long countByExample(TestExample example);
