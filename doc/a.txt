@@ -2,27 +2,19 @@ GRANT Alter, Alter Routine, Create, Create Routine, Create Temporary Tables, Cre
 
 com.csii.ants.management.
 
-#增加数据库连接
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-spring.datasource.url=jdbc:mysql://localhost:3306/management?characterEncoding=UTF8&&autoReconnect=true
-spring.datasource.username=management
-spring.datasource.password=mysql
-#mapper的类路径
-mybatis.mapper-locations=classpath:/mapper/*.xml
-#优化mybatis日志,logging.level.包名=日志级别
-logging.level.com.csii.ants.management.system.mapper=trace
+提交到远程仓库:
+1.打开Git Bash，cd进入项目文件地址
+2.输入git init
+3.输入git add .
+[这个是将项目上所有的文件添加到仓库中的意思，如果想添加某个特定的文件，只需把.换成这个特定的文件名即可]
+4.输入git commit -m "first commit"，表示你对这次提交的注释，双引号里面的内容可以根据个人的需要
+  改
+5.输入git remote add origin https://自己的仓库url地址（这个url可以到自己的git中创建的仓库页面找就是最上面一个输入栏中的url） 将本地的仓库关联到github上
+6.输入git push -u origin master
+4-5之间应该会有一次输入账号密码的提示
 
-generater插件需要连接数据库获得表结构，使用要加载驱动包依赖
-
-
-
-
-
-
-
-
-
-
+打开npm:
+找到package.json，右键选择show npm scripts
 
 
 
