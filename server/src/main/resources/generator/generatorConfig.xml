@@ -39,7 +39,8 @@
                              targetPackage="com.csii.ants.management.server.mapper"
                              type="XMLMAPPER" />
 
-        <table tableName="test" domainObjectName="Test"/>
+<!--        <table tableName="test" domainObjectName="Test"/>-->
+        <table tableName="announcement" domainObjectName="Announcement"/>
 
     </context>
 </generatorConfiguration>
