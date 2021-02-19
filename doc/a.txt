@@ -16,6 +16,66 @@ com.csii.ants.management.
 打开npm:
 找到package.json，右键选择show npm scripts
 
+controller下面还有分两层，admin是控台使用，web是给网页端使用。
+
+前面介绍路由跳转的部分
+/**
+ * 路由跳转的三种方法
+ * 第一种方法，在方法前面加 @RequestMapping("/system/test")，但是过于繁琐
+ * 第二种方法，在类前面加@RequestMapping("/system")，类多了也繁琐
+ * 第三种方法，在application.properties里加server.servlet.context-path=/system
+ *
+ * 如果返回的是json数据用 @RestController,如果返回的是页面用 @Controller;
+ */
+
+dto：data transfer object数据传输对象，用于数据传输
+
+domain类的实体，是mybatis generator自动生成的，不允许手动修改。一旦修改，再次生成实体类时，收做的修改会被覆盖。
+domain作用于service和mapper；dto作用域controller和service
+
+BeanUtils是一个Spring提供的一个工具类，用于实体将的复制。
+在5。1章说明后续会对BeanUtils做封闭，简化使用，提高效率
+BeanUtils.copyProperties(来源,目标);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
