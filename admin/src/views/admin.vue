@@ -355,7 +355,7 @@
 
         <ul class="nav nav-list">
           <li class="" id="welcoe-sidebar">
-            <router-link to="/admin/welcome">
+            <router-link to="/welcome">
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> 欢迎 </span>
             </router-link>
@@ -406,7 +406,7 @@
 
             <ul class="submenu">
               <li class="active" id="business-announcement-sidebar">
-                <router-link to="/admin/business/announcement">
+                <router-link to="/business/announcement">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公告管理
                 </router-link>
