@@ -25,6 +25,9 @@ public class AnnouncementService {
         AnnouncementExample announcementExample = new AnnouncementExample();
         List<Announcement> announcementList = announcementMapper.selectByExample(announcementExample);
         List<AnnouncementDto> announcementDtoList = new ArrayList<AnnouncementDto>();
+        /**
+         * 因为使用了dto的方法，所以需要将实体类的数据倒腾到dto里
+         */
         for (int i = 0; i < announcementList.size(); i++) {
             Announcement announcement = announcementList.get(i);
             AnnouncementDto announcementDto = new AnnouncementDto();
