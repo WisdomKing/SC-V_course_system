@@ -23,7 +23,7 @@ export default new Router({
             path: "welcome",
             component: Welcome
         },{
-            path: "announcement",
+            path: "business/announcement",
             component: Announcement
         }]
     }]

@@ -37,19 +37,9 @@ BeanUtils是一个Spring提供的一个工具类，用于实体将的复制。
 在5。1章说明后续会对BeanUtils做封闭，简化使用，提高效率
 BeanUtils.copyProperties(来源,目标);
 
+siblings jquery的方法，获取所有兄弟节点
 
-
-
-
-
-
-
-
-
-
-
-
-
+约定：id的命名要和路由有关
 
 
 
