@@ -28,8 +28,8 @@ controller下面还有分两层，admin是控台使用，web是给网页端使�
  * 如果返回的是json数据用 @RestController,如果返回的是页面用 @Controller;
  */
 
+5.1：
 dto：data transfer object数据传输对象，用于数据传输
-
 domain类的实体，是mybatis generator自动生成的，不允许手动修改。一旦修改，再次生成实体类时，收做的修改会被覆盖。
 domain作用于service和mapper；dto作用域controller和service
 
@@ -37,11 +37,13 @@ BeanUtils是一个Spring提供的一个工具类，用于实体将的复制。
 在5。1章说明后续会对BeanUtils做封闭，简化使用，提高效率
 BeanUtils.copyProperties(来源,目标);
 
+5.2
 siblings jquery的方法，获取所有兄弟节点
-
 约定：id的命名要和路由有关
-
-
+vue内置的watch。用来检测vue实例上到的数据变动。$route也是一个变量
+通过name属性值，得到菜单id的值。前面我们有约定：id的命名要和路由有关。这叫约定优于配置
+5.2-17:44   此时如果从login页面点击登录到welcome页面，welcome并不会有激活样式。这里的watch，只在admin下面的1子组件互相跳转时有效
+5.2-18:23   js中this关键字，代表当前执行方法的对象。养成习惯，声明本地变量_this代替this。后面会介绍直接用this的坑
 
 
 

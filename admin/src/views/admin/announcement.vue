@@ -986,7 +986,8 @@
   export default {
     name: 'announcement',
     mounted: function () {
-      this.$parent.activeSidebar("business-announcement-sidebar");
+      //Sidebar激活样式方法1
+      // this.$parent.activeSidebar("business-announcement-sidebar");   //以后通过watch监听来激活菜单了，不再通过这条语句去激活，免于每一个页面都要写
     },
     methods: {}
   }
