@@ -65,7 +65,7 @@ createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 1523    url目前是写时的，后期会优化
 1819    是否直接访问gateway就不需要跨域配置了呢？需要再验证一下，经过验证，不论如何都是需要
 1915    单个SpringBoot项目使用CorsConfig解决跨域问题，使用SpringBoot Gateway的，使用CorsWebFilter解决跨域问题
-
+1953    如果配置的是IP端口，那发布到生产时就有可能访问不到，就算配置了maven多环境，也需要提前知道上线后的IP和端口，提前配置好
 
 
 
