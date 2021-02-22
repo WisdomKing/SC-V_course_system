@@ -67,10 +67,12 @@ createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 1915    单个SpringBoot项目使用CorsConfig解决跨域问题，使用SpringBoot Gateway的，使用CorsWebFilter解决跨域问题
 1953    如果配置的是IP端口，那发布到生产时就有可能访问不到，就算配置了maven多环境，也需要提前知道上线后的IP和端口，提前配置好
 
-
-
-
-
+5.4分页功能
+0011    mybatis-generator生成的代码是不带分页功能的，使用pagehelper插件来扩展分页功能
+0205    pagehelper的分页参数，pagenum是从1开始的
+0242    分页功能的关键字limit。从日志可以看出，改sql执行的是limit 1。相当于limit 0,1。即从第0行开始，查1条。{行号从0开始}
+0309    语句规则：调用startPage方法后，执行的第一个select语句会进行分页
+0448    分页查询功能需要两条sql，一条查总记录数（通过每页条数计算出总共有多少页），一条是查当前的记录
 
 
 

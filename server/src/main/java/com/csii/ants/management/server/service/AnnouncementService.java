@@ -4,6 +4,7 @@ import com.csii.ants.management.server.domain.Announcement;
 import com.csii.ants.management.server.domain.AnnouncementExample;
 import com.csii.ants.management.server.dto.AnnouncementDto;
 import com.csii.ants.management.server.mapper.AnnouncementMapper;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,9 @@ public class AnnouncementService {
     private AnnouncementMapper announcementMapper;
 
     public List<AnnouncementDto> list(){
+        //分页
+        PageHelper.startPage(2,1);
+
         AnnouncementExample announcementExample = new AnnouncementExample();
         List<Announcement> announcementList = announcementMapper.selectByExample(announcementExample);
         List<AnnouncementDto> announcementDtoList = new ArrayList<AnnouncementDto>();
