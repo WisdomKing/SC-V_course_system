@@ -46,7 +46,8 @@
           </button>
 
           <button class="btn btn-xs btn-info">
-            <i class="ace-icon fa fa-pencil bigger-120"></i>
+            详情
+<!--            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>-->
           </button>
 
           <button class="btn btn-xs btn-danger">
@@ -176,7 +177,7 @@
     methods: {
       list(){
         let _this=this;
-        _this.$ajax.get('http://127.0.0.1:9002/business/admin/announcement/list').then((respond)=>{
+        _this.$ajax.get('http://127.0.0.1:9000/business/admin/announcement/list').then((respond)=>{
           console.log("查询公告列表结果:",respond);
           _this.announcements=respond.data;
         })

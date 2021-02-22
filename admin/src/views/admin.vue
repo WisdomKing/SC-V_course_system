@@ -396,7 +396,7 @@
 
           <li class="active open">
             <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-list"></i>
+              <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 公告 </span>
 
               <b class="arrow fa fa-angle-down"></b>
@@ -408,7 +408,7 @@
               <li class="active" id="business-announcement-sidebar">
                 <router-link to="/business/announcement">
                   <i class="menu-icon fa fa-caret-right"></i>
-                  公告管理
+                  公司公告
                 </router-link>
 
                 <b class="arrow"></b>
