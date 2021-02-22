@@ -13,6 +13,8 @@ com.csii.ants.management.
 6.输入git push -u origin master
 4-5之间应该会有一次输入账号密码的提示
 
+ctrl+shift+减号：收起所有节点，包括所有的子节点
+
 打开npm:
 找到package.json，右键选择show npm scripts
 
