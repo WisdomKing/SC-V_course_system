@@ -1,6 +1,5 @@
 package com.csii.ants.management.business.controller.admin;
 
-import com.csii.ants.management.server.domain.Announcement;
 import com.csii.ants.management.server.dto.AnnouncementDto;
 import com.csii.ants.management.server.service.AnnouncementService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +15,14 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admin/announcement")
 public class AnnouncementController {
 
     @Resource
     private AnnouncementService announcementService;
 
-    @RequestMapping("/announcement")
-    public List<AnnouncementDto> test() {
+    @RequestMapping("/list")
+    public List<AnnouncementDto> list() {
         return announcementService.list();
     }
 }

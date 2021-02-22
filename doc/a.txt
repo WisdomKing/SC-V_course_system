@@ -42,14 +42,21 @@ siblings jquery的方法，获取所有兄弟节点
 约定：id的命名要和路由有关
 vue内置的watch。用来检测vue实例上到的数据变动。$route也是一个变量
 通过name属性值，得到菜单id的值。前面我们有约定：id的命名要和路由有关。这叫约定优于配置
-5.2-17:44   此时如果从login页面点击登录到welcome页面，welcome并不会有激活样式。这里的watch，只在admin下面的1子组件互相跳转时有效
-5.2-18:23   js中this关键字，代表当前执行方法的对象。养成习惯，声明本地变量_this代替this。后面会介绍直接用this的坑
+1744    此时如果从login页面点击登录到welcome页面，welcome并不会有激活样式。这里的watch，只在admin下面的1子组件互相跳转时有效
+1823    js中this关键字，代表当前执行方法的对象。养成习惯，声明本地变量_this代替this。后面会介绍直接用this的坑
+
+5.3
+vue也支持使用jquery ajax来请求后端接口，推荐使用vue axios
+注意：要先进到vue cli项目，在安装插件。npm install axios --save。
+--save：在pacjage.json添加依赖。不加的话仅是下载插件，项目中并没有依赖插件
+0121    Vue.prototype.xxx可以理解为vue组件的全局变量。可以在任意vue组件中，使用this.xxx来获取这个字。$是代表vue全局属性的一个约定
+/admin用于控台类的接口，/web用于网站类的接口。接口设计中用不同的请求前缀代表不同的入口，做接口隔离，方便做鉴权、统计、监控等
+
+报cors跨站点资源分享，属于跨域问题。同个ip的不同端口间的访问也属于跨域。前后端分离必然有跨域问题(Cross-origin resource sharing)
 
 
 
-
-
-
+createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 
 
 

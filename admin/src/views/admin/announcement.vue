@@ -986,9 +986,18 @@
   export default {
     name: 'announcement',
     mounted: function () {
+      let _this=this;
+      _this.list();
       //Sidebar激活样式方法1
       // this.$parent.activeSidebar("business-announcement-sidebar");   //以后通过watch监听来激活菜单了，不再通过这条语句去激活，免于每一个页面都要写
     },
-    methods: {}
+    methods: {
+      list(){
+        let _this=this;
+        _this.$ajax.get('http://127.0.0.1:9002/business/admin/announcement/list').then((respond)=>{
+          console.log("查询公告列表结果:",respond);
+        })
+      }
+    }
   }
 </script>
