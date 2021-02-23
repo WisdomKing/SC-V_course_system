@@ -37,7 +37,20 @@ CREATE TABLE `announcement`  (
 
 INSERT INTO `announcement` VALUES ('报工开放时间延长结束通知', '公共公告', '2021-02-08', '2021-02-10', '大家好！因本月情况特殊，报工系统开放时间延长至一个月，将于本月28号恢复正常，望大家周知！！！');
 INSERT INTO `announcement` VALUES ('关于做好节后复工复产的安排', '公共公告', '2021-02-18', '2021-02-22', '关于做好节后复工复产的安排！！所有项目组成员应当尽快复工复产');
-
+INSERT INTO `announcement` VALUES ('00000001','00010010','2021-02-18','2021-02-22','test01');
+INSERT INTO `announcement` VALUES ('00000002','00010010','2021-02-18','2021-02-22','test02');
+INSERT INTO `announcement` VALUES ('00000003','00010010','2021-02-18','2021-02-22','test03');
+INSERT INTO `announcement` VALUES ('00000004','00010010','2021-02-18','2021-02-22','test04');
+INSERT INTO `announcement` VALUES ('00000005','00010010','2021-02-18','2021-02-22','test05');
+INSERT INTO `announcement` VALUES ('00000006','00010010','2021-02-18','2021-02-22','test06');
+INSERT INTO `announcement` VALUES ('00000007','00010010','2021-02-18','2021-02-22','test07');
+INSERT INTO `announcement` VALUES ('00000008','00010010','2021-02-18','2021-02-22','test08');
+INSERT INTO `announcement` VALUES ('00000009','00010010','2021-02-18','2021-02-22','test09');
+INSERT INTO `announcement` VALUES ('00000010','00010010','2021-02-18','2021-02-22','test10');
+INSERT INTO `announcement` VALUES ('00000011','00010010','2021-02-18','2021-02-22','test11');
+INSERT INTO `announcement` VALUES ('00000012','00010010','2021-02-18','2021-02-22','test12');
+INSERT INTO `announcement` VALUES ('00000013','00010010','2021-02-18','2021-02-22','test13');
+INSERT INTO `announcement` VALUES ('00000014','00010010','2021-02-18','2021-02-22','test14');
 /*----clockin报工---------------------------------------------------*/
 
 DROP TABLE IF EXISTS `clockin`;

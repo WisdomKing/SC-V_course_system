@@ -85,6 +85,62 @@ createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 
 
 5.5
+1009[讲话]
+1242    v-bind:list="list",前面的list是分页组件暴露出来的一个回调函数，后面的list是announcement组件的list方法
+1333    开始讲解pagination.vue
+1457    props定义父组件先子组件传递的参数，可以是一个函数或数据。本组件中个暴露了两个参数list和itemCount给外部
+1608    v-bind:item-count="5"表示只显示5个框
+
+
+5.6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

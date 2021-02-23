@@ -1,11 +1,12 @@
 <template>
   <div>
     <p>
-      <button v-on:click="list()" class="btn btn-white btn-default btn-round">
+      <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-refresh"></i>
         刷新
     </button>
     </p>
+    <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
@@ -77,8 +78,10 @@
 </template>
 
 <script>
+  import Pagination from "../../components/pagination";
   export default {
     name: 'announcement',
+    components: {Pagination},
     data:function(){
       return{
         announcements:[]
@@ -86,12 +89,14 @@
     },
     mounted: function () {
       let _this=this;
+      //自定义初始每页5条
+      _this.$refs.pagination.size=5;
       _this.list();
       //Sidebar激活样式方法1
       // this.$parent.activeSidebar("business-announcement-sidebar");   //以后通过watch监听来激活菜单了，不再通过这条语句去激活，免于每一个页面都要写
     },
     methods: {
-      list(){
+      list(page){
         let _this=this;
         _this.$ajax.get('http://127.0.0.1:9000/business/admin/announcement/list').then((respond)=>{
           console.log("查询公告列表结果:",respond);
