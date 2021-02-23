@@ -1,12 +1,20 @@
 <template>
   <div>
+    <!-- 刷新按钮 -->
     <p>
+      <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-edit"></i>
+        新增
+    </button>
+      &nbsp;
       <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-refresh"></i>
         刷新
     </button>
     </p>
+    <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
+    <!-- 表单数据 -->
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
@@ -74,6 +82,51 @@
 
       </tbody>
     </table>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">表单</h4>
+          </div>
+          <div class="modal-body">
+            <!-- 表单 -->
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">公告标题</label>
+                <div class="col-sm-10">
+                  <input class="form-control" placeholder="公告标题">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">公告类型</label>
+                <div class="col-sm-10">
+                  <input class="form-control" placeholder="公告类型">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">开始时间</label>
+                <div class="col-sm-10">
+                  <input class="form-control" placeholder="开始时间">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">结束时间</label>
+                <div class="col-sm-10">
+                  <input class="form-control" placeholder="结束时间">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -96,6 +149,10 @@
       // this.$parent.activeSidebar("business-announcement-sidebar");   //以后通过watch监听来激活菜单了，不再通过这条语句去激活，免于每一个页面都要写
     },
     methods: {
+      add(){
+        let _this=this;
+        $(".modal").modal("show");
+      },
       list(page){
         let _this=this;
         _this.$ajax.get('http://127.0.0.1:9000/business/admin/announcement/list').then((respond)=>{
