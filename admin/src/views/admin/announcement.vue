@@ -97,32 +97,34 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">公告标题</label>
                 <div class="col-sm-10">
-                  <input class="form-control" placeholder="公告标题">
+                  <input v-model="announcement.announcementtitle" class="form-control" placeholder="公告标题">
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">公告类型</label>
                 <div class="col-sm-10">
-                  <input class="form-control" placeholder="公告类型">
+                  <input v-model="announcement.announcementtype" class="form-control" placeholder="公告类型">
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">开始时间</label>
-                <div class="col-sm-10">
-                  <input class="form-control" placeholder="开始时间">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">结束时间</label>
-                <div class="col-sm-10">
-                  <input class="form-control" placeholder="结束时间">
-                </div>
-              </div>
+<!--              -->
+<!--              <div class="form-group">-->
+<!--                <label class="col-sm-2 control-label">开始时间</label>-->
+<!--                <div class="col-sm-10">-->
+<!--                  <input v-model="announcement.begintime" class="form-control" placeholder="开始时间">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="form-group">-->
+<!--                <label class="col-sm-2 control-label">结束时间</label>-->
+<!--                <div class="col-sm-10">-->
+<!--                  <input v-model="announcement.endingtime" class="form-control" placeholder="结束时间">-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              -->
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary">保存</button>
+            <button v-on:click="save()" type="button" class="btn btn-primary">保存</button>
           </div>
         </div>
       </div>
@@ -137,6 +139,7 @@
     components: {Pagination},
     data:function(){
       return{
+        announcement:{},
         announcements:[]
       }
     },
@@ -153,11 +156,20 @@
         let _this=this;
         $(".modal").modal("show");
       },
+
       list(page){
         let _this=this;
         _this.$ajax.get('http://127.0.0.1:9000/business/admin/announcement/list').then((respond)=>{
           console.log("查询公告列表结果:",respond);
           _this.announcements=respond.data;
+        })
+      },
+
+      save(){
+        let _this=this;
+        _this.$ajax.post('http://127.0.0.1:9000/business/admin/announcement/save',
+_this.announcement).then((respond)=>{
+          console.log("保存公告列表结果:",respond);
         })
       }
     }

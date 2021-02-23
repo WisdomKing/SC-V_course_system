@@ -110,8 +110,10 @@ createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 0941    解决'no-unused-vars'校验，警告不要定义一下没用的变量
 1050
 
-
-
+短ID设计与后端代码开发
+1208    面试：为什么不用。。。
+1212
+1314    xxx.sout用到了。。。
 
 
 

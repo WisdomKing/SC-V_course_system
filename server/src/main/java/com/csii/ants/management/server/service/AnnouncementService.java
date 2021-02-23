@@ -47,4 +47,9 @@ public class AnnouncementService {
         }
         pageDto.setList(announcementDtoList);
     }
+    public void save(AnnouncementDto announcementDto){
+        Announcement announcement = new Announcement();
+        BeanUtils.copyProperties(announcementDto,announcement);
+        announcementMapper.insert(announcement);
+    }
 }
