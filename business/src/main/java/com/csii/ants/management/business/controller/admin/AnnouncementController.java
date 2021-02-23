@@ -2,6 +2,7 @@ package com.csii.ants.management.business.controller.admin;
 
 import com.csii.ants.management.server.dto.AnnouncementDto;
 import com.csii.ants.management.server.dto.PageDto;
+import com.csii.ants.management.server.dto.ResponseDto;
 import com.csii.ants.management.server.service.AnnouncementService;
 import com.csii.ants.management.server.util.UuidUtil;
 import org.slf4j.Logger;
@@ -27,19 +28,23 @@ public class AnnouncementController {
     private AnnouncementService announcementService;
 
     @RequestMapping("/list")
-    public PageDto list(@RequestBody PageDto pageDto) {
+    public ResponseDto list(@RequestBody PageDto pageDto) {
         Log.info("pageDto:{}",pageDto);
+        ResponseDto responseDto=new ResponseDto();
         announcementService.list(pageDto);
-        return pageDto;
+        responseDto.setContent(pageDto);
+        return responseDto;
     }
     @RequestMapping("/save")
-    public AnnouncementDto save(@RequestBody AnnouncementDto announcementDto) {
+    public ResponseDto save(@RequestBody AnnouncementDto announcementDto) {
         //暂时用短ID填充开始、结束和详情，后期应该是从前端输入
         announcementDto.setBegintime(UuidUtil.getShortUuid());
         announcementDto.setEndingtime(UuidUtil.getShortUuid());
         announcementDto.setDetails(UuidUtil.getShortUuid());
         Log.info("announcementDto:{}",announcementDto);
+        ResponseDto responseDto=new ResponseDto();
         announcementService.save(announcementDto);
-        return announcementDto;
+        responseDto.setContent(announcementDto);
+        return responseDto;
     }
 }

@@ -84,12 +84,12 @@
     </table>
 
     <!-- 模态框 -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">表单</h4>
+            <h4 class="modal-title">表单</h4>
           </div>
           <div class="modal-body">
             <!-- 表单 -->
@@ -154,7 +154,7 @@
     methods: {
       add(){
         let _this=this;
-        $(".modal").modal("show");
+        $("#form-modal").modal("show");
       },
 
       list(page){
@@ -170,6 +170,12 @@
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/announcement/save',
 _this.announcement).then((respond)=>{
           console.log("保存公告列表结果:",respond);
+          let resp=respond.data;
+          if (resp.success){
+            //如果成功了，隐藏modal和刷新列表
+            $("#form-modal").modal("hide");
+            _this.list(1);
+          }
         })
       }
     }
