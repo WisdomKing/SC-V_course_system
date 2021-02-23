@@ -1,7 +1,6 @@
 package com.csii.ants.management.server.domain;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AnnouncementExample {
@@ -255,52 +254,62 @@ public class AnnouncementExample {
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeEqualTo(Date value) {
+        public Criteria andBegintimeEqualTo(String value) {
             addCriterion("BeginTime =", value, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeNotEqualTo(Date value) {
+        public Criteria andBegintimeNotEqualTo(String value) {
             addCriterion("BeginTime <>", value, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeGreaterThan(Date value) {
+        public Criteria andBegintimeGreaterThan(String value) {
             addCriterion("BeginTime >", value, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andBegintimeGreaterThanOrEqualTo(String value) {
             addCriterion("BeginTime >=", value, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeLessThan(Date value) {
+        public Criteria andBegintimeLessThan(String value) {
             addCriterion("BeginTime <", value, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeLessThanOrEqualTo(Date value) {
+        public Criteria andBegintimeLessThanOrEqualTo(String value) {
             addCriterion("BeginTime <=", value, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeIn(List<Date> values) {
+        public Criteria andBegintimeLike(String value) {
+            addCriterion("BeginTime like", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeNotLike(String value) {
+            addCriterion("BeginTime not like", value, "begintime");
+            return (Criteria) this;
+        }
+
+        public Criteria andBegintimeIn(List<String> values) {
             addCriterion("BeginTime in", values, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeNotIn(List<Date> values) {
+        public Criteria andBegintimeNotIn(List<String> values) {
             addCriterion("BeginTime not in", values, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeBetween(Date value1, Date value2) {
+        public Criteria andBegintimeBetween(String value1, String value2) {
             addCriterion("BeginTime between", value1, value2, "begintime");
             return (Criteria) this;
         }
 
-        public Criteria andBegintimeNotBetween(Date value1, Date value2) {
+        public Criteria andBegintimeNotBetween(String value1, String value2) {
             addCriterion("BeginTime not between", value1, value2, "begintime");
             return (Criteria) this;
         }
@@ -315,52 +324,62 @@ public class AnnouncementExample {
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeEqualTo(Date value) {
+        public Criteria andEndingtimeEqualTo(String value) {
             addCriterion("EndingTime =", value, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeNotEqualTo(Date value) {
+        public Criteria andEndingtimeNotEqualTo(String value) {
             addCriterion("EndingTime <>", value, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeGreaterThan(Date value) {
+        public Criteria andEndingtimeGreaterThan(String value) {
             addCriterion("EndingTime >", value, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andEndingtimeGreaterThanOrEqualTo(String value) {
             addCriterion("EndingTime >=", value, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeLessThan(Date value) {
+        public Criteria andEndingtimeLessThan(String value) {
             addCriterion("EndingTime <", value, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeLessThanOrEqualTo(Date value) {
+        public Criteria andEndingtimeLessThanOrEqualTo(String value) {
             addCriterion("EndingTime <=", value, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeIn(List<Date> values) {
+        public Criteria andEndingtimeLike(String value) {
+            addCriterion("EndingTime like", value, "endingtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndingtimeNotLike(String value) {
+            addCriterion("EndingTime not like", value, "endingtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndingtimeIn(List<String> values) {
             addCriterion("EndingTime in", values, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeNotIn(List<Date> values) {
+        public Criteria andEndingtimeNotIn(List<String> values) {
             addCriterion("EndingTime not in", values, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeBetween(Date value1, Date value2) {
+        public Criteria andEndingtimeBetween(String value1, String value2) {
             addCriterion("EndingTime between", value1, value2, "endingtime");
             return (Criteria) this;
         }
 
-        public Criteria andEndingtimeNotBetween(Date value1, Date value2) {
+        public Criteria andEndingtimeNotBetween(String value1, String value2) {
             addCriterion("EndingTime not between", value1, value2, "endingtime");
             return (Criteria) this;
         }

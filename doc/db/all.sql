@@ -30,13 +30,13 @@ DROP TABLE IF EXISTS `announcement`;
 CREATE TABLE `announcement`  (
     `AnnouncementTitle` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '公告标题',
     `AnnouncementType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '公告类型',
-    `BeginTime` timestamp(0) NOT NULL COMMENT '开始时间',
-    `EndingTime` timestamp(0) NOT NULL COMMENT '结束时间',
+    `BeginTime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '开始时间',
+    `EndingTime` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '结束时间',
     `Details` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '详情'
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
-INSERT INTO `announcement` VALUES ('报工开放时间延长结束通知', '公共公告', '2021-02-08 9:40:43', '2021-02-10 11:40:48', '大家好！因本月情况特殊，报工系统开放时间延长至一个月，将于本月28号恢复正常，望大家周知！！！');
-INSERT INTO `announcement` VALUES ('关于做好节后复工复产的安排', '公共公告', '2021-02-18 00:00:00', '2021-02-20 18:00:36', '关于做好节后复工复产的安排！！所有项目组成员应当尽快复工复产');
+INSERT INTO `announcement` VALUES ('报工开放时间延长结束通知', '公共公告', '2021-02-08', '2021-02-10', '大家好！因本月情况特殊，报工系统开放时间延长至一个月，将于本月28号恢复正常，望大家周知！！！');
+INSERT INTO `announcement` VALUES ('关于做好节后复工复产的安排', '公共公告', '2021-02-18', '2021-02-22', '关于做好节后复工复产的安排！！所有项目组成员应当尽快复工复产');
 
 /*----clockin报工---------------------------------------------------*/
 

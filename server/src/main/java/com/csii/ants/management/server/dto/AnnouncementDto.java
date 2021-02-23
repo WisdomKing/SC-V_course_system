@@ -1,15 +1,13 @@
 package com.csii.ants.management.server.dto;
 
-import java.util.Date;
-
 public class AnnouncementDto {
     private String announcementtitle;
 
     private String announcementtype;
 
-    private Date begintime;
+    private String begintime;
 
-    private Date endingtime;
+    private String endingtime;
 
     private String details;
 
@@ -29,19 +27,19 @@ public class AnnouncementDto {
         this.announcementtype = announcementtype;
     }
 
-    public Date getBegintime() {
+    public String getBegintime() {
         return begintime;
     }
 
-    public void setBegintime(Date begintime) {
+    public void setBegintime(String begintime) {
         this.begintime = begintime;
     }
 
-    public Date getEndingtime() {
+    public String getEndingtime() {
         return endingtime;
     }
 
-    public void setEndingtime(Date endingtime) {
+    public void setEndingtime(String endingtime) {
         this.endingtime = endingtime;
     }
 
