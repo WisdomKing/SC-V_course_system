@@ -9,7 +9,7 @@ Toast={
     })
   },
   error:function (message) {
-    Toast.fire({
+    Swal.fire({
       position: 'top-end',
       icon: 'error',
       title: message,
@@ -18,7 +18,7 @@ Toast={
     })
   },
   warning:function (message) {
-    Toast.fire({
+    Swal.fire({
       position: 'top-end',
       icon: 'warning',
       title: message,
