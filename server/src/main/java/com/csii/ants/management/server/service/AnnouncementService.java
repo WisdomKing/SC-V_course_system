@@ -28,7 +28,7 @@ public class AnnouncementService {
     private AnnouncementMapper announcementMapper;
 
     /**
-     *
+     * 列表查询
      * @param pageDto
      */
     public void list(PageDto pageDto){

@@ -27,7 +27,7 @@ public class AnnouncementController {
     private AnnouncementService announcementService;
 
     /**
-     *
+     * 列表查询
      * @param pageDto
      * @return responseDto
      */
@@ -41,7 +41,7 @@ public class AnnouncementController {
     }
 
     /**
-     *
+     * 保存，id有值时更新，无值时新增
      * @param announcementDto
      * @return responseDto
      */
@@ -68,7 +68,7 @@ public class AnnouncementController {
     }
 
     /**
-     *
+     * 删除
      * @param id
      * @return responseDto
      */

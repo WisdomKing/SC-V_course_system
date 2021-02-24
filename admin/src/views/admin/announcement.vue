@@ -121,20 +121,27 @@
       // this.$parent.activeSidebar("business-announcement-sidebar");   //以后通过watch监听来激活菜单了，不再通过这条语句去激活，免于每一个页面都要写
     },
     methods: {
+      /**
+       * 点击新增
+       */
       add(){
         let _this=this;
         //模态框打开时清空上次的数据
         _this.announcement={}
         $("#form-modal").modal("show");
       },
-
+      /**
+       * 点击编辑
+       */
       edit(announcement){
         let _this=this;
         //将数据带到模态框里
         _this.announcement=$.extend({},announcement);
         $("#form-modal").modal("show");
       },
-
+      /**
+       * 列表查询
+       */
       list(page){
         let _this=this;
         _this.$ajax.get('http://127.0.0.1:9000/business/admin/announcement/list').then((respond)=>{
@@ -142,33 +149,35 @@
           _this.announcements=respond.data;
         })
       },
-
+      /**
+       * 点击保存
+       */
       save(page){
         let _this=this;
         // 保存校验，非空和长度
-        // if ( !Validator.require(_this.announcement.announcementtitle, "公告标题")
-        //   || !Validator.length(_this.announcement.announcementtitle, "公告标题",1,20)
-        //
-        //   || !Validator.require(_this.announcement.announcementtype, "公告类型")
-        //   || !Validator.length(_this.announcement.announcementtype, "公告类型", 1, 20)
-        //
-        //   || !Validator.require(_this.announcement.begintime, "开始时间")
-        //   || !Validator.length(_this.announcement.begintime, "开始时间", 1, 10)
-        //
-        //   || !Validator.require(_this.announcement.endingtime, "结束时间")
-        //   || !Validator.length(_this.announcement.endingtime, "结束时间", 1, 10)
-        //
-        //   || !Validator.require(_this.announcement.details, "详情")
-        //   || !Validator.length(_this.announcement.details, "详情", 1, 50)
-        // ) {
-        //   return;
-        // }
+        if ( !Validator.require(_this.announcement.announcementtitle, "公告标题")
+          || !Validator.length(_this.announcement.announcementtitle, "公告标题",1,20)
+
+          || !Validator.require(_this.announcement.announcementtype, "公告类型")
+          || !Validator.length(_this.announcement.announcementtype, "公告类型", 1, 20)
+
+          || !Validator.require(_this.announcement.begintime, "开始时间")
+          || !Validator.length(_this.announcement.begintime, "开始时间", 1, 10)
+
+          || !Validator.require(_this.announcement.endingtime, "结束时间")
+          || !Validator.length(_this.announcement.endingtime, "结束时间", 1, 10)
+
+          || !Validator.require(_this.announcement.details, "详情")
+          || !Validator.length(_this.announcement.details, "详情", 1, 50)
+        ) {
+          return;
+        }
 
         Loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/announcement/save',
 _this.announcement).then((respond)=>{
           Loading.hide();
-          console.log("保存公告列表结果:",respond);
+          // console.log("保存公告列表结果:",respond);
           let resp=respond.data;
           if (resp.success){
             //如果成功了，隐藏modal和刷新列表
@@ -180,14 +189,16 @@ _this.announcement).then((respond)=>{
           }
         })
       },
-
+      /**
+       * 点击删除
+       */
       del(id){
         let _this=this;
         Confirm.show("删除公告后不可恢复，确认删除?",function () {
           Loading.show();
           _this.$ajax.delete('http://127.0.0.1:9000/business/admin/announcement/delete/'+id).then((respond)=>{
             Loading.hide();
-            console.log("删除公告列表结果:",respond);
+            // console.log("删除公告列表结果:",respond);
             let resp=respond.data;
             if (resp.success){
               _this.list(1);
@@ -195,37 +206,7 @@ _this.announcement).then((respond)=>{
             }
           })
         });
-      //   Swal.fire({
-      //     title: '确认删除?',
-      //     text: "删除后不可恢复，确认删除?",
-      //     icon: 'warning',
-      //     showCancelButton: true,
-      //     confirmButtonColor: '#3085d6',
-      //     cancelButtonColor: '#d33',
-      //     confirmButtonText: '确认'
-      //   }).then((result) => {
-      //     if (result.isConfirmed) {
-      //       Loading.show();
-      //       _this.$ajax.delete('http://127.0.0.1:9000/business/admin/announcement/delete/'+id).then((respond)=>{
-      //         Loading.hide();
-      //         console.log("删除公告列表结果:",respond);
-      //         let resp=respond.data;
-      //         if (resp.success){
-      //           _this.list(1);
-      //           Toast.success("删除成功");
-      //         }
-      //       })
-      //     }
-      //   })
-      //   _this.$ajax.delete('http://127.0.0.1:9000/business/admin/announcement/delete/'+id).then((respond)=>{
-      //     console.log("删除公告列表结果:",respond);
-      //     let resp=respond.data;
-      //     if (resp.success){
-      //       _this.list(1);
-      //     }
-      //   })
       }
-
     }
   }
 </script>
