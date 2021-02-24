@@ -1,6 +1,8 @@
 package com.csii.ants.management.server.dto;
 
 public class AnnouncementDto {
+    private String id;
+
     private String announcementtitle;
 
     private String announcementtype;
@@ -10,6 +12,14 @@ public class AnnouncementDto {
     private String endingtime;
 
     private String details;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getAnnouncementtitle() {
         return announcementtitle;
@@ -57,6 +67,7 @@ public class AnnouncementDto {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
         sb.append(", announcementtitle=").append(announcementtitle);
         sb.append(", announcementtype=").append(announcementtype);
         sb.append(", begintime=").append(begintime);

@@ -41,6 +41,12 @@
 
 <!--        <table tableName="test" domainObjectName="Test"/>-->
         <table tableName="announcement" domainObjectName="Announcement"/>
+<!--        <table tableName="clockin" domainObjectName="Clockin"/>-->
+<!--        <table tableName="companyinfo" domainObjectName="Companyinfo"/>-->
+<!--        <table tableName="employeeinfo" domainObjectName="Employeeinfo"/>-->
+<!--        <table tableName="headline" domainObjectName="Headline"/>-->
+<!--        <table tableName="leave" domainObjectName="Leave"/>-->
+<!--        <table tableName="personalinfo" domainObjectName="Personalinfo"/>-->
 
     </context>
 </generatorConfiguration>

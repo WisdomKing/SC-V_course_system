@@ -34,52 +34,16 @@
         <td>{{announcement.endingtime}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
-            <button class="btn btn-xs btn-info">
-              详情
-              <!--            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>-->
+            <button v-on:click="edit(announcement)" class="btn btn-xs btn-info">
+<!--              详情-->
+              <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button class="btn btn-xs btn-danger">
+            <button v-on:click="del(announcement.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
-
-          <div class="hidden-md hidden-lg">
-            <div class="inline pos-rel">
-              <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-              </button>
-
-              <ul
-                class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                <li>
-                  <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-  <span class="blue">
-  <i class="ace-icon fa fa-search-plus bigger-120"></i>
-  </span>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-  <span class="green">
-  <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-  </span>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-  <span class="red">
-  <i class="ace-icon fa fa-trash-o bigger-120"></i>
-  </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </td>
       </tr>
-
       </tbody>
     </table>
 
@@ -106,20 +70,25 @@
                   <input v-model="announcement.announcementtype" class="form-control" placeholder="公告类型">
                 </div>
               </div>
-<!--              -->
-<!--              <div class="form-group">-->
-<!--                <label class="col-sm-2 control-label">开始时间</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                  <input v-model="announcement.begintime" class="form-control" placeholder="开始时间">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="form-group">-->
-<!--                <label class="col-sm-2 control-label">结束时间</label>-->
-<!--                <div class="col-sm-10">-->
-<!--                  <input v-model="announcement.endingtime" class="form-control" placeholder="结束时间">-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              -->
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">开始时间</label>
+                <div class="col-sm-10">
+                  <input v-model="announcement.begintime" class="form-control" placeholder="开始时间">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">结束时间</label>
+                <div class="col-sm-10">
+                  <input v-model="announcement.endingtime" class="form-control" placeholder="结束时间">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">详情</label>
+                <div class="col-sm-10">
+                  <input v-model="announcement.details" class="form-control" placeholder="详情">
+                </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -154,6 +123,15 @@
     methods: {
       add(){
         let _this=this;
+        //模态框打开时清空上次的数据
+        _this.announcement={}
+        $("#form-modal").modal("show");
+      },
+
+      edit(announcement){
+        let _this=this;
+        //将数据带到模态框里
+        _this.announcement=$.extend({},announcement);
         $("#form-modal").modal("show");
       },
 
@@ -165,7 +143,7 @@
         })
       },
 
-      save(){
+      save(page){
         let _this=this;
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/announcement/save',
 _this.announcement).then((respond)=>{
@@ -177,7 +155,19 @@ _this.announcement).then((respond)=>{
             _this.list(1);
           }
         })
+      },
+
+      del(id){
+        let _this=this;
+        _this.$ajax.delete('http://127.0.0.1:9000/business/admin/announcement/delete/'+id).then((respond)=>{
+          console.log("删除公告列表结果:",respond);
+          let resp=respond.data;
+          if (resp.success){
+            _this.list(1);
+          }
+        })
       }
+
     }
   }
 </script>

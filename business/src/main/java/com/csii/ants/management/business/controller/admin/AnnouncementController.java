@@ -4,15 +4,11 @@ import com.csii.ants.management.server.dto.AnnouncementDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.dto.ResponseDto;
 import com.csii.ants.management.server.service.AnnouncementService;
-import com.csii.ants.management.server.util.UuidUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author ZxM
@@ -27,7 +23,12 @@ public class AnnouncementController {
     @Resource
     private AnnouncementService announcementService;
 
-    @RequestMapping("/list")
+    /**
+     *
+     * @param pageDto
+     * @return responseDto
+     */
+    @PostMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto) {
         Log.info("pageDto:{}",pageDto);
         ResponseDto responseDto=new ResponseDto();
@@ -35,16 +36,31 @@ public class AnnouncementController {
         responseDto.setContent(pageDto);
         return responseDto;
     }
-    @RequestMapping("/save")
+
+    /**
+     *
+     * @param announcementDto
+     * @return responseDto
+     */
+    @PostMapping("/save")
     public ResponseDto save(@RequestBody AnnouncementDto announcementDto) {
-        //暂时用短ID填充开始、结束和详情，后期应该是从前端输入
-        announcementDto.setBegintime(UuidUtil.getShortUuid());
-        announcementDto.setEndingtime(UuidUtil.getShortUuid());
-        announcementDto.setDetails(UuidUtil.getShortUuid());
         Log.info("announcementDto:{}",announcementDto);
         ResponseDto responseDto=new ResponseDto();
         announcementService.save(announcementDto);
         responseDto.setContent(announcementDto);
+        return responseDto;
+    }
+
+    /**
+     *
+     * @param id
+     * @return responseDto
+     */
+    @DeleteMapping("/delete/{id}")
+    public ResponseDto delete(@PathVariable String id) {
+        Log.info("id:{}",id);
+        ResponseDto responseDto=new ResponseDto();
+        announcementService.delete(id);
         return responseDto;
     }
 }
