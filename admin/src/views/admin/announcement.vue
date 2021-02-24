@@ -145,8 +145,10 @@
 
       save(page){
         let _this=this;
+        Loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/announcement/save',
 _this.announcement).then((respond)=>{
+          Loading.hide();
           console.log("保存公告列表结果:",respond);
           let resp=respond.data;
           if (resp.success){
@@ -170,7 +172,9 @@ _this.announcement).then((respond)=>{
           confirmButtonText: '确认'
         }).then((result) => {
           if (result.isConfirmed) {
+            Loading.show();
             _this.$ajax.delete('http://127.0.0.1:9000/business/admin/announcement/delete/'+id).then((respond)=>{
+              Loading.hide();
               console.log("删除公告列表结果:",respond);
               let resp=respond.data;
               if (resp.success){
