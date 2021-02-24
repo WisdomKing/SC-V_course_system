@@ -21,6 +21,8 @@ import javax.annotation.Resource;
 @RequestMapping("/admin/announcement")
 public class AnnouncementController {
     private static final Logger Log= LoggerFactory.getLogger(AnnouncementController.class);
+    public static final String BUSINESS_NAME="公告";
+
     @Resource
     private AnnouncementService announcementService;
 
