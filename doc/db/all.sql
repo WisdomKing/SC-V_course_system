@@ -40,7 +40,7 @@ CREATE TABLE `announcement`  (
 INSERT INTO `announcement` VALUES ('10012333', '2333', '2333', '2021-02-01', '2021-02-11', '红红火火恍恍惚惚');
 INSERT INTO `announcement` VALUES ('10012337', '报工开放时间延长结束通知', '公共公告', '2021-02-08', '2021-02-10', '大家好！因本月情况特殊，报工系统开放时间延长至一个月，将于本月28号恢复正常，望大家周知！！！');
 INSERT INTO `announcement` VALUES ('9Ce7MH01', '报工开放时间延长结束通知', '公共公告', '2021-02-08', '2021-02-18', '关于做好节后复工复产的安排');
-INSERT INTO `announcement` VALUES ('9Ce7MH02','00010001','00010001','2021-02-18','2021-02-22','test01');
+INSERT INTO `announcement` VALUES ('9Ce7MH02','公告标题','公告类型','开始时间','结束时间','详情');
 INSERT INTO `announcement` VALUES ('9Ce7MH03','00010002','00010002','2021-02-18','2021-02-22','test02');
 INSERT INTO `announcement` VALUES ('9Ce7MH04','00010003','00010003','2021-02-18','2021-02-22','test03');
 INSERT INTO `announcement` VALUES ('9Ce7MH05','00010004','00010004','2021-02-18','2021-02-22','test04');

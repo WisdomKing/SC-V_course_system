@@ -4,6 +4,7 @@ import com.csii.ants.management.server.dto.AnnouncementDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.dto.ResponseDto;
 import com.csii.ants.management.server.service.AnnouncementService;
+import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,19 @@ public class AnnouncementController {
     @PostMapping("/save")
     public ResponseDto save(@RequestBody AnnouncementDto announcementDto) {
         Log.info("announcementDto:{}",announcementDto);
+
+        // 保存校验
+        ValidatorUtil.require(announcementDto.getAnnouncementtitle(), "公告标题");
+        ValidatorUtil.length(announcementDto.getAnnouncementtitle(), "公告标题", 1, 20);
+        ValidatorUtil.require(announcementDto.getAnnouncementtype(), "公告类型");
+        ValidatorUtil.length(announcementDto.getAnnouncementtype(), "公告类型", 1, 20);
+        ValidatorUtil.require(announcementDto.getBegintime(), "开始时间");
+        ValidatorUtil.length(announcementDto.getBegintime(), "开始时间", 1, 10);
+        ValidatorUtil.require(announcementDto.getEndingtime(), "结束时间");
+        ValidatorUtil.length(announcementDto.getEndingtime(), "结束时间", 1, 10);
+        ValidatorUtil.require(announcementDto.getDetails(), "详情");
+        ValidatorUtil.length(announcementDto.getDetails(), "详情", 1, 50);
+
         ResponseDto responseDto=new ResponseDto();
         announcementService.save(announcementDto);
         responseDto.setContent(announcementDto);
