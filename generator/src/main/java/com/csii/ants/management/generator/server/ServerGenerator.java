@@ -17,19 +17,26 @@ public class ServerGenerator {
      * 服务端的Controller、Service、Dto全部用这个启动类生成
      * 支持重复生成
      */
+    static String MODULE = "business";
     static String toServicePath = "server\\src\\main\\java\\com\\csii\\ants\\management\\server\\service\\";
-    static String toControllerPath = "business\\src\\main\\java\\com\\csii\\ants\\management\\business\\controller\\admin\\";
+    static String toControllerPath =MODULE+ "\\src\\main\\java\\com\\csii\\ants\\management\\"+MODULE+"\\controller\\admin\\";
 
     public static void main(String[] args) throws IOException, TemplateException {
         String Domain="Headline";
         String domain="headline";
+        String tableNameCn="头条";
+        String module=MODULE;
+
         Map<String,Object> map=new HashMap<>();
         map.put("Domain",Domain);
         map.put("domain",domain);
+        map.put("tableNameCn",tableNameCn);
+        map.put("module",module);
 
         //生成service
         FreeMarkerUtil.initConfig("service.ftl");
         FreeMarkerUtil.generator(toServicePath+Domain+"Service.java",map);
+
         //生成controller
         FreeMarkerUtil.initConfig("controller.ftl");
         FreeMarkerUtil.generator(toControllerPath+Domain+"Controller.java",map);

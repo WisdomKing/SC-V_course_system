@@ -1,4 +1,4 @@
-package com.csii.ants.management.business.controller.admin;
+package com.csii.ants.management.${module}.controller.admin;
 
 import com.csii.ants.management.server.dto.${Domain}Dto;
 import com.csii.ants.management.server.dto.PageDto;
@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 @RequestMapping("/admin/${domain}")
 public class ${Domain}Controller {
     private static final Logger Log= LoggerFactory.getLogger(${Domain}Controller.class);
-    public static final String BUSINESS_NAME="公告";
+    public static final String BUSINESS_NAME="${tableNameCn}";
 
     @Resource
     private ${Domain}Service ${domain}Service;
