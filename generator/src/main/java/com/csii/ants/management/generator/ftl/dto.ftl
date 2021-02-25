@@ -20,8 +20,8 @@ public class ${Domain}Dto {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     </#if>
     private ${field.javaType} ${field.nameHump};
-
 </#list>
+
 <#list fieldList as field>
     public ${field.javaType} get${field.nameBigHump}() {
     return ${field.nameHump};

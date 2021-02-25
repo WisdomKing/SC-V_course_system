@@ -18,27 +18,25 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
-        <th>ID</th>
-        <th>上传时间</th>
-        <th>修改时间</th>
-        <th>详情</th>
+        <#list fieldList as field>
+         <th>${field.nameCn}</th>
+        </#list>
         <th>操作按钮</th>
       </tr>
       </thead>
 
       <tbody>
-      <tr v-for="headline in headlines">
-        <td>{{headline.id}}</td>
-        <td>{{headline.createdtime}}</td>
-        <td>{{headline.updatedtime}}</td>
-        <td>{{headline.details}}</td>
+      <tr v-for="${domain} in ${domain}s">
+        <#list fieldList as field>
+         <td>{{${domain}.${field.nameHump}}}</td>
+        </#list>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
-            <button v-on:click="edit(headline)" class="btn btn-xs btn-info">
-          <!-- 详情-->
+            <button v-on:click="edit(${domain})" class="btn btn-xs btn-info">
+              <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button v-on:click="del(headline.id)" class="btn btn-xs btn-danger">
+            <button v-on:click="del(${domain}.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
@@ -58,30 +56,14 @@
           <div class="modal-body">
             <!-- 表单 -->
             <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2 control-label">ID</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.id" class="form-control" placeholder="ID">
+              <#list fieldList as field>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">${field.nameCn}</label>
+                  <div class="col-sm-10">
+                    <input v-model="${domain}.${field.nameHump}" class="form-control" placeholder="${field.nameCn}">
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">上传时间</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.createdtime" class="form-control" placeholder="上传时间">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">修改时间</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.updatedtime" class="form-control" placeholder="修改时间">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">详情</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.details" class="form-control" placeholder="详情">
-                </div>
-              </div>
+              </#list>
             </form>
           </div>
           <div class="modal-footer">
@@ -97,12 +79,12 @@
 <script>
   import Pagination from "../../components/pagination";
   export default {
-    name: 'headline',
+    name: '${domain}',
     components: {Pagination},
     data:function(){
       return{
-        headline:{},
-        headlines:[]
+        ${domain}:{},
+        ${domain}s:[]
       }
     },
     mounted: function () {
@@ -110,7 +92,7 @@
       //自定义初始每页5条
       _this.$refs.pagination.size=5;
       _this.list();
-    },
+      },
     methods: {
       /**
        * 点击新增
@@ -118,16 +100,16 @@
       add(){
         let _this=this;
         //模态框打开时清空上次的数据
-        _this.headline={}
+        _this.${domain}={}
         $("#form-modal").modal("show");
       },
       /**
        * 点击编辑
        */
-      edit(headline){
+      edit(${domain}){
         let _this=this;
         //将数据带到模态框里
-        _this.headline=$.extend({},headline);
+        _this.${domain}=$.extend({},${domain});
         $("#form-modal").modal("show");
       },
       /**
@@ -136,13 +118,13 @@
       list(page){
         let _this=this;
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/headline/list',{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/${module}/admin/${domain}/list',{
           page:page,
           size:_this.$refs.pagination.size,
         }).then((respond)=>{
           Loading.hide();
           let resp=respond.data;
-          _this.headlines=resp.content.list;
+          _this.${domain}s=resp.content.list;
           //重新渲染？5.5-1155
           _this.$refs.pagination.render(page,resp.content.total);
         })
@@ -153,12 +135,29 @@
       save(page){
         let _this=this;
         // 保存校验，非空和长度
+        <#--if ( !Validator.require(_this.${domain}.${domain}title, "${tableNameCn}标题")-->
+        <#--  || !Validator.length(_this.${domain}.${domain}title, "${tableNameCn}标题",1,20)-->
+
+        <#--  || !Validator.require(_this.${domain}.${domain}type, "${tableNameCn}类型")-->
+        <#--  || !Validator.length(_this.${domain}.${domain}type, "${tableNameCn}类型", 1, 20)-->
+
+        <#--  || !Validator.require(_this.${domain}.begintime, "开始时间")-->
+        <#--  || !Validator.length(_this.${domain}.begintime, "开始时间", 1, 10)-->
+
+        <#--  || !Validator.require(_this.${domain}.endingtime, "结束时间")-->
+        <#--  || !Validator.length(_this.${domain}.endingtime, "结束时间", 1, 10)-->
+
+        <#--  || !Validator.require(_this.${domain}.details, "详情")-->
+        <#--  || !Validator.length(_this.${domain}.details, "详情", 1, 50)-->
+        <#--) {-->
+        <#--  return;-->
+        <#--}-->
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/headline/save',
-_this.headline).then((respond)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/${module}/admin/${domain}/save',
+_this.${domain}).then((respond)=>{
           Loading.hide();
-          // console.log("保存头条列表结果:",respond);
+          // console.log("保存${tableNameCn}列表结果:",respond);
           let resp=respond.data;
           if (resp.success){
             //如果成功了，隐藏modal和刷新列表
@@ -175,11 +174,11 @@ _this.headline).then((respond)=>{
        */
       del(id){
         let _this=this;
-        Confirm.show("删除头条后不可恢复，确认删除?",function () {
+        Confirm.show("删除${tableNameCn}后不可恢复，确认删除?",function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/headline/delete/'+id).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/${module}/admin/${domain}/delete/'+id).then((respond)=>{
             Loading.hide();
-            // console.log("删除头条列表结果:",respond);
+            // console.log("删除${tableNameCn}列表结果:",respond);
             let resp=respond.data;
             if (resp.success){
               _this.list(1);

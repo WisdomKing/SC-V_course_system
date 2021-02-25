@@ -420,7 +420,7 @@
           <li class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 公司信息 </span>
+              <span class="menu-text"> 头条 </span>
 
               <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -428,10 +428,10 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-              <li class="" id="business-companyinfo-sidebar">
-                <router-link to="/business/announcement">
+              <li class="" id="business-headline-sidebar">
+                <router-link to="/business/headline">
                   <i class="menu-icon fa fa-caret-right"></i>
-                  公司信息
+                  公司头条
                 </router-link>
 
                 <b class="arrow"></b>

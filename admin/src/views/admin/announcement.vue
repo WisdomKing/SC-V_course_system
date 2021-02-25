@@ -156,26 +156,26 @@
       save(page){
         let _this=this;
         // 保存校验，非空和长度
-        if ( !Validator.require(_this.announcement.announcementtitle, "公告标题")
-          || !Validator.length(_this.announcement.announcementtitle, "公告标题",1,20)
-
-          || !Validator.require(_this.announcement.announcementtype, "公告类型")
-          || !Validator.length(_this.announcement.announcementtype, "公告类型", 1, 20)
-
-          || !Validator.require(_this.announcement.begintime, "开始时间")
-          || !Validator.length(_this.announcement.begintime, "开始时间", 1, 10)
-
-          || !Validator.require(_this.announcement.endingtime, "结束时间")
-          || !Validator.length(_this.announcement.endingtime, "结束时间", 1, 10)
-
-          || !Validator.require(_this.announcement.details, "详情")
-          || !Validator.length(_this.announcement.details, "详情", 1, 50)
-        ) {
-          return;
-        }
+        // if ( !Validator.require(_this.announcement.announcementtitle, "公告标题")
+        //   || !Validator.length(_this.announcement.announcementtitle, "公告标题",1,20)
+        //
+        //   || !Validator.require(_this.announcement.announcementtype, "公告类型")
+        //   || !Validator.length(_this.announcement.announcementtype, "公告类型", 1, 20)
+        //
+        //   || !Validator.require(_this.announcement.begintime, "开始时间")
+        //   || !Validator.length(_this.announcement.begintime, "开始时间", 1, 10)
+        //
+        //   || !Validator.require(_this.announcement.endingtime, "结束时间")
+        //   || !Validator.length(_this.announcement.endingtime, "结束时间", 1, 10)
+        //
+        //   || !Validator.require(_this.announcement.details, "详情")
+        //   || !Validator.length(_this.announcement.details, "详情", 1, 50)
+        // ) {
+        //   return;
+        // }
 
         Loading.show();
-        _this.$ajax.post('http://127.0.0.1:9000/business/admin/announcement/save',
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/announcement/save',
 _this.announcement).then((respond)=>{
           Loading.hide();
           // console.log("保存公告列表结果:",respond);
@@ -197,7 +197,7 @@ _this.announcement).then((respond)=>{
         let _this=this;
         Confirm.show("删除公告后不可恢复，确认删除?",function () {
           Loading.show();
-          _this.$ajax.delete('http://127.0.0.1:9000/business/admin/announcement/delete/'+id).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/announcement/delete/'+id).then((respond)=>{
             Loading.hide();
             // console.log("删除公告列表结果:",respond);
             let resp=respond.data;

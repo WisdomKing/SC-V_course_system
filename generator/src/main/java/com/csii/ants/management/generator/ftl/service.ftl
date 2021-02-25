@@ -60,10 +60,7 @@ public class ${Domain}Service {
      * @param ${domain}Dto
      */
     public void save(${Domain}Dto ${domain}Dto){
-//        ${Domain} ${domain} = new ${Domain}();
-//        BeanUtils.copyProperties(${domain}Dto,${domain});
-//        ${domain}Mapper.insert(${domain});
-        /* StringUtils.isEmpty在Spring5.3之后被弃用 */
+
         ${Domain} ${domain}= CopyUtil.copy(${domain}Dto,${Domain}.class);
 //        if(${domain}Dto.getId()== null && ${domain}Dto.getId().equals("")){
         if (StringUtils.isEmpty(${domain}Dto.getId())) {

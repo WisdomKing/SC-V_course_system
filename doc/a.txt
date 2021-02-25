@@ -291,22 +291,22 @@ controller层代码生成
 1223
 1341-讲解
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+6.4
+vue cli多环境处理
+0046
+0114    {NODE_ENV(node environment):用来表示构建项目的当前环境}=development代表开发环境;=production代表生产环境
+0126    自定义多环境变量必须以VUE_APP开头，{VUE_APP_SERVER=http://server.imooc.com}是因为目前还没有随便写的
+本机启动默认是开发环境
+0225
+0330没有切换到生产环境，原因：文件应该在admin的根目录下
+0538-git
+0603
+0616
+1117    copy Relative Path复制相对路径;copy Path复制全路径
+1305    template标签内的html代码的缩进变成四个空格。正常情况应该是四个空格，我们为了演示需要把所有前端代码的缩进都设置成了两个空格。
+1419    Paste without Formatting，不带格式粘贴，已多次用到。复制时是什么样，粘贴时也是什么样，不会自动格式化。
+1449    利用我们设置好的html和js代码是两个空格的缩进，将ftl代码的代码粘贴到vue文件中，让idea帮我们做格式化成两个空格。
+1859-git
 
 
 

@@ -4,7 +4,6 @@ import com.csii.ants.management.server.dto.HeadlineDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.dto.ResponseDto;
 import com.csii.ants.management.server.service.HeadlineService;
-import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;

@@ -60,10 +60,7 @@ public class HeadlineService {
      * @param headlineDto
      */
     public void save(HeadlineDto headlineDto){
-//        Headline headline = new Headline();
-//        BeanUtils.copyProperties(headlineDto,headline);
-//        headlineMapper.insert(headline);
-        /* StringUtils.isEmpty在Spring5.3之后被弃用 */
+
         Headline headline= CopyUtil.copy(headlineDto,Headline.class);
 //        if(headlineDto.getId()== null && headlineDto.getId().equals("")){
         if (StringUtils.isEmpty(headlineDto.getId())) {
