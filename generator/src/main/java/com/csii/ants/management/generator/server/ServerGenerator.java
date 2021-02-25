@@ -4,6 +4,8 @@ import com.csii.ants.management.generator.util.FreeMarkerUtil;
 import freemarker.template.TemplateException;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author ZxM
@@ -14,10 +16,16 @@ public class ServerGenerator {
     /**
      * 服务端的Controller、Service、Dto全部用这个启动类生成
      */
-    static String toPath = "generator\\src\\main\\java\\com\\csii\\ants\\management\\generator\\test\\";
+    static String toServicePath = "server\\src\\main\\java\\com\\csii\\ants\\management\\server\\service\\";
 
     public static void main(String[] args) throws IOException, TemplateException {
-        FreeMarkerUtil.initConfig("test.ftl");
-        FreeMarkerUtil.generator(toPath+"Test.java");
+        String Domain="Headline";
+        String domain="headline";
+        Map<String,Object> map=new HashMap<>();
+        map.put("Domain",Domain);
+        map.put("domain",domain);
+
+        FreeMarkerUtil.initConfig("service.ftl");
+        FreeMarkerUtil.generator(toServicePath+Domain+"Service.java",map);
     }
 }

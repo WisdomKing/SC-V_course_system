@@ -274,6 +274,7 @@ ctrl+alt+T
 0537    我们会用代码生成器生成controller、service、dto、vue的代码，这些代码的文件路径都不一样，toPath是变化的，所以把toPath变成入参
 0857-git
 0940
+1039-开始讲解变量名的替换属性？？？
 1351-git
 1537
 1612-git

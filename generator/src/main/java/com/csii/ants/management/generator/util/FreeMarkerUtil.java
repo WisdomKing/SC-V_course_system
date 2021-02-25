@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * @author ZxM
@@ -31,11 +32,11 @@ public class FreeMarkerUtil {
         //读具体路径下的哪一个模板
         temp = cfg.getTemplate(ftlName);
     }
-    public static void generator(String fileName) throws IOException, TemplateException {
+    public static void generator(String fileName, Map<String,Object> map) throws IOException, TemplateException {
         //根据模板生成文件
         FileWriter fw = new FileWriter(fileName);
         BufferedWriter bw = new BufferedWriter(fw);
-        temp.process(null, bw);
+        temp.process(map, bw);
         bw.flush();
         fw.close();
     }
