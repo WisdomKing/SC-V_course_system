@@ -29,10 +29,56 @@ controller下面还有分两层，admin是控台使用，web是给网页端使�
  *
  * 如果返回的是json数据用 @RestController,如果返回的是页面用 @Controller;
  */
+4.4
+0107
+0116
+0234
+0428
+0452-git
+0535
+0643-讲解
+0841-搜索框
+0951    子路由里面不要加"/"
+1100    控台页面元素修改
+1157
+1242
+1435
+1616
+1731
+1740-讲解、操作
+1919
+2003
+2120
+2141
+2531
+2618
 
 5.1：
+0016
+0026
+0058
+0302
+0423-git
 0441    大章的id设置
 0445    将sql脚本和代码放在一起的好处是可以通过git提交记录来查看sql的变更记录，方便追溯。
+0506
+0645
+0710
+0757-git
+0906
+0914
+0927
+1124-git
+1348
+1415
+1444
+1515-讲解、操作
+1608
+1710-讲解
+1732
+1939
+2111-git
+
 dto：data transfer object数据传输对象，用于数据传输
 domain类的实体，是mybatis generator自动生成的，不允许手动修改。一旦修改，再次生成实体类时，收做的修改会被覆盖。
 domain作用于service和mapper；dto作用域controller和service
@@ -42,12 +88,35 @@ BeanUtils是一个Spring提供的一个工具类，用于实体将的复制。
 BeanUtils.copyProperties(来源,目标);
 
 5.2
+0018
+0053
+0229
+0341
+0404
+0411-git
+0647
+0722
+0801-菜单激活样式
+0805
+0853
+1005
+1023左右写business-xxx-sidebar的，看操作
+1131
+1242-git
+开始将页面跳转
+1411
+1506-git
+1537
+1600
+1702-往前听一点
+
 siblings jquery的方法，获取所有兄弟节点
 约定：id的命名要和路由有关
 vue内置的watch。用来检测vue实例上到的数据变动。$route也是一个变量
 通过name属性值，得到菜单id的值。前面我们有约定：id的命名要和路由有关。这叫约定优于配置
 1744    此时如果从login页面点击登录到welcome页面，welcome并不会有激活样式。这里的watch，只在admin下面的1子组件互相跳转时有效
 1823    js中this关键字，代表当前执行方法的对象。养成习惯，声明本地变量_this代替this。后面会介绍直接用this的坑
+1938-git
 
 5.3
 vue也支持使用jquery ajax来请求后端接口，推荐使用vue axios
@@ -93,7 +162,6 @@ createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 1457    props定义父组件先子组件传递的参数，可以是一个函数或数据。本组件中个暴露了两个参数list和itemCount给外部
 1608    v-bind:item-count="5"表示只显示5个框
 
-
 5.6
 0022    新增功能页面的设计可以平时浏览bootstrap文档，看看都有哪些组件，用的时候心里有数。
 0156    模态框主要分为三大块。Model-headler是标题;model-body主体内容大张的表单内容就放在这里;model-foot是底部按钮。
@@ -104,7 +172,6 @@ createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 0553    可以使用$(".modal").model({backdrop:"stactic"});禁止点空白的地方关闭某些场景需求会用到这个功能。
 0633    vue cli会将我们写的html，js，CSS，代码编译压缩空格和换行都会被压缩掉，导致按钮间的间隔没有了。
 0649    html有很多转义字符，比如你想在界面显示文本"<text>",但是浏览器会认为<text>是一个标签，这时可以在html中使用转义字符：&lt;text&gt;
-
 0746    <label for="id">有个场景会经常用到：点击复选框checkbox时选中，使用label for后，点击label的文字，也能选中复制框。
 0835    复制一段代码小技巧，选中到上一行的结尾，然后CTRL+d一步到位。
 0907-20    模态框弹出和关闭，可以用js代码，也可以用button属性data-dismiss="css选择器"关闭；data-toggle="css选择器"打开。
@@ -196,6 +263,103 @@ ctrl+alt+T
 0345
 0435
 0618
+0634-git
+
+6.2
+0010
+0146    mybatis-generator支持同时生成多个table，但我们最好每次只生成一张表，其他表都注释掉
+0211
+0238
+0340
+0537
+0901-git
+0940
+1351-git
+1537
+1612-git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

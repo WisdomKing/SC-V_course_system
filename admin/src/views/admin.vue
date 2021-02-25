@@ -363,7 +363,7 @@
             <b class="arrow"></b>
           </li>
 
-          <li class="active open">
+          <li class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 系统管理 </span>
@@ -409,6 +409,29 @@
                 <router-link to="/business/announcement">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司公告
+                </router-link>
+
+                <b class="arrow"></b>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-bullhorn"></i>
+              <span class="menu-text"> 公司信息 </span>
+
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+              <li class="" id="business-companyinfo-sidebar">
+                <router-link to="/business/announcement">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  公司信息
                 </router-link>
 
                 <b class="arrow"></b>

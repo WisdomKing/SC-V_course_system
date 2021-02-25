@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csii.ants.management.server.mapper.AnnouncementMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Announcement">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="AnnouncementTitle" jdbcType="VARCHAR" property="announcementtitle" />
+    <result column="AnnouncementType" jdbcType="VARCHAR" property="announcementtype" />
+    <result column="BeginTime" jdbcType="VARCHAR" property="begintime" />
+    <result column="EndingTime" jdbcType="VARCHAR" property="endingtime" />
+    <result column="Details" jdbcType="VARCHAR" property="details" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, AnnouncementTitle, AnnouncementType, BeginTime, EndingTime, Details
+  </sql>
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.AnnouncementExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from announcement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from announcement
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from announcement
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.AnnouncementExample">
+    delete from announcement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.Announcement">
+    insert into announcement (ID, AnnouncementTitle, AnnouncementType, 
+      BeginTime, EndingTime, Details
+      )
+    values (#{id,jdbcType=VARCHAR}, #{announcementtitle,jdbcType=VARCHAR}, #{announcementtype,jdbcType=VARCHAR}, 
+      #{begintime,jdbcType=VARCHAR}, #{endingtime,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Announcement">
+    insert into announcement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="announcementtitle != null">
+        AnnouncementTitle,
+      </if>
+      <if test="announcementtype != null">
+        AnnouncementType,
+      </if>
+      <if test="begintime != null">
+        BeginTime,
+      </if>
+      <if test="endingtime != null">
+        EndingTime,
+      </if>
+      <if test="details != null">
+        Details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="announcementtitle != null">
+        #{announcementtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="announcementtype != null">
+        #{announcementtype,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null">
+        #{begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="endingtime != null">
+        #{endingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.AnnouncementExample" resultType="java.lang.Long">
+    select count(*) from announcement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update announcement
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.announcementtitle != null">
+        AnnouncementTitle = #{record.announcementtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.announcementtype != null">
+        AnnouncementType = #{record.announcementtype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.begintime != null">
+        BeginTime = #{record.begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endingtime != null">
+        EndingTime = #{record.endingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.details != null">
+        Details = #{record.details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update announcement
+    set ID = #{record.id,jdbcType=VARCHAR},
+      AnnouncementTitle = #{record.announcementtitle,jdbcType=VARCHAR},
+      AnnouncementType = #{record.announcementtype,jdbcType=VARCHAR},
+      BeginTime = #{record.begintime,jdbcType=VARCHAR},
+      EndingTime = #{record.endingtime,jdbcType=VARCHAR},
+      Details = #{record.details,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Announcement">
+    update announcement
+    <set>
+      <if test="announcementtitle != null">
+        AnnouncementTitle = #{announcementtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="announcementtype != null">
+        AnnouncementType = #{announcementtype,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null">
+        BeginTime = #{begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="endingtime != null">
+        EndingTime = #{endingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        Details = #{details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Announcement">
+    update announcement
+    set AnnouncementTitle = #{announcementtitle,jdbcType=VARCHAR},
+      AnnouncementType = #{announcementtype,jdbcType=VARCHAR},
+      BeginTime = #{begintime,jdbcType=VARCHAR},
+      EndingTime = #{endingtime,jdbcType=VARCHAR},
+      Details = #{details,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

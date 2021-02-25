@@ -64,7 +64,7 @@ CREATE TABLE `clockin`  (
     `Manhour` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '工时',
     `Delayed` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '延时',
     `WorkLog` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '工作日志',
-    `Status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '状态',
+    `Status` varchar(20) COMMENT '状态',
     `ClockInTime` timestamp(0) NOT NULL COMMENT '报工时间'
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
@@ -105,16 +105,21 @@ INSERT INTO `employeeinfo` VALUES ('秦风', '13914', '上海', 'qinfeng@xxxx.co
 
 DROP TABLE IF EXISTS `headline`;
 CREATE TABLE `headline`  (
-    `UploadTime` timestamp(0) NOT NULL COMMENT '上传时间',
-    `Details` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '详情'
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+    `ID` varchar(8) NOT NULL COMMENT 'ID',
+    `CreatedTime` DATETIME(0) COMMENT '上传时间',
+    `UpdatedTime` DATETIME(0) COMMENT '修改时间',
+    `Details` varchar(50) COMMENT '详情',
+    primary key (`ID`)
+) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='头条';
 
-INSERT INTO `headline` VALUES ('2021-02-08 14:38:46', '[这里应该放表扬信图片]');
+INSERT INTO `headline`(ID,CreatedTime,UpdatedTime,Details)
+ VALUES ('12345678',now(), now(),'[这里应该放表扬信图片]');
 
 /*----leave请假---------------------------------------------------*/
 
 DROP TABLE IF EXISTS `leave`;
 CREATE TABLE `leave`  (
+#     `ID` varchar(8) NOT NULL COMMENT 'ID',
     `LeaveType` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '请假类型',
     `LeaveTimeBengin` timestamp(0) NOT NULL COMMENT '请假时间开始',
     `LeaveTimeEnding` timestamp(0) NOT NULL COMMENT '请假时间结束',
