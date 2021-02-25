@@ -273,13 +273,15 @@ ctrl+alt+T
 0340    ftlPath是统一放模板的地方，这个属性值一般不会变，所以可以直接放到工具类里
 0537    我们会用代码生成器生成controller、service、dto、vue的代码，这些代码的文件路径都不一样，toPath是变化的，所以把toPath变成入参
 0857-git
+Service层代码生成
 0940
 1039-开始讲解变量名的替换属性？？？
 1351-git
-1537
+controller层代码生成
+1537    注意：每次执行生成器，都会重新生成service和controller代码，只是因为service生成后没变化，所以没在changlist中显示
 1612-git
 
-
+6.3
 
 
 
