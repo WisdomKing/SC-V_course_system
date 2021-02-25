@@ -86,7 +86,8 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">详情</label>
                 <div class="col-sm-10">
-                  <input v-model="announcement.details" class="form-control" placeholder="详情，限50字">
+<!--                  <input v-model="announcement.details" class="form-control" placeholder="详情，限50字">-->
+                  <textarea v-model="announcement.details" class="form-control" placeholder="详情，限50字"/>
                 </div>
               </div>
             </form>
