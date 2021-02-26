@@ -23,6 +23,7 @@ public class ValidatorUtil {
      * 长度校验
      */
     public static void length(String str, String fieldName, int min, int max) {
+        //如果这个值为空，就不校验判断的
         if (StringUtils.isEmpty(str)) {
             return;
         }

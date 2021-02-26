@@ -9,19 +9,16 @@ public class HeadlineDto {
     * ID
     */
     private String id;
-
     /**
     * 上传时间
     */
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createdtime;
-
     /**
     * 修改时间
     */
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updatedtime;
-
     /**
     * 详情
     */

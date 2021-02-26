@@ -63,13 +63,16 @@ public class DbUtil {
         List<Field> fieldList = new ArrayList<>();
         Connection conn = getConnection();
         Statement stmt = conn.createStatement();
+        //可以查出表的字段的所有信息
         ResultSet rs = stmt.executeQuery("show full columns from `" + tableName + "`");
         if (rs != null) {
             while(rs.next()) {
                 String columnName = rs.getString("Field");
                 String type = rs.getString("Type");
                 String comment = rs.getString("Comment");
-                String nullAble = rs.getString("Null"); //YES NO
+                //是否为空 YES or NO
+                String nullAble = rs.getString("Null");
+
                 Field field = new Field();
                 field.setName(columnName);
                 field.setNameHump(lineToHump(columnName));
@@ -81,6 +84,13 @@ public class DbUtil {
                     field.setNameCn(comment.substring(0, comment.indexOf("|")));
                 } else {
                     field.setNameCn(comment);
+                }
+                field.setNullAble("YES".equals(nullAble));
+                if (type.toUpperCase().contains("varchar".toUpperCase())) {
+                    String lengthStr = type.substring(type.indexOf("(") + 1, type.length() - 1);
+                    field.setLength(Integer.valueOf(lengthStr));
+                } else {
+                    field.setLength(0);
                 }
                 fieldList.add(field);
             }

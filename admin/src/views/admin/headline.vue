@@ -18,24 +18,24 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
-        <th>ID</th>
-        <th>上传时间</th>
-        <th>修改时间</th>
-        <th>详情</th>
+                 <th>ID</th>
+         <th>上传时间</th>
+         <th>修改时间</th>
+         <th>详情</th>
         <th>操作按钮</th>
       </tr>
       </thead>
 
       <tbody>
       <tr v-for="headline in headlines">
-        <td>{{headline.id}}</td>
-        <td>{{headline.createdtime}}</td>
-        <td>{{headline.updatedtime}}</td>
-        <td>{{headline.details}}</td>
+         <td>{{headline.id}}</td>
+         <td>{{headline.createdtime}}</td>
+         <td>{{headline.updatedtime}}</td>
+         <td>{{headline.details}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="edit(headline)" class="btn btn-xs btn-info">
-          <!-- 详情-->
+              <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
             <button v-on:click="del(headline.id)" class="btn btn-xs btn-danger">
@@ -53,35 +53,35 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">表单</h4>
+            <h4 class="modal-title">头条</h4>
           </div>
           <div class="modal-body">
             <!-- 表单 -->
             <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2 control-label">ID</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.id" class="form-control" placeholder="ID">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">ID</label>
+                  <div class="col-sm-10">
+                    <input v-model="headline.id" class="form-control" placeholder="ID">
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">上传时间</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.createdtime" class="form-control" placeholder="上传时间">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">上传时间</label>
+                  <div class="col-sm-10">
+                    <input v-model="headline.createdtime" class="form-control" placeholder="上传时间">
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">修改时间</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.updatedtime" class="form-control" placeholder="修改时间">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">修改时间</label>
+                  <div class="col-sm-10">
+                    <input v-model="headline.updatedtime" class="form-control" placeholder="修改时间">
+                  </div>
                 </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">详情</label>
-                <div class="col-sm-10">
-                  <input v-model="headline.details" class="form-control" placeholder="详情">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">详情</label>
+                  <div class="col-sm-10">
+                    <input v-model="headline.details" class="form-control" placeholder="详情">
+                  </div>
                 </div>
-              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -110,7 +110,7 @@
       //自定义初始每页5条
       _this.$refs.pagination.size=5;
       _this.list();
-    },
+      },
     methods: {
       /**
        * 点击新增
@@ -153,6 +153,13 @@
       save(page){
         let _this=this;
         // 保存校验，非空和长度
+        if (1 != 1
+          || !Validator.require(_this.headline.id, "ID")
+          || !Validator.length(_this.headline.id, "ID", 1, 8)
+          || !Validator.length(_this.headline.details, "详情", 1, 50)
+        ) {
+          return;
+        }
 
         Loading.show();
         _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/headline/save',

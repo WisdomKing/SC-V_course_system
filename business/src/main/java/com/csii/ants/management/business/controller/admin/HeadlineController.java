@@ -4,6 +4,7 @@ import com.csii.ants.management.server.dto.HeadlineDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.dto.ResponseDto;
 import com.csii.ants.management.server.service.HeadlineService;
+import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +50,9 @@ public class HeadlineController {
         Log.info("headlineDto:{}",headlineDto);
 
         // 保存校验
-
+        ValidatorUtil.require(headlineDto.getId(), "ID");
+        ValidatorUtil.length(headlineDto.getId(), "ID", 1, 8);
+        ValidatorUtil.length(headlineDto.getDetails(), "详情", 1, 50);
 
         ResponseDto responseDto=new ResponseDto();
         headlineService.save(headlineDto);

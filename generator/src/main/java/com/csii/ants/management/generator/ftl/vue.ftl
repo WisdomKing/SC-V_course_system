@@ -51,7 +51,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">表单</h4>
+            <h4 class="modal-title">${tableNameCn}</h4>
           </div>
           <div class="modal-body">
             <!-- 表单 -->
@@ -135,23 +135,20 @@
       save(page){
         let _this=this;
         // 保存校验，非空和长度
-        <#--if ( !Validator.require(_this.${domain}.${domain}title, "${tableNameCn}标题")-->
-        <#--  || !Validator.length(_this.${domain}.${domain}title, "${tableNameCn}标题",1,20)-->
-
-        <#--  || !Validator.require(_this.${domain}.${domain}type, "${tableNameCn}类型")-->
-        <#--  || !Validator.length(_this.${domain}.${domain}type, "${tableNameCn}类型", 1, 20)-->
-
-        <#--  || !Validator.require(_this.${domain}.begintime, "开始时间")-->
-        <#--  || !Validator.length(_this.${domain}.begintime, "开始时间", 1, 10)-->
-
-        <#--  || !Validator.require(_this.${domain}.endingtime, "结束时间")-->
-        <#--  || !Validator.length(_this.${domain}.endingtime, "结束时间", 1, 10)-->
-
-        <#--  || !Validator.require(_this.${domain}.details, "详情")-->
-        <#--  || !Validator.length(_this.${domain}.details, "详情", 1, 50)-->
-        <#--) {-->
-        <#--  return;-->
-        <#--}-->
+        if (1 != 1
+        <#list fieldList as field>
+          <#if field.name!="id" && field.nameHump!="createdAt" && field.nameHump!="updatedAt" && field.nameHump!="sort">
+            <#if !field.nullAble>
+          || !Validator.require(_this.${domain}.${field.nameHump}, "${field.nameCn}")
+            </#if>
+            <#if (field.length > 0)>
+          || !Validator.length(_this.${domain}.${field.nameHump}, "${field.nameCn}", 1, ${field.length?c})
+            </#if>
+          </#if>
+        </#list>
+        ) {
+          return;
+        }
 
         Loading.show();
         _this.$ajax.post(process.env.VUE_APP_SERVER+'/${module}/admin/${domain}/save',

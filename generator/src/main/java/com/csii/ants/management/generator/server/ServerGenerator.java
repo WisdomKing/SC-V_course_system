@@ -3,13 +3,11 @@ package com.csii.ants.management.generator.server;
 import com.csii.ants.management.generator.util.DbUtil;
 import com.csii.ants.management.generator.util.Field;
 import com.csii.ants.management.generator.util.FreeMarkerUtil;
-import freemarker.template.TemplateException;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 
 /**

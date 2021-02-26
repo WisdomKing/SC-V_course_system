@@ -17,6 +17,8 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+        import java.util.Date;
+
 /**
  * @author ZxM
  * @date 2021/2/19
@@ -36,6 +38,8 @@ public class HeadlineService {
         PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
 
         HeadlineExample headlineExample = new HeadlineExample();
+        //如果表里有sort这个字段就感觉sort来排序
+
         List<Headline> headlineList = headlineMapper.selectByExample(headlineExample);
 
         PageInfo<Headline> pageInfo=new PageInfo<>(headlineList);
@@ -75,6 +79,7 @@ public class HeadlineService {
      * @param headline
      */
     private void insert(Headline headline){
+        Date now = new Date();
         headline.setId(UuidUtil.getShortUuid());
         headlineMapper.insert(headline);
     }
