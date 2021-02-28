@@ -75,7 +75,6 @@ public class ${Domain}Service {
     public void save(${Domain}Dto ${domain}Dto){
 
         ${Domain} ${domain}= CopyUtil.copy(${domain}Dto,${Domain}.class);
-//        if(${domain}Dto.getId()== null && ${domain}Dto.getId().equals("")){
         if (StringUtils.isEmpty(${domain}Dto.getId())) {
             this.insert(${domain});
         }else {

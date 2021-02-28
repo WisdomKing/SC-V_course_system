@@ -27,11 +27,7 @@ public class ServerGenerator {
     static String generatorConfigPath = "server\\src\\main\\resources\\generator\\generatorConfig.xml";
 
     public static void main(String[] args) throws Exception {
-        /*
-        String Domain="Headline";
-        String domain="headline";
-        String tableNameCn="头条";
-        */
+
         String module=MODULE;
 
         // 只生成配置文件中的第一个table节点

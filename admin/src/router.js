@@ -5,6 +5,8 @@ import Admin from "./views/admin.vue"
 import Welcome from "./views/admin/welcome.vue"
 import Announcement from "./views/admin/announcement.vue"
 import Headline from "./views/admin/headline.vue"
+import Companyinfo from "./views/admin/companyinfo.vue"
+import Clockin from "./views/admin/clockin.vue"
 
 Vue.use(Router);
 //不论输入什么都变成/login,然后跳转到Login
@@ -33,6 +35,14 @@ export default new Router({
             path: "business/headline",
             name: "business/headline",
             component: Headline
+        },{
+            path: "business/companyinfo",
+            name: "business/companyinfo",
+            component: Companyinfo
+        },{
+            path: "business/clockin",
+            name: "business/clockin",
+            component: Clockin
         }]
     }]
 })

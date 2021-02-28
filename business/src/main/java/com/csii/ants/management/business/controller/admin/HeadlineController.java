@@ -50,8 +50,6 @@ public class HeadlineController {
         Log.info("headlineDto:{}",headlineDto);
 
         // 保存校验
-        ValidatorUtil.require(headlineDto.getId(), "ID");
-        ValidatorUtil.length(headlineDto.getId(), "ID", 1, 8);
         ValidatorUtil.length(headlineDto.getDetails(), "详情", 1, 50);
 
         ResponseDto responseDto=new ResponseDto();

@@ -354,7 +354,7 @@
         </div><!-- /.sidebar-shortcuts -->
 
         <ul class="nav nav-list">
-          <li class="" id="welcoe-sidebar">
+          <li class="" id="welcome-sidebar">
             <router-link to="/welcome">
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> 欢迎 </span>
@@ -432,6 +432,29 @@
                 <router-link to="/business/headline">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司头条
+                </router-link>
+
+                <b class="arrow"></b>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-bullhorn"></i>
+              <span class="menu-text"> 公司信息 </span>
+
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+              <li class="" id="business-companyinfo-sidebar">
+                <router-link to="/business/companyinfo">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  公司信息
                 </router-link>
 
                 <b class="arrow"></b>

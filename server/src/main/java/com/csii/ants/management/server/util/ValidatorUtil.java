@@ -3,6 +3,9 @@ package com.csii.ants.management.server.util;
 import com.csii.ants.management.server.exception.ValidatorException;
 import org.springframework.util.StringUtils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author ZxM
  * @date 2021/2/24
@@ -35,4 +38,8 @@ public class ValidatorUtil {
             throw new ValidatorException(fieldName + "长度" + min + "~" + max + "位");
         }
     }
+    /**
+     * 邮箱校验
+     */
+
 }

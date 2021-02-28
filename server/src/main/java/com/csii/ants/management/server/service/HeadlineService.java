@@ -66,7 +66,6 @@ public class HeadlineService {
     public void save(HeadlineDto headlineDto){
 
         Headline headline= CopyUtil.copy(headlineDto,Headline.class);
-//        if(headlineDto.getId()== null && headlineDto.getId().equals("")){
         if (StringUtils.isEmpty(headlineDto.getId())) {
             this.insert(headline);
         }else {
@@ -79,8 +78,10 @@ public class HeadlineService {
      * @param headline
      */
     private void insert(Headline headline){
-        Date now = new Date();
+        //这里没有给出id！！！
         headline.setId(UuidUtil.getShortUuid());
+        Date now = new Date();
+        headline.setCreatedtime(now);
         headlineMapper.insert(headline);
     }
 
@@ -89,6 +90,8 @@ public class HeadlineService {
      * @param headline
      */
     private void update(Headline headline){
+        Date now = new Date();
+        headline.setUpdatedtime(now);
         headlineMapper.updateByPrimaryKey(headline);
     }
 

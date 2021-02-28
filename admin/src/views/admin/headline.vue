@@ -18,20 +18,18 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
-                 <th>ID</th>
-         <th>上传时间</th>
-         <th>修改时间</th>
-         <th>详情</th>
+        <th>上传时间</th>
+        <th>修改时间</th>
+        <th>详情</th>
         <th>操作按钮</th>
       </tr>
       </thead>
 
       <tbody>
       <tr v-for="headline in headlines">
-         <td>{{headline.id}}</td>
-         <td>{{headline.createdtime}}</td>
-         <td>{{headline.updatedtime}}</td>
-         <td>{{headline.details}}</td>
+        <td>{{headline.createdtime}}</td>
+        <td>{{headline.updatedtime}}</td>
+        <td>{{headline.details}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="edit(headline)" class="btn btn-xs btn-info">
@@ -58,12 +56,6 @@
           <div class="modal-body">
             <!-- 表单 -->
             <form class="form-horizontal">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">ID</label>
-                  <div class="col-sm-10">
-                    <input v-model="headline.id" class="form-control" placeholder="ID">
-                  </div>
-                </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">上传时间</label>
                   <div class="col-sm-10">
@@ -154,8 +146,6 @@
         let _this=this;
         // 保存校验，非空和长度
         if (1 != 1
-          || !Validator.require(_this.headline.id, "ID")
-          || !Validator.length(_this.headline.id, "ID", 1, 8)
           || !Validator.length(_this.headline.details, "详情", 1, 50)
         ) {
           return;
