@@ -124,8 +124,8 @@
         clockin:{},
         clockins:[],
         //这个变量就是一个list
-        MANHOURTYPE:[{key:"D",value:"交付项目"},{key:"P",value:"售前项目"},{key:"R",value:"研发项目"},{key:"I",value:"内部项目"}],
-        CLOCKIN:[{key:"A",value:"已审批"},{key:"R",value:"已拒绝"},{key:"C",value:"已提交"},{key:"S",value:"已保存"},{key:"O",value:"未报工"}],
+        MANHOURTYPE:MANHOURTYPE,
+        CLOCKIN:CLOCKIN,
       }
     },
     mounted: function () {
