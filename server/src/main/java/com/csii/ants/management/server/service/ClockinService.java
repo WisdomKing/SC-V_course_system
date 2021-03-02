@@ -4,6 +4,8 @@ import com.csii.ants.management.server.domain.Clockin;
 import com.csii.ants.management.server.domain.ClockinExample;
 import com.csii.ants.management.server.dto.ClockinDto;
 import com.csii.ants.management.server.dto.PageDto;
+import com.csii.ants.management.server.enums.ClockinStatusEnum;
+import com.csii.ants.management.server.enums.ManhourTypeEnum;
 import com.csii.ants.management.server.mapper.ClockinMapper;
 import com.csii.ants.management.server.util.CopyUtil;
 import com.csii.ants.management.server.util.UuidUtil;
@@ -81,6 +83,8 @@ public class ClockinService {
         Date now = new Date();
         clockin.setClockinTime(now);
         clockin.setId(UuidUtil.getShortUuid());
+        clockin.setManhourType(ManhourTypeEnum.Delivery.getCode());
+        clockin.setStatus(ClockinStatusEnum.Commit.getCode());
         clockinMapper.insert(clockin);
     }
 

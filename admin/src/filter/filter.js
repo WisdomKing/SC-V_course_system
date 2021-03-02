@@ -1,4 +1,5 @@
 /**
+ * 配合新修改的filter.js使用
  * 数组过滤器 例如：{{manhourType_projectname | optionKV(manhourType.projectname)}}
  * @param object 例如：{CLOCKIN:{key:"D",value:"交付项目"},{key:"P",value:"售前项目"},{key:"R",value:"研发项目"},{key:"I",value:"内部项目"}}
  * @param key 例如：D
