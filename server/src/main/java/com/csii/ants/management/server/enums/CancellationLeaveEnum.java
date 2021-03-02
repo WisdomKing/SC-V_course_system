@@ -5,15 +5,16 @@ package com.csii.ants.management.server.enums;
  * @date 2021/3/2
  * @Description:
  */
-public enum YesNoEnum {
-    YES("Y", "是"),
-    NO("N", "否");
+public enum CancellationLeaveEnum {
+
+    Yes("Y", "是"),
+    No("N", "否");
 
     private String code;
 
     private String desc;
 
-    YesNoEnum(String code, String desc) {
+    CancellationLeaveEnum(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }
@@ -26,11 +27,11 @@ public enum YesNoEnum {
         this.code = code;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
     public String getDesc() {
         return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

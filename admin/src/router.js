@@ -7,6 +7,7 @@ import Announcement from "./views/admin/announcement.vue"
 import Headline from "./views/admin/headline.vue"
 import Companyinfo from "./views/admin/companyinfo.vue"
 import Clockin from "./views/admin/clockin.vue"
+import Askforleave from "./views/admin/askforleave.vue"
 
 Vue.use(Router);
 //不论输入什么都变成/login,然后跳转到Login
@@ -43,6 +44,10 @@ export default new Router({
             path: "business/clockin",
             name: "business/clockin",
             component: Clockin
+        },{
+            path: "business/askforleave",
+            name: "business/askforleave",
+            component: Askforleave
         }]
     }]
 })

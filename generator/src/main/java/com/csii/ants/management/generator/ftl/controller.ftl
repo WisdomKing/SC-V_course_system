@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 /**
  * @author ZxM
  * @date 2021/2/25
- * @Description:公告模块
+ * @Description:模块
  */
 
 @RestController
@@ -56,6 +56,8 @@ public class ${Domain}Controller {
         ValidatorUtil.require(${domain}Dto.get${field.nameBigHump}(), "${field.nameCn}");
             </#if>
             <#if (field.length > 0)>
+        //对于数字的，因为freemark自身的原因，使用"field.length"会将"2000"变成"2,000"
+        //,应该使用"field.length?c",小写的"c"的意思是将数值转成字符串的一个函数
         ValidatorUtil.length(${domain}Dto.get${field.nameBigHump}(), "${field.nameCn}", 1, ${field.length?c});
             </#if>
         </#if>

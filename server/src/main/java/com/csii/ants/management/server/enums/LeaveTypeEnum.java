@@ -5,15 +5,22 @@ package com.csii.ants.management.server.enums;
  * @date 2021/3/2
  * @Description:
  */
-public enum YesNoEnum {
-    YES("Y", "是"),
-    NO("N", "否");
+public enum LeaveTypeEnum {
+
+    Annual("N","年假"),
+    Personal("S","事假"),
+    Sick("B","病假"),
+    Marriage("H","婚假"),
+    Maternity("C","产假"),
+    Paternity("P","陪产假"),
+    Condole("W","慰唁假"),
+    Antenatal("J","产检假");
 
     private String code;
 
     private String desc;
 
-    YesNoEnum(String code, String desc) {
+    LeaveTypeEnum(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }
@@ -26,11 +33,11 @@ public enum YesNoEnum {
         this.code = code;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
     public String getDesc() {
         return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

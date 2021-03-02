@@ -18,31 +18,33 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
-        <th>工时类型</th>
-        <th>项目名称</th>
-        <th>工时</th>
-        <th>延时</th>
-        <th>工作日志</th>
-        <th>状态</th>
+        <th>工号</th>
+        <th>请假类型</th>
+        <th>请假时间开始</th>
+        <th>请假时间结束</th>
+        <th>请假审批状态</th>
+        <th>是否销假</th>
+        <th>请假说明</th>
         <th>操作按钮</th>
       </tr>
       </thead>
 
       <tbody>
-      <tr v-for="clockin in clockins">
-        <!-- “|”表示后面是一个过滤器，optionKV是过滤器名称 -->
-        <td>{{MANHOUR_TYPE | optionKV(clockin.manhourType)}}</td>
-        <td>{{clockin.projectname}}</td>
-        <td>{{clockin.manhour}}</td>
-        <td>{{clockin.delayed}}</td>
-        <td>{{clockin.worklog}}</td>
-        <td>{{CLOCKIN_STATUS | optionKV(clockin.status)}}</td>
+      <tr v-for="askforleave in askforleaves">
+        <td>{{askforleave.jobNum}}</td>
+        <td>{{LEAVE_TYPE | optionKV(askforleave.leavetype)}}</td>
+        <td>{{askforleave.leavetimebengin}}</td>
+        <td>{{askforleave.leavetimeending}}</td>
+        <td>{{LEAVE_STATUS | optionKV(askforleave.leavestatus)}}</td>
+        <td>{{CANCELLATION_LEAVE | optionKV(askforleave.cancellationleave)}}</td>
+        <td>{{askforleave.details}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
-            <button v-on:click="edit(clockin)" class="btn btn-xs btn-info">
+            <button v-on:click="edit(askforleave)" class="btn btn-xs btn-info">
+              <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button v-on:click="del(clockin.id)" class="btn btn-xs btn-danger">
+            <button v-on:click="del(askforleave.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
@@ -57,49 +59,57 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">报工</h4>
+            <h4 class="modal-title">请假</h4>
           </div>
           <div class="modal-body">
             <!-- 表单 -->
             <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2 control-label">工时类型</label>
-                <div class="col-sm-10">
-                  <select v-model="clockin.manhourType" class="form-control">
-                    <option v-for="o in MANHOUR_TYPE" v-bind:value="o.key">{{o.value}}</option>
-                  </select>
-                </div>
-              </div>
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">项目名称</label>
+                  <label class="col-sm-2 control-label">工号</label>
                   <div class="col-sm-10">
-                    <input v-model="clockin.projectname" class="form-control" placeholder="项目名称">
+                    <input v-model="askforleave.jobNum" class="form-control" placeholder="工号">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">工时</label>
+                  <label class="col-sm-2 control-label">请假类型</label>
                   <div class="col-sm-10">
-                    <input v-model="clockin.manhour" class="form-control" placeholder="工时">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">延时</label>
-                  <div class="col-sm-10">
-                    <input v-model="clockin.delayed" class="form-control" placeholder="延时">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">工作日志</label>
-                  <div class="col-sm-10">
-                    <input v-model="clockin.worklog" class="form-control" placeholder="工作日志">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">状态</label>
-                  <div class="col-sm-10">
-                    <select v-model="clockin.status" class="form-control">
-                      <option v-for="o in CLOCKIN_STATUS" v-bind:value="o.key">{{o.value}}</option>
+                    <select v-model="askforleave.leavetype" class="form-control">
+                      <option v-for="o in LEAVE_TYPE" v-bind:value="o.key">{{o.value}}</option>
                     </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">请假时间开始</label>
+                  <div class="col-sm-10">
+                    <input v-model="askforleave.leavetimebengin" class="form-control" placeholder="请假时间开始">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">请假时间结束</label>
+                  <div class="col-sm-10">
+                    <input v-model="askforleave.leavetimeending" class="form-control" placeholder="请假时间结束">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">请假审批状态</label>
+                  <div class="col-sm-10">
+                    <select v-model="askforleave.leavestatus" class="form-control">
+                      <option v-for="o in LEAVE_STATUS" v-bind:value="o.key">{{o.value}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">是否销假</label>
+                  <div class="col-sm-10">
+                    <select v-model="askforleave.cancellationleave" class="form-control">
+                      <option v-for="o in CANCELLATION_LEAVE" v-bind:value="o.key">{{o.value}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">请假说明</label>
+                  <div class="col-sm-10">
+                    <input v-model="askforleave.details" class="form-control" placeholder="请假说明">
                   </div>
                 </div>
             </form>
@@ -117,15 +127,15 @@
 <script>
   import Pagination from "../../components/pagination";
   export default {
-    name: 'business-clockin',
+    name: 'business-askforleave',
     components: {Pagination},
     data:function(){
       return{
-        clockin:{},
-        clockins:[],
-        //这个变量就是一个list
-        MANHOUR_TYPE:MANHOUR_TYPE,
-        CLOCKIN_STATUS:CLOCKIN_STATUS,
+        askforleave:{},
+        askforleaves:[],
+        LEAVE_TYPE:LEAVE_TYPE,
+        LEAVE_STATUS:LEAVE_STATUS,
+        CANCELLATION_LEAVE:CANCELLATION_LEAVE,
       }
     },
     mounted: function () {
@@ -141,16 +151,16 @@
       add(){
         let _this=this;
         //模态框打开时清空上次的数据
-        _this.clockin={}
+        _this.askforleave={}
         $("#form-modal").modal("show");
       },
       /**
        * 点击编辑
        */
-      edit(clockin){
+      edit(askforleave){
         let _this=this;
         //将数据带到模态框里
-        _this.clockin=$.extend({},clockin);
+        _this.askforleave=$.extend({},askforleave);
         $("#form-modal").modal("show");
       },
       /**
@@ -159,13 +169,13 @@
       list(page){
         let _this=this;
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/clockin/list',{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/askforleave/list',{
           page:page,
           size:_this.$refs.pagination.size,
         }).then((respond)=>{
           Loading.hide();
           let resp=respond.data;
-          _this.clockins=resp.content.list;
+          _this.askforleaves=resp.content.list;
           //重新渲染？5.5-1155
           _this.$refs.pagination.render(page,resp.content.total);
         })
@@ -177,23 +187,22 @@
         let _this=this;
         // 保存校验，非空和长度
         if (1 != 1
-          || !Validator.require(_this.clockin.projectname, "项目名称")
-          || !Validator.length(_this.clockin.projectname, "项目名称", 1, 50)
-          || !Validator.require(_this.clockin.manhourType, "工时类型")
-          || !Validator.require(_this.clockin.manhour, "工时")
-          || !Validator.length(_this.clockin.manhour, "工时", 1, 20)
-          || !Validator.length(_this.clockin.delayed, "延时", 1, 20)
-          || !Validator.require(_this.clockin.worklog, "工作日志")
-          || !Validator.length(_this.clockin.worklog, "工作日志", 1, 100)
+          || !Validator.require(_this.askforleave.jobNum, "工号")
+          || !Validator.length(_this.askforleave.jobNum, "工号", 1, 5)
+          || !Validator.require(_this.askforleave.leavetype, "请假类型")
+          || !Validator.require(_this.askforleave.leavetimebengin, "请假时间开始")
+          || !Validator.require(_this.askforleave.leavetimeending, "请假时间结束")
+          || !Validator.require(_this.askforleave.details, "请假说明")
+          || !Validator.length(_this.askforleave.details, "请假说明", 1, 100)
         ) {
           return;
         }
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/clockin/save',
-_this.clockin).then((respond)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/askforleave/save',
+_this.askforleave).then((respond)=>{
           Loading.hide();
-          // console.log("保存报工列表结果:",respond);
+          // console.log("保存请假列表结果:",respond);
           let resp=respond.data;
           if (resp.success){
             //如果成功了，隐藏modal和刷新列表
@@ -210,11 +219,11 @@ _this.clockin).then((respond)=>{
        */
       del(id){
         let _this=this;
-        Confirm.show("删除报工后不可恢复，确认删除?",function () {
+        Confirm.show("删除请假后不可恢复，确认删除?",function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/clockin/delete/'+id).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/askforleave/delete/'+id).then((respond)=>{
             Loading.hide();
-            // console.log("删除报工列表结果:",respond);
+            // console.log("删除请假列表结果:",respond);
             let resp=respond.data;
             if (resp.success){
               _this.list(1);

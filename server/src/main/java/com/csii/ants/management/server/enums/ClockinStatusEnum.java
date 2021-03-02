@@ -6,7 +6,7 @@ package com.csii.ants.management.server.enums;
  * @Description:
  */
 public enum ClockinStatusEnum {
-    //Approved是开发人员用的,A是查询用的,"已审批"是给用户用的
+    //Approved是开发人员用的,A是程序用的,"已审批"是给用户用的
     Approved("A","已审批"),
     Rejected("R","已拒绝"),
     Commit("C","已提交");

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csii.ants.management.server.mapper.AskforleaveMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Askforleave">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="job_num" jdbcType="VARCHAR" property="jobNum" />
+    <result column="leaveType" jdbcType="CHAR" property="leavetype" />
+    <result column="leaveTimeBengin" jdbcType="TIMESTAMP" property="leavetimebengin" />
+    <result column="leaveTimeEnding" jdbcType="TIMESTAMP" property="leavetimeending" />
+    <result column="leaveStatus" jdbcType="CHAR" property="leavestatus" />
+    <result column="cancellationLeave" jdbcType="CHAR" property="cancellationleave" />
+    <result column="details" jdbcType="VARCHAR" property="details" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, job_num, leaveType, leaveTimeBengin, leaveTimeEnding, leaveStatus, cancellationLeave, 
+    details
+  </sql>
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.AskforleaveExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from askforleave
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from askforleave
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from askforleave
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.AskforleaveExample">
+    delete from askforleave
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.Askforleave">
+    insert into askforleave (id, job_num, leaveType, 
+      leaveTimeBengin, leaveTimeEnding, leaveStatus, 
+      cancellationLeave, details)
+    values (#{id,jdbcType=VARCHAR}, #{jobNum,jdbcType=VARCHAR}, #{leavetype,jdbcType=CHAR}, 
+      #{leavetimebengin,jdbcType=TIMESTAMP}, #{leavetimeending,jdbcType=TIMESTAMP}, #{leavestatus,jdbcType=CHAR}, 
+      #{cancellationleave,jdbcType=CHAR}, #{details,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Askforleave">
+    insert into askforleave
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="jobNum != null">
+        job_num,
+      </if>
+      <if test="leavetype != null">
+        leaveType,
+      </if>
+      <if test="leavetimebengin != null">
+        leaveTimeBengin,
+      </if>
+      <if test="leavetimeending != null">
+        leaveTimeEnding,
+      </if>
+      <if test="leavestatus != null">
+        leaveStatus,
+      </if>
+      <if test="cancellationleave != null">
+        cancellationLeave,
+      </if>
+      <if test="details != null">
+        details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNum != null">
+        #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="leavetype != null">
+        #{leavetype,jdbcType=CHAR},
+      </if>
+      <if test="leavetimebengin != null">
+        #{leavetimebengin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavetimeending != null">
+        #{leavetimeending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavestatus != null">
+        #{leavestatus,jdbcType=CHAR},
+      </if>
+      <if test="cancellationleave != null">
+        #{cancellationleave,jdbcType=CHAR},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.AskforleaveExample" resultType="java.lang.Long">
+    select count(*) from askforleave
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update askforleave
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobNum != null">
+        job_num = #{record.jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leavetype != null">
+        leaveType = #{record.leavetype,jdbcType=CHAR},
+      </if>
+      <if test="record.leavetimebengin != null">
+        leaveTimeBengin = #{record.leavetimebengin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.leavetimeending != null">
+        leaveTimeEnding = #{record.leavetimeending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.leavestatus != null">
+        leaveStatus = #{record.leavestatus,jdbcType=CHAR},
+      </if>
+      <if test="record.cancellationleave != null">
+        cancellationLeave = #{record.cancellationleave,jdbcType=CHAR},
+      </if>
+      <if test="record.details != null">
+        details = #{record.details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update askforleave
+    set id = #{record.id,jdbcType=VARCHAR},
+      job_num = #{record.jobNum,jdbcType=VARCHAR},
+      leaveType = #{record.leavetype,jdbcType=CHAR},
+      leaveTimeBengin = #{record.leavetimebengin,jdbcType=TIMESTAMP},
+      leaveTimeEnding = #{record.leavetimeending,jdbcType=TIMESTAMP},
+      leaveStatus = #{record.leavestatus,jdbcType=CHAR},
+      cancellationLeave = #{record.cancellationleave,jdbcType=CHAR},
+      details = #{record.details,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Askforleave">
+    update askforleave
+    <set>
+      <if test="jobNum != null">
+        job_num = #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="leavetype != null">
+        leaveType = #{leavetype,jdbcType=CHAR},
+      </if>
+      <if test="leavetimebengin != null">
+        leaveTimeBengin = #{leavetimebengin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavetimeending != null">
+        leaveTimeEnding = #{leavetimeending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leavestatus != null">
+        leaveStatus = #{leavestatus,jdbcType=CHAR},
+      </if>
+      <if test="cancellationleave != null">
+        cancellationLeave = #{cancellationleave,jdbcType=CHAR},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Askforleave">
+    update askforleave
+    set job_num = #{jobNum,jdbcType=VARCHAR},
+      leaveType = #{leavetype,jdbcType=CHAR},
+      leaveTimeBengin = #{leavetimebengin,jdbcType=TIMESTAMP},
+      leaveTimeEnding = #{leavetimeending,jdbcType=TIMESTAMP},
+      leaveStatus = #{leavestatus,jdbcType=CHAR},
+      cancellationLeave = #{cancellationleave,jdbcType=CHAR},
+      details = #{details,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

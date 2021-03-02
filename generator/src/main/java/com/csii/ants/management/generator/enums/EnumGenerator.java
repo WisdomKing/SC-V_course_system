@@ -22,8 +22,12 @@ public class EnumGenerator {
         StringBuffer bufferArray = new StringBuffer();
         long begin = System.currentTimeMillis();
         try {
+            toJson(ManhourTypeEnum.class, bufferObject, bufferArray);
             toJson(ClockinStatusEnum.class, bufferObject, bufferArray);
             toJson(YesNoEnum.class, bufferObject, bufferArray);
+            toJson(LeaveTypeEnum.class, bufferObject, bufferArray);
+            toJson(LeaveStatusEnum.class, bufferObject, bufferArray);
+            toJson(CancellationLeaveEnum.class, bufferObject, bufferArray);
 
             StringBuffer buffer = bufferObject.append("\r\n").append(bufferArray);
             //

@@ -15,6 +15,7 @@ public class ValidatorUtil {
 
     /**
      * 空校验（null or ""）
+     * 使用Object而不是String的原因是还有其他的类型也需要进行整改校验
      */
     public static void require(Object str, String fieldName) {
         if (StringUtils.isEmpty(str)) {

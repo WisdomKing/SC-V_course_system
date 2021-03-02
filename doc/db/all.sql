@@ -57,28 +57,28 @@ DROP TABLE IF EXISTS `employeeinfo`;
 CREATE TABLE `employeeinfo`  (
     `name` varchar(20) NOT NULL COMMENT '姓名',
     `job_num` varchar(5) NOT NULL COMMENT '工号',
-    `affiliated_company` varchar(20) NOT NULL COMMENT '归属公司',
+    `affiliated_company` char(1) NOT NULL COMMENT '归属公司|',
     `companyEmail` varchar(50) NOT NULL COMMENT '企业邮箱',
     `dependence_Dep` varchar(20) NOT NULL COMMENT '所属部门',
     `superiorDep` varchar(20)  COMMENT '上级部门',
     `position` varchar(20) NOT NULL COMMENT '职位',
     `dep_Director` varchar(20) COMMENT '部门总监',
-    `entry_Time` timestamp(0) NOT NULL COMMENT '入职时间',
+    `entry_Time` DATETIME(0) NOT NULL COMMENT '入职时间',
     `entry_Type` varchar(20) COMMENT '入职方式',
     `entry_Address` varchar(20) NOT NULL COMMENT '入职地点',
-    `internshipBegin` timestamp(0) COMMENT '实习起始日',
-    `internshipEnding` timestamp(0) COMMENT '实习到期日',
-    `conversionReg_Time` timestamp(0) COMMENT '转正日期',
-    `contractSigning` timestamp(0) COMMENT '合同签订日',
-    `contractEnding` timestamp(0) COMMENT '合同截止日',
-    `probationExp_date` timestamp(0) COMMENT '试用到期日',
+    `internshipBegin` DATETIME(0) COMMENT '实习起始日',
+    `internshipEnding` DATETIME(0) COMMENT '实习到期日',
+    `conversionReg_Time` DATETIME(0) COMMENT '转正日期',
+    `contractSigning` DATETIME(0) COMMENT '合同签订日',
+    `contractEnding` DATETIME(0) COMMENT '合同截止日',
+    `probationExp_date` DATETIME(0) COMMENT '试用到期日',
     `employeeStatus` varchar(20) COMMENT '人员状态',
     `contractRenew` varchar(20) COMMENT '合同续签',
     `welfareArea` varchar(20) COMMENT '福利地区',
     `myRole` varchar(20) COMMENT '我的角色',
     `employeeCCC` varchar(20) COMMENT '员工CCC',
     `comment` varchar(50) COMMENT '备注',
-    primary key (`Job_num`)
+    primary key (`job_num`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='员工信息';
 
 INSERT INTO `employeeinfo` VALUES ('秦风', '13914', '上海', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', '校园招聘', '上海', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, '上海', 'ALL(普通用户)', '5010208018', NULL);
@@ -99,45 +99,49 @@ INSERT INTO `headline`(ID,CreatedTime,UpdatedTime,Details)
 
 /*----leave请假---------------------------------------------------*/
 
-DROP TABLE IF EXISTS `leave`;
-CREATE TABLE `leave`  (
-#     `ID` varchar(8) NOT NULL COMMENT 'ID',
-    `LeaveType` char(1)  NOT NULL COMMENT '请假类型|("",""),',
-    `LeaveTimeBengin` DATETIME(0) NOT NULL COMMENT '请假时间开始',
-    `LeaveTimeEnding` DATETIME(0) NOT NULL COMMENT '请假时间结束',
-    `LeaveStatus` char(1)   COMMENT '请假审批状态Approved("A","已审批"),Rejected("R","已拒绝"),Commit("C","已提交"),Saved("S","已保存")',
-    `CancellationLeave` varchar(20)   COMMENT '是否销假|("","")'
+DROP TABLE IF EXISTS `askforleave`;
+CREATE TABLE `askforleave`  (
+    `id` varchar(8) NOT NULL COMMENT 'ID',
+    `job_num` varchar(5) NOT NULL COMMENT '工号',
+    `leaveType` char(1) NOT NULL COMMENT '请假类型|Annual("N","年假"),Personal("S","事假"),Sick("B","病假"),Marriage("H","婚假"),Maternity("C","产假"),Paternity("P","陪产假"),Condole("W","慰唁假"),Antenatal("J","产检假")',
+    `leaveTimeBengin` DATETIME(0) NOT NULL COMMENT '请假时间开始',
+    `leaveTimeEnding` DATETIME(0) NOT NULL COMMENT '请假时间结束',
+    `leaveStatus` char(1) COMMENT '请假审批状态|Approved("A","已审批"),Rejected("R","已拒绝"),Commit("C","已提交"),Saved("S","已保存"),Process("P","流程中")',
+    `cancellationLeave` char(1) COMMENT '是否销假|Yes("Y","是"),No("N","否")',
+    `details` varchar(100) NOT NULL COMMENT '请假说明',
+    primary key (`ID`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='请假';
 
-INSERT INTO `leave` VALUES ('事假', '2021-02-08 14:37:22', '2021-02-10 14:37:27', '审批中', '未销假');
+INSERT INTO `askforleave` VALUES ('9Ce7MH09', '13914','S','2021-02-08 14:37:22', '2021-02-10 14:37:27', 'A', 'N','啊哈哈哈哈');
 
 /*----personalinfo个人信息---------------------------------------------------*/
 DROP TABLE IF EXISTS `personalinfo`;
 CREATE TABLE `personalinfo`  (
-    `Name` varchar(20)  NOT NULL COMMENT '姓名',
-    `Sex` varchar(20)  NOT NULL COMMENT '性别',
-    `Ethnicity` varchar(20)  NOT NULL COMMENT '民族',
-    `IDNumber` varchar(18)  NOT NULL COMMENT '身份证号',
-    `PoliticalOutlook` varchar(20)   COMMENT '政治面貌',
-    `DateOfBirth` varchar(20)   COMMENT '出生日期',
-    `PersonalEmail` varchar(50)  NOT NULL COMMENT '个人邮箱',
-    `Regis_Type` varchar(20)   COMMENT '户口性质',
-    `Regis_Residence` varchar(50)   COMMENT '户口所在地',
-    `MaritalStatus` varchar(20)   COMMENT '婚否',
-    `Grad_Unversity` varchar(20)   COMMENT '毕业院校',
-    `Grad_Time` varchar(20)   COMMENT '毕业时间',
-    `Speciality` varchar(20)   COMMENT '专业',
-    `Edu_Backgrond` varchar(20)   COMMENT '学历',
-    `NativePlace` varchar(50)   COMMENT '籍贯',
-    `PresentAddress` varchar(50)   COMMENT '现住址',
-    `Telephone` varchar(18)  NOT NULL COMMENT '手机号',
-    `QQNumber` varchar(20)   COMMENT 'qq号',
-    `WeChat` varchar(20)   COMMENT '微信',
-    `EmergencyContactRel` varchar(20)   COMMENT '紧急联系人关系',
-    `EmergencyContactName` varchar(20)   COMMENT '紧急联系人姓名',
-    `EmergencyContactTel` varchar(18)   COMMENT '紧急联系人电话'
+    `name` varchar(20) NOT NULL COMMENT '姓名',
+    `sex` char(1) NOT NULL COMMENT '性别|Man("M","男"),Woman("W","女")',
+    `ethnicity` varchar(20) NOT NULL COMMENT '民族',
+    `idnum` varchar(18) NOT NULL COMMENT '身份证号',
+    `politicalOutlook` char(1) COMMENT '政治面貌|Masses("Q","群众"),League("T","团员"),Probationary("Y","预备党员"),Party("D","党员")',
+    `dateOfBirth` varchar(20) COMMENT '出生日期',
+    `personalEmail` varchar(50) NOT NULL COMMENT '个人邮箱',
+    `regis_Type` varchar(20) COMMENT '户口性质',
+    `regis_Residence` varchar(50)  COMMENT '户口所在地',
+    `maritalStatus` char(1)  COMMENT '婚否|Yes("Y","是"),No("N","否")',
+    `grad_Unversity` varchar(20)  COMMENT '毕业院校',
+    `grad_Time` varchar(20)  COMMENT '毕业时间',
+    `speciality` varchar(20)  COMMENT '专业',
+    `degree` char(1)  COMMENT '学历|Primary("P","小学学历"),Junior("J","初中学历"),Highschool("H","高中学历"),College("C","专科学历"),Bachelor("B","本科学历"),Master("M","硕士学历"),Doctoral("D","博士学历"),Noeducation("N","无学历")',
+    `nativePlace` varchar(50)  COMMENT '籍贯',
+    `presentAddress` varchar(50)  COMMENT '现住址',
+    `telephone` varchar(18) NOT NULL COMMENT '手机号',
+    `qqNum` varchar(20)  COMMENT 'qq号',
+    `wechat` varchar(20)  COMMENT '微信',
+    `emergencyContactRel` char(1)  COMMENT '紧急联系人关系|Father("F","父亲"),Mother("M","母亲"),Spouse("S","伴侣"),Children("C","子女"),Otherrelatives("O","其他亲戚"),Friend("P","朋友")',
+    `emergencyContactName` varchar(20)  COMMENT '紧急联系人姓名',
+    `emergencyContactTel` varchar(18)  COMMENT '紧急联系人电话',
+    primary key (`idnum`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='个人信息';
 
-INSERT INTO `personalinfo` VALUES ('秦风', '男', '汉', '46000119990101001X', '团员', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', '海南省万宁市', '否', '长春大学', '2021-07-01', '计算机科学与技术', '本科', '海南', '上海市浦东新区川沙镇', '17620212021', '5201314', 'coco1016254', '亲戚', '唐仁', '13320212021');
+INSERT INTO `personalinfo` VALUES ('秦风', 'M', '汉', '46000119990101001X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', '海南省万宁市', 'N', '长春大学', '2021-07-01', '计算机科学与技术', 'B', '海南', '上海市浦东新区川沙镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
 
 /*-------------------------------------------------------*/
