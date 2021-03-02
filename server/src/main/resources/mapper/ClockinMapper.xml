@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csii.ants.management.server.mapper.ClockinMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Clockin">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="ProjectName" jdbcType="VARCHAR" property="projectname" />
+    <result column="Manhour_Type" jdbcType="CHAR" property="manhourType" />
+    <result column="Manhour" jdbcType="VARCHAR" property="manhour" />
+    <result column="Delayed" jdbcType="VARCHAR" property="delayed" />
+    <result column="WorkLog" jdbcType="VARCHAR" property="worklog" />
+    <result column="Status" jdbcType="CHAR" property="status" />
+    <result column="ClockIn_time" jdbcType="TIMESTAMP" property="clockinTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, ProjectName, Manhour_Type, Manhour, `Delayed`, WorkLog, `Status`, ClockIn_time
+  </sql>
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.ClockinExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from clockin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from clockin
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from clockin
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.ClockinExample">
+    delete from clockin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.Clockin">
+    insert into clockin (ID, ProjectName, Manhour_Type, 
+      Manhour, `Delayed`, WorkLog, 
+      `Status`, ClockIn_time)
+    values (#{id,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, #{manhourType,jdbcType=CHAR}, 
+      #{manhour,jdbcType=VARCHAR}, #{delayed,jdbcType=VARCHAR}, #{worklog,jdbcType=VARCHAR}, 
+      #{status,jdbcType=CHAR}, #{clockinTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Clockin">
+    insert into clockin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="projectname != null">
+        ProjectName,
+      </if>
+      <if test="manhourType != null">
+        Manhour_Type,
+      </if>
+      <if test="manhour != null">
+        Manhour,
+      </if>
+      <if test="delayed != null">
+        `Delayed`,
+      </if>
+      <if test="worklog != null">
+        WorkLog,
+      </if>
+      <if test="status != null">
+        `Status`,
+      </if>
+      <if test="clockinTime != null">
+        ClockIn_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null">
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="manhourType != null">
+        #{manhourType,jdbcType=CHAR},
+      </if>
+      <if test="manhour != null">
+        #{manhour,jdbcType=VARCHAR},
+      </if>
+      <if test="delayed != null">
+        #{delayed,jdbcType=VARCHAR},
+      </if>
+      <if test="worklog != null">
+        #{worklog,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="clockinTime != null">
+        #{clockinTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.ClockinExample" resultType="java.lang.Long">
+    select count(*) from clockin
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update clockin
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectname != null">
+        ProjectName = #{record.projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manhourType != null">
+        Manhour_Type = #{record.manhourType,jdbcType=CHAR},
+      </if>
+      <if test="record.manhour != null">
+        Manhour = #{record.manhour,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delayed != null">
+        `Delayed` = #{record.delayed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worklog != null">
+        WorkLog = #{record.worklog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        `Status` = #{record.status,jdbcType=CHAR},
+      </if>
+      <if test="record.clockinTime != null">
+        ClockIn_time = #{record.clockinTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update clockin
+    set ID = #{record.id,jdbcType=VARCHAR},
+      ProjectName = #{record.projectname,jdbcType=VARCHAR},
+      Manhour_Type = #{record.manhourType,jdbcType=CHAR},
+      Manhour = #{record.manhour,jdbcType=VARCHAR},
+      `Delayed` = #{record.delayed,jdbcType=VARCHAR},
+      WorkLog = #{record.worklog,jdbcType=VARCHAR},
+      `Status` = #{record.status,jdbcType=CHAR},
+      ClockIn_time = #{record.clockinTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Clockin">
+    update clockin
+    <set>
+      <if test="projectname != null">
+        ProjectName = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="manhourType != null">
+        Manhour_Type = #{manhourType,jdbcType=CHAR},
+      </if>
+      <if test="manhour != null">
+        Manhour = #{manhour,jdbcType=VARCHAR},
+      </if>
+      <if test="delayed != null">
+        `Delayed` = #{delayed,jdbcType=VARCHAR},
+      </if>
+      <if test="worklog != null">
+        WorkLog = #{worklog,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `Status` = #{status,jdbcType=CHAR},
+      </if>
+      <if test="clockinTime != null">
+        ClockIn_time = #{clockinTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Clockin">
+    update clockin
+    set ProjectName = #{projectname,jdbcType=VARCHAR},
+      Manhour_Type = #{manhourType,jdbcType=CHAR},
+      Manhour = #{manhour,jdbcType=VARCHAR},
+      `Delayed` = #{delayed,jdbcType=VARCHAR},
+      WorkLog = #{worklog,jdbcType=VARCHAR},
+      `Status` = #{status,jdbcType=CHAR},
+      ClockIn_time = #{clockinTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

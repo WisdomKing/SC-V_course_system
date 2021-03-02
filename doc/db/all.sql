@@ -44,7 +44,7 @@ CREATE TABLE `clockin` (
     `Manhour` varchar(20)  NOT NULL COMMENT '工时',
     `Delayed` varchar(20)  COMMENT '延时',
     `WorkLog` varchar(100)  NOT NULL COMMENT '工作日志',
-    `Status` char(1) NOT NULL COMMENT '状态|Approved("A","已审批"),Rejected("R","已拒绝"),Commit("C","已提交"),Saved("S","已保存"),',
+    `Status` char(1) COMMENT '状态|Approved("A","已审批"),Rejected("R","已拒绝"),Commit("C","已提交"),Saved("S","已保存"),Other("O","未报工")',
     `ClockIn_time` DATETIME(0) NOT NULL COMMENT '报工时间',
     primary key (`ID`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='报工';
@@ -102,11 +102,11 @@ INSERT INTO `headline`(ID,CreatedTime,UpdatedTime,Details)
 DROP TABLE IF EXISTS `leave`;
 CREATE TABLE `leave`  (
 #     `ID` varchar(8) NOT NULL COMMENT 'ID',
-    `LeaveType` varchar(20)  NOT NULL COMMENT '请假类型',
-    `LeaveTimeBengin` timestamp(0) NOT NULL COMMENT '请假时间开始',
-    `LeaveTimeEnding` timestamp(0) NOT NULL COMMENT '请假时间结束',
-    `LeaveStatus` varchar(20)   COMMENT '请假审批状态',
-    `CancellationLeave` varchar(20)   COMMENT '是否销假'
+    `LeaveType` char(1)  NOT NULL COMMENT '请假类型|("",""),',
+    `LeaveTimeBengin` DATETIME(0) NOT NULL COMMENT '请假时间开始',
+    `LeaveTimeEnding` DATETIME(0) NOT NULL COMMENT '请假时间结束',
+    `LeaveStatus` char(1)   COMMENT '请假审批状态Approved("A","已审批"),Rejected("R","已拒绝"),Commit("C","已提交"),Saved("S","已保存")',
+    `CancellationLeave` varchar(20)   COMMENT '是否销假|("","")'
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='请假';
 
 INSERT INTO `leave` VALUES ('事假', '2021-02-08 14:37:22', '2021-02-10 14:37:27', '审批中', '未销假');
