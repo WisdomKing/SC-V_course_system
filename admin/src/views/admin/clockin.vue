@@ -117,7 +117,7 @@
 <script>
   import Pagination from "../../components/pagination";
   export default {
-    name: 'clockin',
+    name: 'business-clockin',
     components: {Pagination},
     data:function(){
       return{

@@ -12,6 +12,8 @@ let optionKV = (object, key) =>  {
     } else {
         let result = "";
         for(let enums in object){
+            //会在控制台输出
+            // console.log(object[enums]["key"]);
             if (key === object[enums]["key"]) {
                 result = object[enums]["value"];
             }
