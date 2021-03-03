@@ -55,9 +55,11 @@ public class ClockinController {
         ValidatorUtil.require(clockinDto.getManhourType(), "工时类型");
         ValidatorUtil.require(clockinDto.getManhour(), "工时");
         ValidatorUtil.length(clockinDto.getManhour(), "工时", 1, 20);
+
         ValidatorUtil.length(clockinDto.getDelayed(), "延时", 1, 20);
         ValidatorUtil.require(clockinDto.getWorklog(), "工作日志");
         ValidatorUtil.length(clockinDto.getWorklog(), "工作日志", 1, 100);
+        ValidatorUtil.require(clockinDto.getStatus(), "状态");
 
         ResponseDto responseDto=new ResponseDto();
         clockinService.save(clockinDto);

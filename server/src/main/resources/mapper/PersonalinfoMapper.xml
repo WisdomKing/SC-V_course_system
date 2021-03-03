@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csii.ants.management.server.mapper.PersonalinfoMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Personalinfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="ethnicity" jdbcType="VARCHAR" property="ethnicity" />
+    <result column="idnum" jdbcType="VARCHAR" property="idnum" />
+    <result column="politicalOutlook" jdbcType="CHAR" property="politicaloutlook" />
+    <result column="dateOfBirth" jdbcType="VARCHAR" property="dateofbirth" />
+    <result column="personalEmail" jdbcType="VARCHAR" property="personalemail" />
+    <result column="regis_Type" jdbcType="VARCHAR" property="regisType" />
+    <result column="regis_Residence" jdbcType="VARCHAR" property="regisResidence" />
+    <result column="maritalStatus" jdbcType="CHAR" property="maritalstatus" />
+    <result column="grad_Unversity" jdbcType="VARCHAR" property="gradUnversity" />
+    <result column="grad_Time" jdbcType="VARCHAR" property="gradTime" />
+    <result column="speciality" jdbcType="VARCHAR" property="speciality" />
+    <result column="degree" jdbcType="CHAR" property="degree" />
+    <result column="nativePlace" jdbcType="CHAR" property="nativeplace" />
+    <result column="presentAddress" jdbcType="VARCHAR" property="presentaddress" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="qqNum" jdbcType="VARCHAR" property="qqnum" />
+    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="emergencyContactRel" jdbcType="CHAR" property="emergencycontactrel" />
+    <result column="emergencyContactName" jdbcType="VARCHAR" property="emergencycontactname" />
+    <result column="emergencyContactTel" jdbcType="VARCHAR" property="emergencycontacttel" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, `name`, sex, ethnicity, idnum, politicalOutlook, dateOfBirth, personalEmail, 
+    regis_Type, regis_Residence, maritalStatus, grad_Unversity, grad_Time, speciality, 
+    `degree`, nativePlace, presentAddress, telephone, qqNum, wechat, emergencyContactRel, 
+    emergencyContactName, emergencyContactTel
+  </sql>
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.PersonalinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personalinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from personalinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from personalinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.PersonalinfoExample">
+    delete from personalinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.Personalinfo">
+    insert into personalinfo (id, `name`, sex, ethnicity, 
+      idnum, politicalOutlook, dateOfBirth, 
+      personalEmail, regis_Type, regis_Residence, 
+      maritalStatus, grad_Unversity, grad_Time, 
+      speciality, `degree`, nativePlace, 
+      presentAddress, telephone, qqNum, 
+      wechat, emergencyContactRel, emergencyContactName, 
+      emergencyContactTel)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{ethnicity,jdbcType=VARCHAR}, 
+      #{idnum,jdbcType=VARCHAR}, #{politicaloutlook,jdbcType=CHAR}, #{dateofbirth,jdbcType=VARCHAR}, 
+      #{personalemail,jdbcType=VARCHAR}, #{regisType,jdbcType=VARCHAR}, #{regisResidence,jdbcType=VARCHAR}, 
+      #{maritalstatus,jdbcType=CHAR}, #{gradUnversity,jdbcType=VARCHAR}, #{gradTime,jdbcType=VARCHAR}, 
+      #{speciality,jdbcType=VARCHAR}, #{degree,jdbcType=CHAR}, #{nativeplace,jdbcType=CHAR}, 
+      #{presentaddress,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{qqnum,jdbcType=VARCHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{emergencycontactrel,jdbcType=CHAR}, #{emergencycontactname,jdbcType=VARCHAR}, 
+      #{emergencycontacttel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Personalinfo">
+    insert into personalinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="ethnicity != null">
+        ethnicity,
+      </if>
+      <if test="idnum != null">
+        idnum,
+      </if>
+      <if test="politicaloutlook != null">
+        politicalOutlook,
+      </if>
+      <if test="dateofbirth != null">
+        dateOfBirth,
+      </if>
+      <if test="personalemail != null">
+        personalEmail,
+      </if>
+      <if test="regisType != null">
+        regis_Type,
+      </if>
+      <if test="regisResidence != null">
+        regis_Residence,
+      </if>
+      <if test="maritalstatus != null">
+        maritalStatus,
+      </if>
+      <if test="gradUnversity != null">
+        grad_Unversity,
+      </if>
+      <if test="gradTime != null">
+        grad_Time,
+      </if>
+      <if test="speciality != null">
+        speciality,
+      </if>
+      <if test="degree != null">
+        `degree`,
+      </if>
+      <if test="nativeplace != null">
+        nativePlace,
+      </if>
+      <if test="presentaddress != null">
+        presentAddress,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="qqnum != null">
+        qqNum,
+      </if>
+      <if test="wechat != null">
+        wechat,
+      </if>
+      <if test="emergencycontactrel != null">
+        emergencyContactRel,
+      </if>
+      <if test="emergencycontactname != null">
+        emergencyContactName,
+      </if>
+      <if test="emergencycontacttel != null">
+        emergencyContactTel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="ethnicity != null">
+        #{ethnicity,jdbcType=VARCHAR},
+      </if>
+      <if test="idnum != null">
+        #{idnum,jdbcType=VARCHAR},
+      </if>
+      <if test="politicaloutlook != null">
+        #{politicaloutlook,jdbcType=CHAR},
+      </if>
+      <if test="dateofbirth != null">
+        #{dateofbirth,jdbcType=VARCHAR},
+      </if>
+      <if test="personalemail != null">
+        #{personalemail,jdbcType=VARCHAR},
+      </if>
+      <if test="regisType != null">
+        #{regisType,jdbcType=VARCHAR},
+      </if>
+      <if test="regisResidence != null">
+        #{regisResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null">
+        #{maritalstatus,jdbcType=CHAR},
+      </if>
+      <if test="gradUnversity != null">
+        #{gradUnversity,jdbcType=VARCHAR},
+      </if>
+      <if test="gradTime != null">
+        #{gradTime,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null">
+        #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        #{degree,jdbcType=CHAR},
+      </if>
+      <if test="nativeplace != null">
+        #{nativeplace,jdbcType=CHAR},
+      </if>
+      <if test="presentaddress != null">
+        #{presentaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnum != null">
+        #{qqnum,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencycontactrel != null">
+        #{emergencycontactrel,jdbcType=CHAR},
+      </if>
+      <if test="emergencycontactname != null">
+        #{emergencycontactname,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencycontacttel != null">
+        #{emergencycontacttel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.PersonalinfoExample" resultType="java.lang.Long">
+    select count(*) from personalinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update personalinfo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=CHAR},
+      </if>
+      <if test="record.ethnicity != null">
+        ethnicity = #{record.ethnicity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idnum != null">
+        idnum = #{record.idnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.politicaloutlook != null">
+        politicalOutlook = #{record.politicaloutlook,jdbcType=CHAR},
+      </if>
+      <if test="record.dateofbirth != null">
+        dateOfBirth = #{record.dateofbirth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personalemail != null">
+        personalEmail = #{record.personalemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regisType != null">
+        regis_Type = #{record.regisType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regisResidence != null">
+        regis_Residence = #{record.regisResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maritalstatus != null">
+        maritalStatus = #{record.maritalstatus,jdbcType=CHAR},
+      </if>
+      <if test="record.gradUnversity != null">
+        grad_Unversity = #{record.gradUnversity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gradTime != null">
+        grad_Time = #{record.gradTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.speciality != null">
+        speciality = #{record.speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.degree != null">
+        `degree` = #{record.degree,jdbcType=CHAR},
+      </if>
+      <if test="record.nativeplace != null">
+        nativePlace = #{record.nativeplace,jdbcType=CHAR},
+      </if>
+      <if test="record.presentaddress != null">
+        presentAddress = #{record.presentaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null">
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qqnum != null">
+        qqNum = #{record.qqnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechat != null">
+        wechat = #{record.wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emergencycontactrel != null">
+        emergencyContactRel = #{record.emergencycontactrel,jdbcType=CHAR},
+      </if>
+      <if test="record.emergencycontactname != null">
+        emergencyContactName = #{record.emergencycontactname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emergencycontacttel != null">
+        emergencyContactTel = #{record.emergencycontacttel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update personalinfo
+    set id = #{record.id,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=CHAR},
+      ethnicity = #{record.ethnicity,jdbcType=VARCHAR},
+      idnum = #{record.idnum,jdbcType=VARCHAR},
+      politicalOutlook = #{record.politicaloutlook,jdbcType=CHAR},
+      dateOfBirth = #{record.dateofbirth,jdbcType=VARCHAR},
+      personalEmail = #{record.personalemail,jdbcType=VARCHAR},
+      regis_Type = #{record.regisType,jdbcType=VARCHAR},
+      regis_Residence = #{record.regisResidence,jdbcType=VARCHAR},
+      maritalStatus = #{record.maritalstatus,jdbcType=CHAR},
+      grad_Unversity = #{record.gradUnversity,jdbcType=VARCHAR},
+      grad_Time = #{record.gradTime,jdbcType=VARCHAR},
+      speciality = #{record.speciality,jdbcType=VARCHAR},
+      `degree` = #{record.degree,jdbcType=CHAR},
+      nativePlace = #{record.nativeplace,jdbcType=CHAR},
+      presentAddress = #{record.presentaddress,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      qqNum = #{record.qqnum,jdbcType=VARCHAR},
+      wechat = #{record.wechat,jdbcType=VARCHAR},
+      emergencyContactRel = #{record.emergencycontactrel,jdbcType=CHAR},
+      emergencyContactName = #{record.emergencycontactname,jdbcType=VARCHAR},
+      emergencyContactTel = #{record.emergencycontacttel,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Personalinfo">
+    update personalinfo
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="ethnicity != null">
+        ethnicity = #{ethnicity,jdbcType=VARCHAR},
+      </if>
+      <if test="idnum != null">
+        idnum = #{idnum,jdbcType=VARCHAR},
+      </if>
+      <if test="politicaloutlook != null">
+        politicalOutlook = #{politicaloutlook,jdbcType=CHAR},
+      </if>
+      <if test="dateofbirth != null">
+        dateOfBirth = #{dateofbirth,jdbcType=VARCHAR},
+      </if>
+      <if test="personalemail != null">
+        personalEmail = #{personalemail,jdbcType=VARCHAR},
+      </if>
+      <if test="regisType != null">
+        regis_Type = #{regisType,jdbcType=VARCHAR},
+      </if>
+      <if test="regisResidence != null">
+        regis_Residence = #{regisResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalstatus != null">
+        maritalStatus = #{maritalstatus,jdbcType=CHAR},
+      </if>
+      <if test="gradUnversity != null">
+        grad_Unversity = #{gradUnversity,jdbcType=VARCHAR},
+      </if>
+      <if test="gradTime != null">
+        grad_Time = #{gradTime,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null">
+        speciality = #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        `degree` = #{degree,jdbcType=CHAR},
+      </if>
+      <if test="nativeplace != null">
+        nativePlace = #{nativeplace,jdbcType=CHAR},
+      </if>
+      <if test="presentaddress != null">
+        presentAddress = #{presentaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnum != null">
+        qqNum = #{qqnum,jdbcType=VARCHAR},
+      </if>
+      <if test="wechat != null">
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencycontactrel != null">
+        emergencyContactRel = #{emergencycontactrel,jdbcType=CHAR},
+      </if>
+      <if test="emergencycontactname != null">
+        emergencyContactName = #{emergencycontactname,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencycontacttel != null">
+        emergencyContactTel = #{emergencycontacttel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Personalinfo">
+    update personalinfo
+    set `name` = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      ethnicity = #{ethnicity,jdbcType=VARCHAR},
+      idnum = #{idnum,jdbcType=VARCHAR},
+      politicalOutlook = #{politicaloutlook,jdbcType=CHAR},
+      dateOfBirth = #{dateofbirth,jdbcType=VARCHAR},
+      personalEmail = #{personalemail,jdbcType=VARCHAR},
+      regis_Type = #{regisType,jdbcType=VARCHAR},
+      regis_Residence = #{regisResidence,jdbcType=VARCHAR},
+      maritalStatus = #{maritalstatus,jdbcType=CHAR},
+      grad_Unversity = #{gradUnversity,jdbcType=VARCHAR},
+      grad_Time = #{gradTime,jdbcType=VARCHAR},
+      speciality = #{speciality,jdbcType=VARCHAR},
+      `degree` = #{degree,jdbcType=CHAR},
+      nativePlace = #{nativeplace,jdbcType=CHAR},
+      presentAddress = #{presentaddress,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      qqNum = #{qqnum,jdbcType=VARCHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      emergencyContactRel = #{emergencycontactrel,jdbcType=CHAR},
+      emergencyContactName = #{emergencycontactname,jdbcType=VARCHAR},
+      emergencyContactTel = #{emergencycontacttel,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

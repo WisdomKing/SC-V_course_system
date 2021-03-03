@@ -1,4 +1,4 @@
-/*----test---------------------------------------------------*/
+/*----test 测试---------------------------------------------------*/
 drop table if exists `test`;
 create table `test`(
     `id` varchar(8) not null default '' comment 'id',
@@ -8,7 +8,7 @@ create table `test`(
 insert into `test` (`id`,`name`)value (1,'测试');
 insert into `test` (`id`,`name`)value (2,'测试2');
 
-/*----announcement公告---------------------------------------------------*/
+/*----announcement 公告---------------------------------------------------*/
 
 DROP TABLE IF EXISTS `announcement`;
 CREATE TABLE `announcement`  (
@@ -34,7 +34,7 @@ INSERT INTO `announcement` VALUES ('9Ce7MH08','00010007','00010007','2021-02-18'
 INSERT INTO `announcement` VALUES ('9Ce7MH09','00010008','00010008','2021-02-18','2021-02-22','test08');
 
 
-/*----clockin报工---------------------------------------------------*/
+/*----clockin 报工---------------------------------------------------*/
 
 DROP TABLE IF EXISTS `clockin`;
 CREATE TABLE `clockin` (
@@ -51,21 +51,22 @@ CREATE TABLE `clockin` (
 
 INSERT INTO `clockin` VALUES ('9Ce7MH02','F-20-1569_2020富邦华一银行外籍薪资购汇项目', 'D', '8', '2', 'U享存补签', 'A', '2021-02-08 14:45:39');
 
-/*----employeeinfo员工信息---------------------------------------------------*/
+/*----employeeinfo 员工信息---------------------------------------------------*/
 
 DROP TABLE IF EXISTS `employeeinfo`;
 CREATE TABLE `employeeinfo`  (
+    `id` varchar(8)  NOT NULL COMMENT 'ID',
     `name` varchar(20) NOT NULL COMMENT '姓名',
     `job_num` varchar(5) NOT NULL COMMENT '工号',
-    `affiliated_company` char(1) NOT NULL COMMENT '归属公司|',
+    `base` char(2) NOT NULL COMMENT '归属公司|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
     `companyEmail` varchar(50) NOT NULL COMMENT '企业邮箱',
     `dependence_Dep` varchar(20) NOT NULL COMMENT '所属部门',
     `superiorDep` varchar(20)  COMMENT '上级部门',
     `position` varchar(20) NOT NULL COMMENT '职位',
     `dep_Director` varchar(20) COMMENT '部门总监',
     `entry_Time` DATETIME(0) NOT NULL COMMENT '入职时间',
-    `entry_Type` varchar(20) COMMENT '入职方式',
-    `entry_Address` varchar(20) NOT NULL COMMENT '入职地点',
+    `entry_Type` char(1) COMMENT '入职方式|Xiaozhao("X","校招"),Shezhao("S","社招")',
+    `entry_Address` char(2) NOT NULL COMMENT '入职地点|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
     `internshipBegin` DATETIME(0) COMMENT '实习起始日',
     `internshipEnding` DATETIME(0) COMMENT '实习到期日',
     `conversionReg_Time` DATETIME(0) COMMENT '转正日期',
@@ -74,16 +75,25 @@ CREATE TABLE `employeeinfo`  (
     `probationExp_date` DATETIME(0) COMMENT '试用到期日',
     `employeeStatus` varchar(20) COMMENT '人员状态',
     `contractRenew` varchar(20) COMMENT '合同续签',
-    `welfareArea` varchar(20) COMMENT '福利地区',
+    `welfareArea` varchar(20) COMMENT '福利地区|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
     `myRole` varchar(20) COMMENT '我的角色',
     `employeeCCC` varchar(20) COMMENT '员工CCC',
     `comment` varchar(50) COMMENT '备注',
-    primary key (`job_num`)
+    primary key (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='员工信息';
 
-INSERT INTO `employeeinfo` VALUES ('秦风', '13914', '上海', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', '校园招聘', '上海', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, '上海', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH01','秦风', '13901', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH02','秦风', '13902', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH03','秦风', '13903', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH04','秦风', '13904', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH05','秦风', '13905', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH06','秦风', '13906', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH07','秦风', '13907', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH08','秦风', '13908', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH09','秦风', '13909', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH10','秦风', '13910', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL(普通用户)', '5010208018', NULL);
 
-/*----headline头条---------------------------------------------------*/
+/*----headline 头条---------------------------------------------------*/
 
 DROP TABLE IF EXISTS `headline`;
 CREATE TABLE `headline`  (
@@ -97,7 +107,7 @@ CREATE TABLE `headline`  (
 INSERT INTO `headline`(ID,CreatedTime,UpdatedTime,Details)
  VALUES ('12345678',now(), now(),'[这里应该放表扬信图片]');
 
-/*----leave请假---------------------------------------------------*/
+/*----leave 请假---------------------------------------------------*/
 
 DROP TABLE IF EXISTS `askforleave`;
 CREATE TABLE `askforleave`  (
@@ -114,9 +124,10 @@ CREATE TABLE `askforleave`  (
 
 INSERT INTO `askforleave` VALUES ('9Ce7MH09', '13914','S','2021-02-08 14:37:22', '2021-02-10 14:37:27', 'A', 'N','啊哈哈哈哈');
 
-/*----personalinfo个人信息---------------------------------------------------*/
+/*----personalinfo 个人信息---------------------------------------------------*/
 DROP TABLE IF EXISTS `personalinfo`;
 CREATE TABLE `personalinfo`  (
+    `id` varchar(8) NOT NULL COMMENT 'ID',
     `name` varchar(20) NOT NULL COMMENT '姓名',
     `sex` char(1) NOT NULL COMMENT '性别|Man("M","男"),Woman("W","女")',
     `ethnicity` varchar(20) NOT NULL COMMENT '民族',
@@ -131,17 +142,32 @@ CREATE TABLE `personalinfo`  (
     `grad_Time` varchar(20)  COMMENT '毕业时间',
     `speciality` varchar(20)  COMMENT '专业',
     `degree` char(1)  COMMENT '学历|Primary("P","小学学历"),Junior("J","初中学历"),Highschool("H","高中学历"),College("C","专科学历"),Bachelor("B","本科学历"),Master("M","硕士学历"),Doctoral("D","博士学历"),Noeducation("N","无学历")',
-    `nativePlace` varchar(50)  COMMENT '籍贯',
+    `nativePlace` char(2)  COMMENT '籍贯|Anhui("AH","安徽"),Beijing("BJ","北京"),Fujian("FJ","福建"),Gansu("GS","甘肃"),Guangdong("GD","广东"),Guangxi("GX","广西"),Guizhou("GZ","贵州"),Hainan("HI","海南"),Hebei("HE","河北"),Henan("HA","河南"),Heilongjiang("HL","黑龙江"),Hubei("HB","湖北"),Hunan("HN","湖南"),Jilin("JL","吉林"),Jiangsu("JS","江苏"),Jiangxi("JX","江西"),Liaoning("LN","辽宁"),InnerMongoria("IM","内蒙古自治区"),Ningxia("NX","宁夏"),Qinghai("QH","青海"),Shandong("SD","山东"),Shanxi("SX","山西"),Shaanxi("SN","陕西"),Shanghai("SH","上海"),Sichuan("SC","四川"),Tianjing("TJ","天津"),Tibet("XZ","西藏"),Xinjiang("XJ","新疆"),Yunnan("YN","云南"),Zhejiang("ZJ","浙江"),Chongqing("CQ","重庆"),Macao("MO","澳门"),HongKong("HK","香港"),Taiwan("TW","台湾")',
     `presentAddress` varchar(50)  COMMENT '现住址',
     `telephone` varchar(18) NOT NULL COMMENT '手机号',
     `qqNum` varchar(20)  COMMENT 'qq号',
     `wechat` varchar(20)  COMMENT '微信',
-    `emergencyContactRel` char(1)  COMMENT '紧急联系人关系|Father("F","父亲"),Mother("M","母亲"),Spouse("S","伴侣"),Children("C","子女"),Otherrelatives("O","其他亲戚"),Friend("P","朋友")',
+    `emergencyContactRel` char(1)  COMMENT '紧急联系人关系|Father("F","父母"),Spouse("S","伴侣"),Children("C","子女"),Otherrelatives("O","其他亲戚"),Friend("P","朋友")',
     `emergencyContactName` varchar(20)  COMMENT '紧急联系人姓名',
     `emergencyContactTel` varchar(18)  COMMENT '紧急联系人电话',
-    primary key (`idnum`)
+    primary key (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='个人信息';
 
-INSERT INTO `personalinfo` VALUES ('秦风', 'M', '汉', '46000119990101001X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', '海南省万宁市', 'N', '长春大学', '2021-07-01', '计算机科学与技术', 'B', '海南', '上海市浦东新区川沙镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
+INSERT INTO `personalinfo` VALUES ('9Ce7MH01','秦风', 'M', '汉', '96000119990101001X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', 'BJ市', 'N', 'BJ大学', '2021-07-01', '国际贸易', 'B', 'BJ', '魔都经开区XX镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
+INSERT INTO `personalinfo` VALUES ('9Ce7MH02','秦风', 'M', '汉', '96000119990101002X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', 'BJ市', 'N', 'BJ大学', '2021-07-01', '国际贸易', 'B', 'BJ', '魔都经开区XX镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
+INSERT INTO `personalinfo` VALUES ('9Ce7MH03','秦风', 'M', '汉', '96000119990101003X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', 'BJ市', 'N', 'BJ大学', '2021-07-01', '国际贸易', 'B', 'BJ', '魔都经开区XX镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
+INSERT INTO `personalinfo` VALUES ('9Ce7MH04','秦风', 'M', '汉', '96000119990101004X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', 'BJ市', 'N', 'BJ大学', '2021-07-01', '国际贸易', 'B', 'BJ', '魔都经开区XX镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
+INSERT INTO `personalinfo` VALUES ('9Ce7MH09','秦风', 'M', '汉', '96000119990101005X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', 'BJ市', 'N', 'BJ大学', '2021-07-01', '国际贸易', 'B', 'BJ', '魔都经开区XX镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
 
-/*-------------------------------------------------------*/
+/*----role 权限---------------------------------------------------*/
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE `role` (
+    `id` varchar(8) NOT NULL COMMENT 'ID',
+    `role` char(8) NOT NULL COMMENT '权限',
+    primary key (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='权限';
+
+INSERT INTO `askforleave` VALUES ('9Ce7MH09','M');
+
+
