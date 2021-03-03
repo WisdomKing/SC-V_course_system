@@ -367,28 +367,22 @@
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 系统管理 </span>
-
               <b class="arrow fa fa-angle-down"></b>
             </a>
-
             <b class="arrow"></b>
-
             <ul class="submenu">
               <li class="">
                 <a href="tables.html">
                   <i class="menu-icon fa fa-caret-right"></i>
                   用户管理
                 </a>
-
                 <b class="arrow"></b>
               </li>
-
               <li class="">
                 <a href="jqgrid.html">
                   <i class="menu-icon fa fa-caret-right"></i>
                   权限管理
                 </a>
-
                 <b class="arrow"></b>
               </li>
             </ul>
@@ -398,22 +392,17 @@
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 公告 </span>
-
               <b class="arrow fa fa-angle-down"></b>
             </a>
-
             <b class="arrow"></b>
-
             <ul class="submenu">
               <li class="active" id="business-announcement-sidebar">
                 <router-link to="/business/announcement">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司公告
                 </router-link>
-
                 <b class="arrow"></b>
               </li>
-
             </ul>
           </li>
 
@@ -421,12 +410,9 @@
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 头条 </span>
-
               <b class="arrow fa fa-angle-down"></b>
             </a>
-
             <b class="arrow"></b>
-
             <ul class="submenu">
               <li class="" id="business-headline-sidebar">
                 <router-link to="/business/headline">
@@ -467,22 +453,17 @@
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 报工 </span>
-
               <b class="arrow fa fa-angle-down"></b>
             </a>
-
             <b class="arrow"></b>
-
             <ul class="submenu">
               <li class="" id="business-clockin-sidebar">
                 <router-link to="/business/clockin">
                   <i class="menu-icon fa fa-caret-right"></i>
                   报工
                 </router-link>
-
                 <b class="arrow"></b>
               </li>
-
             </ul>
           </li>
 
@@ -493,19 +474,15 @@
 
               <b class="arrow fa fa-angle-down"></b>
             </a>
-
             <b class="arrow"></b>
-
             <ul class="submenu">
               <li class="" id="business-askforleave-sidebar">
                 <router-link to="/business/askforleave">
                   <i class="menu-icon fa fa-caret-right"></i>
                   请假
                 </router-link>
-
                 <b class="arrow"></b>
               </li>
-
             </ul>
           </li>
 
@@ -513,22 +490,35 @@
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 个人信息 </span>
-
               <b class="arrow fa fa-angle-down"></b>
             </a>
-
             <b class="arrow"></b>
-
             <ul class="submenu">
               <li class="" id="business-personalinfo-sidebar">
                 <router-link to="/business/personalinfo">
                   <i class="menu-icon fa fa-caret-right"></i>
                   个人信息
                 </router-link>
-
                 <b class="arrow"></b>
               </li>
+            </ul>
+          </li>
 
+          <li class="">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-bullhorn"></i>
+              <span class="menu-text"> 员工信息 </span>
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+              <li class="" id="business-employeeinfo-sidebar">
+                <router-link to="/business/employeeinfo">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  员工信息
+                </router-link>
+                <b class="arrow"></b>
+              </li>
             </ul>
           </li>
 

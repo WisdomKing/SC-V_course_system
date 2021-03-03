@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csii.ants.management.server.mapper.EmployeeinfoMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Employeeinfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="job_num" jdbcType="VARCHAR" property="jobNum" />
+    <result column="base" jdbcType="CHAR" property="base" />
+    <result column="companyEmail" jdbcType="VARCHAR" property="companyemail" />
+    <result column="dependence_Dep" jdbcType="VARCHAR" property="dependenceDep" />
+    <result column="superiorDep" jdbcType="VARCHAR" property="superiordep" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="dep_Director" jdbcType="VARCHAR" property="depDirector" />
+    <result column="entry_Time" jdbcType="TIMESTAMP" property="entryTime" />
+    <result column="entry_Type" jdbcType="CHAR" property="entryType" />
+    <result column="entry_Address" jdbcType="CHAR" property="entryAddress" />
+    <result column="internshipBegin" jdbcType="TIMESTAMP" property="internshipbegin" />
+    <result column="internshipEnding" jdbcType="TIMESTAMP" property="internshipending" />
+    <result column="conversionReg_Time" jdbcType="TIMESTAMP" property="conversionregTime" />
+    <result column="contractSigning" jdbcType="TIMESTAMP" property="contractsigning" />
+    <result column="contractEnding" jdbcType="TIMESTAMP" property="contractending" />
+    <result column="probationExp_date" jdbcType="TIMESTAMP" property="probationexpDate" />
+    <result column="employeeStatus" jdbcType="VARCHAR" property="employeestatus" />
+    <result column="contractRenew" jdbcType="VARCHAR" property="contractrenew" />
+    <result column="welfareArea" jdbcType="VARCHAR" property="welfarearea" />
+    <result column="myRole" jdbcType="VARCHAR" property="myrole" />
+    <result column="employeeCCC" jdbcType="VARCHAR" property="employeeccc" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, `name`, job_num, base, companyEmail, dependence_Dep, superiorDep, `position`, 
+    dep_Director, entry_Time, entry_Type, entry_Address, internshipBegin, internshipEnding, 
+    conversionReg_Time, contractSigning, contractEnding, probationExp_date, employeeStatus, 
+    contractRenew, welfareArea, myRole, employeeCCC, `comment`
+  </sql>
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.EmployeeinfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from employeeinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employeeinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from employeeinfo
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.EmployeeinfoExample">
+    delete from employeeinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.Employeeinfo">
+    insert into employeeinfo (id, `name`, job_num, 
+      base, companyEmail, dependence_Dep, 
+      superiorDep, `position`, dep_Director, 
+      entry_Time, entry_Type, entry_Address, 
+      internshipBegin, internshipEnding, 
+      conversionReg_Time, contractSigning, 
+      contractEnding, probationExp_date, employeeStatus, 
+      contractRenew, welfareArea, myRole, 
+      employeeCCC, `comment`)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{jobNum,jdbcType=VARCHAR}, 
+      #{base,jdbcType=CHAR}, #{companyemail,jdbcType=VARCHAR}, #{dependenceDep,jdbcType=VARCHAR}, 
+      #{superiordep,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{depDirector,jdbcType=VARCHAR}, 
+      #{entryTime,jdbcType=TIMESTAMP}, #{entryType,jdbcType=CHAR}, #{entryAddress,jdbcType=CHAR}, 
+      #{internshipbegin,jdbcType=TIMESTAMP}, #{internshipending,jdbcType=TIMESTAMP}, 
+      #{conversionregTime,jdbcType=TIMESTAMP}, #{contractsigning,jdbcType=TIMESTAMP}, 
+      #{contractending,jdbcType=TIMESTAMP}, #{probationexpDate,jdbcType=TIMESTAMP}, #{employeestatus,jdbcType=VARCHAR}, 
+      #{contractrenew,jdbcType=VARCHAR}, #{welfarearea,jdbcType=VARCHAR}, #{myrole,jdbcType=VARCHAR}, 
+      #{employeeccc,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Employeeinfo">
+    insert into employeeinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="jobNum != null">
+        job_num,
+      </if>
+      <if test="base != null">
+        base,
+      </if>
+      <if test="companyemail != null">
+        companyEmail,
+      </if>
+      <if test="dependenceDep != null">
+        dependence_Dep,
+      </if>
+      <if test="superiordep != null">
+        superiorDep,
+      </if>
+      <if test="position != null">
+        `position`,
+      </if>
+      <if test="depDirector != null">
+        dep_Director,
+      </if>
+      <if test="entryTime != null">
+        entry_Time,
+      </if>
+      <if test="entryType != null">
+        entry_Type,
+      </if>
+      <if test="entryAddress != null">
+        entry_Address,
+      </if>
+      <if test="internshipbegin != null">
+        internshipBegin,
+      </if>
+      <if test="internshipending != null">
+        internshipEnding,
+      </if>
+      <if test="conversionregTime != null">
+        conversionReg_Time,
+      </if>
+      <if test="contractsigning != null">
+        contractSigning,
+      </if>
+      <if test="contractending != null">
+        contractEnding,
+      </if>
+      <if test="probationexpDate != null">
+        probationExp_date,
+      </if>
+      <if test="employeestatus != null">
+        employeeStatus,
+      </if>
+      <if test="contractrenew != null">
+        contractRenew,
+      </if>
+      <if test="welfarearea != null">
+        welfareArea,
+      </if>
+      <if test="myrole != null">
+        myRole,
+      </if>
+      <if test="employeeccc != null">
+        employeeCCC,
+      </if>
+      <if test="comment != null">
+        `comment`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNum != null">
+        #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="base != null">
+        #{base,jdbcType=CHAR},
+      </if>
+      <if test="companyemail != null">
+        #{companyemail,jdbcType=VARCHAR},
+      </if>
+      <if test="dependenceDep != null">
+        #{dependenceDep,jdbcType=VARCHAR},
+      </if>
+      <if test="superiordep != null">
+        #{superiordep,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="depDirector != null">
+        #{depDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entryType != null">
+        #{entryType,jdbcType=CHAR},
+      </if>
+      <if test="entryAddress != null">
+        #{entryAddress,jdbcType=CHAR},
+      </if>
+      <if test="internshipbegin != null">
+        #{internshipbegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="internshipending != null">
+        #{internshipending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conversionregTime != null">
+        #{conversionregTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractsigning != null">
+        #{contractsigning,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractending != null">
+        #{contractending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="probationexpDate != null">
+        #{probationexpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeestatus != null">
+        #{employeestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="contractrenew != null">
+        #{contractrenew,jdbcType=VARCHAR},
+      </if>
+      <if test="welfarearea != null">
+        #{welfarearea,jdbcType=VARCHAR},
+      </if>
+      <if test="myrole != null">
+        #{myrole,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeccc != null">
+        #{employeeccc,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.EmployeeinfoExample" resultType="java.lang.Long">
+    select count(*) from employeeinfo
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update employeeinfo
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        `name` = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobNum != null">
+        job_num = #{record.jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.base != null">
+        base = #{record.base,jdbcType=CHAR},
+      </if>
+      <if test="record.companyemail != null">
+        companyEmail = #{record.companyemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dependenceDep != null">
+        dependence_Dep = #{record.dependenceDep,jdbcType=VARCHAR},
+      </if>
+      <if test="record.superiordep != null">
+        superiorDep = #{record.superiordep,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null">
+        `position` = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depDirector != null">
+        dep_Director = #{record.depDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entryTime != null">
+        entry_Time = #{record.entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.entryType != null">
+        entry_Type = #{record.entryType,jdbcType=CHAR},
+      </if>
+      <if test="record.entryAddress != null">
+        entry_Address = #{record.entryAddress,jdbcType=CHAR},
+      </if>
+      <if test="record.internshipbegin != null">
+        internshipBegin = #{record.internshipbegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.internshipending != null">
+        internshipEnding = #{record.internshipending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.conversionregTime != null">
+        conversionReg_Time = #{record.conversionregTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contractsigning != null">
+        contractSigning = #{record.contractsigning,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contractending != null">
+        contractEnding = #{record.contractending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.probationexpDate != null">
+        probationExp_date = #{record.probationexpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.employeestatus != null">
+        employeeStatus = #{record.employeestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractrenew != null">
+        contractRenew = #{record.contractrenew,jdbcType=VARCHAR},
+      </if>
+      <if test="record.welfarearea != null">
+        welfareArea = #{record.welfarearea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.myrole != null">
+        myRole = #{record.myrole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.employeeccc != null">
+        employeeCCC = #{record.employeeccc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.comment != null">
+        `comment` = #{record.comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update employeeinfo
+    set id = #{record.id,jdbcType=VARCHAR},
+      `name` = #{record.name,jdbcType=VARCHAR},
+      job_num = #{record.jobNum,jdbcType=VARCHAR},
+      base = #{record.base,jdbcType=CHAR},
+      companyEmail = #{record.companyemail,jdbcType=VARCHAR},
+      dependence_Dep = #{record.dependenceDep,jdbcType=VARCHAR},
+      superiorDep = #{record.superiordep,jdbcType=VARCHAR},
+      `position` = #{record.position,jdbcType=VARCHAR},
+      dep_Director = #{record.depDirector,jdbcType=VARCHAR},
+      entry_Time = #{record.entryTime,jdbcType=TIMESTAMP},
+      entry_Type = #{record.entryType,jdbcType=CHAR},
+      entry_Address = #{record.entryAddress,jdbcType=CHAR},
+      internshipBegin = #{record.internshipbegin,jdbcType=TIMESTAMP},
+      internshipEnding = #{record.internshipending,jdbcType=TIMESTAMP},
+      conversionReg_Time = #{record.conversionregTime,jdbcType=TIMESTAMP},
+      contractSigning = #{record.contractsigning,jdbcType=TIMESTAMP},
+      contractEnding = #{record.contractending,jdbcType=TIMESTAMP},
+      probationExp_date = #{record.probationexpDate,jdbcType=TIMESTAMP},
+      employeeStatus = #{record.employeestatus,jdbcType=VARCHAR},
+      contractRenew = #{record.contractrenew,jdbcType=VARCHAR},
+      welfareArea = #{record.welfarearea,jdbcType=VARCHAR},
+      myRole = #{record.myrole,jdbcType=VARCHAR},
+      employeeCCC = #{record.employeeccc,jdbcType=VARCHAR},
+      `comment` = #{record.comment,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Employeeinfo">
+    update employeeinfo
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNum != null">
+        job_num = #{jobNum,jdbcType=VARCHAR},
+      </if>
+      <if test="base != null">
+        base = #{base,jdbcType=CHAR},
+      </if>
+      <if test="companyemail != null">
+        companyEmail = #{companyemail,jdbcType=VARCHAR},
+      </if>
+      <if test="dependenceDep != null">
+        dependence_Dep = #{dependenceDep,jdbcType=VARCHAR},
+      </if>
+      <if test="superiordep != null">
+        superiorDep = #{superiordep,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        `position` = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="depDirector != null">
+        dep_Director = #{depDirector,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        entry_Time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="entryType != null">
+        entry_Type = #{entryType,jdbcType=CHAR},
+      </if>
+      <if test="entryAddress != null">
+        entry_Address = #{entryAddress,jdbcType=CHAR},
+      </if>
+      <if test="internshipbegin != null">
+        internshipBegin = #{internshipbegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="internshipending != null">
+        internshipEnding = #{internshipending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="conversionregTime != null">
+        conversionReg_Time = #{conversionregTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractsigning != null">
+        contractSigning = #{contractsigning,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractending != null">
+        contractEnding = #{contractending,jdbcType=TIMESTAMP},
+      </if>
+      <if test="probationexpDate != null">
+        probationExp_date = #{probationexpDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employeestatus != null">
+        employeeStatus = #{employeestatus,jdbcType=VARCHAR},
+      </if>
+      <if test="contractrenew != null">
+        contractRenew = #{contractrenew,jdbcType=VARCHAR},
+      </if>
+      <if test="welfarearea != null">
+        welfareArea = #{welfarearea,jdbcType=VARCHAR},
+      </if>
+      <if test="myrole != null">
+        myRole = #{myrole,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeccc != null">
+        employeeCCC = #{employeeccc,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        `comment` = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Employeeinfo">
+    update employeeinfo
+    set `name` = #{name,jdbcType=VARCHAR},
+      job_num = #{jobNum,jdbcType=VARCHAR},
+      base = #{base,jdbcType=CHAR},
+      companyEmail = #{companyemail,jdbcType=VARCHAR},
+      dependence_Dep = #{dependenceDep,jdbcType=VARCHAR},
+      superiorDep = #{superiordep,jdbcType=VARCHAR},
+      `position` = #{position,jdbcType=VARCHAR},
+      dep_Director = #{depDirector,jdbcType=VARCHAR},
+      entry_Time = #{entryTime,jdbcType=TIMESTAMP},
+      entry_Type = #{entryType,jdbcType=CHAR},
+      entry_Address = #{entryAddress,jdbcType=CHAR},
+      internshipBegin = #{internshipbegin,jdbcType=TIMESTAMP},
+      internshipEnding = #{internshipending,jdbcType=TIMESTAMP},
+      conversionReg_Time = #{conversionregTime,jdbcType=TIMESTAMP},
+      contractSigning = #{contractsigning,jdbcType=TIMESTAMP},
+      contractEnding = #{contractending,jdbcType=TIMESTAMP},
+      probationExp_date = #{probationexpDate,jdbcType=TIMESTAMP},
+      employeeStatus = #{employeestatus,jdbcType=VARCHAR},
+      contractRenew = #{contractrenew,jdbcType=VARCHAR},
+      welfareArea = #{welfarearea,jdbcType=VARCHAR},
+      myRole = #{myrole,jdbcType=VARCHAR},
+      employeeCCC = #{employeeccc,jdbcType=VARCHAR},
+      `comment` = #{comment,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

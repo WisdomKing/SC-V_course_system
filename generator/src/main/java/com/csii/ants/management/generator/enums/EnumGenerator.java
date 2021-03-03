@@ -33,6 +33,7 @@ public class EnumGenerator {
             toJson(DegreeEnum.class, bufferObject, bufferArray);
             toJson(MaritalStatusEnum.class, bufferObject, bufferArray);
             toJson(PoliticalOutlookEnum.class, bufferObject, bufferArray);
+            toJson(EntryTypeEnum.class, bufferObject, bufferArray);
 
             toJson(BaseEnum.class, bufferObject, bufferArray);
             toJson(ProvinceEnum.class, bufferObject, bufferArray);

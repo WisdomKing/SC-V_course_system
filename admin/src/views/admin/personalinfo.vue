@@ -78,7 +78,7 @@
               <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button v-on:click="del(personalinfo.idnum)" class="btn btn-xs btn-danger">
+            <button v-on:click="del(personalinfo.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
@@ -366,11 +366,11 @@ _this.personalinfo).then((respond)=>{
       /**
        * 点击删除
        */
-      del(idnum){
+      del(id){
         let _this=this;
         Confirm.show("删除个人信息后不可恢复，确认删除?",function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/personalinfo/delete/'+idnum).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/personalinfo/delete/'+id).then((respond)=>{
             Loading.hide();
             // console.log("删除个人信息列表结果:",respond);
             let resp=respond.data;

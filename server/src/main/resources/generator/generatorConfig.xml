@@ -42,10 +42,10 @@
 <!--        <table tableName="test" domainObjectName="Test"/>-->
 <!--        <table tableName="announcement" domainObjectName="Announcement"/>-->
 <!--        <table tableName="clockin" domainObjectName="Clockin"/>-->
-<!--        <table tableName="employeeinfo" domainObjectName="Employeeinfo"/>-->
+        <table tableName="employeeinfo" domainObjectName="Employeeinfo"/>
 <!--        <table tableName="headline" domainObjectName="Headline"/>-->
 <!--        <table tableName="askforleave" domainObjectName="Askforleave"/>-->
-        <table tableName="personalinfo" domainObjectName="Personalinfo"/>
+<!--        <table tableName="personalinfo" domainObjectName="Personalinfo"/>-->
 
     </context>
 </generatorConfiguration>
