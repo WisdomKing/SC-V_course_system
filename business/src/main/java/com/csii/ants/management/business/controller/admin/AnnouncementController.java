@@ -54,10 +54,13 @@ public class AnnouncementController {
         ValidatorUtil.length(announcementDto.getAnnouncementtitle(), "公告标题", 1, 20);
         ValidatorUtil.require(announcementDto.getAnnouncementtype(), "公告类型");
         ValidatorUtil.length(announcementDto.getAnnouncementtype(), "公告类型", 1, 20);
+
         ValidatorUtil.require(announcementDto.getBegintime(), "开始时间");
-        ValidatorUtil.length(announcementDto.getBegintime(), "开始时间", 1, 10);
-        ValidatorUtil.require(announcementDto.getEndingtime(), "结束时间");
-        ValidatorUtil.length(announcementDto.getEndingtime(), "结束时间", 1, 10);
+        ValidatorUtil.length(announcementDto.getBegintime(), "开始时间", 1, 20);
+
+//        ValidatorUtil.require(announcementDto.getEndingtime(), "结束时间");
+//        ValidatorUtil.length(announcementDto.getEndingtime(), "结束时间", 1, 10);
+
         ValidatorUtil.require(announcementDto.getDetails(), "详情");
         ValidatorUtil.length(announcementDto.getDetails(), "详情", 1, 50);
 

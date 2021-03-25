@@ -15,8 +15,8 @@ CREATE TABLE `announcement`  (
     `ID` varchar(8) NOT NULL COMMENT 'ID',
     `AnnouncementTitle` varchar(20)  NOT NULL COMMENT '公告标题',
     `AnnouncementType` varchar(20) NOT NULL COMMENT '公告类型',
-    `BeginTime` varchar(10) NOT NULL COMMENT '开始时间',
-    `EndingTime` varchar(10) NOT NULL COMMENT '结束时间',
+    `BeginTime` varchar(40) NOT NULL COMMENT '开始时间',
+    `EndingTime` varchar(20) NOT NULL COMMENT '结束时间',
     `Details` varchar(100) NOT NULL COMMENT '详情',
     primary key (`ID`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='公告';
@@ -25,14 +25,13 @@ INSERT INTO `announcement` VALUES ('10012333', '2333', '2333', '2021-02-01', '20
 INSERT INTO `announcement` VALUES ('10012337', '报工开放时间延长结束通知', '公共公告', '2021-02-08', '2021-02-10', '大家好！因本月情况特殊，报工系统开放时间延长至一个月，将于本月28号恢复正常，望大家周知！！！');
 INSERT INTO `announcement` VALUES ('9Ce7MH01', '报工开放时间延长结束通知', '公共公告', '2021-02-08', '2021-02-18', '关于做好节后复工复产的安排');
 INSERT INTO `announcement` VALUES ('9Ce7MH02','公告标题','公告类型','开始时间','结束时间','详情');
-INSERT INTO `announcement` VALUES ('9Ce7MH03','00010002','00010002','2021-02-18','2021-02-22','test02');
-INSERT INTO `announcement` VALUES ('9Ce7MH04','00010003','00010003','2021-02-18','2021-02-22','test03');
-INSERT INTO `announcement` VALUES ('9Ce7MH05','00010004','00010004','2021-02-18','2021-02-22','test04');
-INSERT INTO `announcement` VALUES ('9Ce7MH06','00010005','00010005','2021-02-18','2021-02-22','test05');
-INSERT INTO `announcement` VALUES ('9Ce7MH07','00010006','00010006','2021-02-18','2021-02-22','test06');
-INSERT INTO `announcement` VALUES ('9Ce7MH08','00010007','00010007','2021-02-18','2021-02-22','test07');
-INSERT INTO `announcement` VALUES ('9Ce7MH09','00010008','00010008','2021-02-18','2021-02-22','test08');
-
+INSERT INTO `announcement` VALUES ('9Ce7MH03','00010002','00010002','2021-02-18','2021-03-03','test02');
+INSERT INTO `announcement` VALUES ('9Ce7MH04','00010003','00010003','2021-02-18','2021-03-03','test03');
+INSERT INTO `announcement` VALUES ('9Ce7MH05','00010004','00010004','2021-02-18','2021-03-03','test04');
+INSERT INTO `announcement` VALUES ('9Ce7MH06','00010005','00010005','2021-02-18','2021-03-03','test05');
+INSERT INTO `announcement` VALUES ('9Ce7MH07','00010006','00010006','2021-02-18','2021-03-03','test06');
+INSERT INTO `announcement` VALUES ('9Ce7MH08','00010007','00010007','2021-02-18','2021-03-03','test07');
+INSERT INTO `announcement` VALUES ('9Ce7MH09','00010008','00010008','2021-02-18','2021-03-03','test08');
 
 /*----clockin 报工---------------------------------------------------*/
 

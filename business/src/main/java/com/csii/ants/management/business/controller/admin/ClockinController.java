@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 /**
  * @author ZxM
  * @date 2021/2/25
- * @Description:报工模块
+ * @Description:模块
  */
 
 @RestController
@@ -50,16 +50,17 @@ public class ClockinController {
         Log.info("clockinDto:{}",clockinDto);
 
         // 保存校验
+        ValidatorUtil.require(clockinDto.getId(), "ID");
+        ValidatorUtil.length(clockinDto.getId(), "ID", 1, 8);
         ValidatorUtil.require(clockinDto.getProjectname(), "项目名称");
         ValidatorUtil.length(clockinDto.getProjectname(), "项目名称", 1, 50);
         ValidatorUtil.require(clockinDto.getManhourType(), "工时类型");
         ValidatorUtil.require(clockinDto.getManhour(), "工时");
         ValidatorUtil.length(clockinDto.getManhour(), "工时", 1, 20);
-
         ValidatorUtil.length(clockinDto.getDelayed(), "延时", 1, 20);
         ValidatorUtil.require(clockinDto.getWorklog(), "工作日志");
         ValidatorUtil.length(clockinDto.getWorklog(), "工作日志", 1, 100);
-        ValidatorUtil.require(clockinDto.getStatus(), "状态");
+        ValidatorUtil.require(clockinDto.getClockinTime(), "报工时间");
 
         ResponseDto responseDto=new ResponseDto();
         clockinService.save(clockinDto);

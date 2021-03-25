@@ -39,8 +39,37 @@ public class ValidatorUtil {
             throw new ValidatorException(fieldName + "长度" + min + "~" + max + "位");
         }
     }
-    /**
-     * 邮箱校验
-     */
+//
+//    /**
+//     * 保存-时间格式校验 2021-02-28 00:00:00或者20210228 000000
+//     */
+//    public static void istime(String args) {
+//        String str = "";
+//        String pattern = "^((\\d{2}(([02468][048])|([13579][26]))[\\-]?((((0[13578])|(1[02]))[\\-]?((0[1-9])|([1-2][0-9])|(3[01])))|(((0[469])|(11))[\\-]?((0[1-9])|([1-2][0-9])|(30)))|(02[\\-]?((0[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-]?((((0[13578])|(1[02]))[\\-]?((0[1-9])|([1-2][0-9])|(3[01])))|(((0[469])|(11))[\\-]?((0[1-9])|([1-2][0-9])|(30)))|(02[\\-]?((0[1-9])|(1[0-9])|(2[0-8])))))) (((([0-1][0-9])|(2[0-3]))[\\:]?([0-5][0-9])[\\:]?((([0-5][0-9])))))$";
+//
+//        Pattern r = Pattern.compile(pattern);
+//        Matcher m = r.matcher(str);
+//        m.matches();
+//    }
+//
+//    /**
+//     * 标准时间格式 2021-02-28 00:00:00
+//     * @param datetime
+//     */
+//    public static String standardDatetime(String datetime) {
+//        if (datetime.charAt(4) != '-') {
+//            datetime = datetime.substring(0, 4) + "-" + datetime.substring(4, datetime.length());
+//        }
+//        if (datetime.charAt(7) != '-') {
+//            datetime = datetime.substring(0, 7) + "-" + datetime.substring(7, datetime.length());
+//        }
+//        if (datetime.charAt(13) != ':') {
+//            datetime = datetime.substring(0, 13) + ":" + datetime.substring(13, datetime.length());
+//        }
+//        if (datetime.charAt(16) != ':') {
+//            datetime = datetime.substring(0, 16) + ":" + datetime.substring(16, datetime.length());
+//        }
+//        return datetime;
+//    }
 
 }

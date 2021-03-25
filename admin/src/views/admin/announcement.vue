@@ -11,7 +11,9 @@
         <i class="ace-icon fa fa-refresh"></i>
         刷新
     </button>
+      &nbsp;
     </p>
+
     <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
     <!-- 表单数据 -->
@@ -109,8 +111,9 @@
     components: {Pagination},
     data:function(){
       return{
+        datetime_value:'',
         announcement:{},
-        announcements:[]
+        announcements:[],
       }
     },
     mounted: function () {
@@ -128,7 +131,8 @@
       add(){
         let _this=this;
         //模态框打开时清空上次的数据
-        _this.announcement={}
+        _this.announcement={};
+        this.datetime_value='';
         $("#form-modal").modal("show");
       },
       /**
@@ -207,7 +211,11 @@ _this.announcement).then((respond)=>{
             }
           })
         });
-      }
+      },
+      // select(announcementtitle){
+      //   let _this=this;
+      //
+      // },
     }
   }
 </script>

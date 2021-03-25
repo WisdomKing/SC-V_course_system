@@ -15,6 +15,9 @@ com.csii.ants.management.
 
 ctrl+shift+减号：收起所有节点，包括所有的子节点
 
+3.2
+0244    讲idea配置mysql
+
 打开npm:
 找到package.json，右键选择show npm scripts
 
@@ -134,11 +137,9 @@ vue也支持使用jquery ajax来请求后端接口，推荐使用vue axios
 
 报cors跨站点资源分享，属于跨域问题。同个ip的不同端口间的访问也属于跨域。前后端分离必然有跨域问题(Cross-origin resource sharing)
 
-
-
-createError.js?2d83:16 Uncaught (in promise) Error: Network Error
-
-
+1030    使用data定义组件内的变量，可用于做双向数据绑定，双向数据绑定是vue的核心功能之一
+使用this.xxx来访问组件内的变量
+http://localhost:8080/business/admin/announcement/list
 
 1523    url目前是写时的，后期会优化
 1819    是否直接访问gateway就不需要跨域配置了呢？需要再验证一下，经过验证，不论如何都是需要
@@ -151,16 +152,17 @@ createError.js?2d83:16 Uncaught (in promise) Error: Network Error
 0242    分页功能的关键字limit。从日志可以看出，改sql执行的是limit 1。相当于limit 0,1。即从第0行开始，查1条。{行号从0开始}
 0309    语句规则：调用startPage方法后，执行的第一个select语句会进行分页
 0448    分页查询功能需要两条sql，一条查总记录数（通过每页条数计算出总共有多少页），一条是查当前的记录
-
-
-
-
-
-
-
-
-
-
+0548    泛型需要熟练掌握，在写一些通用类、工具类时很好用
+0658    使用泛型的地方都可以使用object代替，但是泛型可以在编译期就发现问题，并且避免了代码中写强制类型转换
+1138    讲了业务流程
+1224    但传入的分页参数不合法时，比如0,0 程序不会报错，而是查所有记录，分页不生效
+1325    在开发完代码后，需要进行测试，特别要针对一些边界值做测试
+1406    接口请求参数传递，尽量使用post，使用get请求在URL里拼参数的话会使URL变得很长，有些浏览器或服务器会对URL长度做限制，导致请求失败。
+1546    一，编辑变量。二，为什么变量赋表达式。三，选择模板的语言。
+1602    日志输出时变量使用点位符，比如LOG.info("输出:id={},姓名={}",id,name),而不是LOG.info("输出:id="+id+",姓名="+name"")
+1656    post请求有多种参数传递，通过header里的Content-Type来标识，常见的有两种，一种是表单的方式，另一种是json[流]的方式
+1707    jquery默认是以表单的方式,vue Angular默认是用Json的方式。
+1753    要接收流的方式应该加@RequestBody
 
 5.5
 1009    $refs也是vue的一个内置的变量。根据$refs.xxx的xxx来获取子组件
@@ -406,12 +408,29 @@ vue cli多环境处理
 1026    sessionStorage和localStorage只能操作字符串，这是我们经常要放对象数据，所以要封装一下。
 1152    组件（页面）间传输数据可以用h5原生的sessionStorage和localStorage。也可以用js全局变量，也可以用vuex store，但是后两者在页面刷新时会丢失数据，所以推荐使用h5原生的。
 
+vue安装日历组件
+https://www.jianshu.com/p/8336f3f6941e
+1. npm i vue-full-calendar
+2. npm install --save moment
+3. npm install fullcalendar
+4. npm i element-ui -S
+5. npm install babel-plugin-component -D
+6. npm install vue2-datepicker --save
+7.
 
 
+可能的参考
+https://www.helloweba.net/javascript/446.html
+https://blog.csdn.net/weixin_43023873/article/details/91850497
+https://www.jq22.com/yanshi11975
+https://github.com/zwhGithub/vue-calendar
 
+var和let的区别
+https://www.cnblogs.com/caizhou520/p/14314356.html
 
+11.1
 
-
+12.1
 
 13.1网站开发
 0022    采用代码走读的方式
@@ -419,14 +438,14 @@ vue cli多环境处理
 
 13.2
 
+14.1
 
 
 
+16.1
+0136    修改负载均衡问题。后续介绍生产发布时，会将eureak换成nacos，既是注册中心又是配置中心，解决不同环境试验不同配置。开发
 
-
-
-
-
+jwt
 
 
 

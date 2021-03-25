@@ -188,7 +188,7 @@
         // 保存校验，非空和长度
         if (1 != 1
           || !Validator.require(_this.askforleave.jobNum, "工号")
-          || !Validator.length(_this.askforleave.jobNum, "工号", 1, 5)
+          || !Validator.length(_this.askforleave.jobNum, "工号", 5, 5)
           || !Validator.require(_this.askforleave.leavetype, "请假类型")
           || !Validator.require(_this.askforleave.leavetimebengin, "请假时间开始")
           || !Validator.require(_this.askforleave.leavetimeending, "请假时间结束")

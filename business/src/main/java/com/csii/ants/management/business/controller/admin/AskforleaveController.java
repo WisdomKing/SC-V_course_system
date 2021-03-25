@@ -51,9 +51,7 @@ public class AskforleaveController {
 
         // 保存校验
         ValidatorUtil.require(askforleaveDto.getJobNum(), "工号");
-        //对于数字的，因为freemark自身的原因，使用"field.length"会将"2000"变成"2,000"
-        //,应该使用"field.length?c",小写的"c"的意思是将数值转成字符串的一个函数
-        ValidatorUtil.length(askforleaveDto.getJobNum(), "工号", 1, 5);
+        ValidatorUtil.length(askforleaveDto.getJobNum(), "工号", 5, 5);
         ValidatorUtil.require(askforleaveDto.getLeavetype(), "请假类型");
         ValidatorUtil.require(askforleaveDto.getLeavetimebengin(), "请假时间开始");
         ValidatorUtil.require(askforleaveDto.getLeavetimeending(), "请假时间结束");
