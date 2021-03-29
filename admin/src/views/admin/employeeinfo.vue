@@ -119,7 +119,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">企业邮箱</label>
                   <div class="col-sm-10">
-                    <input v-model="employeeinfo.companyemail" class="form-control" placeholder="企业邮箱">
+                    <input v-model="employeeinfo.companyemail" class="form-control" placeholder="企业邮箱" >
                   </div>
                 </div>
                 <div class="form-group">

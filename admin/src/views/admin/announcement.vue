@@ -140,6 +140,7 @@
        */
       edit(announcement){
         let _this=this;
+        this.datetime_value='';
         //将数据带到模态框里
         _this.announcement=$.extend({},announcement);
         $("#form-modal").modal("show");

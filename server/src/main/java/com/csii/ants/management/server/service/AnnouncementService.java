@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * @author ZxM
  * @date 2021/2/19
@@ -36,6 +37,8 @@ public class AnnouncementService {
         PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
 
         AnnouncementExample announcementExample = new AnnouncementExample();
+        //如果表里有sort这个字段就感觉sort来排序
+
         List<Announcement> announcementList = announcementMapper.selectByExample(announcementExample);
 
         PageInfo<Announcement> pageInfo=new PageInfo<>(announcementList);
@@ -60,12 +63,8 @@ public class AnnouncementService {
      * @param announcementDto
      */
     public void save(AnnouncementDto announcementDto){
-//        Announcement announcement = new Announcement();
-//        BeanUtils.copyProperties(announcementDto,announcement);
-//        announcementMapper.insert(announcement);
-        /* StringUtils.isEmpty在Spring5.3之后被弃用 */
+
         Announcement announcement= CopyUtil.copy(announcementDto,Announcement.class);
-//        if(announcementDto.getId()== null && announcementDto.getId().equals("")){
         if (StringUtils.isEmpty(announcementDto.getId())) {
             this.insert(announcement);
         }else {

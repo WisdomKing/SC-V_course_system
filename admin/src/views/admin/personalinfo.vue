@@ -236,12 +236,15 @@
                     <input v-model="personalinfo.emergencycontactname" class="form-control" placeholder="紧急联系人姓名">
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label class="col-sm-2 control-label">紧急联系人电话</label>
                   <div class="col-sm-10">
-                    <input v-model="personalinfo.emergencycontacttel" class="form-control" placeholder="紧急联系人电话">
+                    <input v-model="personalinfo.emergencycontacttel" class="form-control" placeholder="紧急联系人电话" :role="phone">
                   </div>
                 </div>
+
+
             </form>
           </div>
           <div class="modal-footer">
@@ -256,10 +259,12 @@
 
 <script>
   import Pagination from "../../components/pagination";
+  import ElementUI from "element-ui";
   export default {
     name: 'business-personalinfo',
-    components: {Pagination},
+    components: {Pagination,ElementUI},
     data:function(){
+
       return{
         personalinfo:{},
         personalinfos:[],
@@ -269,7 +274,10 @@
         MARITAL_STATUS,
         POLITICAL_OUTLOOK,
         PROVINCE,
-      }
+        //
+
+        //
+      };
     },
     mounted: function () {
       let _this=this;

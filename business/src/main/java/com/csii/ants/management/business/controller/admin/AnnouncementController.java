@@ -13,8 +13,8 @@ import javax.annotation.Resource;
 
 /**
  * @author ZxM
- * @date 2021/2/19
- * @Description:公告模块
+ * @date 2021/2/25
+ * @Description:模块
  */
 
 @RestController
@@ -50,19 +50,18 @@ public class AnnouncementController {
         Log.info("announcementDto:{}",announcementDto);
 
         // 保存校验
+        ValidatorUtil.require(announcementDto.getId(), "ID");
+        ValidatorUtil.length(announcementDto.getId(), "ID", 1, 8);
         ValidatorUtil.require(announcementDto.getAnnouncementtitle(), "公告标题");
         ValidatorUtil.length(announcementDto.getAnnouncementtitle(), "公告标题", 1, 20);
         ValidatorUtil.require(announcementDto.getAnnouncementtype(), "公告类型");
         ValidatorUtil.length(announcementDto.getAnnouncementtype(), "公告类型", 1, 20);
-
         ValidatorUtil.require(announcementDto.getBegintime(), "开始时间");
-        ValidatorUtil.length(announcementDto.getBegintime(), "开始时间", 1, 20);
-
-//        ValidatorUtil.require(announcementDto.getEndingtime(), "结束时间");
-//        ValidatorUtil.length(announcementDto.getEndingtime(), "结束时间", 1, 10);
-
+        ValidatorUtil.length(announcementDto.getBegintime(), "开始时间", 1, 10);
+        ValidatorUtil.require(announcementDto.getEndingtime(), "结束时间");
+        ValidatorUtil.length(announcementDto.getEndingtime(), "结束时间", 1, 10);
         ValidatorUtil.require(announcementDto.getDetails(), "详情");
-        ValidatorUtil.length(announcementDto.getDetails(), "详情", 1, 50);
+        ValidatorUtil.length(announcementDto.getDetails(), "详情", 1, 100);
 
         ResponseDto responseDto=new ResponseDto();
         announcementService.save(announcementDto);
