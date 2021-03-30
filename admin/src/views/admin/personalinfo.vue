@@ -2,15 +2,15 @@
   <div>
     <!-- 刷新按钮 -->
     <p>
-    <button v-on:click="add()" class="btn btn-white btn-default btn-round">
-      <i class="ace-icon fa fa-edit"></i>
-      新增
-    </button>
+      <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-edit"></i>
+        新增
+      </button>
       &nbsp;
-    <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
-      <i class="ace-icon fa fa-refresh"></i>
-      刷新
-    </button>
+      <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-refresh"></i>
+        刷新
+      </button>
     </p>
     <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
@@ -88,164 +88,150 @@
     </table>
 
     <!-- 模态框 -->
-    <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
+    <div id="form-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">个人信息</h4>
+            <h4 class="modal-title">个人信息-请认真核对个人信息</h4>
           </div>
           <div class="modal-body">
             <!-- 表单 -->
-            <form class="form-horizontal">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">姓名</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.name" class="form-control" placeholder="姓名">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">性别</label>
-                  <div class="col-sm-10">
-                    <select v-model="personalinfo.sex" class="form-control">
-                      <option v-for="o in SEX" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">民族</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.ethnicity" class="form-control" placeholder="民族">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">身份证号</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.idnum" class="form-control" placeholder="身份证号">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">政治面貌</label>
-                  <div class="col-sm-10">
-                    <select v-model="personalinfo.politicaloutlook" class="form-control">
-                      <option v-for="o in POLITICAL_OUTLOOK" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">出生日期</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.dateofbirth" class="form-control" placeholder="出生日期">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">个人邮箱</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.personalemail" class="form-control" placeholder="个人邮箱">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">户口性质</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.regisType" class="form-control" placeholder="户口性质">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">户口所在地</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.regisResidence" class="form-control" placeholder="户口所在地">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">婚否</label>
-                  <div class="col-sm-10">
-                    <select v-model="personalinfo.maritalstatus" class="form-control">
-                      <option v-for="o in MARITAL_STATUS" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">毕业院校</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.gradUnversity" class="form-control" placeholder="毕业院校">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">毕业时间</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.gradTime" class="form-control" placeholder="毕业时间">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">专业</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.speciality" class="form-control" placeholder="专业">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">学历</label>
-                  <div class="col-sm-10">
-                    <select v-model="personalinfo.degree" class="form-control">
-                      <option v-for="o in DEGREE" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">籍贯</label>
-                  <div class="col-sm-10">
-                    <select v-model="personalinfo.nativeplace" class="form-control">
-                      <option v-for="o in PROVINCE" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">现住址</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.presentaddress" class="form-control" placeholder="现住址">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">手机号</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.telephone" class="form-control" placeholder="手机号">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">qq号</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.qqnum" class="form-control" placeholder="qq号">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">微信</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.wechat" class="form-control" placeholder="微信">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">紧急联系人关系</label>
-                  <div class="col-sm-10">
-                    <select v-model="personalinfo.emergencycontactrel" class="form-control">
-                      <option v-for="o in EMERGENCY_CONTACT_REL" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">紧急联系人姓名</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.emergencycontactname" class="form-control" placeholder="紧急联系人姓名">
-                  </div>
-                </div>
+            <el-form ref="personalinfo" :rules="rules" :model="personalinfo" label-width="120px">
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">紧急联系人电话</label>
-                  <div class="col-sm-10">
-                    <input v-model="personalinfo.emergencycontacttel" class="form-control" placeholder="紧急联系人电话" :role="phone">
-                  </div>
-                </div>
+              <el-form-item label="姓名" prop="name">
+                <el-input v-model="personalinfo.name"></el-input>
+              </el-form-item>
 
+              <el-form-item label="性别" prop="sex">
+                <el-select v-model="personalinfo.sex" placeholder="请选择性别">
+                  <el-option
+                    v-for="o in SEX"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
 
-            </form>
+              <el-form-item label="民族" prop="ethnicity">
+                <el-input v-model="personalinfo.ethnicity"></el-input>
+              </el-form-item>
+
+              <el-form-item label="身份证号" prop="idnum">
+                <el-input
+                  v-model="personalinfo.idnum"
+                  onkeyup="this.value=this.value.replace(/[^\X0-9]/g, '')">
+                </el-input>
+              </el-form-item>
+
+              <el-form-item label="政治面貌">
+                <el-select v-model="personalinfo.politicaloutlook" placeholder="请选择政治面貌">
+                  <el-option
+                    v-for="o in POLITICAL_OUTLOOK"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="出生日期">
+                <el-input v-model="personalinfo.dateofbirth"></el-input>
+              </el-form-item>
+
+              <el-form-item label="个人邮箱" prop="personalemail">
+                <el-input v-model="personalinfo.personalemail"></el-input>
+              </el-form-item>
+
+              <el-form-item label="户口性质">
+                <el-input v-model="personalinfo.regisType"></el-input>
+              </el-form-item>
+
+              <el-form-item label="户口所在地">
+                <el-input v-model="personalinfo.regisResidence"></el-input>
+              </el-form-item>
+
+              <el-form-item label="婚否">
+                <el-select v-model="personalinfo.maritalstatus" placeholder="请选择婚否">
+                  <el-option
+                    v-for="o in MARITAL_STATUS"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="毕业院校">
+                <el-input v-model="personalinfo.gradUnversity"></el-input>
+              </el-form-item>
+
+              <el-form-item label="毕业时间">
+                <el-input v-model="personalinfo.gradTime"></el-input>
+              </el-form-item>
+
+              <el-form-item label="专业">
+                <el-input v-model="personalinfo.speciality"></el-input>
+              </el-form-item>
+
+              <el-form-item label="学历">
+                <el-select v-model="personalinfo.degree" placeholder="请选择学历">
+                  <el-option
+                    v-for="o in DEGREE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="籍贯" >
+                <el-select v-model="personalinfo.nativeplace" filterable placeholder="请选择籍贯">
+                  <el-option
+                    v-for="o in PROVINCE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="现住址">
+                <el-input v-model="personalinfo.presentaddress"></el-input>
+              </el-form-item>
+
+              <el-form-item label="手机号" prop="telephone">
+                <el-input v-model="personalinfo.telephone"></el-input>
+              </el-form-item>
+
+              <el-form-item label="qq号">
+                <el-input v-model="personalinfo.qqnum"></el-input>
+              </el-form-item>
+
+              <el-form-item label="微信">
+                <el-input v-model="personalinfo.wechat"></el-input>
+              </el-form-item>
+
+              <el-form-item label="紧急联系人关系">
+                <el-select v-model="personalinfo.emergencycontactrel" placeholder="请选择">
+                  <el-option
+                    v-for="o in EMERGENCY_CONTACT_REL"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="紧急联系人姓名">
+                <el-input v-model="personalinfo.emergencycontactname"></el-input>
+              </el-form-item>
+
+              <el-form-item label="紧急联系人电话">
+                <el-input v-model="personalinfo.emergencycontacttel"></el-input>
+              </el-form-item>
+            </el-form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -263,9 +249,93 @@
   export default {
     name: 'business-personalinfo',
     components: {Pagination,ElementUI},
-    data:function(){
+    data:function() {
+      //
+      var checkIdnum = (rule, value, callback) => {
+        if (!value) {
+          return callback(new Error("身份证号不能为空"));
+        }
+        if (!/(^\d{15}$)|(^\d{17}(\d|X|x)$)/.test(value)) {
+          callback(new Error("你输入的身份证长度或格式错误"));
+        }
+        //身份证城市
+        var aCity = {
+          11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古",
+          21: "辽宁", 22: "吉林", 23: "黑龙江",
+          31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东",
+          41: "河南", 42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南",
+          50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏",
+          61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "新疆",
+          71: "台湾", 81: "香港", 82: "澳门", 91: "国外"
+        };
+        if (!aCity[parseInt(value.substr(0, 2))]) {
+          callback(new Error("你的身份证地区非法"));
+        }
+        // 出生日期验证
+        var sBirthday = (
+            value.substr(6, 4) +
+            "-" +
+            Number(value.substr(10, 2)) +
+            "-" +
+            Number(value.substr(12, 2))
+          ).replace(/-/g, "/"),
+          d = new Date(sBirthday);
+        if (
+          sBirthday !=
+          d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate()
+        ) {
+          callback(new Error("身份证上的出生日期非法"));
+        }
 
-      return{
+        // 身份证号码校验
+        var sum = 0,
+          weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],
+          codes = "10X98765432";
+        for (var i = 0; i < value.length - 1; i++) {
+          sum += value[i] * weights[i];
+        }
+        var last = codes[sum % 11]; //计算出来的最后一位身份证号码
+        if (value[value.length - 1] != last) {
+          callback(new Error("你输入的身份证号非法"));
+        }
+        callback();
+      };
+
+      const checkPhone = (rule, value, callback) => {
+        const phoneReg = /^1[3|4|5|7|8|9][0-9]{9}$/
+        if (!value) {
+          return callback(new Error('电话号码不能为空'))
+        }
+        setTimeout(() => {
+          // Number.isInteger是es6验证数字是否为整数的方法,但是我实际用的时候输入的数字总是识别成字符串
+          // 所以我就在前面加了一个+实现隐式转换
+          if (!Number.isInteger(+value)) {
+            callback(new Error('请输入数字值'))
+          } else {
+            if (phoneReg.test(value)) {
+              callback()
+            } else {
+              callback(new Error('电话号码格式/长度不正确'))
+            }
+          }
+        }, 100)
+      }
+      const checkEmail = (rule, value, callback) => {
+        const mailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+        if (!value) {
+          return callback(new Error('邮箱不能为空'))
+        }
+        setTimeout(() => {
+          if (mailReg.test(value)) {
+            callback()
+          } else {
+            callback(new Error('请输入正确的邮箱格式'))
+          }
+        }, 100)
+      };
+//
+
+      return {
         personalinfo:{},
         personalinfos:[],
         SEX,
@@ -274,9 +344,27 @@
         MARITAL_STATUS,
         POLITICAL_OUTLOOK,
         PROVINCE,
-        //
+        rules: {
+          telephone: [
+            { validator: checkPhone, trigger: 'blur' ,required: true,}
+          ],
+          personalemail: [
+            { validator: checkEmail, trigger: 'blur' ,required: true,}
+          ],
+          name: [
+            { trigger: 'blur' ,required: true,}
+          ],
+          sex: [
+            { trigger: 'blur' ,required: true,}
+          ],
+          ethnicity: [
+            { trigger: 'blur' ,required: true,}
+          ],
+          idnum: [
+            { validator : checkIdnum, trigger: 'blur' ,required: true,}
+          ],
+        },
 
-        //
       };
     },
     mounted: function () {
@@ -284,7 +372,7 @@
       //自定义初始每页5条
       _this.$refs.pagination.size=5;
       _this.list();
-      },
+    },
     methods: {
       /**
        * 点击新增
@@ -300,6 +388,7 @@
        */
       edit(personalinfo){
         let _this=this;
+        // this.relation=_this.personalinfo.emergencycontactrel;
         //将数据带到模态框里
         _this.personalinfo=$.extend({},personalinfo);
         $("#form-modal").modal("show");
@@ -326,6 +415,7 @@
        */
       save(page){
         let _this=this;
+
         // 保存校验，非空和长度
         if (1 != 1
           || !Validator.require(_this.personalinfo.name, "姓名")
@@ -333,8 +423,10 @@
           || !Validator.require(_this.personalinfo.sex, "性别")
           || !Validator.require(_this.personalinfo.ethnicity, "民族")
           || !Validator.length(_this.personalinfo.ethnicity, "民族", 1, 20)
+
           || !Validator.require(_this.personalinfo.idnum, "身份证号")
           || !Validator.length(_this.personalinfo.idnum, "身份证号", 1, 18)
+
           || !Validator.length(_this.personalinfo.dateofbirth, "出生日期", 1, 20)
           || !Validator.require(_this.personalinfo.personalemail, "个人邮箱")
           || !Validator.length(_this.personalinfo.personalemail, "个人邮箱", 1, 50)
@@ -357,7 +449,7 @@
 
         Loading.show();
         _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/personalinfo/save',
-_this.personalinfo).then((respond)=>{
+          _this.personalinfo).then((respond)=>{
           Loading.hide();
           // console.log("保存个人信息列表结果:",respond);
           let resp=respond.data;
@@ -388,7 +480,7 @@ _this.personalinfo).then((respond)=>{
             }
           })
         });
-      }
+      },
     }
   }
 </script>

@@ -10,7 +10,7 @@ public enum EmergencyContactRelEnum {
     Spouse("S","伴侣"),
     Children("C","子女"),
     Otherrelatives("O","其他亲戚"),
-    Friend("P","朋友");
+    Friend("F","朋友");
 
     private String code;
 

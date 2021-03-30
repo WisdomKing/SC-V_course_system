@@ -145,7 +145,7 @@ CREATE TABLE `personalinfo`  (
     `telephone` varchar(18) NOT NULL COMMENT '手机号',
     `qqNum` varchar(20)  COMMENT 'qq号',
     `wechat` varchar(20)  COMMENT '微信',
-    `emergencyContactRel` char(1)  COMMENT '紧急联系人关系|Father("F","父母"),Spouse("S","伴侣"),Children("C","子女"),Otherrelatives("O","其他亲戚"),Friend("P","朋友")',
+    `emergencyContactRel` char(1)  COMMENT '紧急联系人关系|Father("F","父母"),Spouse("S","伴侣"),Children("C","子女"),Otherrelatives("O","其他亲戚"),Friend("F","朋友")',
     `emergencyContactName` varchar(20)  COMMENT '紧急联系人姓名',
     `emergencyContactTel` varchar(18)  COMMENT '紧急联系人电话',
     primary key (`id`)

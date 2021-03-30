@@ -19,6 +19,7 @@ Validator = {
     } else {
       return true
     }
-  }
+  },
+
 };
 
