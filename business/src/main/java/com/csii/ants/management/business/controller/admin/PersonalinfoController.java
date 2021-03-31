@@ -54,7 +54,6 @@ public class PersonalinfoController {
         ValidatorUtil.length(personalinfoDto.getName(), "姓名", 1, 20);
         ValidatorUtil.require(personalinfoDto.getSex(), "性别");
         ValidatorUtil.require(personalinfoDto.getEthnicity(), "民族");
-        ValidatorUtil.length(personalinfoDto.getEthnicity(), "民族", 1, 20);
         ValidatorUtil.require(personalinfoDto.getIdnum(), "身份证号");
         ValidatorUtil.length(personalinfoDto.getIdnum(), "身份证号", 1, 18);
         ValidatorUtil.length(personalinfoDto.getDateofbirth(), "出生日期", 1, 20);

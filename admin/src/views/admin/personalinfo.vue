@@ -49,7 +49,7 @@
         <td>{{personalinfo.name}}</td>
         <td>{{SEX | optionKV(personalinfo.sex)}}</td>
 
-        <td>{{personalinfo.ethnicity}}</td>
+        <td>{{NATIONALITY | optionKV(personalinfo.ethnicity)}}</td>
         <td>{{personalinfo.idnum}}</td>
         <td>{{POLITICAL_OUTLOOK | optionKV(personalinfo.politicaloutlook)}}</td>
 
@@ -114,8 +114,19 @@
                 </el-select>
               </el-form-item>
 
+<!--              <el-form-item label="民族" prop="ethnicity">-->
+<!--                <el-input v-model="personalinfo.ethnicity"></el-input>-->
+<!--              </el-form-item>-->
+
               <el-form-item label="民族" prop="ethnicity">
-                <el-input v-model="personalinfo.ethnicity"></el-input>
+                <el-select v-model="personalinfo.ethnicity" placeholder="请选择">
+                  <el-option
+                    v-for="o in NATIONALITY"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
               </el-form-item>
 
               <el-form-item label="身份证号" prop="idnum">
@@ -338,12 +349,13 @@
       return {
         personalinfo:{},
         personalinfos:[],
-        SEX,
-        EMERGENCY_CONTACT_REL,
-        DEGREE,
-        MARITAL_STATUS,
-        POLITICAL_OUTLOOK,
-        PROVINCE,
+        SEX:SEX,
+        EMERGENCY_CONTACT_REL:EMERGENCY_CONTACT_REL,
+        DEGREE:DEGREE,
+        MARITAL_STATUS:MARITAL_STATUS,
+        POLITICAL_OUTLOOK:POLITICAL_OUTLOOK,
+        PROVINCE:PROVINCE,
+        NATIONALITY:NATIONALITY,
         rules: {
           telephone: [
             { validator: checkPhone, trigger: 'blur' ,required: true,}

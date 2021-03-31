@@ -5,7 +5,7 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sex" jdbcType="CHAR" property="sex" />
-    <result column="ethnicity" jdbcType="VARCHAR" property="ethnicity" />
+    <result column="ethnicity" jdbcType="CHAR" property="ethnicity" />
     <result column="idnum" jdbcType="VARCHAR" property="idnum" />
     <result column="politicalOutlook" jdbcType="CHAR" property="politicaloutlook" />
     <result column="dateOfBirth" jdbcType="VARCHAR" property="dateofbirth" />
@@ -129,7 +129,7 @@
       presentAddress, telephone, qqNum, 
       wechat, emergencyContactRel, emergencyContactName, 
       emergencyContactTel)
-    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{ethnicity,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{ethnicity,jdbcType=CHAR}, 
       #{idnum,jdbcType=VARCHAR}, #{politicaloutlook,jdbcType=CHAR}, #{dateofbirth,jdbcType=VARCHAR}, 
       #{personalemail,jdbcType=VARCHAR}, #{regisType,jdbcType=VARCHAR}, #{regisResidence,jdbcType=VARCHAR}, 
       #{maritalstatus,jdbcType=CHAR}, #{gradUnversity,jdbcType=VARCHAR}, #{gradTime,jdbcType=VARCHAR}, 
@@ -222,7 +222,7 @@
         #{sex,jdbcType=CHAR},
       </if>
       <if test="ethnicity != null">
-        #{ethnicity,jdbcType=VARCHAR},
+        #{ethnicity,jdbcType=CHAR},
       </if>
       <if test="idnum != null">
         #{idnum,jdbcType=VARCHAR},
@@ -302,7 +302,7 @@
         sex = #{record.sex,jdbcType=CHAR},
       </if>
       <if test="record.ethnicity != null">
-        ethnicity = #{record.ethnicity,jdbcType=VARCHAR},
+        ethnicity = #{record.ethnicity,jdbcType=CHAR},
       </if>
       <if test="record.idnum != null">
         idnum = #{record.idnum,jdbcType=VARCHAR},
@@ -371,7 +371,7 @@
     set id = #{record.id,jdbcType=VARCHAR},
       `name` = #{record.name,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=CHAR},
-      ethnicity = #{record.ethnicity,jdbcType=VARCHAR},
+      ethnicity = #{record.ethnicity,jdbcType=CHAR},
       idnum = #{record.idnum,jdbcType=VARCHAR},
       politicalOutlook = #{record.politicaloutlook,jdbcType=CHAR},
       dateOfBirth = #{record.dateofbirth,jdbcType=VARCHAR},
@@ -405,7 +405,7 @@
         sex = #{sex,jdbcType=CHAR},
       </if>
       <if test="ethnicity != null">
-        ethnicity = #{ethnicity,jdbcType=VARCHAR},
+        ethnicity = #{ethnicity,jdbcType=CHAR},
       </if>
       <if test="idnum != null">
         idnum = #{idnum,jdbcType=VARCHAR},
@@ -471,7 +471,7 @@
     update personalinfo
     set `name` = #{name,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=CHAR},
-      ethnicity = #{ethnicity,jdbcType=VARCHAR},
+      ethnicity = #{ethnicity,jdbcType=CHAR},
       idnum = #{idnum,jdbcType=VARCHAR},
       politicalOutlook = #{politicaloutlook,jdbcType=CHAR},
       dateOfBirth = #{dateofbirth,jdbcType=VARCHAR},

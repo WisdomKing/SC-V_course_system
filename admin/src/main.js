@@ -4,9 +4,14 @@ import App from './app.vue'
 import router from './router'
 import axios from 'axios'
 import filter from './filter/filter'
+import FullCalendar from 'vue-full-calendar'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.config.productionTip = false
-Vue.prototype.$ajax=axios
+Vue.config.productionTip = false;
+Vue.prototype.$ajax=axios;
+Vue.use(FullCalendar);
+Vue.use(ElementUI);
 
 //axios拦截器
 axios.interceptors.request.use(function (config) {

@@ -64,10 +64,10 @@
         <td>{{employeeinfo.contractsigning}}</td>
         <td>{{employeeinfo.contractending}}</td>
         <td>{{employeeinfo.probationexpDate}}</td>
-        <td>{{employeeinfo.employeestatus}}</td>
+        <td>{{EMPLOYEE_STATUS | optionKV(employeeinfo.employeestatus)}}</td>
         <td>{{employeeinfo.contractrenew}}</td>
         <td>{{BASE | optionKV(employeeinfo.welfarearea)}}</td>
-        <td>{{employeeinfo.myrole}}</td>
+        <td>{{ROLE | optionKV(employeeinfo.myrole)}}</td>
         <td>{{employeeinfo.employeeccc}}</td>
         <td>{{employeeinfo.comment}}</td>
         <td>
@@ -95,154 +95,179 @@
           </div>
           <div class="modal-body">
             <!-- 表单 -->
-            <form class="form-horizontal">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">姓名</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.name" class="form-control" placeholder="姓名">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">工号</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.jobNum" class="form-control" placeholder="工号">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">归属公司</label>
-                  <div class="col-sm-10">
-                    <select v-model="employeeinfo.base" class="form-control">
-                      <option v-for="o in BASE" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">企业邮箱</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.companyemail" class="form-control" placeholder="企业邮箱" >
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">所属部门</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.dependenceDep" class="form-control" placeholder="所属部门">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">上级部门</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.superiordep" class="form-control" placeholder="上级部门">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">职位</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.position" class="form-control" placeholder="职位">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">部门总监</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.depDirector" class="form-control" placeholder="部门总监">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">入职时间</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.entryTime" class="form-control" placeholder="入职时间">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">入职方式</label>
-                  <div class="col-sm-10">
-                    <select v-model="employeeinfo.entryType" class="form-control">
-                      <option v-for="o in ENTRY_TYPE" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">入职地点</label>
-                  <div class="col-sm-10">
-                    <select v-model="employeeinfo.entryAddress" class="form-control">
-                      <option v-for="o in BASE" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">实习起始日</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.internshipbegin" class="form-control" placeholder="实习起始日">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">实习到期日</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.internshipending" class="form-control" placeholder="实习到期日">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">转正日期</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.conversionregTime" class="form-control" placeholder="转正日期">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">合同签订日</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.contractsigning" class="form-control" placeholder="合同签订日">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">合同截止日</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.contractending" class="form-control" placeholder="合同截止日">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">试用到期日</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.probationexpDate" class="form-control" placeholder="试用到期日">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">人员状态</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.employeestatus" class="form-control" placeholder="人员状态">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">合同续签</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.contractrenew" class="form-control" placeholder="合同续签">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">福利地区</label>
-                  <div class="col-sm-10">
-                    <select v-model="employeeinfo.welfarearea" class="form-control">
-                      <option v-for="o in BASE" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">我的角色</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.myrole" class="form-control" placeholder="我的角色">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">员工CCC</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.employeeccc" class="form-control" placeholder="员工CCC">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">备注</label>
-                  <div class="col-sm-10">
-                    <input v-model="employeeinfo.comment" class="form-control" placeholder="备注">
-                  </div>
-                </div>
-            </form>
+            <el-form ref="employeeinfo" :rules="rules" :model="employeeinfo" label-width="120px">
+
+              <el-form-item label="姓名">
+                <el-input v-model="employeeinfo.name"></el-input>
+              </el-form-item>
+
+              <el-form-item label="工号">
+                <el-input v-model="employeeinfo.jobNum"></el-input>
+              </el-form-item>
+
+              <el-form-item label="归属公司" >
+                <el-select v-model="employeeinfo.base" filterable placeholder="请选择归属公司">
+                  <el-option
+                    v-for="o in BASE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="企业邮箱" prop="companyemail">
+                <el-input v-model="employeeinfo.companyemail"></el-input>
+              </el-form-item>
+
+              <el-form-item label="所属部门">
+                <el-input v-model="employeeinfo.dependenceDep"></el-input>
+              </el-form-item>
+
+              <el-form-item label="上级部门">
+                <el-input v-model="employeeinfo.superiordep"></el-input>
+              </el-form-item>
+
+              <el-form-item label="职位">
+                <el-input v-model="employeeinfo.position"></el-input>
+              </el-form-item>
+
+              <el-form-item label="部门总监">
+                <el-input v-model="employeeinfo.depDirector"></el-input>
+              </el-form-item>
+
+              <el-form-item label="入职时间">
+                <el-input v-model="employeeinfo.entryTime"></el-input>
+              </el-form-item>
+
+              <el-form-item label="入职方式" >
+                <el-select v-model="employeeinfo.entryType" filterable placeholder="请选择入职方式">
+                  <el-option
+                    v-for="o in ENTRY_TYPE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="入职地点" >
+                <el-select v-model="employeeinfo.entryAddress" filterable placeholder="请选择入职地点">
+                  <el-option
+                    v-for="o in BASE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+<!--              <el-form-item label="实习起始日">-->
+<!--                <el-input v-model="employeeinfo.internshipbegin"></el-input>-->
+<!--              </el-form-item>-->
+
+<!--              <el-form-item label="实习到期日">-->
+<!--                <el-input v-model="employeeinfo.internshipending"></el-input>-->
+<!--              </el-form-item>-->
+
+              <el-form-item label="实习起止日">
+                <el-date-picker
+                  v-model="internship_date"
+                  type="daterange"
+                  value-format="yyyy-MM-dd HH:mm:ss"
+                  range-separator="-"
+                  :editable="false"
+                  start-placeholder="实习起始日"
+                  end-placeholder="实习到期日">
+                </el-date-picker>
+              </el-form-item>
+
+              <el-form-item label="转正日期">
+                <el-input v-model="employeeinfo.conversionregTime"></el-input>
+              </el-form-item>
+
+<!--              <el-date-picker-->
+<!--                type="dates"-->
+<!--                value-format="yyyy-MM-dd"-->
+<!--                v-model="contract_date"-->
+<!--                placeholder="合同起止日">-->
+<!--              </el-date-picker>-->
+              <el-form-item label="合同起止日">
+                <el-date-picker
+                  v-model="contract_date"
+                  type="daterange"
+                  value-format="yyyy-MM-dd HH:mm:ss"
+                  range-separator="-"
+                  :editable="false"
+                  start-placeholder="合同签订日"
+                  end-placeholder="合同截止日">
+                </el-date-picker>
+              </el-form-item>
+
+<!--              <el-form-item label="合同签订日">-->
+<!--                <el-input v-model="employeeinfo.contractsigning"></el-input>-->
+<!--              </el-form-item>-->
+
+<!--              <el-form-item label="合同截止日">-->
+<!--                <el-input v-model="employeeinfo.contractending"></el-input>-->
+<!--              </el-form-item>-->
+
+              <el-form-item label="试用到期日">
+                <el-input v-model="employeeinfo.probationexpDate"></el-input>
+              </el-form-item>
+
+<!--              <el-form-item label="人员状态">-->
+<!--                <el-input v-model="employeeinfo.employeestatus"></el-input>-->
+<!--              </el-form-item>-->
+              <el-form-item label="人员状态" >
+                <el-select v-model="employeeinfo.employeestatus" filterable placeholder="请选择人员状态">
+                  <el-option
+                    v-for="o in EMPLOYEE_STATUS"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="合同续签">
+                <el-input v-model="employeeinfo.contractrenew"></el-input>
+              </el-form-item>
+
+              <el-form-item label="福利地区" >
+                <el-select v-model="employeeinfo.welfarearea" filterable placeholder="请选择福利地区">
+                  <el-option
+                    v-for="o in BASE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+<!--              <el-form-item label="我的角色">-->
+<!--                <el-input v-model="employeeinfo.myrole"></el-input>-->
+<!--              </el-form-item>-->
+
+                <el-form-item label="我的角色" >
+                  <el-select v-model="employeeinfo.myrole" filterable placeholder="请选择角色">
+                    <el-option
+                      v-for="o in ROLE"
+                      :key="o.value"
+                      :label="o.value"
+                      :value="o.key">
+                    </el-option>
+                  </el-select>
+                </el-form-item>
+
+              <el-form-item label="员工CCC">
+                <el-input v-model="employeeinfo.employeeccc"></el-input>
+              </el-form-item>
+
+              <el-form-item label="备注">
+                <el-input v-model="employeeinfo.comment"></el-input>
+              </el-form-item>
+            </el-form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -256,15 +281,39 @@
 
 <script>
   import Pagination from "../../components/pagination";
+  import ElementUI from "element-ui";
   export default {
     name: 'business-employeeinfo',
-    components: {Pagination},
+    components: {Pagination,ElementUI},
     data:function(){
+
+      const checkEmail = (rule, value, callback) => {
+        const mailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+        if (!value) {
+          return callback(new Error('邮箱不能为空'))
+        }
+        setTimeout(() => {
+          if (mailReg.test(value)) {
+            callback()
+          } else {
+            callback(new Error('请输入正确的邮箱格式'))
+          }
+        }, 100)
+      };
       return{
         employeeinfo:{},
         employeeinfos:[],
-        BASE,
-        ENTRY_TYPE,
+        contract_date:'',
+        internship_date:'',
+        BASE:BASE,
+        ENTRY_TYPE:ENTRY_TYPE,
+        ROLE:ROLE,
+        EMPLOYEE_STATUS:EMPLOYEE_STATUS,
+        rules: {
+          companyemail: [
+            { validator: checkEmail, trigger: 'blur' ,required: true,}
+          ],
+        },
       }
     },
     mounted: function () {
@@ -288,6 +337,8 @@
        */
       edit(employeeinfo){
         let _this=this;
+        this.contract_date='';
+        this.internship_date='';
         //将数据带到模态框里
         _this.employeeinfo=$.extend({},employeeinfo);
         $("#form-modal").modal("show");
@@ -314,6 +365,10 @@
        */
       save(page){
         let _this=this;
+        _this.employeeinfo.contractsigning = this.contract_date[0];
+        _this.employeeinfo.contractending = this.contract_date[1];
+        _this.employeeinfo.internshipbegin = this.internship_date[0];
+        _this.employeeinfo.internshipending = this.internship_date[1];
         // 保存校验，非空和长度
         if (1 != 1
           || !Validator.require(_this.employeeinfo.name, "姓名")

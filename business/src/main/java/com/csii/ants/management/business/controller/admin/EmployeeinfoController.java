@@ -65,10 +65,8 @@ public class EmployeeinfoController {
         ValidatorUtil.length(employeeinfoDto.getDepDirector(), "部门总监", 1, 20);
         ValidatorUtil.require(employeeinfoDto.getEntryTime(), "入职时间");
         ValidatorUtil.require(employeeinfoDto.getEntryAddress(), "入职地点");
-        ValidatorUtil.length(employeeinfoDto.getEmployeestatus(), "人员状态", 1, 20);
         ValidatorUtil.length(employeeinfoDto.getContractrenew(), "合同续签", 1, 20);
         ValidatorUtil.length(employeeinfoDto.getWelfarearea(), "福利地区", 1, 20);
-        ValidatorUtil.length(employeeinfoDto.getMyrole(), "我的角色", 1, 20);
         ValidatorUtil.length(employeeinfoDto.getEmployeeccc(), "员工CCC", 1, 20);
         ValidatorUtil.length(employeeinfoDto.getComment(), "备注", 1, 50);
 

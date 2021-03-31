@@ -18,28 +18,31 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
-        <th>工时类型</th>
+        <th>ID</th>
         <th>项目名称</th>
+        <th>工时类型</th>
         <th>工时</th>
         <th>延时</th>
         <th>工作日志</th>
         <th>状态</th>
+        <th>报工时间</th>
         <th>操作按钮</th>
       </tr>
       </thead>
 
       <tbody>
       <tr v-for="clockin in clockins">
-        <!-- “|”表示后面是一个过滤器，optionKV是过滤器名称 -->
-        <td>{{MANHOUR_TYPE | optionKV(clockin.manhourType)}}</td>
         <td>{{clockin.projectname}}</td>
+        <td>{{MANHOUR_TYPE | optionKV(clockin.manhourType)}}</td>
         <td>{{clockin.manhour}}</td>
         <td>{{clockin.delayed}}</td>
         <td>{{clockin.worklog}}</td>
         <td>{{CLOCKIN_STATUS | optionKV(clockin.status)}}</td>
+        <td>{{clockin.clockinTime}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="edit(clockin)" class="btn btn-xs btn-info">
+              <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
             <button v-on:click="del(clockin.id)" class="btn btn-xs btn-danger">
@@ -62,18 +65,18 @@
           <div class="modal-body">
             <!-- 表单 -->
             <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2 control-label">工时类型</label>
-                <div class="col-sm-10">
-                  <select v-model="clockin.manhourType" class="form-control">
-                    <option v-for="o in MANHOUR_TYPE" v-bind:value="o.key">{{o.value}}</option>
-                  </select>
-                </div>
-              </div>
                 <div class="form-group">
                   <label class="col-sm-2 control-label">项目名称</label>
                   <div class="col-sm-10">
                     <input v-model="clockin.projectname" class="form-control" placeholder="项目名称">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">工时类型</label>
+                  <div class="col-sm-10">
+                    <select v-model="clockin.manhourType" class="form-control">
+                      <option v-for="o in MANHOUR_TYPE" v-bind:value="o.key">{{o.value}}</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -102,6 +105,12 @@
                     </select>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">报工时间</label>
+                  <div class="col-sm-10">
+                    <input v-model="clockin.clockinTime" class="form-control" placeholder="报工时间">
+                  </div>
+                </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -123,9 +132,8 @@
       return{
         clockin:{},
         clockins:[],
-        //这个变量就是一个list
-        MANHOUR_TYPE:MANHOUR_TYPE,
-        CLOCKIN_STATUS:CLOCKIN_STATUS,
+        MANHOUR_TYPE,
+        CLOCKIN_STATUS,
       }
     },
     mounted: function () {
@@ -185,6 +193,7 @@
           || !Validator.length(_this.clockin.delayed, "延时", 1, 20)
           || !Validator.require(_this.clockin.worklog, "工作日志")
           || !Validator.length(_this.clockin.worklog, "工作日志", 1, 100)
+          || !Validator.require(_this.clockin.clockinTime, "报工时间")
         ) {
           return;
         }

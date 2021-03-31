@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Announcement">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="AnnouncementTitle" jdbcType="VARCHAR" property="announcementtitle" />
-    <result column="AnnouncementType" jdbcType="VARCHAR" property="announcementtype" />
+    <result column="AnnouncementType" jdbcType="CHAR" property="announcementtype" />
     <result column="BeginTime" jdbcType="VARCHAR" property="begintime" />
     <result column="EndingTime" jdbcType="VARCHAR" property="endingtime" />
     <result column="Details" jdbcType="VARCHAR" property="details" />
@@ -104,7 +104,7 @@
     insert into announcement (ID, AnnouncementTitle, AnnouncementType, 
       BeginTime, EndingTime, Details
       )
-    values (#{id,jdbcType=VARCHAR}, #{announcementtitle,jdbcType=VARCHAR}, #{announcementtype,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{announcementtitle,jdbcType=VARCHAR}, #{announcementtype,jdbcType=CHAR}, 
       #{begintime,jdbcType=VARCHAR}, #{endingtime,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR}
       )
   </insert>
@@ -138,7 +138,7 @@
         #{announcementtitle,jdbcType=VARCHAR},
       </if>
       <if test="announcementtype != null">
-        #{announcementtype,jdbcType=VARCHAR},
+        #{announcementtype,jdbcType=CHAR},
       </if>
       <if test="begintime != null">
         #{begintime,jdbcType=VARCHAR},
@@ -167,7 +167,7 @@
         AnnouncementTitle = #{record.announcementtitle,jdbcType=VARCHAR},
       </if>
       <if test="record.announcementtype != null">
-        AnnouncementType = #{record.announcementtype,jdbcType=VARCHAR},
+        AnnouncementType = #{record.announcementtype,jdbcType=CHAR},
       </if>
       <if test="record.begintime != null">
         BeginTime = #{record.begintime,jdbcType=VARCHAR},
@@ -187,7 +187,7 @@
     update announcement
     set ID = #{record.id,jdbcType=VARCHAR},
       AnnouncementTitle = #{record.announcementtitle,jdbcType=VARCHAR},
-      AnnouncementType = #{record.announcementtype,jdbcType=VARCHAR},
+      AnnouncementType = #{record.announcementtype,jdbcType=CHAR},
       BeginTime = #{record.begintime,jdbcType=VARCHAR},
       EndingTime = #{record.endingtime,jdbcType=VARCHAR},
       Details = #{record.details,jdbcType=VARCHAR}
@@ -202,7 +202,7 @@
         AnnouncementTitle = #{announcementtitle,jdbcType=VARCHAR},
       </if>
       <if test="announcementtype != null">
-        AnnouncementType = #{announcementtype,jdbcType=VARCHAR},
+        AnnouncementType = #{announcementtype,jdbcType=CHAR},
       </if>
       <if test="begintime != null">
         BeginTime = #{begintime,jdbcType=VARCHAR},
@@ -219,7 +219,7 @@
   <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Announcement">
     update announcement
     set AnnouncementTitle = #{announcementtitle,jdbcType=VARCHAR},
-      AnnouncementType = #{announcementtype,jdbcType=VARCHAR},
+      AnnouncementType = #{announcementtype,jdbcType=CHAR},
       BeginTime = #{begintime,jdbcType=VARCHAR},
       EndingTime = #{endingtime,jdbcType=VARCHAR},
       Details = #{details,jdbcType=VARCHAR}

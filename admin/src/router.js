@@ -11,6 +11,8 @@ import Askforleave from "./views/admin/askforleave.vue"
 import Personalinfo from "./views/admin/personalinfo.vue"
 import Employeeinfo from "./views/admin/employeeinfo.vue"
 
+import Calendar from "./views/admin/calendar.vue"
+
 Vue.use(Router);
 //不论输入什么都变成/login,然后跳转到Login
 export default new Router({
@@ -58,6 +60,10 @@ export default new Router({
             path: "business/employeeinfo",
             name: "business/employeeinfo",
             component: Employeeinfo
+        },{
+            path: "business/calendar",
+            name: "business/calendar",
+            component: Calendar
         }]
     }]
 })

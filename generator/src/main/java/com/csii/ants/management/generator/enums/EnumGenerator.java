@@ -27,16 +27,22 @@ public class EnumGenerator {
             toJson(YesNoEnum.class, bufferObject, bufferArray);
             toJson(LeaveTypeEnum.class, bufferObject, bufferArray);
             toJson(LeaveStatusEnum.class, bufferObject, bufferArray);
+
             toJson(CancellationLeaveEnum.class, bufferObject, bufferArray);
             toJson(SexEnum.class, bufferObject, bufferArray);
             toJson(EmergencyContactRelEnum.class, bufferObject, bufferArray);
             toJson(DegreeEnum.class, bufferObject, bufferArray);
             toJson(MaritalStatusEnum.class, bufferObject, bufferArray);
+
             toJson(PoliticalOutlookEnum.class, bufferObject, bufferArray);
             toJson(EntryTypeEnum.class, bufferObject, bufferArray);
-
+            toJson(NationalityEnum.class, bufferObject, bufferArray);
+            toJson(AnnouncementTypeEnum.class, bufferObject, bufferArray);
             toJson(BaseEnum.class, bufferObject, bufferArray);
+
             toJson(ProvinceEnum.class, bufferObject, bufferArray);
+            toJson(EmployeeStatusEnum.class, bufferObject, bufferArray);
+            toJson(RoleEnum.class, bufferObject, bufferArray);
 
             StringBuffer buffer = bufferObject.append("\r\n").append(bufferArray);
             //

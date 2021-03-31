@@ -31,13 +31,13 @@
       <tbody>
       <tr v-for="announcement in announcements">
         <td>{{announcement.announcementtitle}}</td>
-        <td>{{announcement.announcementtype}}</td>
+        <td>{{ANNOUNCEMENT_TYPE | optionKV(announcement.announcementtype)}}</td>
         <td>{{announcement.begintime}}</td>
         <td>{{announcement.endingtime}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="edit(announcement)" class="btn btn-xs btn-info">
-<!--              详情-->
+              <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
             <button v-on:click="del(announcement.id)" class="btn btn-xs btn-danger">
@@ -69,26 +69,32 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">公告类型</label>
                 <div class="col-sm-10">
-                  <input v-model="announcement.announcementtype" class="form-control" placeholder="公告类型">
+                  <select v-model="announcement.announcementtype" class="form-control">
+                    <option v-for="o in ANNOUNCEMENT_TYPE" v-bind:value="o.key">{{o.value}}</option>
+                  </select>
+
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="col-sm-2 control-label">开始时间</label>
+                <label class="col-sm-2 control-label">起止时间</label>
                 <div class="col-sm-10">
-                  <input v-model="announcement.begintime" class="form-control" placeholder="开始时间">
+                  <el-date-picker
+                    v-model="datetime_value"
+                    type="daterange"
+                    value-format="yyyy-MM-dd"
+                    range-separator="-"
+                    :editable="false"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期">
+                  </el-date-picker>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">结束时间</label>
-                <div class="col-sm-10">
-                  <input v-model="announcement.endingtime" class="form-control" placeholder="结束时间">
-                </div>
-              </div>
+
               <div class="form-group">
                 <label class="col-sm-2 control-label">详情</label>
                 <div class="col-sm-10">
-<!--                  <input v-model="announcement.details" class="form-control" placeholder="详情，限50字">-->
+                  <!-- <input v-model="announcement.details" class="form-control" placeholder="详情，限50字">-->
                   <textarea v-model="announcement.details" class="form-control" placeholder="详情，限50字"/>
                 </div>
               </div>
@@ -106,14 +112,16 @@
 
 <script>
   import Pagination from "../../components/pagination";
+  import ElementUI from "element-ui";
   export default {
     name: 'announcement',
-    components: {Pagination},
+    components: {Pagination,ElementUI },
     data:function(){
       return{
         datetime_value:'',
         announcement:{},
         announcements:[],
+        ANNOUNCEMENT_TYPE:ANNOUNCEMENT_TYPE,
       }
     },
     mounted: function () {
@@ -150,9 +158,17 @@
        */
       list(page){
         let _this=this;
-        _this.$ajax.get('http://127.0.0.1:9000/business/admin/announcement/list').then((respond)=>{
-          console.log("查询公告列表结果:",respond);
-          _this.announcements=respond.data;
+        Loading.show();
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/announcement/list',{
+          page:page,
+          size:_this.$refs.pagination.size,
+        }).then((respond)=>{
+          Loading.hide();
+          // console.log("查询公告列表结果:",respond);
+          let resp=respond.data;
+          _this.announcements=resp.content.list;
+          //重新渲染？5.5-1155
+          _this.$refs.pagination.render(page,resp.content.total);
         })
       },
       /**
@@ -160,6 +176,10 @@
        */
       save(page){
         let _this=this;
+        _this.announcement.begintime = this.datetime_value[0];
+        _this.announcement.endingtime = this.datetime_value[1];
+        console.log(_this.announcement.begintime);
+        console.log(_this.announcement.endingtime);
         // 保存校验，非空和长度
         if ( !Validator.require(_this.announcement.announcementtitle, "公告标题")
           || !Validator.length(_this.announcement.announcementtitle, "公告标题",1,20)

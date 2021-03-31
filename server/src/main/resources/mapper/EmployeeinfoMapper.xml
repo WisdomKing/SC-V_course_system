@@ -20,10 +20,10 @@
     <result column="contractSigning" jdbcType="TIMESTAMP" property="contractsigning" />
     <result column="contractEnding" jdbcType="TIMESTAMP" property="contractending" />
     <result column="probationExp_date" jdbcType="TIMESTAMP" property="probationexpDate" />
-    <result column="employeeStatus" jdbcType="VARCHAR" property="employeestatus" />
+    <result column="employeeStatus" jdbcType="CHAR" property="employeestatus" />
     <result column="contractRenew" jdbcType="VARCHAR" property="contractrenew" />
     <result column="welfareArea" jdbcType="VARCHAR" property="welfarearea" />
-    <result column="myRole" jdbcType="VARCHAR" property="myrole" />
+    <result column="myRole" jdbcType="CHAR" property="myrole" />
     <result column="employeeCCC" jdbcType="VARCHAR" property="employeeccc" />
     <result column="comment" jdbcType="VARCHAR" property="comment" />
   </resultMap>
@@ -137,8 +137,8 @@
       #{entryTime,jdbcType=TIMESTAMP}, #{entryType,jdbcType=CHAR}, #{entryAddress,jdbcType=CHAR}, 
       #{internshipbegin,jdbcType=TIMESTAMP}, #{internshipending,jdbcType=TIMESTAMP}, 
       #{conversionregTime,jdbcType=TIMESTAMP}, #{contractsigning,jdbcType=TIMESTAMP}, 
-      #{contractending,jdbcType=TIMESTAMP}, #{probationexpDate,jdbcType=TIMESTAMP}, #{employeestatus,jdbcType=VARCHAR}, 
-      #{contractrenew,jdbcType=VARCHAR}, #{welfarearea,jdbcType=VARCHAR}, #{myrole,jdbcType=VARCHAR}, 
+      #{contractending,jdbcType=TIMESTAMP}, #{probationexpDate,jdbcType=TIMESTAMP}, #{employeestatus,jdbcType=CHAR}, 
+      #{contractrenew,jdbcType=VARCHAR}, #{welfarearea,jdbcType=VARCHAR}, #{myrole,jdbcType=CHAR}, 
       #{employeeccc,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Employeeinfo">
@@ -273,7 +273,7 @@
         #{probationexpDate,jdbcType=TIMESTAMP},
       </if>
       <if test="employeestatus != null">
-        #{employeestatus,jdbcType=VARCHAR},
+        #{employeestatus,jdbcType=CHAR},
       </if>
       <if test="contractrenew != null">
         #{contractrenew,jdbcType=VARCHAR},
@@ -282,7 +282,7 @@
         #{welfarearea,jdbcType=VARCHAR},
       </if>
       <if test="myrole != null">
-        #{myrole,jdbcType=VARCHAR},
+        #{myrole,jdbcType=CHAR},
       </if>
       <if test="employeeccc != null">
         #{employeeccc,jdbcType=VARCHAR},
@@ -356,7 +356,7 @@
         probationExp_date = #{record.probationexpDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.employeestatus != null">
-        employeeStatus = #{record.employeestatus,jdbcType=VARCHAR},
+        employeeStatus = #{record.employeestatus,jdbcType=CHAR},
       </if>
       <if test="record.contractrenew != null">
         contractRenew = #{record.contractrenew,jdbcType=VARCHAR},
@@ -365,7 +365,7 @@
         welfareArea = #{record.welfarearea,jdbcType=VARCHAR},
       </if>
       <if test="record.myrole != null">
-        myRole = #{record.myrole,jdbcType=VARCHAR},
+        myRole = #{record.myrole,jdbcType=CHAR},
       </if>
       <if test="record.employeeccc != null">
         employeeCCC = #{record.employeeccc,jdbcType=VARCHAR},
@@ -398,10 +398,10 @@
       contractSigning = #{record.contractsigning,jdbcType=TIMESTAMP},
       contractEnding = #{record.contractending,jdbcType=TIMESTAMP},
       probationExp_date = #{record.probationexpDate,jdbcType=TIMESTAMP},
-      employeeStatus = #{record.employeestatus,jdbcType=VARCHAR},
+      employeeStatus = #{record.employeestatus,jdbcType=CHAR},
       contractRenew = #{record.contractrenew,jdbcType=VARCHAR},
       welfareArea = #{record.welfarearea,jdbcType=VARCHAR},
-      myRole = #{record.myrole,jdbcType=VARCHAR},
+      myRole = #{record.myrole,jdbcType=CHAR},
       employeeCCC = #{record.employeeccc,jdbcType=VARCHAR},
       `comment` = #{record.comment,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -463,7 +463,7 @@
         probationExp_date = #{probationexpDate,jdbcType=TIMESTAMP},
       </if>
       <if test="employeestatus != null">
-        employeeStatus = #{employeestatus,jdbcType=VARCHAR},
+        employeeStatus = #{employeestatus,jdbcType=CHAR},
       </if>
       <if test="contractrenew != null">
         contractRenew = #{contractrenew,jdbcType=VARCHAR},
@@ -472,7 +472,7 @@
         welfareArea = #{welfarearea,jdbcType=VARCHAR},
       </if>
       <if test="myrole != null">
-        myRole = #{myrole,jdbcType=VARCHAR},
+        myRole = #{myrole,jdbcType=CHAR},
       </if>
       <if test="employeeccc != null">
         employeeCCC = #{employeeccc,jdbcType=VARCHAR},
@@ -502,10 +502,10 @@
       contractSigning = #{contractsigning,jdbcType=TIMESTAMP},
       contractEnding = #{contractending,jdbcType=TIMESTAMP},
       probationExp_date = #{probationexpDate,jdbcType=TIMESTAMP},
-      employeeStatus = #{employeestatus,jdbcType=VARCHAR},
+      employeeStatus = #{employeestatus,jdbcType=CHAR},
       contractRenew = #{contractrenew,jdbcType=VARCHAR},
       welfareArea = #{welfarearea,jdbcType=VARCHAR},
-      myRole = #{myrole,jdbcType=VARCHAR},
+      myRole = #{myrole,jdbcType=CHAR},
       employeeCCC = #{employeeccc,jdbcType=VARCHAR},
       `comment` = #{comment,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
