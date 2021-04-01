@@ -55,26 +55,24 @@
           </div>
           <div class="modal-body">
             <!-- 表单 -->
-            <form class="form-horizontal">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">上传时间</label>
-                  <div class="col-sm-10">
-                    <input v-model="headline.createdtime" class="form-control" placeholder="上传时间">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">修改时间</label>
-                  <div class="col-sm-10">
-                    <input v-model="headline.updatedtime" class="form-control" placeholder="修改时间">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">详情</label>
-                  <div class="col-sm-10">
-                    <input v-model="headline.details" class="form-control" placeholder="详情">
-                  </div>
-                </div>
-            </form>
+            <el-form ref="employeeinfo" :rules="rules" :model="employeeinfo" label-width="120px">
+<!--                <div class="form-group">-->
+<!--                  <label class="col-sm-2 control-label">详情</label>-->
+<!--                  <div class="col-sm-10">-->
+<!--                    <input v-model="headline.details" class="form-control" placeholder="详情">-->
+<!--                  </div>-->
+<!--                </div>-->
+              <el-upload
+                class="upload-demo"
+                drag
+                action="https://jsonplaceholder.typicode.com/posts/"
+                multiple>
+                <i class="el-icon-upload"></i>
+                <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+              </el-upload>
+
+            </el-form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -88,9 +86,10 @@
 
 <script>
   import Pagination from "../../components/pagination";
+  import ElementUI from "element-ui";
   export default {
     name: 'headline',
-    components: {Pagination},
+    components: {Pagination,ElementUI},
     data:function(){
       return{
         headline:{},

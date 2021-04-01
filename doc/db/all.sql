@@ -161,12 +161,16 @@ INSERT INTO `personalinfo` VALUES ('9Ce7MH09','秦风', 'M', 'N01', '96000119990
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-    `id` varchar(8) NOT NULL COMMENT 'ID',
+    `job_num` varchar(5) NOT NULL COMMENT '工号',
     `role` char(8) NOT NULL COMMENT '权限',
-    primary key (`id`)
+    primary key (`job_num`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='权限';
 
-INSERT INTO `askforleave` VALUES ('9Ce7MH09','M');
+INSERT INTO `role` (job_num, role)VALUES ('13901','M');
+INSERT INTO `role` (job_num, role)VALUES ('13902','M');
+INSERT INTO `role` (job_num, role)VALUES ('13903','M');
+INSERT INTO `role` (job_num, role)VALUES ('13904','M');
+INSERT INTO `role` (job_num, role)VALUES ('13905','M');
 /*----user 用户---------------------------------------------------*/
 drop table if exists `user`;
 create table `user` (

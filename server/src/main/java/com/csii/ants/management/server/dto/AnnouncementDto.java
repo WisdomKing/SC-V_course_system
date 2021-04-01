@@ -29,68 +29,67 @@ public class AnnouncementDto {
     private String details;
 
     public String getId() {
-    return id;
+        return id;
     }
 
     public void setId(String id) {
-    this.id = id;
+        this.id = id;
     }
 
     public String getAnnouncementtitle() {
-    return announcementtitle;
+        return announcementtitle;
     }
 
     public void setAnnouncementtitle(String announcementtitle) {
-    this.announcementtitle = announcementtitle;
+        this.announcementtitle = announcementtitle;
     }
 
     public String getAnnouncementtype() {
-    return announcementtype;
+        return announcementtype;
     }
 
     public void setAnnouncementtype(String announcementtype) {
-    this.announcementtype = announcementtype;
+        this.announcementtype = announcementtype;
     }
 
     public String getBegintime() {
-    return begintime;
+        return begintime;
     }
 
     public void setBegintime(String begintime) {
-    this.begintime = begintime;
+        this.begintime = begintime;
     }
 
     public String getEndingtime() {
-    return endingtime;
+        return endingtime;
     }
 
     public void setEndingtime(String endingtime) {
-    this.endingtime = endingtime;
+        this.endingtime = endingtime;
     }
 
     public String getDetails() {
-    return details;
+        return details;
     }
 
     public void setDetails(String details) {
-    this.details = details;
+        this.details = details;
     }
 
-
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", id=").append(id);
-    sb.append(", announcementtitle=").append(announcementtitle);
-    sb.append(", announcementtype=").append(announcementtype);
-    sb.append(", begintime=").append(begintime);
-    sb.append(", endingtime=").append(endingtime);
-    sb.append(", details=").append(details);
-sb.append("]");
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", announcementtitle=").append(announcementtitle);
+        sb.append(", announcementtype=").append(announcementtype);
+        sb.append(", begintime=").append(begintime);
+        sb.append(", endingtime=").append(endingtime);
+        sb.append(", details=").append(details);
+        sb.append("]");
+        return sb.toString();
+    }
 
 }
