@@ -81,15 +81,15 @@ CREATE TABLE `employeeinfo`  (
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='员工信息';
 
 INSERT INTO `employeeinfo` VALUES ('9Ce7MH01','秦风', '13901', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH02','秦风', '13902', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH03','秦风', '13903', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH04','秦风', '13904', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH05','秦风', '13905', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH06','秦风', '13906', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH07','秦风', '13907', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH08','秦风', '13908', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH09','秦风', '13909', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH10','秦风', '13910', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH02','张珊', '13902', 'SH', 'zhangshan@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH03','丽思', '13903', 'SH', 'lisi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH04','王武', '13904', 'SH', 'wangwu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH05','赵柳', '13905', 'SH', 'zhaoliu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH06','周琦', '13906', 'SH', 'zhouqi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH07','奇葩', '13907', 'SH', 'qipa_hr@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH08','孙悟空', '13908', 'SH', 'sunwukong@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH09','迪丽热巴', '13909', 'SH', 'dilireba@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('9Ce7MH10','刘昊然', '13910', 'SH', 'liuhaoran@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
 
 /*----headline 头条---------------------------------------------------*/
 
@@ -162,15 +162,15 @@ INSERT INTO `personalinfo` VALUES ('9Ce7MH09','秦风', 'M', 'N01', '96000119990
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
     `job_num` varchar(5) NOT NULL COMMENT '工号',
-    `role` char(8) NOT NULL COMMENT '权限',
+    `role` char(3) NOT NULL COMMENT '权限',
     primary key (`job_num`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='权限';
 
-INSERT INTO `role` (job_num, role)VALUES ('13901','M');
-INSERT INTO `role` (job_num, role)VALUES ('13902','M');
-INSERT INTO `role` (job_num, role)VALUES ('13903','M');
-INSERT INTO `role` (job_num, role)VALUES ('13904','M');
-INSERT INTO `role` (job_num, role)VALUES ('13905','M');
+INSERT INTO `role` (job_num, role)VALUES ('13901','ALL');
+INSERT INTO `role` (job_num, role)VALUES ('13902','ALL');
+INSERT INTO `role` (job_num, role)VALUES ('13903','ALL');
+INSERT INTO `role` (job_num, role)VALUES ('13904','ALL');
+INSERT INTO `role` (job_num, role)VALUES ('13905','ALL');
 /*----user 用户---------------------------------------------------*/
 drop table if exists `user`;
 create table `user` (

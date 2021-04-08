@@ -56,7 +56,7 @@
         <td>{{personalinfo.dateofbirth}}</td>
         <td>{{personalinfo.personalemail}}</td>
         <td>{{personalinfo.regisType}}</td>
-        <td>{{personalinfo.regisResidence}}</td>
+        <td nowrap>{{personalinfo.regisResidence}}</td>
         <td>{{MARITAL_STATUS | optionKV(personalinfo.maritalstatus)}}</td>
         <td>{{personalinfo.gradUnversity}}</td>
         <td>{{personalinfo.gradTime}}</td>

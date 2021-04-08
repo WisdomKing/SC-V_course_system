@@ -371,18 +371,18 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-              <li class="">
-                <a href="tables.html">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  用户管理
-                </a>
+              <li class="active open">
+<!--                <router-link to="/system/user">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  用户管理-->
+<!--                </router-link>-->
                 <b class="arrow"></b>
               </li>
               <li class="">
-                <a href="jqgrid.html">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  权限管理
-                </a>
+<!--                <router-link to="/role">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  权限管理-->
+<!--                </router-link>-->
                 <b class="arrow"></b>
               </li>
             </ul>
