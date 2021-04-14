@@ -1,0 +1,189 @@
+<template>
+  <div>
+    <!--日历组件-->
+    <el-calendar v-model="value">
+
+    </el-calendar>
+
+    <!-- 模态框 -->
+    <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">报工</h4>
+          </div>
+          <div class="modal-body">
+            <!-- 表单 -->
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">项目名称</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.projectname" class="form-control" placeholder="项目名称">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">工时类型</label>
+                <div class="col-sm-10">
+                  <select v-model="clockin.manhourType" class="form-control">
+                    <option v-for="o in MANHOUR_TYPE" v-bind:value="o.key">{{o.value}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">工时</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.manhour" class="form-control" placeholder="工时">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">延时</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.delayed" class="form-control" placeholder="延时">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">工作日志</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.worklog" class="form-control" placeholder="工作日志">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">状态</label>
+                <div class="col-sm-10">
+                  <select v-model="clockin.status" class="form-control">
+                    <option v-for="o in CLOCKIN_STATUS" v-bind:value="o.key">{{o.value}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">报工时间</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.clockinTime" class="form-control" placeholder="报工时间">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button v-on:click="save()" type="button" class="btn btn-primary">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import Pagination from "../../components/pagination";
+  export default {
+    name: 'business-clockin',
+    components: {Pagination},
+    data:function(){
+      return{
+        clockin:{},
+        clockins:[],
+        MANHOUR_TYPE,
+        CLOCKIN_STATUS,
+        value: new Date(),
+      }
+    },
+    mounted: function () {
+      let _this=this;
+      //自定义初始每页5条
+      _this.$refs.pagination.size=5;
+      _this.list();
+    },
+    methods: {
+      /**
+       * 点击新增
+       */
+      add(){
+        let _this=this;
+        //模态框打开时清空上次的数据
+        _this.clockin={}
+        $("#form-modal").modal("show");
+      },
+      /**
+       * 点击编辑
+       */
+      edit(clockin){
+        let _this=this;
+        //将数据带到模态框里
+        _this.clockin=$.extend({},clockin);
+        $("#form-modal").modal("show");
+      },
+      /**
+       * 列表查询
+       */
+      list(page){
+        let _this=this;
+        Loading.show();
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/clockin/list',{
+          page:page,
+          size:_this.$refs.pagination.size,
+        }).then((respond)=>{
+          Loading.hide();
+          let resp=respond.data;
+          _this.clockins=resp.content.list;
+          //重新渲染？5.5-1155
+          _this.$refs.pagination.render(page,resp.content.total);
+        })
+      },
+      /**
+       * 点击保存
+       */
+      save(page){
+        let _this=this;
+        // 保存校验，非空和长度
+        if (1 != 1
+          || !Validator.require(_this.clockin.projectname, "项目名称")
+          || !Validator.length(_this.clockin.projectname, "项目名称", 1, 50)
+          || !Validator.require(_this.clockin.manhourType, "工时类型")
+          || !Validator.require(_this.clockin.manhour, "工时")
+          || !Validator.length(_this.clockin.manhour, "工时", 1, 20)
+          || !Validator.length(_this.clockin.delayed, "延时", 1, 20)
+          || !Validator.require(_this.clockin.worklog, "工作日志")
+          || !Validator.length(_this.clockin.worklog, "工作日志", 1, 100)
+          || !Validator.require(_this.clockin.clockinTime, "报工时间")
+        ) {
+          return;
+        }
+
+        Loading.show();
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/clockin/save',
+          _this.clockin).then((respond)=>{
+          Loading.hide();
+          // console.log("保存报工列表结果:",respond);
+          let resp=respond.data;
+          if (resp.success){
+            //如果成功了，隐藏modal和刷新列表
+            $("#form-modal").modal("hide");
+            _this.list(1);
+            Toast.success("保存成功");
+          }else {
+            Toast.warning(resp.message)
+          }
+        })
+      },
+      /**
+       * 点击删除
+       */
+      del(id){
+        let _this=this;
+        Confirm.show("删除报工后不可恢复，确认删除?",function () {
+          Loading.show();
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/clockin/delete/'+id).then((respond)=>{
+            Loading.hide();
+            // console.log("删除报工列表结果:",respond);
+            let resp=respond.data;
+            if (resp.success){
+              _this.list(1);
+              Toast.success("删除成功");
+            }
+          })
+        });
+      }
+    }
+  }
+</script>

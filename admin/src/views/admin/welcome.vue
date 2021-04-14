@@ -25,8 +25,8 @@
         fixed
         :show-overflow-tooltip="true"
         prop="name">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.name)}}
+        <template slot-scope="scope">
+          {{(scope.row.name)}}
         </template>
       </el-table-column>
 
@@ -34,8 +34,8 @@
         label="性别"
         prop="sex"
         width="80">
-        <template slot-scope="personalinfo">
-          {{SEX | optionKV(personalinfo.row.sex)}}
+        <template slot-scope="scope">
+          {{SEX | optionKV(scope.row.sex)}}
         </template>
       </el-table-column>
 
@@ -43,8 +43,8 @@
         label="民族"
         prop="ethnicity"
         width="100">
-        <template slot-scope="personalinfo">
-          {{NATIONALITY | optionKV(personalinfo.row.ethnicity)}}
+        <template slot-scope="scope">
+          {{NATIONALITY | optionKV(scope.row.ethnicity)}}
         </template>
       </el-table-column>
 
@@ -52,8 +52,8 @@
         label="身份证号"
         prop="idnum"
         width="180">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.idnum)}}
+        <template slot-scope="scope">
+          {{(scope.row.idnum)}}
         </template>
       </el-table-column>
 
@@ -61,8 +61,8 @@
         label="政治面貌"
         prop="politicaloutlook"
         width="80">
-        <template slot-scope="personalinfo">
-          {{POLITICAL_OUTLOOK | optionKV(personalinfo.row.politicaloutlook)}}
+        <template slot-scope="scope">
+          {{POLITICAL_OUTLOOK | optionKV(scope.row.politicaloutlook)}}
         </template>
       </el-table-column>
 
@@ -70,8 +70,8 @@
         label="出生日期"
         prop="dateofbirth"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.dateofbirth)}}
+        <template slot-scope="scope">
+          {{(scope.row.dateofbirth)}}
         </template>
       </el-table-column>
 
@@ -79,8 +79,8 @@
         label="个人邮箱"
         prop="personalemail"
         width="200">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.personalemail)}}
+        <template slot-scope="scope">
+          {{(scope.row.personalemail)}}
         </template>
       </el-table-column>
 
@@ -88,8 +88,8 @@
         label="户口性质"
         prop="regisType"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.regisType)}}
+        <template slot-scope="scope">
+          {{(scope.row.regisType)}}
         </template>
       </el-table-column>
 
@@ -98,8 +98,8 @@
         prop="regisResidence"
         :show-overflow-tooltip="true"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.regisResidence)}}
+        <template slot-scope="scope">
+          {{(scope.row.regisResidence)}}
         </template>
       </el-table-column>
 
@@ -107,8 +107,8 @@
         label="婚否"
         prop="sex"
         width="80">
-        <template slot-scope="personalinfo">
-          {{MARITAL_STATUS | optionKV(personalinfo.row.maritalstatus)}}
+        <template slot-scope="scope">
+          {{MARITAL_STATUS | optionKV(scope.row.maritalstatus)}}
         </template>
       </el-table-column>
 
@@ -117,8 +117,8 @@
         prop="gradUnversity"
         :show-overflow-tooltip="true"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.gradUnversity)}}
+        <template slot-scope="scope">
+          {{(scope.row.gradUnversity)}}
         </template>
       </el-table-column>
 
@@ -126,8 +126,8 @@
         label="毕业时间"
         prop="gradTime"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.gradTime)}}
+        <template slot-scope="scope">
+          {{(scope.row.gradTime)}}
         </template>
       </el-table-column>
 
@@ -135,8 +135,8 @@
         label="专业"
         prop="speciality"
         width="140">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.speciality)}}
+        <template slot-scope="scope">
+          {{(scope.row.speciality)}}
         </template>
       </el-table-column>
 
@@ -144,8 +144,8 @@
         label="学历"
         prop="degree"
         width="120">
-        <template slot-scope="personalinfo">
-          {{DEGREE | optionKV(personalinfo.row.degree)}}
+        <template slot-scope="scope">
+          {{DEGREE | optionKV(scope.row.degree)}}
         </template>
       </el-table-column>
 
@@ -153,8 +153,8 @@
         label="籍贯"
         prop="nativeplace"
         width="120">
-        <template slot-scope="personalinfo">
-          {{PROVINCE | optionKV(personalinfo.row.nativeplace)}}
+        <template slot-scope="scope">
+          {{PROVINCE | optionKV(scope.row.nativeplace)}}
         </template>
       </el-table-column>
 
@@ -163,8 +163,8 @@
         prop="presentaddress"
         :show-overflow-tooltip="true"
         width="200">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.presentaddress)}}
+        <template slot-scope="scope">
+          {{(scope.row.presentaddress)}}
         </template>
       </el-table-column>
 
@@ -172,8 +172,8 @@
         label="手机号"
         prop="telephone"
         width="150">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.telephone)}}
+        <template slot-scope="scope">
+          {{(scope.row.telephone)}}
         </template>
       </el-table-column>
 
@@ -181,8 +181,8 @@
         label="qq号"
         prop="qqnum"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.qqnum)}}
+        <template slot-scope="scope">
+          {{(scope.row.qqnum)}}
         </template>
       </el-table-column>
 
@@ -190,8 +190,8 @@
         label="微信"
         prop="wechat"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.wechat)}}
+        <template slot-scope="scope">
+          {{(scope.row.wechat)}}
         </template>
       </el-table-column>
 
@@ -199,8 +199,8 @@
         label="紧急联系人关系"
         prop="emergencycontactrel"
         width="120">
-        <template slot-scope="personalinfo">
-          {{EMERGENCY_CONTACT_REL | optionKV(personalinfo.row.emergencycontactrel)}}
+        <template slot-scope="scope">
+          {{EMERGENCY_CONTACT_REL | optionKV(scope.row.emergencycontactrel)}}
         </template>
       </el-table-column>
 
@@ -208,8 +208,8 @@
         label="紧急联系人姓名"
         prop="emergencycontactname"
         width="120">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.emergencycontactname)}}
+        <template slot-scope="scope">
+          {{(scope.row.emergencycontactname)}}
         </template>
       </el-table-column>
 
@@ -217,8 +217,8 @@
         label="紧急联系人电话"
         prop="emergencycontacttel"
         width="150">
-        <template slot-scope="personalinfo">
-          {{(personalinfo.row.emergencycontacttel)}}
+        <template slot-scope="scope">
+          {{(scope.row.emergencycontacttel)}}
         </template>
       </el-table-column>
 
@@ -226,15 +226,17 @@
         label="操作按钮"
         width="120"
         fixed="right">
+        <template slot-scope="scope">
         <div class="hidden-sm hidden-xs btn-group">
-          <button v-on:click="edit(personalinfo)" class="btn btn-xs btn-info">
+          <button v-on:click="edit(scope.row)" class="btn btn-xs btn-info">
             <!--详情-->
             <i class="ace-icon fa fa-pencil bigger-120"></i>
           </button>
-          <button v-on:click="del(personalinfo.id)" class="btn btn-xs btn-danger">
+          <button v-on:click="del(scope.row.id)" class="btn btn-xs btn-danger">
             <i class="ace-icon fa fa-trash-o bigger-120"></i>
           </button>
         </div>
+        </template>
       </el-table-column>
     </el-table>
 

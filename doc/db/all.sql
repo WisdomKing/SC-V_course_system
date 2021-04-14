@@ -53,7 +53,8 @@ INSERT INTO `clockin` VALUES ('9Ce7MH02','F-20-1569_2020富邦华一银行外籍
 
 DROP TABLE IF EXISTS `employeeinfo`;
 CREATE TABLE `employeeinfo`  (
-    `id` varchar(8)  NOT NULL COMMENT 'ID',
+    `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
+#     `id` varchar(8)  NOT NULL COMMENT 'ID',
     `name` varchar(20) NOT NULL COMMENT '姓名',
     `job_num` varchar(5) NOT NULL COMMENT '工号',
     `base` char(2) NOT NULL COMMENT '归属公司|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
@@ -80,16 +81,16 @@ CREATE TABLE `employeeinfo`  (
     primary key (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='员工信息';
 
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH01','秦风', '13901', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH02','张珊', '13902', 'SH', 'zhangshan@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH03','丽思', '13903', 'SH', 'lisi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH04','王武', '13904', 'SH', 'wangwu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH05','赵柳', '13905', 'SH', 'zhaoliu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH06','周琦', '13906', 'SH', 'zhouqi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH07','奇葩', '13907', 'SH', 'qipa_hr@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH08','孙悟空', '13908', 'SH', 'sunwukong@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH09','迪丽热巴', '13909', 'SH', 'dilireba@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('9Ce7MH10','刘昊然', '13910', 'SH', 'liuhaoran@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010001','秦风', '13901', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010002','张珊', '13902', 'SH', 'zhangshan@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010003','丽思', '13903', 'SH', 'lisi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010004','王武', '13904', 'SH', 'wangwu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010005','赵柳', '13905', 'SH', 'zhaoliu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010006','周琦', '13906', 'SH', 'zhouqi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010007','奇葩', '13907', 'SH', 'qipa_hr@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010008','孙悟空', '13908', 'SH', 'sunwukong@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010009','迪丽热巴', '13909', 'SH', 'dilireba@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` VALUES ('00010010','刘昊然', '13910', 'SH', 'liuhaoran@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
 
 /*----headline 头条---------------------------------------------------*/
 

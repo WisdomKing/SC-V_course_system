@@ -1,4 +1,4 @@
-<template>
+<template v-for="(clockin, index) in clockins" :key="index">
   <div>
     <!-- 刷新按钮 -->
     <p>
@@ -18,7 +18,6 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
-        <th>ID</th>
         <th>项目名称</th>
         <th>工时类型</th>
         <th>工时</th>
@@ -31,7 +30,7 @@
       </thead>
 
       <tbody>
-      <tr v-for="clockin in clockins">
+      <tr >
         <td>{{clockin.projectname}}</td>
         <td>{{MANHOUR_TYPE | optionKV(clockin.manhourType)}}</td>
         <td>{{clockin.manhour}}</td>
