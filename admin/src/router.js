@@ -13,6 +13,8 @@ import Employeeinfo from "./views/admin/employeeinfo.vue"
 import Department from "./views/admin/department.vue"
 import Project from "./views/admin/project.vue"
 import Test from "./views/admin/test.vue"
+import User from "./views/admin/user.vue"
+// import Role from "./views/admin/role.vue"
 
 import Calendar from "./views/admin/calendar.vue"
 
@@ -79,6 +81,10 @@ export default new Router({
             path: "business/test",
             name: "business/test",
             component: Test
+        },{
+            path: "system/user",
+            name: "system/user",
+            component: User
         }]
     }]
 })

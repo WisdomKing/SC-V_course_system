@@ -104,6 +104,76 @@ public class userExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andJobNumIsNull() {
+            addCriterion("job_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumIsNotNull() {
+            addCriterion("job_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumEqualTo(String value) {
+            addCriterion("job_num =", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumNotEqualTo(String value) {
+            addCriterion("job_num <>", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumGreaterThan(String value) {
+            addCriterion("job_num >", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumGreaterThanOrEqualTo(String value) {
+            addCriterion("job_num >=", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumLessThan(String value) {
+            addCriterion("job_num <", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumLessThanOrEqualTo(String value) {
+            addCriterion("job_num <=", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumLike(String value) {
+            addCriterion("job_num like", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumNotLike(String value) {
+            addCriterion("job_num not like", value, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumIn(List<String> values) {
+            addCriterion("job_num in", values, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumNotIn(List<String> values) {
+            addCriterion("job_num not in", values, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumBetween(String value1, String value2) {
+            addCriterion("job_num between", value1, value2, "jobNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumNotBetween(String value1, String value2) {
+            addCriterion("job_num not between", value1, value2, "jobNum");
+            return (Criteria) this;
+        }
+
         public Criteria andCompanyemailIsNull() {
             addCriterion("companyEmail is null");
             return (Criteria) this;

@@ -372,6 +372,20 @@
             <b class="arrow"></b>
             <ul class="submenu">
               <li class="active open">
+                <router-link to="/system/user">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  用户管理
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+<!--              <li class="active open">-->
+<!--                <router-link to="/system/role">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  权限管理-->
+<!--                </router-link>-->
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
+              <li class="active open">
                 <router-link to="/business/department">
                   <i class="menu-icon fa fa-caret-right"></i>
                   部门管理

@@ -12,6 +12,10 @@
         刷新
     </button>
       &nbsp;
+      <button v-on:click="search(str)" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-refresh"></i>
+        查找
+      </button>
     </p>
 
     <!-- 分页插件 -->
@@ -118,6 +122,7 @@
     components: {Pagination,ElementUI },
     data:function(){
       return{
+        str,
         datetime_value:'',
         announcement:{},
         announcements:[],
@@ -133,6 +138,20 @@
       // this.$parent.activeSidebar("business-announcement-sidebar");   //以后通过watch监听来激活菜单了，不再通过这条语句去激活，免于每一个页面都要写
     },
     methods: {
+      /**
+       * 支持模糊查询
+       */
+      search(str){
+        let _this=this;
+        _this.$ajax.search(process.env.VUE_APP_SERVER+'/business/admin/announcement/search/'+str).then((respond)=>{
+          Loading.hide();
+          let resp=respond.data;
+          if (resp.success){
+            _this.list(1);
+            Toast.success("成功");
+          }
+        })
+      },
       /**
        * 点击新增
        */

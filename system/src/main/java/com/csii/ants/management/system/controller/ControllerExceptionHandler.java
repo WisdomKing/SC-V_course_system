@@ -1,4 +1,4 @@
-package com.csii.ants.management.business.controller;
+package com.csii.ants.management.system.controller;
 
 import com.csii.ants.management.server.dto.ResponseDto;
 import com.csii.ants.management.server.exception.BusinessException;
@@ -9,16 +9,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * @author ZxM
- * @date 2021/2/24
- * @Description:
- */
-//关键注解
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ControllerExceptionHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(com.csii.ants.management.system.controller.ControllerExceptionHandler.class);
 
     @ExceptionHandler(value = ValidatorException.class)
     @ResponseBody

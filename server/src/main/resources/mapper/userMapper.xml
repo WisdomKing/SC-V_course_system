@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.csii.ants.management.server.mapper.userMapper">
   <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.user">
-    <id column="companyEmail" jdbcType="VARCHAR" property="companyemail" />
+    <id column="job_num" jdbcType="CHAR" property="jobNum" />
+    <result column="companyEmail" jdbcType="VARCHAR" property="companyemail" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="CHAR" property="password" />
     <result column="role" jdbcType="CHAR" property="role" />
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    companyEmail, `name`, `password`, `role`
+    job_num, companyEmail, `name`, `password`, `role`
   </sql>
   <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.userExample" resultMap="BaseResultMap">
     select
@@ -86,11 +87,11 @@
     select 
     <include refid="Base_Column_List" />
     from user
-    where companyEmail = #{companyemail,jdbcType=VARCHAR}
+    where job_num = #{jobNum,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
-    where companyEmail = #{companyemail,jdbcType=VARCHAR}
+    where job_num = #{jobNum,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.userExample">
     delete from user
@@ -99,14 +100,17 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.csii.ants.management.server.domain.user">
-    insert into user (companyEmail, `name`, `password`, 
-      `role`)
-    values (#{companyemail,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=CHAR}, 
-      #{role,jdbcType=CHAR})
+    insert into user (job_num, companyEmail, `name`, 
+      `password`, `role`)
+    values (#{jobNum,jdbcType=CHAR}, #{companyemail,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=CHAR}, #{role,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.user">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jobNum != null">
+        job_num,
+      </if>
       <if test="companyemail != null">
         companyEmail,
       </if>
@@ -121,6 +125,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jobNum != null">
+        #{jobNum,jdbcType=CHAR},
+      </if>
       <if test="companyemail != null">
         #{companyemail,jdbcType=VARCHAR},
       </if>
@@ -144,6 +151,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update user
     <set>
+      <if test="record.jobNum != null">
+        job_num = #{record.jobNum,jdbcType=CHAR},
+      </if>
       <if test="record.companyemail != null">
         companyEmail = #{record.companyemail,jdbcType=VARCHAR},
       </if>
@@ -163,7 +173,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update user
-    set companyEmail = #{record.companyemail,jdbcType=VARCHAR},
+    set job_num = #{record.jobNum,jdbcType=CHAR},
+      companyEmail = #{record.companyemail,jdbcType=VARCHAR},
       `name` = #{record.name,jdbcType=VARCHAR},
       `password` = #{record.password,jdbcType=CHAR},
       `role` = #{record.role,jdbcType=CHAR}
@@ -174,6 +185,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.user">
     update user
     <set>
+      <if test="companyemail != null">
+        companyEmail = #{companyemail,jdbcType=VARCHAR},
+      </if>
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
@@ -184,13 +198,29 @@
         `role` = #{role,jdbcType=CHAR},
       </if>
     </set>
-    where companyEmail = #{companyemail,jdbcType=VARCHAR}
+    where job_num = #{jobNum,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.user">
     update user
-    set `name` = #{name,jdbcType=VARCHAR},
+    set companyEmail = #{companyemail,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=CHAR},
       `role` = #{role,jdbcType=CHAR}
-    where companyEmail = #{companyemail,jdbcType=VARCHAR}
+    where job_num = #{jobNum,jdbcType=CHAR}
   </update>
+
+  <insert id="replaceByPrimaryKey" parameterType="com.csii.ants.management.server.domain.user">
+    replace into user (job_num,
+                       companyEmail,
+                       name,
+                       password,
+                       role
+    )
+    values (#{job_num,jdbcType=CHAR},
+            #{companyEmail,jdbcType=VARCHAR},
+            #{name,jdbcType=VARCHAR},
+            #{password,jdbcType=VARCHAR},
+            #{role,jdbcType=VARCHAR}
+           )
+  </insert>
 </mapper>

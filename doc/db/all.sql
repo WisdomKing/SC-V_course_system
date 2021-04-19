@@ -169,14 +169,14 @@ CREATE TABLE `role` (
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='权限';
 
 INSERT INTO `role` (job_num, role)VALUES ('13901','ALL');
-INSERT INTO `role` (job_num, role)VALUES ('13902','ALL');
-INSERT INTO `role` (job_num, role)VALUES ('13903','ALL');
-INSERT INTO `role` (job_num, role)VALUES ('13904','ALL');
+INSERT INTO `role` (job_num, role)VALUES ('13902','PM');
+INSERT INTO `role` (job_num, role)VALUES ('13903','PD');
+INSERT INTO `role` (job_num, role)VALUES ('13904','HRD');
 INSERT INTO `role` (job_num, role)VALUES ('13905','ALL');
 /*----user 用户---------------------------------------------------*/
 drop table if exists `user`;
 create table `user` (
-    `job_num` char(8) not null comment '工号',
+    `job_num` char(5) not null comment '工号',
     `companyEmail` varchar(50) not null comment '登陆名',
     `name` varchar(50) comment '昵称',
     `password` char(32) not null comment '密码',
@@ -185,7 +185,10 @@ create table `user` (
     unique key `companyEmail_unique` (`companyEmail`)
 ) engine=innodb default charset=utf8mb4 comment='用户';
 
-insert into `user` (job_num, companyEmail, name, password,role) values ('10000000', 'test', '测试', '202cb962ac59075b964b07152d234b70','ALL');
+insert into `user` (job_num, companyEmail, name, password,role) values ('13901', 'qinfeng@xxxx.com.cn', '秦风', '202cb962ac59075b964b07152d234b70','ALL');
+insert into `user` (job_num, companyEmail, name, password,role) values ('13902', 'zhangshan@xxxx.com.cn', '张珊', '202cb962ac59075b964b07152d234b70','PM');
+insert into `user` (job_num, companyEmail, name, password,role) values ('13903', 'lisi@xxxx.com.cn', '丽思', '202cb962ac59075b964b07152d234b70','PD');
+insert into `user` (job_num, companyEmail, name, password,role) values ('13904', 'wangwu@xxxx.com.cn', '王武', '202cb962ac59075b964b07152d234b70','HRD');
 
 /*----department 部门---------------------------------------------------*/
 drop table if exists `department`;
