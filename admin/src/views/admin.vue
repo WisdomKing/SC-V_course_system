@@ -371,60 +371,47 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-              <li class="active open">
+
+              <li class="" id="system-user-sidebar">
                 <router-link to="/system/user">
                   <i class="menu-icon fa fa-caret-right"></i>
                   用户管理
                 </router-link>
                 <b class="arrow"></b>
               </li>
-<!--              <li class="active open">-->
-<!--                <router-link to="/system/role">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  权限管理-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
-              <li class="active open">
+
+              <li class="" id="system-role-sidebar">
+                <router-link to="/system/role">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  权限管理
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+              <li class="" id="business-department-sidebar">
                 <router-link to="/business/department">
                   <i class="menu-icon fa fa-caret-right"></i>
                   部门管理
                 </router-link>
                 <b class="arrow"></b>
               </li>
-              <li class="active open">
+              <li class="" id="business-project-sidebar">
                 <router-link to="/business/project">
                   <i class="menu-icon fa fa-caret-right"></i>
                   项目管理
                 </router-link>
                 <b class="arrow"></b>
               </li>
-              <li class="active open">
+              <li class="" id="business-test-sidebar">
                 <router-link to="/business/test">
                   <i class="menu-icon fa fa-caret-right"></i>
                   test
                 </router-link>
                 <b class="arrow"></b>
               </li>
-<!--              <li class="active open">-->
-<!--                <router-link to="/business/department">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  部门管理-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
-
-<!--              <li class="">-->
-<!--                <router-link to="/role">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  权限管理-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
             </ul>
           </li>
 
-          <li class="active open">
+          <li class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 公告 </span>
@@ -432,7 +419,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-              <li class="active" id="business-announcement-sidebar">
+              <li class="" id="business-announcement-sidebar">
                 <router-link to="/business/announcement">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司公告
@@ -466,7 +453,6 @@
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 公司信息 </span>
-
               <b class="arrow fa fa-angle-down"></b>
             </a>
 
@@ -671,6 +657,7 @@
         let parentLi=$("#"+id).parent("li");
         if (parentLi){
           parentLi.siblings().removeClass("open active");
+          parentLi.siblings().find("li").removeClass("active");
           parentLi.addClass("active");
         }
       }
