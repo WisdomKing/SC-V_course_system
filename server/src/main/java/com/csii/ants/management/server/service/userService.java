@@ -3,6 +3,7 @@ package com.csii.ants.management.server.service;
 import com.csii.ants.management.server.domain.project;
 import com.csii.ants.management.server.domain.user;
 import com.csii.ants.management.server.domain.userExample;
+import com.csii.ants.management.server.dto.LoginUserDto;
 import com.csii.ants.management.server.dto.userDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.exception.BusinessException;
@@ -12,6 +13,8 @@ import com.csii.ants.management.server.util.CopyUtil;
 import com.csii.ants.management.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -29,6 +32,7 @@ import java.util.List;
  */
 @Service
 public class userService {
+    private static final Logger LOG = LoggerFactory.getLogger(userService.class);
     @Resource
     private userMapper userMapper;
 
@@ -173,5 +177,25 @@ public class userService {
         user.setJobNum(userDto.getJobNum());
         user.setPassword(userDto.getPassword());
         userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    /**
+     * 登录
+     * @param userDto
+     */
+    public LoginUserDto login(userDto userDto){
+        user user=selectByCompanyEmail(userDto.getCompanyemail());
+        if (user==null){
+            LOG.info("用户名不存在,{}",user.getCompanyemail());
+            throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
+        }else {
+            if (user.getPassword().equals(userDto.getPassword())){
+                // 登录成功
+                return CopyUtil.copy(user,LoginUserDto.class);
+            }else {
+                LOG.info("密码不对,输入密码：{},数据库密码：{}",userDto.getPassword(),user.getPassword());
+                throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
+            }
+        }
     }
 }

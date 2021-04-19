@@ -1,5 +1,7 @@
 package com.csii.ants.management.system.controller.admin;
 
+import com.alibaba.fastjson.JSON;
+import com.csii.ants.management.server.dto.LoginUserDto;
 import com.csii.ants.management.server.dto.userDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.dto.ResponseDto;
@@ -8,9 +10,12 @@ import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author ZxM
@@ -70,11 +75,11 @@ public class userController {
      * @param id
      * @return responseDto
      */
-    @DeleteMapping("/delete/{id}")
-    public ResponseDto delete(@PathVariable String id) {
-        Log.info("id:{}",id);
+    @DeleteMapping("/delete/{jobNum}")
+    public ResponseDto delete(@PathVariable String jobNum) {
+        Log.info("jobNum:{}",jobNum);
         ResponseDto responseDto=new ResponseDto();
-        userService.delete(id);
+        userService.delete(jobNum);
         return responseDto;
     }
 
@@ -95,4 +100,30 @@ public class userController {
         return responseDto;
     }
 
+    /**
+     * 登录
+     * @param userDto
+     * @return
+     */
+    @PostMapping("/login")
+    public ResponseDto login(@RequestBody userDto userDto) {
+        Log.info("用户登录开始");
+        userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
+        ResponseDto responseDto = new ResponseDto();
+        LoginUserDto loginUserDto=userService.login(userDto);
+        responseDto.setContent(loginUserDto);
+        return responseDto;
+    }
+
+    /**
+     * 退出登录
+     * @param token
+     * @return
+     */
+    @GetMapping("/logout/{token}")
+    public ResponseDto logout(@PathVariable String token) {
+        ResponseDto responseDto = new ResponseDto();
+
+        return responseDto;
+    }
 }

@@ -19,7 +19,7 @@
                   <div class="widget-main">
                     <h4 class="header blue lighter bigger">
                       <i class="ace-icon fa fa-coffee green"></i>
-                      请输入账号密码
+                      请输入用户名和密码
                     </h4>
 
                     <div class="space-6"></div>
@@ -28,14 +28,14 @@
                       <fieldset>
                         <label class="block clearfix">
                           <span class="block input-icon input-icon-right">
-                            <input type="text" class="form-control" placeholder="Username"/>
+                            <input v-model="user.companyemail" type="text" class="form-control" placeholder="用户名"/>
                             <i class="ace-icon fa fa-user"></i>
                           </span>
                         </label>
 
                         <label class="block clearfix">
                           <span class="block input-icon input-icon-right">
-                            <input type="password" class="form-control" placeholder="Password"/>
+                            <input v-model="user.password" type="password" class="form-control" placeholder="密码"/>
                             <i class="ace-icon fa fa-lock"></i>
                           </span>
                         </label>
@@ -76,16 +76,37 @@
 <script>
     export default {
       name: 'login',
+      data:function(){
+        return{
+          user:{},
+        }
+      },
       mounted:function() {
         $('body').removeClass('no-skin');
         $('body').attr('class', 'login-layout light-login');
         // console.log("login");
         },
-      methods:{
-          login(){
-            this.$router.push("/welcome")
-          }
-        }
+      methods: {
+        login() {
+          let _this=this;
+          //对密码加密
+          _this.user.password=hex_md5(_this.user.password + KEY);
+
+          Loading.show();
+          _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/user/login',
+            _this.user).then((respond) => {
+            Loading.hide();
+            // console.log("保存用户列表结果:",respond);
+            let resp = respond.data;
+            if (resp.success) {
+              console.log(resp.content);
+              _this.$router.push("/welcome")
+            } else {
+              Toast.warning(resp.message)
+            }
+          });
+        },
+      }
     }
 </script>
 
