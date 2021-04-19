@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- 刷新按钮 -->
     <p>
       <button v-on:click="add()" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-edit"></i>
@@ -15,81 +14,234 @@
     <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
     <!-- 表单数据 -->
-    <table id="simple-table" class="table  table-bordered table-hover">
-      <thead>
-      <tr>
-        <th>姓名</th>
-        <th>性别</th>
-        <th>民族</th>
-        <th>身份证号</th>
-        <th>政治面貌</th>
-        <th>出生日期</th>
-        <th>个人邮箱</th>
-        <th>户口性质</th>
-        <th>户口所在地</th>
-        <th>婚否</th>
-        <th>毕业院校</th>
-        <th>毕业时间</th>
-        <th>专业</th>
-        <th>学历</th>
-        <th>籍贯</th>
-        <th>现住址</th>
-        <th>手机号</th>
-        <th>qq号</th>
-        <th>微信</th>
-        <th>紧急联系人关系</th>
-        <th>紧急联系人姓名</th>
-        <th>紧急联系人电话</th>
-        <th>操作按钮</th>
-      </tr>
-      </thead>
+    <el-table
+      :data="personalinfos"
+      border
+      style="width: 100%">
 
-      <tbody>
-      <tr v-for="personalinfo in personalinfos">
-        <td>{{personalinfo.name}}</td>
-        <td>{{SEX | optionKV(personalinfo.sex)}}</td>
+      <el-table-column
+        label="姓名"
+        width="120"
+        fixed
+        :show-overflow-tooltip="true"
+        prop="name">
+        <template slot-scope="scope">
+          {{(scope.row.name)}}
+        </template>
+      </el-table-column>
 
-        <td>{{NATIONALITY | optionKV(personalinfo.ethnicity)}}</td>
-        <td>{{personalinfo.idnum}}</td>
-        <td>{{POLITICAL_OUTLOOK | optionKV(personalinfo.politicaloutlook)}}</td>
+      <el-table-column
+        label="性别"
+        prop="sex"
+        width="80">
+        <template slot-scope="scope">
+          {{SEX | optionKV(scope.row.sex)}}
+        </template>
+      </el-table-column>
 
-        <td>{{personalinfo.dateofbirth}}</td>
-        <td>{{personalinfo.personalemail}}</td>
-        <td>{{personalinfo.regisType}}</td>
-        <td nowrap>{{personalinfo.regisResidence}}</td>
-        <td>{{MARITAL_STATUS | optionKV(personalinfo.maritalstatus)}}</td>
-        <td>{{personalinfo.gradUnversity}}</td>
-        <td>{{personalinfo.gradTime}}</td>
-        <td>{{personalinfo.speciality}}</td>
-        <td>{{DEGREE | optionKV(personalinfo.degree)}}</td>
+      <el-table-column
+        label="民族"
+        prop="ethnicity"
+        width="100">
+        <template slot-scope="scope">
+          {{NATIONALITY | optionKV(scope.row.ethnicity)}}
+        </template>
+      </el-table-column>
 
-        <td>{{PROVINCE | optionKV(personalinfo.nativeplace)}}</td>
-        <td>{{personalinfo.presentaddress}}</td>
-        <td>{{personalinfo.telephone}}</td>
-        <td>{{personalinfo.qqnum}}</td>
-        <td>{{personalinfo.wechat}}</td>
-        <td>{{EMERGENCY_CONTACT_REL | optionKV(personalinfo.emergencycontactrel)}}</td>
+      <el-table-column
+        label="身份证号"
+        prop="idnum"
+        width="180">
+        <template slot-scope="scope">
+          {{(scope.row.idnum)}}
+        </template>
+      </el-table-column>
 
-        <td>{{personalinfo.emergencycontactname}}</td>
-        <td>{{personalinfo.emergencycontacttel}}</td>
-        <td>
+      <el-table-column
+        label="政治面貌"
+        prop="politicaloutlook"
+        width="80">
+        <template slot-scope="scope">
+          {{POLITICAL_OUTLOOK | optionKV(scope.row.politicaloutlook)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="出生日期"
+        prop="dateofbirth"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.dateofbirth)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="个人邮箱"
+        prop="personalemail"
+        width="200">
+        <template slot-scope="scope">
+          {{(scope.row.personalemail)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="户口性质"
+        prop="regisType"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.regisType)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="户口所在地"
+        prop="regisResidence"
+        :show-overflow-tooltip="true"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.regisResidence)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="婚否"
+        prop="sex"
+        width="80">
+        <template slot-scope="scope">
+          {{MARITAL_STATUS | optionKV(scope.row.maritalstatus)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="毕业院校"
+        prop="gradUnversity"
+        :show-overflow-tooltip="true"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.gradUnversity)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="毕业时间"
+        prop="gradTime"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.gradTime)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="专业"
+        prop="speciality"
+        width="140">
+        <template slot-scope="scope">
+          {{(scope.row.speciality)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="学历"
+        prop="degree"
+        width="120">
+        <template slot-scope="scope">
+          {{DEGREE | optionKV(scope.row.degree)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="籍贯"
+        prop="nativeplace"
+        width="120">
+        <template slot-scope="scope">
+          {{PROVINCE | optionKV(scope.row.nativeplace)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="现住址"
+        prop="presentaddress"
+        :show-overflow-tooltip="true"
+        width="200">
+        <template slot-scope="scope">
+          {{(scope.row.presentaddress)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="手机号"
+        prop="telephone"
+        width="150">
+        <template slot-scope="scope">
+          {{(scope.row.telephone)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="qq号"
+        prop="qqnum"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.qqnum)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="微信"
+        prop="wechat"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.wechat)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="紧急联系人关系"
+        prop="emergencycontactrel"
+        width="120">
+        <template slot-scope="scope">
+          {{EMERGENCY_CONTACT_REL | optionKV(scope.row.emergencycontactrel)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="紧急联系人姓名"
+        prop="emergencycontactname"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.emergencycontactname)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="紧急联系人电话"
+        prop="emergencycontacttel"
+        width="150">
+        <template slot-scope="scope">
+          {{(scope.row.emergencycontacttel)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="操作按钮"
+        width="120"
+        fixed="right">
+        <template slot-scope="scope">
           <div class="hidden-sm hidden-xs btn-group">
-            <button v-on:click="edit(personalinfo)" class="btn btn-xs btn-info">
+            <button v-on:click="edit(scope.row)" class="btn btn-xs btn-info">
               <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button v-on:click="del(personalinfo.id)" class="btn btn-xs btn-danger">
+            <button v-on:click="del(scope.row.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        </template>
+      </el-table-column>
+    </el-table>
 
-    <!-- 模态框 -->
     <div id="form-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog " role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -114,9 +266,9 @@
                 </el-select>
               </el-form-item>
 
-<!--              <el-form-item label="民族" prop="ethnicity">-->
-<!--                <el-input v-model="personalinfo.ethnicity"></el-input>-->
-<!--              </el-form-item>-->
+              <!--              <el-form-item label="民族" prop="ethnicity">-->
+              <!--                <el-input v-model="personalinfo.ethnicity"></el-input>-->
+              <!--              </el-form-item>-->
 
               <el-form-item label="民族" prop="ethnicity">
                 <el-select v-model="personalinfo.ethnicity" placeholder="请选择">
@@ -251,6 +403,7 @@
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -261,7 +414,6 @@
     name: 'business-personalinfo',
     components: {Pagination,ElementUI},
     data:function() {
-      //
       var checkIdnum = (rule, value, callback) => {
         if (!value) {
           return callback(new Error("身份证号不能为空"));
@@ -344,8 +496,6 @@
           }
         }, 100)
       };
-//
-
       return {
         personalinfo:{},
         personalinfos:[],
@@ -356,33 +506,12 @@
         POLITICAL_OUTLOOK:POLITICAL_OUTLOOK,
         PROVINCE:PROVINCE,
         NATIONALITY:NATIONALITY,
-        rules: {
-          telephone: [
-            { validator: checkPhone, trigger: 'blur' ,required: true,}
-          ],
-          personalemail: [
-            { validator: checkEmail, trigger: 'blur' ,required: true,}
-          ],
-          name: [
-            { trigger: 'blur' ,required: true,}
-          ],
-          sex: [
-            { trigger: 'blur' ,required: true,}
-          ],
-          ethnicity: [
-            { trigger: 'blur' ,required: true,}
-          ],
-          idnum: [
-            { validator : checkIdnum, trigger: 'blur' ,required: true,}
-          ],
-        },
-
-      };
+      }
     },
     mounted: function () {
       let _this=this;
-      //自定义初始每页5条
-      _this.$refs.pagination.size=5;
+      //自定义初始每页10条
+      _this.$refs.pagination.size=10;
       _this.list();
     },
     methods: {

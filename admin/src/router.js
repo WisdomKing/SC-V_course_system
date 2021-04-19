@@ -10,6 +10,9 @@ import Clockin from "./views/admin/clockin.vue"
 import Askforleave from "./views/admin/askforleave.vue"
 import Personalinfo from "./views/admin/personalinfo.vue"
 import Employeeinfo from "./views/admin/employeeinfo.vue"
+import Department from "./views/admin/department.vue"
+import Project from "./views/admin/project.vue"
+import Test from "./views/admin/test.vue"
 
 import Calendar from "./views/admin/calendar.vue"
 
@@ -64,6 +67,18 @@ export default new Router({
             path: "business/calendar",
             name: "business/calendar",
             component: Calendar
+        },{
+            path: "business/department",
+            name: "business/department",
+            component: Department
+        },{
+            path: "business/project",
+            name: "business/project",
+            component: Project
+        },{
+            path: "business/test",
+            name: "business/test",
+            component: Test
         }]
     }]
 })

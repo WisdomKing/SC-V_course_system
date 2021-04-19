@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csii.ants.management.server.mapper.departmentMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.department">
+    <id column="depid" jdbcType="CHAR" property="depid" />
+    <result column="depname" jdbcType="VARCHAR" property="depname" />
+    <result column="depDirector" jdbcType="VARCHAR" property="depdirector" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    depid, depname, depDirector
+  </sql>
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.departmentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from department
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from department
+    where depid = #{depid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from department
+    where depid = #{depid,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.departmentExample">
+    delete from department
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.department">
+    insert into department (depid, depname, depDirector
+      )
+    values (#{depid,jdbcType=CHAR}, #{depname,jdbcType=VARCHAR}, #{depdirector,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.department">
+    insert into department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="depid != null">
+        depid,
+      </if>
+      <if test="depname != null">
+        depname,
+      </if>
+      <if test="depdirector != null">
+        depDirector,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="depid != null">
+        #{depid,jdbcType=CHAR},
+      </if>
+      <if test="depname != null">
+        #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="depdirector != null">
+        #{depdirector,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.departmentExample" resultType="java.lang.Long">
+    select count(*) from department
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update department
+    <set>
+      <if test="record.depid != null">
+        depid = #{record.depid,jdbcType=CHAR},
+      </if>
+      <if test="record.depname != null">
+        depname = #{record.depname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.depdirector != null">
+        depDirector = #{record.depdirector,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update department
+    set depid = #{record.depid,jdbcType=CHAR},
+      depname = #{record.depname,jdbcType=VARCHAR},
+      depDirector = #{record.depdirector,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.department">
+    update department
+    <set>
+      <if test="depname != null">
+        depname = #{depname,jdbcType=VARCHAR},
+      </if>
+      <if test="depdirector != null">
+        depDirector = #{depdirector,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where depid = #{depid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.department">
+    update department
+    set depname = #{depname,jdbcType=VARCHAR},
+      depDirector = #{depdirector,jdbcType=VARCHAR}
+    where depid = #{depid,jdbcType=CHAR}
+  </update>
+
+  <insert id="replaceByPrimaryKey" parameterType="com.csii.ants.management.server.domain.department">
+    replace into department (depid, depname, depid
+    )
+    values (#{depid,jdbcType=CHAR}, #{depname,jdbcType=VARCHAR}, #{depid,jdbcType=VARCHAR}
+           )
+  </insert>
+</mapper>

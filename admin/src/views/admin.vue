@@ -372,19 +372,41 @@
             <b class="arrow"></b>
             <ul class="submenu">
               <li class="active open">
-<!--                <router-link to="/system/user">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  用户管理-->
-<!--                </router-link>-->
+                <router-link to="/business/department">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  部门管理
+                </router-link>
                 <b class="arrow"></b>
               </li>
-              <li class="">
+              <li class="active open">
+                <router-link to="/business/project">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  项目管理
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+              <li class="active open">
+                <router-link to="/business/test">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  test
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+<!--              <li class="active open">-->
+<!--                <router-link to="/business/department">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  部门管理-->
+<!--                </router-link>-->
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
+
+<!--              <li class="">-->
 <!--                <router-link to="/role">-->
 <!--                  <i class="menu-icon fa fa-caret-right"></i>-->
 <!--                  权限管理-->
 <!--                </router-link>-->
-                <b class="arrow"></b>
-              </li>
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
             </ul>
           </li>
 

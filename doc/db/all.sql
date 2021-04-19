@@ -1,11 +1,11 @@
 /*----test 测试---------------------------------------------------*/
 drop table if exists `test`;
 create table `test`(
-    `id` varchar(8) not null default '' comment 'id',
-    `name` varchar(50) comment '名称',
-    primary key (`id`)
+   `id` int(4) not null comment 'id',
+   `name` varchar(50) comment '名称',
+   primary key (`id`)
 )engine=innodb default charset=utf8mb4 comment ='测试';
-insert into `test` (`id`,`name`)value (1,'测试');
+insert into `test` (`id`,`name`)value (1001,'测试');
 insert into `test` (`id`,`name`)value (2,'测试2');
 
 /*----announcement 公告---------------------------------------------------*/
@@ -45,6 +45,7 @@ CREATE TABLE `clockin` (
     `Status` char(1) COMMENT '状态|Approved("A","已审批"),Rejected("R","已拒绝"),Commit("C","已提交"),Saved("S","已保存"),Other("O","未报工")',
     `ClockIn_time` DATETIME(0) NOT NULL COMMENT '报工时间',
     primary key (`ID`)
+
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='报工';
 
 INSERT INTO `clockin` VALUES ('9Ce7MH02','F-20-1569_2020富邦华一银行外籍薪资购汇项目', 'D', '8', '2', 'U享存补签', 'A', '2021-02-08 14:45:39');
@@ -104,7 +105,7 @@ CREATE TABLE `headline`  (
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='头条';
 
 INSERT INTO `headline`(ID,CreatedTime,UpdatedTime,Details)
- VALUES ('12345678',now(), now(),'[这里应该放表扬信图片]');
+VALUES ('12345678',now(), now(),'[这里应该放表扬信图片]');
 
 /*----leave 请假---------------------------------------------------*/
 
@@ -162,9 +163,9 @@ INSERT INTO `personalinfo` VALUES ('9Ce7MH09','秦风', 'M', 'N01', '96000119990
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-    `job_num` varchar(5) NOT NULL COMMENT '工号',
-    `role` char(3) NOT NULL COMMENT '权限',
-    primary key (`job_num`)
+   `job_num` varchar(5) NOT NULL COMMENT '工号',
+   `role` char(3) NOT NULL COMMENT '权限',
+   primary key (`job_num`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='权限';
 
 INSERT INTO `role` (job_num, role)VALUES ('13901','ALL');
@@ -175,14 +176,39 @@ INSERT INTO `role` (job_num, role)VALUES ('13905','ALL');
 /*----user 用户---------------------------------------------------*/
 drop table if exists `user`;
 create table `user` (
-    `id` char(8) not null default '' comment 'id',
+    `job_num` char(8) not null comment '工号',
     `companyEmail` varchar(50) not null comment '登陆名',
     `name` varchar(50) comment '昵称',
     `password` char(32) not null comment '密码',
     `role` char(8) NOT NULL COMMENT '权限',
-    primary key (`id`),
+    primary key (`job_num`),
     unique key `companyEmail_unique` (`companyEmail`)
 ) engine=innodb default charset=utf8mb4 comment='用户';
 
-insert into `user` (id, companyEmail, name, password) values ('10000000', 'test', '测试', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, companyEmail, name, password,role) values ('10000000', 'test', '测试', '202cb962ac59075b964b07152d234b70','ALL');
 
+/*----department 部门---------------------------------------------------*/
+drop table if exists `department`;
+create table `department` (
+    `depid` char(5) not null comment '部门id',
+    `depname` varchar(20) not null comment '部门名称',
+    `depDirector` varchar(20) COMMENT '部门总监',
+    primary key (`depid`)
+)engine=innodb default charset=utf8mb4 comment='部门';
+
+insert into `department` (depid, depname, depDirector) values ('d1001', '开发', '向川');
+insert into `department` (depid, depname, depDirector) values ('d1002', '开发测试', '忘川');
+insert into `department` (depid, depname, depDirector) values ('d2001', '人事', '浅川');
+
+/*----project 项目---------------------------------------------------*/
+drop table if exists `project`;
+create table `project` (
+    `proid` char(5) not null comment '项目id',
+    `proname` varchar(20) not null comment '项目名称',
+    `depid` varchar(20) COMMENT '部门id',
+    primary key (`proid`)
+)engine=innodb default charset=utf8mb4 comment='项目';
+
+insert into `project` (proid, proname, depid) values ('p1001', '阿里云', 'd1001');
+insert into `project` (proid, proname, depid) values ('p1002', '阿里海', 'd1002');
+insert into `project` (proid, proname, depid) values ('p2001', '阿里山', 'd2001');

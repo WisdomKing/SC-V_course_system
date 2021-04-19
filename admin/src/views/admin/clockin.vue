@@ -1,16 +1,16 @@
-<template v-for="(clockin, index) in clockins" :key="index">
+<template>
   <div>
     <!-- 刷新按钮 -->
     <p>
-    <button v-on:click="add()" class="btn btn-white btn-default btn-round">
-      <i class="ace-icon fa fa-edit"></i>
-      新增
-    </button>
+      <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-edit"></i>
+        新增
+      </button>
       &nbsp;
-    <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
-      <i class="ace-icon fa fa-refresh"></i>
-      刷新
-    </button>
+      <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-refresh"></i>
+        刷新
+      </button>
     </p>
     <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
@@ -30,7 +30,7 @@
       </thead>
 
       <tbody>
-      <tr >
+      <tr v-for="clockin in clockins">
         <td>{{clockin.projectname}}</td>
         <td>{{MANHOUR_TYPE | optionKV(clockin.manhourType)}}</td>
         <td>{{clockin.manhour}}</td>
@@ -64,52 +64,52 @@
           <div class="modal-body">
             <!-- 表单 -->
             <form class="form-horizontal">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">项目名称</label>
-                  <div class="col-sm-10">
-                    <input v-model="clockin.projectname" class="form-control" placeholder="项目名称">
-                  </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">项目名称</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.projectname" class="form-control" placeholder="项目名称">
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">工时类型</label>
-                  <div class="col-sm-10">
-                    <select v-model="clockin.manhourType" class="form-control">
-                      <option v-for="o in MANHOUR_TYPE" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">工时类型</label>
+                <div class="col-sm-10">
+                  <select v-model="clockin.manhourType" class="form-control">
+                    <option v-for="o in MANHOUR_TYPE" v-bind:value="o.key">{{o.value}}</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">工时</label>
-                  <div class="col-sm-10">
-                    <input v-model="clockin.manhour" class="form-control" placeholder="工时">
-                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">工时</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.manhour" class="form-control" placeholder="工时">
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">延时</label>
-                  <div class="col-sm-10">
-                    <input v-model="clockin.delayed" class="form-control" placeholder="延时">
-                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">延时</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.delayed" class="form-control" placeholder="延时">
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">工作日志</label>
-                  <div class="col-sm-10">
-                    <input v-model="clockin.worklog" class="form-control" placeholder="工作日志">
-                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">工作日志</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.worklog" class="form-control" placeholder="工作日志">
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">状态</label>
-                  <div class="col-sm-10">
-                    <select v-model="clockin.status" class="form-control">
-                      <option v-for="o in CLOCKIN_STATUS" v-bind:value="o.key">{{o.value}}</option>
-                    </select>
-                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">状态</label>
+                <div class="col-sm-10">
+                  <select v-model="clockin.status" class="form-control">
+                    <option v-for="o in CLOCKIN_STATUS" v-bind:value="o.key">{{o.value}}</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">报工时间</label>
-                  <div class="col-sm-10">
-                    <input v-model="clockin.clockinTime" class="form-control" placeholder="报工时间">
-                  </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">报工时间</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.clockinTime" class="form-control" placeholder="报工时间">
                 </div>
+              </div>
             </form>
           </div>
           <div class="modal-footer">
@@ -140,7 +140,7 @@
       //自定义初始每页5条
       _this.$refs.pagination.size=5;
       _this.list();
-      },
+    },
     methods: {
       /**
        * 点击新增
@@ -199,7 +199,7 @@
 
         Loading.show();
         _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/clockin/save',
-_this.clockin).then((respond)=>{
+          _this.clockin).then((respond)=>{
           Loading.hide();
           // console.log("保存报工列表结果:",respond);
           let resp=respond.data;

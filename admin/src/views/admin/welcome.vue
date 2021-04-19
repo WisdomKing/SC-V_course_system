@@ -1,5 +1,7 @@
 <template>
   <div>
+    <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
+    <!-- 刷新按钮 -->
     <p>
       <button v-on:click="add()" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-edit"></i>
@@ -15,7 +17,7 @@
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
     <!-- 表单数据 -->
     <el-table
-      :data="personalinfos"
+      :data="employeeinfos"
       border
       style="width: 100%">
 
@@ -31,194 +33,182 @@
       </el-table-column>
 
       <el-table-column
-        label="性别"
-        prop="sex"
-        width="80">
+        label="工号"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{SEX | optionKV(scope.row.sex)}}
+          {{(scope.row.jobNum)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="民族"
-        prop="ethnicity"
-        width="100">
+        label="归属公司"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{NATIONALITY | optionKV(scope.row.ethnicity)}}
+          {{BASE | optionKV(scope.row.base)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="身份证号"
-        prop="idnum"
-        width="180">
+        label="企业邮箱"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.idnum)}}
+          {{(scope.row.companyemail)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="政治面貌"
-        prop="politicaloutlook"
-        width="80">
+        label="所属部门"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{POLITICAL_OUTLOOK | optionKV(scope.row.politicaloutlook)}}
+          {{(scope.row.dependenceDep)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="出生日期"
-        prop="dateofbirth"
-        width="120">
+        label="上级部门"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.dateofbirth)}}
+          {{(scope.row.superiordep)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="个人邮箱"
-        prop="personalemail"
-        width="200">
+        label="职位"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.personalemail)}}
+          {{(scope.row.position)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="户口性质"
-        prop="regisType"
-        width="120">
+        label="部门总监"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.regisType)}}
+          {{(scope.row.depDirector)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="户口所在地"
-        prop="regisResidence"
-        :show-overflow-tooltip="true"
-        width="120">
+        label="入职时间"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.regisResidence)}}
+          {{(scope.row.entryTime)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="婚否"
-        prop="sex"
-        width="80">
+        label="入职方式"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{MARITAL_STATUS | optionKV(scope.row.maritalstatus)}}
+          {{ENTRY_TYPE | optionKV(scope.row.entryType)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="毕业院校"
-        prop="gradUnversity"
-        :show-overflow-tooltip="true"
-        width="120">
+        label="入职地点"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.gradUnversity)}}
+          {{BASE | optionKV(scope.row.entryAddress)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="毕业时间"
-        prop="gradTime"
-        width="120">
+        label="实习起止日"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.gradTime)}}
+          {{(scope.row.name)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="专业"
-        prop="speciality"
-        width="140">
+        label="转正日期"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.speciality)}}
+          {{(scope.row.name)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="学历"
-        prop="degree"
-        width="120">
+        label="合同起止日"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{DEGREE | optionKV(scope.row.degree)}}
+          {{(scope.row.name)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="籍贯"
-        prop="nativeplace"
-        width="120">
+        label="试用到期日"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{PROVINCE | optionKV(scope.row.nativeplace)}}
+          {{(scope.row.probationexpDate)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="现住址"
-        prop="presentaddress"
-        :show-overflow-tooltip="true"
-        width="200">
+        label="人员状态"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.presentaddress)}}
+          {{EMPLOYEE_STATUS | optionKV(scope.row.employeestatus)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="手机号"
-        prop="telephone"
-        width="150">
+        label="合同续签"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.telephone)}}
+          {{(scope.row.contractrenew)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="qq号"
-        prop="qqnum"
-        width="120">
+        label="福利地区"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.qqnum)}}
+          {{BASE | optionKV(scope.row.welfarearea)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="微信"
-        prop="wechat"
-        width="120">
+        label="我的角色"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.wechat)}}
+          {{ROLE | optionKV(scope.row.myrole)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="紧急联系人关系"
-        prop="emergencycontactrel"
-        width="120">
+        label="员工CCC"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{EMERGENCY_CONTACT_REL | optionKV(scope.row.emergencycontactrel)}}
+          {{(scope.row.employeeccc)}}
         </template>
       </el-table-column>
 
       <el-table-column
-        label="紧急联系人姓名"
-        prop="emergencycontactname"
-        width="120">
+        label="备注"
+        width="120"
+        prop="name">
         <template slot-scope="scope">
-          {{(scope.row.emergencycontactname)}}
-        </template>
-      </el-table-column>
-
-      <el-table-column
-        label="紧急联系人电话"
-        prop="emergencycontacttel"
-        width="150">
-        <template slot-scope="scope">
-          {{(scope.row.emergencycontacttel)}}
+          {{(scope.row.comment)}}
         </template>
       </el-table-column>
 
@@ -227,38 +217,43 @@
         width="120"
         fixed="right">
         <template slot-scope="scope">
-        <div class="hidden-sm hidden-xs btn-group">
-          <button v-on:click="edit(scope.row)" class="btn btn-xs btn-info">
-            <!--详情-->
-            <i class="ace-icon fa fa-pencil bigger-120"></i>
-          </button>
-          <button v-on:click="del(scope.row.id)" class="btn btn-xs btn-danger">
-            <i class="ace-icon fa fa-trash-o bigger-120"></i>
-          </button>
-        </div>
+          <div class="hidden-sm hidden-xs btn-group">
+            <button v-on:click="edit(scope.row)" class="btn btn-xs btn-info">
+              <!--详情-->
+              <i class="ace-icon fa fa-pencil bigger-120"></i>
+            </button>
+            <button v-on:click="del(scope.row.id)" class="btn btn-xs btn-danger">
+              <i class="ace-icon fa fa-trash-o bigger-120"></i>
+            </button>
+          </div>
         </template>
       </el-table-column>
     </el-table>
 
-    <div id="form-modal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog modal-lg" role="document">
+    <!-- 模态框 -->
+    <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">个人信息-请认真核对个人信息</h4>
+            <h4 class="modal-title">员工信息</h4>
           </div>
           <div class="modal-body">
             <!-- 表单 -->
-            <el-form ref="personalinfo" :rules="rules" :model="personalinfo" label-width="120px">
+            <el-form ref="employeeinfo" :rules="rules" :model="employeeinfo" label-width="120px">
 
-              <el-form-item label="姓名" prop="name">
-                <el-input v-model="personalinfo.name"></el-input>
+              <el-form-item label="姓名">
+                <el-input v-model="employeeinfo.name"></el-input>
               </el-form-item>
 
-              <el-form-item label="性别" prop="sex">
-                <el-select v-model="personalinfo.sex" placeholder="请选择性别">
+              <el-form-item label="工号">
+                <el-input v-model="employeeinfo.jobNum"></el-input>
+              </el-form-item>
+
+              <el-form-item label="归属公司" >
+                <el-select v-model="employeeinfo.base" filterable placeholder="请选择归属公司">
                   <el-option
-                    v-for="o in SEX"
+                    v-for="o in BASE"
                     :key="o.value"
                     :label="o.value"
                     :value="o.key">
@@ -266,14 +261,113 @@
                 </el-select>
               </el-form-item>
 
-              <!--              <el-form-item label="民族" prop="ethnicity">-->
-              <!--                <el-input v-model="personalinfo.ethnicity"></el-input>-->
+              <el-form-item label="企业邮箱" prop="companyemail">
+                <el-input v-model="employeeinfo.companyemail"></el-input>
+              </el-form-item>
+
+              <el-form-item label="所属部门">
+                <el-input v-model="employeeinfo.dependenceDep"></el-input>
+              </el-form-item>
+
+              <el-form-item label="上级部门">
+                <el-input v-model="employeeinfo.superiordep"></el-input>
+              </el-form-item>
+
+              <el-form-item label="职位">
+                <el-input v-model="employeeinfo.position"></el-input>
+              </el-form-item>
+
+              <el-form-item label="部门总监">
+                <el-input v-model="employeeinfo.depDirector"></el-input>
+              </el-form-item>
+
+              <el-form-item label="入职时间">
+                <el-input v-model="employeeinfo.entryTime"></el-input>
+              </el-form-item>
+
+              <el-form-item label="入职方式" >
+                <el-select v-model="employeeinfo.entryType" filterable placeholder="请选择入职方式">
+                  <el-option
+                    v-for="o in ENTRY_TYPE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <el-form-item label="入职地点" >
+                <el-select v-model="employeeinfo.entryAddress" filterable placeholder="请选择入职地点">
+                  <el-option
+                    v-for="o in BASE"
+                    :key="o.value"
+                    :label="o.value"
+                    :value="o.key">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+
+              <!--              <el-form-item label="实习起始日">-->
+              <!--                <el-input v-model="employeeinfo.internshipbegin"></el-input>-->
               <!--              </el-form-item>-->
 
-              <el-form-item label="民族" prop="ethnicity">
-                <el-select v-model="personalinfo.ethnicity" placeholder="请选择">
+              <!--              <el-form-item label="实习到期日">-->
+              <!--                <el-input v-model="employeeinfo.internshipending"></el-input>-->
+              <!--              </el-form-item>-->
+
+              <el-form-item label="实习起止日">
+                <el-date-picker
+                  v-model="internship_date"
+                  type="daterange"
+                  value-format="yyyy-MM-dd HH:mm:ss"
+                  range-separator="-"
+                  :editable="false"
+                  start-placeholder="实习起始日"
+                  end-placeholder="实习到期日">
+                </el-date-picker>
+              </el-form-item>
+
+              <el-form-item label="转正日期">
+                <el-input v-model="employeeinfo.conversionregTime"></el-input>
+              </el-form-item>
+
+              <!--              <el-date-picker-->
+              <!--                type="dates"-->
+              <!--                value-format="yyyy-MM-dd"-->
+              <!--                v-model="contract_date"-->
+              <!--                placeholder="合同起止日">-->
+              <!--              </el-date-picker>-->
+              <el-form-item label="合同起止日">
+                <el-date-picker
+                  v-model="contract_date"
+                  type="daterange"
+                  value-format="yyyy-MM-dd HH:mm:ss"
+                  range-separator="-"
+                  :editable="false"
+                  start-placeholder="合同签订日"
+                  end-placeholder="合同截止日">
+                </el-date-picker>
+              </el-form-item>
+
+              <!--              <el-form-item label="合同签订日">-->
+              <!--                <el-input v-model="employeeinfo.contractsigning"></el-input>-->
+              <!--              </el-form-item>-->
+
+              <!--              <el-form-item label="合同截止日">-->
+              <!--                <el-input v-model="employeeinfo.contractending"></el-input>-->
+              <!--              </el-form-item>-->
+
+              <el-form-item label="试用到期日">
+                <el-input v-model="employeeinfo.probationexpDate"></el-input>
+              </el-form-item>
+
+              <!--              <el-form-item label="人员状态">-->
+              <!--                <el-input v-model="employeeinfo.employeestatus"></el-input>-->
+              <!--              </el-form-item>-->
+              <el-form-item label="人员状态" >
+                <el-select v-model="employeeinfo.employeestatus" filterable placeholder="请选择人员状态">
                   <el-option
-                    v-for="o in NATIONALITY"
+                    v-for="o in EMPLOYEE_STATUS"
                     :key="o.value"
                     :label="o.value"
                     :value="o.key">
@@ -281,17 +375,14 @@
                 </el-select>
               </el-form-item>
 
-              <el-form-item label="身份证号" prop="idnum">
-                <el-input
-                  v-model="personalinfo.idnum"
-                  onkeyup="this.value=this.value.replace(/[^\X0-9]/g, '')">
-                </el-input>
+              <el-form-item label="合同续签">
+                <el-input v-model="employeeinfo.contractrenew"></el-input>
               </el-form-item>
 
-              <el-form-item label="政治面貌">
-                <el-select v-model="personalinfo.politicaloutlook" placeholder="请选择政治面貌">
+              <el-form-item label="福利地区" >
+                <el-select v-model="employeeinfo.welfarearea" filterable placeholder="请选择福利地区">
                   <el-option
-                    v-for="o in POLITICAL_OUTLOOK"
+                    v-for="o in BASE"
                     :key="o.value"
                     :label="o.value"
                     :value="o.key">
@@ -299,26 +390,14 @@
                 </el-select>
               </el-form-item>
 
-              <el-form-item label="出生日期">
-                <el-input v-model="personalinfo.dateofbirth"></el-input>
-              </el-form-item>
+              <!--              <el-form-item label="我的角色">-->
+              <!--                <el-input v-model="employeeinfo.myrole"></el-input>-->
+              <!--              </el-form-item>-->
 
-              <el-form-item label="个人邮箱" prop="personalemail">
-                <el-input v-model="personalinfo.personalemail"></el-input>
-              </el-form-item>
-
-              <el-form-item label="户口性质">
-                <el-input v-model="personalinfo.regisType"></el-input>
-              </el-form-item>
-
-              <el-form-item label="户口所在地">
-                <el-input v-model="personalinfo.regisResidence"></el-input>
-              </el-form-item>
-
-              <el-form-item label="婚否">
-                <el-select v-model="personalinfo.maritalstatus" placeholder="请选择婚否">
+              <el-form-item label="我的角色" >
+                <el-select v-model="employeeinfo.myrole" filterable placeholder="请选择角色">
                   <el-option
-                    v-for="o in MARITAL_STATUS"
+                    v-for="o in ROLE"
                     :key="o.value"
                     :label="o.value"
                     :value="o.key">
@@ -326,73 +405,12 @@
                 </el-select>
               </el-form-item>
 
-              <el-form-item label="毕业院校">
-                <el-input v-model="personalinfo.gradUnversity"></el-input>
+              <el-form-item label="员工CCC">
+                <el-input v-model="employeeinfo.employeeccc"></el-input>
               </el-form-item>
 
-              <el-form-item label="毕业时间">
-                <el-input v-model="personalinfo.gradTime"></el-input>
-              </el-form-item>
-
-              <el-form-item label="专业">
-                <el-input v-model="personalinfo.speciality"></el-input>
-              </el-form-item>
-
-              <el-form-item label="学历">
-                <el-select v-model="personalinfo.degree" placeholder="请选择学历">
-                  <el-option
-                    v-for="o in DEGREE"
-                    :key="o.value"
-                    :label="o.value"
-                    :value="o.key">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-
-              <el-form-item label="籍贯" >
-                <el-select v-model="personalinfo.nativeplace" filterable placeholder="请选择籍贯">
-                  <el-option
-                    v-for="o in PROVINCE"
-                    :key="o.value"
-                    :label="o.value"
-                    :value="o.key">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-
-              <el-form-item label="现住址">
-                <el-input v-model="personalinfo.presentaddress"></el-input>
-              </el-form-item>
-
-              <el-form-item label="手机号" prop="telephone">
-                <el-input v-model="personalinfo.telephone"></el-input>
-              </el-form-item>
-
-              <el-form-item label="qq号">
-                <el-input v-model="personalinfo.qqnum"></el-input>
-              </el-form-item>
-
-              <el-form-item label="微信">
-                <el-input v-model="personalinfo.wechat"></el-input>
-              </el-form-item>
-
-              <el-form-item label="紧急联系人关系">
-                <el-select v-model="personalinfo.emergencycontactrel" placeholder="请选择">
-                  <el-option
-                    v-for="o in EMERGENCY_CONTACT_REL"
-                    :key="o.value"
-                    :label="o.value"
-                    :value="o.key">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-
-              <el-form-item label="紧急联系人姓名">
-                <el-input v-model="personalinfo.emergencycontactname"></el-input>
-              </el-form-item>
-
-              <el-form-item label="紧急联系人电话">
-                <el-input v-model="personalinfo.emergencycontacttel"></el-input>
+              <el-form-item label="备注">
+                <el-input v-model="employeeinfo.comment"></el-input>
               </el-form-item>
             </el-form>
           </div>
@@ -403,7 +421,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -411,78 +428,10 @@
   import Pagination from "../../components/pagination";
   import ElementUI from "element-ui";
   export default {
-    name: 'business-personalinfo',
+    name: 'business-employeeinfo',
     components: {Pagination,ElementUI},
-    data:function() {
-      var checkIdnum = (rule, value, callback) => {
-        if (!value) {
-          return callback(new Error("身份证号不能为空"));
-        }
-        if (!/(^\d{15}$)|(^\d{17}(\d|X|x)$)/.test(value)) {
-          callback(new Error("你输入的身份证长度或格式错误"));
-        }
-        //身份证城市
-        var aCity = {
-          11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古",
-          21: "辽宁", 22: "吉林", 23: "黑龙江",
-          31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东",
-          41: "河南", 42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南",
-          50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏",
-          61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "新疆",
-          71: "台湾", 81: "香港", 82: "澳门", 91: "国外"
-        };
-        if (!aCity[parseInt(value.substr(0, 2))]) {
-          callback(new Error("你的身份证地区非法"));
-        }
-        // 出生日期验证
-        var sBirthday = (
-            value.substr(6, 4) +
-            "-" +
-            Number(value.substr(10, 2)) +
-            "-" +
-            Number(value.substr(12, 2))
-          ).replace(/-/g, "/"),
-          d = new Date(sBirthday);
-        if (
-          sBirthday !=
-          d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate()
-        ) {
-          callback(new Error("身份证上的出生日期非法"));
-        }
+    data:function(){
 
-        // 身份证号码校验
-        var sum = 0,
-          weights = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2],
-          codes = "10X98765432";
-        for (var i = 0; i < value.length - 1; i++) {
-          sum += value[i] * weights[i];
-        }
-        var last = codes[sum % 11]; //计算出来的最后一位身份证号码
-        if (value[value.length - 1] != last) {
-          callback(new Error("你输入的身份证号非法"));
-        }
-        callback();
-      };
-
-      const checkPhone = (rule, value, callback) => {
-        const phoneReg = /^1[3|4|5|7|8|9][0-9]{9}$/
-        if (!value) {
-          return callback(new Error('电话号码不能为空'))
-        }
-        setTimeout(() => {
-          // Number.isInteger是es6验证数字是否为整数的方法,但是我实际用的时候输入的数字总是识别成字符串
-          // 所以我就在前面加了一个+实现隐式转换
-          if (!Number.isInteger(+value)) {
-            callback(new Error('请输入数字值'))
-          } else {
-            if (phoneReg.test(value)) {
-              callback()
-            } else {
-              callback(new Error('电话号码格式/长度不正确'))
-            }
-          }
-        }, 100)
-      }
       const checkEmail = (rule, value, callback) => {
         const mailReg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
         if (!value) {
@@ -496,22 +445,26 @@
           }
         }, 100)
       };
-      return {
-        personalinfo:{},
-        personalinfos:[],
-        SEX:SEX,
-        EMERGENCY_CONTACT_REL:EMERGENCY_CONTACT_REL,
-        DEGREE:DEGREE,
-        MARITAL_STATUS:MARITAL_STATUS,
-        POLITICAL_OUTLOOK:POLITICAL_OUTLOOK,
-        PROVINCE:PROVINCE,
-        NATIONALITY:NATIONALITY,
+      return{
+        employeeinfo:{},
+        employeeinfos:[],
+        contract_date:'',
+        internship_date:'',
+        BASE:BASE,
+        ENTRY_TYPE:ENTRY_TYPE,
+        ROLE:ROLE,
+        EMPLOYEE_STATUS:EMPLOYEE_STATUS,
+        rules: {
+          companyemail: [
+            { validator: checkEmail, trigger: 'blur' ,required: true,}
+          ],
+        },
       }
     },
     mounted: function () {
       let _this=this;
-      //自定义初始每页5条
-      _this.$refs.pagination.size=5;
+      //自定义初始每页10条
+      _this.$refs.pagination.size=10;
       _this.list();
     },
     methods: {
@@ -521,17 +474,18 @@
       add(){
         let _this=this;
         //模态框打开时清空上次的数据
-        _this.personalinfo={}
+        _this.employeeinfo={}
         $("#form-modal").modal("show");
       },
       /**
        * 点击编辑
        */
-      edit(personalinfo){
+      edit(employeeinfo){
         let _this=this;
-        // this.relation=_this.personalinfo.emergencycontactrel;
+        this.contract_date='';
+        this.internship_date='';
         //将数据带到模态框里
-        _this.personalinfo=$.extend({},personalinfo);
+        _this.employeeinfo=$.extend({},employeeinfo);
         $("#form-modal").modal("show");
       },
       /**
@@ -540,13 +494,13 @@
       list(page){
         let _this=this;
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/personalinfo/list',{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/employeeinfo/list',{
           page:page,
           size:_this.$refs.pagination.size,
         }).then((respond)=>{
           Loading.hide();
           let resp=respond.data;
-          _this.personalinfos=resp.content.list;
+          _this.employeeinfos=resp.content.list;
           //重新渲染？5.5-1155
           _this.$refs.pagination.render(page,resp.content.total);
         })
@@ -556,43 +510,42 @@
        */
       save(page){
         let _this=this;
-
+        _this.employeeinfo.contractsigning = this.contract_date[0];
+        _this.employeeinfo.contractending = this.contract_date[1];
+        _this.employeeinfo.internshipbegin = this.internship_date[0];
+        _this.employeeinfo.internshipending = this.internship_date[1];
         // 保存校验，非空和长度
         if (1 != 1
-          || !Validator.require(_this.personalinfo.name, "姓名")
-          || !Validator.length(_this.personalinfo.name, "姓名", 1, 20)
-          || !Validator.require(_this.personalinfo.sex, "性别")
-          || !Validator.require(_this.personalinfo.ethnicity, "民族")
-          || !Validator.length(_this.personalinfo.ethnicity, "民族", 1, 20)
-
-          || !Validator.require(_this.personalinfo.idnum, "身份证号")
-          || !Validator.length(_this.personalinfo.idnum, "身份证号", 1, 18)
-
-          || !Validator.length(_this.personalinfo.dateofbirth, "出生日期", 1, 20)
-          || !Validator.require(_this.personalinfo.personalemail, "个人邮箱")
-          || !Validator.length(_this.personalinfo.personalemail, "个人邮箱", 1, 50)
-          || !Validator.length(_this.personalinfo.regisType, "户口性质", 1, 20)
-          || !Validator.length(_this.personalinfo.regisResidence, "户口所在地", 1, 50)
-          || !Validator.length(_this.personalinfo.gradUnversity, "毕业院校", 1, 20)
-          || !Validator.length(_this.personalinfo.gradTime, "毕业时间", 1, 20)
-          || !Validator.length(_this.personalinfo.speciality, "专业", 1, 20)
-          || !Validator.length(_this.personalinfo.nativeplace, "籍贯", 1, 50)
-          || !Validator.length(_this.personalinfo.presentaddress, "现住址", 1, 50)
-          || !Validator.require(_this.personalinfo.telephone, "手机号")
-          || !Validator.length(_this.personalinfo.telephone, "手机号", 1, 18)
-          || !Validator.length(_this.personalinfo.qqnum, "qq号", 1, 20)
-          || !Validator.length(_this.personalinfo.wechat, "微信", 1, 20)
-          || !Validator.length(_this.personalinfo.emergencycontactname, "紧急联系人姓名", 1, 20)
-          || !Validator.length(_this.personalinfo.emergencycontacttel, "紧急联系人电话", 1, 18)
+          || !Validator.require(_this.employeeinfo.name, "姓名")
+          || !Validator.length(_this.employeeinfo.name, "姓名", 1, 20)
+          || !Validator.require(_this.employeeinfo.jobNum, "工号")
+          || !Validator.length(_this.employeeinfo.jobNum, "工号", 1, 5)
+          || !Validator.require(_this.employeeinfo.base, "归属公司")
+          || !Validator.require(_this.employeeinfo.companyemail, "企业邮箱")
+          || !Validator.length(_this.employeeinfo.companyemail, "企业邮箱", 1, 50)
+          || !Validator.require(_this.employeeinfo.dependenceDep, "所属部门")
+          || !Validator.length(_this.employeeinfo.dependenceDep, "所属部门", 1, 20)
+          || !Validator.length(_this.employeeinfo.superiordep, "上级部门", 1, 20)
+          || !Validator.require(_this.employeeinfo.position, "职位")
+          || !Validator.length(_this.employeeinfo.position, "职位", 1, 20)
+          || !Validator.length(_this.employeeinfo.depDirector, "部门总监", 1, 20)
+          || !Validator.require(_this.employeeinfo.entryTime, "入职时间")
+          || !Validator.require(_this.employeeinfo.entryAddress, "入职地点")
+          || !Validator.length(_this.employeeinfo.employeestatus, "人员状态", 1, 20)
+          || !Validator.length(_this.employeeinfo.contractrenew, "合同续签", 1, 20)
+          || !Validator.length(_this.employeeinfo.welfarearea, "福利地区", 1, 20)
+          || !Validator.length(_this.employeeinfo.myrole, "我的角色", 1, 20)
+          || !Validator.length(_this.employeeinfo.employeeccc, "员工CCC", 1, 20)
+          || !Validator.length(_this.employeeinfo.comment, "备注", 1, 50)
         ) {
           return;
         }
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/personalinfo/save',
-          _this.personalinfo).then((respond)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/employeeinfo/save',
+          _this.employeeinfo).then((respond)=>{
           Loading.hide();
-          // console.log("保存个人信息列表结果:",respond);
+          // console.log("保存员工信息列表结果:",respond);
           let resp=respond.data;
           if (resp.success){
             //如果成功了，隐藏modal和刷新列表
@@ -609,11 +562,11 @@
        */
       del(id){
         let _this=this;
-        Confirm.show("删除个人信息后不可恢复，确认删除?",function () {
+        Confirm.show("删除员工信息后不可恢复，确认删除?",function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/personalinfo/delete/'+id).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/employeeinfo/delete/'+id).then((respond)=>{
             Loading.hide();
-            // console.log("删除个人信息列表结果:",respond);
+            // console.log("删除员工信息列表结果:",respond);
             let resp=respond.data;
             if (resp.success){
               _this.list(1);
@@ -621,7 +574,7 @@
             }
           })
         });
-      },
+      }
     }
   }
 </script>

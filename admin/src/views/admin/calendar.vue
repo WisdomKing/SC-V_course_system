@@ -1,189 +1,147 @@
 <template>
   <div>
-    <!--日历组件-->
-    <el-calendar v-model="value">
-
+    <el-calendar>
+      <template slot="dateCell" slot-scope="{date, data}" class="calItem" >
+        <div :class="data.isSelected ? 'is-selected' : ''" @click="calClick(data)">
+          <p class="dayItem"  v-if="data.day.substr(-2) < 10">{{ data.day.substr(-1)}}</p>
+          <p class="dayItem"  v-else>{{ data.day.substr(-2)}}</p>
+          <div v-for="(item,index) in calendarData" :key="index">
+            <div v-if="(item.years).indexOf(data.day.split('-').slice(0)[0])!=-1 && (item.months).indexOf(data.day.split('-').slice(1)[0])!=-1 && (item.days).indexOf(data.day.split('-').slice(2).join('-'))!=-1">
+              <el-tooltip :content="item.things" placement="right">
+                <div class="mark">{{item.things}}</div>
+              </el-tooltip>
+            </div>
+            <div v-else></div>
+          </div>
+          <p class="addBtn" v-show="data.isSelected == true" @click="dialogVisible = true">添加日程</p>
+        </div>
+      </template>
     </el-calendar>
 
-    <!-- 模态框 -->
-    <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">报工</h4>
-          </div>
-          <div class="modal-body">
-            <!-- 表单 -->
-            <form class="form-horizontal">
-              <div class="form-group">
-                <label class="col-sm-2 control-label">项目名称</label>
-                <div class="col-sm-10">
-                  <input v-model="clockin.projectname" class="form-control" placeholder="项目名称">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">工时类型</label>
-                <div class="col-sm-10">
-                  <select v-model="clockin.manhourType" class="form-control">
-                    <option v-for="o in MANHOUR_TYPE" v-bind:value="o.key">{{o.value}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">工时</label>
-                <div class="col-sm-10">
-                  <input v-model="clockin.manhour" class="form-control" placeholder="工时">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">延时</label>
-                <div class="col-sm-10">
-                  <input v-model="clockin.delayed" class="form-control" placeholder="延时">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">工作日志</label>
-                <div class="col-sm-10">
-                  <input v-model="clockin.worklog" class="form-control" placeholder="工作日志">
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">状态</label>
-                <div class="col-sm-10">
-                  <select v-model="clockin.status" class="form-control">
-                    <option v-for="o in CLOCKIN_STATUS" v-bind:value="o.key">{{o.value}}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label">报工时间</label>
-                <div class="col-sm-10">
-                  <input v-model="clockin.clockinTime" class="form-control" placeholder="报工时间">
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button v-on:click="save()" type="button" class="btn btn-primary">保存</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <el-dialog
+      :title="formData.data"
+      :visible.sync="dialogVisible"
+      width="50%"
+      :before-close="handleClose">
+      <el-form @submit.native.prevent>
+        <el-form-item label="日程">
+          <el-input v-model="formData.content"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogVisible = false,add()">确 定</el-button>
+            </span>
+    </el-dialog>
   </div>
 </template>
-
 <script>
-  import Pagination from "../../components/pagination";
   export default {
-    name: 'business-clockin',
-    components: {Pagination},
-    data:function(){
-      return{
-        clockin:{},
-        clockins:[],
-        MANHOUR_TYPE,
-        CLOCKIN_STATUS,
-        value: new Date(),
+    name: "calendar",
+    data(){
+      return {
+        formData:{
+          data:'',
+          content: ''
+        },
+        dialogVisible: false,
+        calendarData: [
+          { years: ['2021'], months: ['04', '11'],days: ['14'],things: '杂志' },
+          { years: ['2021'], months: ['04', '11'], days: ['12'],things: '演唱会' },
+          { years: ['2021'], months: ['04'], days: ['02'],things: '晚会' },
+          { years: ['2021'], months: ['04'], days: ['02'],things: '杂志预售' },
+          { years: ['2021'], months: ['04'], days: ['15'],things: '重启开播' }
+        ],
+        value: new Date()
       }
     },
-    mounted: function () {
-      let _this=this;
-      //自定义初始每页5条
-      _this.$refs.pagination.size=5;
-      _this.list();
-    },
     methods: {
-      /**
-       * 点击新增
-       */
+      calClick(item){
+        console.log(item)
+        this.formData.data = item.day
+      },
+      handleClose(done){
+        done()
+      },
       add(){
-        let _this=this;
-        //模态框打开时清空上次的数据
-        _this.clockin={}
-        $("#form-modal").modal("show");
-      },
-      /**
-       * 点击编辑
-       */
-      edit(clockin){
-        let _this=this;
-        //将数据带到模态框里
-        _this.clockin=$.extend({},clockin);
-        $("#form-modal").modal("show");
-      },
-      /**
-       * 列表查询
-       */
-      list(page){
-        let _this=this;
-        Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/clockin/list',{
-          page:page,
-          size:_this.$refs.pagination.size,
-        }).then((respond)=>{
-          Loading.hide();
-          let resp=respond.data;
-          _this.clockins=resp.content.list;
-          //重新渲染？5.5-1155
-          _this.$refs.pagination.render(page,resp.content.total);
-        })
-      },
-      /**
-       * 点击保存
-       */
-      save(page){
-        let _this=this;
-        // 保存校验，非空和长度
-        if (1 != 1
-          || !Validator.require(_this.clockin.projectname, "项目名称")
-          || !Validator.length(_this.clockin.projectname, "项目名称", 1, 50)
-          || !Validator.require(_this.clockin.manhourType, "工时类型")
-          || !Validator.require(_this.clockin.manhour, "工时")
-          || !Validator.length(_this.clockin.manhour, "工时", 1, 20)
-          || !Validator.length(_this.clockin.delayed, "延时", 1, 20)
-          || !Validator.require(_this.clockin.worklog, "工作日志")
-          || !Validator.length(_this.clockin.worklog, "工作日志", 1, 100)
-          || !Validator.require(_this.clockin.clockinTime, "报工时间")
-        ) {
-          return;
-        }
-
-        Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/clockin/save',
-          _this.clockin).then((respond)=>{
-          Loading.hide();
-          // console.log("保存报工列表结果:",respond);
-          let resp=respond.data;
-          if (resp.success){
-            //如果成功了，隐藏modal和刷新列表
-            $("#form-modal").modal("hide");
-            _this.list(1);
-            Toast.success("保存成功");
-          }else {
-            Toast.warning(resp.message)
-          }
-        })
-      },
-      /**
-       * 点击删除
-       */
-      del(id){
-        let _this=this;
-        Confirm.show("删除报工后不可恢复，确认删除?",function () {
-          Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/clockin/delete/'+id).then((respond)=>{
-            Loading.hide();
-            // console.log("删除报工列表结果:",respond);
-            let resp=respond.data;
-            if (resp.success){
-              _this.list(1);
-              Toast.success("删除成功");
-            }
-          })
-        });
+        var date = this.formData.data.split('-')
+        var a =  {
+          years: [date[0]],
+          months: [date[1]],
+          days: [date[2]],
+          things: this.formData.content }
+        this.calendarData.push(a)
       }
     }
   }
 </script>
+<style scoped>
+  .calendar-day{
+    text-align: center;
+    color: #202535;
+    line-height: 30px;
+    font-size: 12px;
+  }
+  .is-selected{
+    color: #F8A535;
+  }
+  .mark{
+    padding: 8px 8px 0 8px;
+    color: #F8A535;
+    z-index: -1;
+  }
+  #calendar .el-button-group>.el-button:not(:first-child):not(:last-child):after{
+    content: '当月';
+  }
+  .el-backtop, .el-calendar-table td.is-today{
+    color: #F8A535!important;
+  }
+  .calItem{
+    /* font-size: 20px */
+    overflow: hidden;
+  }
+  .dayItem{}
+  /* .el-calendar-table .el-calendar-day{
+      position: relative!important;
+  } */
+  .addBtn{
+    position: absolute;
+    z-index: 99;
+    display: block;
+    width: 65px;
+    height: 20px;
+    padding: 9px;
+    background: rgba(0, 200, 156, .6);
+    color: #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px
+  }
+  .addBtn:hover{
+    background: rgba(0, 200, 156, 1);
+  }
+</style>
+<style>
+  .dayItem{
+    font-size: 35px;
+    position: absolute;
+    width: 100%;
+    height: 85px;
+    text-align: center;
+    line-height: 85px;
+    margin: 0;
+    z-index: 1;
+  }
+  .current .dayItem{
+    color: #3A7;
+    opacity: 0.5;
+  }
+  .el-calendar-table:not(.is-range) td.next, .el-calendar-table:not(.is-range) td.prev {
+    color: #C0C4CC;
+    background: #fafafa;
+  }
+
+</style>
