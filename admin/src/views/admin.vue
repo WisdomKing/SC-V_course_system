@@ -626,7 +626,8 @@
       // console.log("admin");
       //Sidebar激活样式方法2
       _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
-    },
+      $.getScript('/ace/assets/js/ace.min.js');
+      },
     watch:{
       $route:{
         handler:function(val, oldVal){
