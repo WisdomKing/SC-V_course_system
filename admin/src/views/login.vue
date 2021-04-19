@@ -44,7 +44,7 @@
 
                         <div class="clearfix">
                           <label class="inline">
-                            <input type="checkbox" class="ace"/>
+                            <input v-model="remember" type="checkbox" class="ace"/>
                             <span class="lbl"> 记住我</span>
                           </label>
 
@@ -79,12 +79,21 @@
       data:function(){
         return{
           user:{},
+          // 默认勾选记住我
+          remember:true,
         }
       },
       mounted:function() {
+        let _this=this;
         $('body').removeClass('no-skin');
         $('body').attr('class', 'login-layout light-login');
         // console.log("login");
+        // 从缓存中获取记住的用户名密码，如果获取不到，说明上一次没有勾选“记住我”
+        let rememberUser=LocalStorage.get(LOCAL_KEY_REMEMBER_USER);
+        if (rememberUser) {
+          _this.user=rememberUser;
+        }
+
         },
       methods: {
         login() {
