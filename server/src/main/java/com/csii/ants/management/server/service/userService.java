@@ -130,15 +130,16 @@ public class userService {
      * @param user
      */
     private void update(user user){
-        userMapper.updateByPrimaryKey(user);
+        user.setPassword(null);
+        userMapper.updateByPrimaryKeySelective(user);
     }
 
     /**
      * 删除
-     * @param id
+     * @param jobNum
      */
-    public void delete(String id) {
-        userMapper.deleteByPrimaryKey(id);
+    public void delete(String jobNum) {
+        userMapper.deleteByPrimaryKey(jobNum);
     }
 
 
@@ -161,5 +162,16 @@ public class userService {
             //我们要的功能是校验用户名是否存在，所以也可以吧返回值改为true或者false，而不是返回user对象，但是这种写法不够通用，所以我们选择返回user
             return userList.get(0);
         }
+    }
+
+    /**
+     * 重置密码
+     * @param userDto
+     */
+    public void savePassword(userDto userDto){
+        user user=new user();
+        user.setJobNum(userDto.getJobNum());
+        user.setPassword(userDto.getPassword());
+        userMapper.updateByPrimaryKeySelective(user);
     }
 }
