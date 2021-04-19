@@ -7,6 +7,7 @@ import com.csii.ants.management.server.service.userService;
 import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -48,7 +49,8 @@ public class userController {
     @PostMapping("/save")
     public ResponseDto save(@RequestBody userDto userDto) {
         Log.info("userDto:{}",userDto);
-
+        //二次加密
+        userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         // 保存校验
         ValidatorUtil.require(userDto.getJobNum(), "工号");
         ValidatorUtil.require(userDto.getCompanyemail(), "登陆名");
