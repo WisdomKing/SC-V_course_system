@@ -1,10 +1,7 @@
 package com.csii.ants.management.system.controller.admin;
 
 import com.alibaba.fastjson.JSON;
-import com.csii.ants.management.server.dto.LoginUserDto;
-import com.csii.ants.management.server.dto.userDto;
-import com.csii.ants.management.server.dto.PageDto;
-import com.csii.ants.management.server.dto.ResponseDto;
+import com.csii.ants.management.server.dto.*;
 import com.csii.ants.management.server.service.userService;
 import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
@@ -106,11 +103,14 @@ public class userController {
      * @return
      */
     @PostMapping("/login")
-    public ResponseDto login(@RequestBody userDto userDto) {
-        Log.info("用户登录开始");
+    public ResponseDto login(@RequestBody userDto userDto,HttpServletRequest request) {
+//        Log.info("用户登录开始");
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         ResponseDto responseDto = new ResponseDto();
         LoginUserDto loginUserDto=userService.login(userDto);
+        //得到当前月份的会话缓存
+        //将loginUserDto放到这个Constants.LOGIN_USER key里面
+        request.getSession().setAttribute(Constants.LOGIN_USER,loginUserDto);
         responseDto.setContent(loginUserDto);
         return responseDto;
     }
@@ -120,10 +120,11 @@ public class userController {
      * @param token
      * @return
      */
-    @GetMapping("/logout/{token}")
-    public ResponseDto logout(@PathVariable String token) {
+    @GetMapping("/logout")
+    public ResponseDto logout(HttpServletRequest request) {
         ResponseDto responseDto = new ResponseDto();
-
+        request.getSession().removeAttribute(Constants.LOGIN_USER);
+//        request.getSession().removeAttribute("loginUser");
         return responseDto;
     }
 }
