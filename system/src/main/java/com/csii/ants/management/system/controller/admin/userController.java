@@ -69,7 +69,7 @@ public class userController {
 
     /**
      * 删除
-     * @param id
+     * @param jobNum
      * @return responseDto
      */
     @DeleteMapping("/delete/{jobNum}")
@@ -117,7 +117,7 @@ public class userController {
 
     /**
      * 退出登录
-     * @param token
+     * @param request
      * @return
      */
     @GetMapping("/logout")
