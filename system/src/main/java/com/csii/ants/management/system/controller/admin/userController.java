@@ -104,9 +104,28 @@ public class userController {
      */
     @PostMapping("/login")
     public ResponseDto login(@RequestBody userDto userDto,HttpServletRequest request) {
-//        Log.info("用户登录开始");
+        Log.info("用户登录开始");
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         ResponseDto responseDto = new ResponseDto();
+
+        // 根据验证码token去获取缓存中的验证码，和用户输入的验证码是否一致
+        String imageCode = (String) request.getSession().getAttribute(userDto.getImageCodeToken());
+        if (StringUtils.isEmpty(imageCode)) {
+            responseDto.setSuccess(false);
+            responseDto.setMessage("验证码已过期");
+            Log.info("用户登录失败，验证码已过期");
+            return responseDto;
+        }
+        if (!imageCode.toLowerCase().equals(userDto.getImageCode().toLowerCase())) {
+            responseDto.setSuccess(false);
+            responseDto.setMessage("验证码不对");
+            Log.info("用户登录失败，验证码不对");
+            return responseDto;
+        } else {
+            // 验证通过后，移除验证码
+            request.getSession().removeAttribute(userDto.getImageCodeToken());
+        }
+
         LoginUserDto loginUserDto=userService.login(userDto);
         //得到当前月份的会话缓存
         //将loginUserDto放到这个Constants.LOGIN_USER key里面
