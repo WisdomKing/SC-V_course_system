@@ -73,8 +73,8 @@ public class userService {
     public void save(userDto userDto){
         user user= CopyUtil.copy(userDto,user.class);
 
-        boolean flag=false;
-        userExample userExample = new userExample();
+//        boolean flag=false;
+//        userExample userExample = new userExample();
         //判断传进来的参数
         user userDb=this.selectByCompanyEmail(user.getCompanyemail());
         //查询
