@@ -670,7 +670,7 @@
         let _this=this;
 
         Loading.show();
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout',).then((respond) => {
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout/' + _this.loginUser.token).then((respond) => {
           Loading.hide();
           // console.log("保存用户列表结果:",respond);
           let resp = respond.data;

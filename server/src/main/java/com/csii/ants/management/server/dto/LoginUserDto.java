@@ -15,11 +15,14 @@ public class LoginUserDto {
      * 昵称
      */
     private String name;
-
     /**
      * 权限
      */
     private String role;
+    /**
+     * 登录标识
+     */
+    private String token;
 
     public String getJobNum() {
         return jobNum;
@@ -53,6 +56,13 @@ public class LoginUserDto {
         this.role = role;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
     @Override
     public String toString() {
@@ -64,6 +74,7 @@ public class LoginUserDto {
         sb.append(", companyemail=").append(companyemail);
         sb.append(", name=").append(name);
         sb.append(", role=").append(role);
+        sb.append(", token=").append(token);
         sb.append("]");
         return sb.toString();
     }

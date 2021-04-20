@@ -3,7 +3,9 @@ package com.csii.ants.management.system.controller.admin;
 import com.alibaba.fastjson.JSON;
 import com.csii.ants.management.server.dto.*;
 import com.csii.ants.management.server.service.userService;
+import com.csii.ants.management.server.util.UuidUtil;
 import com.csii.ants.management.server.util.ValidatorUtil;
+import jdk.nashorn.internal.parser.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -130,13 +132,21 @@ public class userController {
             return responseDto;
         } else {
             // 验证通过后，移除验证码
-            request.getSession().removeAttribute(userDto.getImageCodeToken());
+//            request.getSession().removeAttribute(userDto.getImageCodeToken());
+            //更换为redis的
+            redisTemplate.delete(userDto.getImageCodeToken());
         }
 
         LoginUserDto loginUserDto=userService.login(userDto);
+
+        String token=UuidUtil.getShortUuid();
+        loginUserDto.setToken(token);
+
         //得到当前月份的会话缓存
         //将loginUserDto放到这个Constants.LOGIN_USER key里面
-        request.getSession().setAttribute(Constants.LOGIN_USER,loginUserDto);
+//        request.getSession().setAttribute(Constants.LOGIN_USER,loginUserDto);
+        //将登录信息报错到redis里
+        redisTemplate.opsForValue().set(token, JSON.toJSON(loginUserDto), 3600, TimeUnit.SECONDS);
         responseDto.setContent(loginUserDto);
         return responseDto;
     }
@@ -146,11 +156,13 @@ public class userController {
      * @param request
      * @return
      */
-    @GetMapping("/logout")
-    public ResponseDto logout(HttpServletRequest request) {
+    @GetMapping("/logout/{token}")
+    public ResponseDto logout(@PathVariable String token) {
         ResponseDto responseDto = new ResponseDto();
-        request.getSession().removeAttribute(Constants.LOGIN_USER);
+//        request.getSession().removeAttribute(Constants.LOGIN_USER);
 //        request.getSession().removeAttribute("loginUser");
+        redisTemplate.delete(token);
+        Log.info("从redis中删除token:{}", token);
         return responseDto;
     }
 }
