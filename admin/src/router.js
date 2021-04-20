@@ -36,10 +36,9 @@ export default new Router({
         path: "/",
         name: "admin",
         component: Admin,
-        // 路由登录拦截
-        // meta: {
-        //     loginRequire: true
-        // },
+        meta: {
+            loginRequire: true
+        },
         children:[{
             path: "welcome",
             name: "welcome",
