@@ -359,7 +359,6 @@
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> 欢迎：{{loginUser.name}} </span>
             </router-link>
-
             <b class="arrow"></b>
           </li>
 
@@ -426,6 +425,7 @@
                 </router-link>
                 <b class="arrow"></b>
               </li>
+
             </ul>
           </li>
 
@@ -442,7 +442,6 @@
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司头条
                 </router-link>
-
                 <b class="arrow"></b>
               </li>
 
@@ -455,7 +454,6 @@
               <span class="menu-text"> 公司信息 </span>
               <b class="arrow fa fa-angle-down"></b>
             </a>
-
             <b class="arrow"></b>
 
             <ul class="submenu">
@@ -464,10 +462,8 @@
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司信息
                 </router-link>
-
                 <b class="arrow"></b>
               </li>
-
             </ul>
           </li>
 
@@ -493,7 +489,6 @@
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 请假 </span>
-
               <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
