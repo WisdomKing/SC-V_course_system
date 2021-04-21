@@ -33,6 +33,7 @@ import java.util.List;
 @Service
 public class userService {
     private static final Logger LOG = LoggerFactory.getLogger(userService.class);
+
     @Resource
     private userMapper userMapper;
 
@@ -73,8 +74,8 @@ public class userService {
     public void save(userDto userDto){
         user user= CopyUtil.copy(userDto,user.class);
 
-//        boolean flag=false;
-//        userExample userExample = new userExample();
+        boolean flag=false;
+        userExample userExample = new userExample();
         //判断传进来的参数
         user userDb=this.selectByCompanyEmail(user.getCompanyemail());
         //查询
@@ -140,10 +141,10 @@ public class userService {
 
     /**
      * 删除
-     * @param jobNum
+     * @param id
      */
-    public void delete(String jobNum) {
-        userMapper.deleteByPrimaryKey(jobNum);
+    public void delete(String id) {
+        userMapper.deleteByPrimaryKey(id);
     }
 
 
@@ -167,33 +168,31 @@ public class userService {
             return userList.get(0);
         }
     }
-
     /**
      * 重置密码
      * @param userDto
      */
-    public void savePassword(userDto userDto){
-        user user=new user();
+    public void savePassword(userDto userDto) {
+        user user = new user();
         user.setJobNum(userDto.getJobNum());
         user.setPassword(userDto.getPassword());
         userMapper.updateByPrimaryKeySelective(user);
     }
-
     /**
      * 登录
      * @param userDto
      */
-    public LoginUserDto login(userDto userDto){
-        user user=selectByCompanyEmail(userDto.getCompanyemail());
-        if (user==null){
-            LOG.info("用户名不存在,{}",user.getCompanyemail());
+    public LoginUserDto login(userDto userDto) {
+        user user = selectByCompanyEmail(userDto.getCompanyemail());
+        if (user == null) {
+            LOG.info("用户名不存在, {}", userDto.getCompanyemail());
             throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
-        }else {
-            if (user.getPassword().equals(userDto.getPassword())){
+        } else {
+            if (user.getPassword().equals(userDto.getPassword())) {
                 // 登录成功
-                return CopyUtil.copy(user,LoginUserDto.class);
-            }else {
-                LOG.info("密码不对,输入密码：{},数据库密码：{}",userDto.getPassword(),user.getPassword());
+                return CopyUtil.copy(user, LoginUserDto.class);
+            } else {
+                LOG.info("密码不对, 输入密码：{}, 数据库密码：{}", userDto.getPassword(), user.getPassword());
                 throw new BusinessException(BusinessExceptionCode.LOGIN_USER_ERROR);
             }
         }

@@ -40,13 +40,14 @@
                              type="XMLMAPPER" />
 
 <!--        <table tableName="test" domainObjectName="Test"/>-->
-        <table tableName="announcement" domainObjectName="Announcement"/>
+<!--        <table tableName="announcement" domainObjectName="Announcement"/>-->
 <!--        <table tableName="clockin" domainObjectName="Clockin"/>-->
 <!--        <table tableName="employeeinfo" domainObjectName="Employeeinfo"/>-->
 <!--        <table tableName="headline" domainObjectName="Headline"/>-->
 <!--        <table tableName="askforleave" domainObjectName="Askforleave"/>-->
 <!--        <table tableName="personalinfo" domainObjectName="Personalinfo"/>-->
 <!--        <table tableName="role" domainObjectName="role"/>-->
+        <table tableName="user" domainObjectName="user"/>
 
     </context>
 </generatorConfiguration>

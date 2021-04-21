@@ -5,7 +5,6 @@ import com.csii.ants.management.server.dto.*;
 import com.csii.ants.management.server.service.userService;
 import com.csii.ants.management.server.util.UuidUtil;
 import com.csii.ants.management.server.util.ValidatorUtil;
-import jdk.nashorn.internal.parser.Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -30,10 +29,10 @@ public class userController {
     public static final String BUSINESS_NAME="用户";
 
     @Resource
-    private userService userService;
+    private RedisTemplate redisTemplate;
 
     @Resource
-    private RedisTemplate redisTemplate;
+    private userService userService;
 
     /**
      * 列表查询
@@ -65,7 +64,6 @@ public class userController {
         ValidatorUtil.length(userDto.getCompanyemail(), "登陆名", 1, 50);
         ValidatorUtil.length(userDto.getName(), "昵称", 1, 50);
         ValidatorUtil.require(userDto.getPassword(), "密码");
-        ValidatorUtil.require(userDto.getRole(), "权限");
 
         ResponseDto responseDto=new ResponseDto();
         userService.save(userDto);
@@ -75,41 +73,32 @@ public class userController {
 
     /**
      * 删除
-     * @param jobNum
+     * @param id
      * @return responseDto
      */
-    @DeleteMapping("/delete/{jobNum}")
-    public ResponseDto delete(@PathVariable String jobNum) {
-        Log.info("jobNum:{}",jobNum);
+    @DeleteMapping("/delete/{id}")
+    public ResponseDto delete(@PathVariable String id) {
+        Log.info("id:{}",id);
         ResponseDto responseDto=new ResponseDto();
-        userService.delete(jobNum);
+        userService.delete(id);
         return responseDto;
     }
-
     /**
      * 重置密码
-     * @param userDto
-     * @return responseDto
      */
     @PostMapping("/save-password")
     public ResponseDto savePassword(@RequestBody userDto userDto) {
-        Log.info("userDto:{}",userDto);
-        //二次加密
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
-
-        ResponseDto responseDto=new ResponseDto();
+        ResponseDto responseDto = new ResponseDto();
         userService.savePassword(userDto);
         responseDto.setContent(userDto);
         return responseDto;
     }
-
     /**
      * 登录
-     * @param userDto
-     * @return
      */
     @PostMapping("/login")
-    public ResponseDto login(@RequestBody userDto userDto,HttpServletRequest request) {
+    public ResponseDto login(@RequestBody userDto userDto, HttpServletRequest request) {
         Log.info("用户登录开始");
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         ResponseDto responseDto = new ResponseDto();
@@ -125,6 +114,7 @@ public class userController {
             Log.info("用户登录失败，验证码已过期");
             return responseDto;
         }
+        //验证码对大小写不敏感，所以都转为小写
         if (!imageCode.toLowerCase().equals(userDto.getImageCode().toLowerCase())) {
             responseDto.setSuccess(false);
             responseDto.setMessage("验证码不对");
@@ -132,37 +122,30 @@ public class userController {
             return responseDto;
         } else {
             // 验证通过后，移除验证码
-//            request.getSession().removeAttribute(userDto.getImageCodeToken());
-            //更换为redis的
+            // request.getSession().removeAttribute(userDto.getImageCodeToken());
             redisTemplate.delete(userDto.getImageCodeToken());
         }
 
-        LoginUserDto loginUserDto=userService.login(userDto);
+        LoginUserDto loginUserDto = userService.login(userDto);
 
-        String token=UuidUtil.getShortUuid();
+        String token = UuidUtil.getShortUuid();
         loginUserDto.setToken(token);
+        // request.getSession().setAttribute(Constants.LOGIN_USER, loginUserDto);
+        redisTemplate.opsForValue().set(token, JSON.toJSONString(loginUserDto), 3600, TimeUnit.SECONDS);
 
-        //得到当前月份的会话缓存
-        //将loginUserDto放到这个Constants.LOGIN_USER key里面
-//        request.getSession().setAttribute(Constants.LOGIN_USER,loginUserDto);
-        //将登录信息报错到redis里
-        redisTemplate.opsForValue().set(token, JSON.toJSON(loginUserDto), 3600, TimeUnit.SECONDS);
         responseDto.setContent(loginUserDto);
         return responseDto;
     }
-
     /**
      * 退出登录
-     * @param request
-     * @return
      */
     @GetMapping("/logout/{token}")
     public ResponseDto logout(@PathVariable String token) {
         ResponseDto responseDto = new ResponseDto();
-//        request.getSession().removeAttribute(Constants.LOGIN_USER);
-//        request.getSession().removeAttribute("loginUser");
+        // request.getSession().removeAttribute(Constants.LOGIN_USER);
         redisTemplate.delete(token);
         Log.info("从redis中删除token:{}", token);
         return responseDto;
     }
+
 }

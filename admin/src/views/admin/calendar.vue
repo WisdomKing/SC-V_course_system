@@ -1,10 +1,11 @@
 <template>
   <div>
     <el-calendar>
-      <template slot="dateCell" slot-scope="{date, data}" class="calItem" >
+      <template slot="dateCell" slot-scope="{date, data}">
         <div :class="data.isSelected ? 'is-selected' : ''" @click="calClick(data)">
-          <p class="dayItem"  v-if="data.day.substr(-2) < 10">{{ data.day.substr(-1)}}</p>
-          <p class="dayItem"  v-else>{{ data.day.substr(-2)}}</p>
+          <!--          {{ data.day.split('-').slice(1).join('-') }} {{ data.isSelected ? '✔️' : ''}}-->
+          <p v-if="data.day.substr(-2)<10">{{data.day.substr(-1)}}</p>
+          <p v-else>{{ data.day.substr(-2)}}</p>
           <div v-for="(item,index) in calendarData" :key="index">
             <div v-if="(item.years).indexOf(data.day.split('-').slice(0)[0])!=-1 && (item.months).indexOf(data.day.split('-').slice(1)[0])!=-1 && (item.days).indexOf(data.day.split('-').slice(2).join('-'))!=-1">
               <el-tooltip :content="item.things" placement="right">
@@ -19,38 +20,70 @@
     </el-calendar>
 
     <el-dialog
-      :title="formData.data"
+      :title="formData.data+'报工'"
       :visible.sync="dialogVisible"
       width="50%"
       :before-close="handleClose">
       <el-form @submit.native.prevent>
-        <el-form-item label="日程">
-          <el-input v-model="formData.content"></el-input>
+        <el-form-item>
+          <!--          <el-input v-model="formData.content"></el-input>-->
+          <!-- 表单 -->
+          <el-form ref="clockin" :rules="rules" :model="clockin" label-width="120px">
+            <el-form-item label="项目名称" prop="name">
+              <el-input v-model="clockin.projectname"></el-input>
+            </el-form-item>
+            <el-form-item label="工时类型" prop="name">
+              <el-select v-model="clockin.manhourType" placeholder="请选择工时类型">
+                <el-option
+                  v-for="o in MANHOUR_TYPE"
+                  :key="o.value"
+                  :label="o.value"
+                  :value="o.key">
+                </el-option>
+              </el-select>
+            </el-form-item>
+            <el-form-item label="工时" prop="name">
+              <el-input v-model="clockin.manhour"></el-input>
+            </el-form-item>
+            <el-form-item label="延时" prop="name">
+              <el-input v-model="clockin.delayed"></el-input>
+            </el-form-item>
+            <el-form-item label="工作日志" prop="name">
+              <el-input v-model="clockin.worklog"></el-input>
+            </el-form-item>
+          </el-form>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-                <el-button @click="dialogVisible = false">取 消</el-button>
-                <el-button type="primary" @click="dialogVisible = false,add()">确 定</el-button>
-            </span>
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false,add()">确 定</el-button>
+      </span>
     </el-dialog>
+
   </div>
 </template>
+
 <script>
   export default {
-    name: "calendar",
-    data(){
-      return {
+    name: "test",
+    data:function (){
+      return{
+        clockin:{},
+        clockins:[],
+        MANHOUR_TYPE,
+        CLOCKIN_STATUS,
         formData:{
           data:'',
           content: ''
         },
         dialogVisible: false,
         calendarData: [
-          { years: ['2021'], months: ['04', '11'],days: ['14'],things: '杂志' },
-          { years: ['2021'], months: ['04', '11'], days: ['12'],things: '演唱会' },
-          { years: ['2021'], months: ['04'], days: ['02'],things: '晚会' },
-          { years: ['2021'], months: ['04'], days: ['02'],things: '杂志预售' },
-          { years: ['2021'], months: ['04'], days: ['15'],things: '重启开播' }
+          { years: ['2021'], months: ['04', '11'],days: ['13'],things: 'U享存补签' },
+          { years: ['2021'], months: ['04', '11'], days: ['12'],things: 'U享存补签' },
+          { years: ['2021'], months: ['04'], days: ['15'],things: '招生官测试' },
+          { years: ['2021'], months: ['04'], days: ['16'],things: '招生官测试' },
+          { years: ['2021'], months: ['04'], days: ['14'],things: '招生官测试' },
+          // { years: ['2021'], months: ['04'], days: ['20'],things: '得过且过' },
         ],
         value: new Date()
       }
@@ -75,73 +108,14 @@
     }
   }
 </script>
+
 <style scoped>
-  .calendar-day{
-    text-align: center;
-    color: #202535;
-    line-height: 30px;
-    font-size: 12px;
-  }
-  .is-selected{
-    color: #F8A535;
+  .is-selected {
+    color:#F8A535;
   }
   .mark{
     padding: 8px 8px 0 8px;
     color: #F8A535;
     z-index: -1;
   }
-  #calendar .el-button-group>.el-button:not(:first-child):not(:last-child):after{
-    content: '当月';
-  }
-  .el-backtop, .el-calendar-table td.is-today{
-    color: #F8A535!important;
-  }
-  .calItem{
-    /* font-size: 20px */
-    overflow: hidden;
-  }
-  .dayItem{}
-  /* .el-calendar-table .el-calendar-day{
-      position: relative!important;
-  } */
-  .addBtn{
-    position: absolute;
-    z-index: 99;
-    display: block;
-    width: 65px;
-    height: 20px;
-    padding: 9px;
-    background: rgba(0, 200, 156, .6);
-    color: #fff;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    border-radius: 5px
-  }
-  .addBtn:hover{
-    background: rgba(0, 200, 156, 1);
-  }
-</style>
-<style>
-  .dayItem{
-    font-size: 35px;
-    position: absolute;
-    width: 100%;
-    height: 85px;
-    text-align: center;
-    line-height: 85px;
-    margin: 0;
-    z-index: 1;
-  }
-  .current .dayItem{
-    color: #3A7;
-    opacity: 0.5;
-  }
-  .el-calendar-table:not(.is-range) td.next, .el-calendar-table:not(.is-range) td.prev {
-    color: #C0C4CC;
-    background: #fafafa;
-  }
-
 </style>

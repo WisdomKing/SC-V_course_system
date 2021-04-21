@@ -13,11 +13,6 @@ import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
 
-/**
- * @author ZxM
- * @date 2021/4/20
- * @Description:
- */
 @Component
 public class LoginAdminGatewayFilter implements GatewayFilter, Ordered {
 
@@ -40,7 +35,6 @@ public class LoginAdminGatewayFilter implements GatewayFilter, Ordered {
             LOG.info("不需要控台登录验证：{}", path);
             return chain.filter(exchange);
         }
-        //以下是需要拦截的
         //获取header的token参数
         String token = exchange.getRequest().getHeaders().getFirst("token");
         LOG.info("控台登录验证开始，token：{}", token);

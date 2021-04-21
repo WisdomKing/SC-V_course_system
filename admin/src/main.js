@@ -16,11 +16,9 @@ Vue.use(ElementUI);
 // 解决每次ajax请求，对应的sessionId不一致的问题
 axios.defaults.withCredentials = true;
 
-/**
- * axios拦截器
- */
+//axios拦截器
 axios.interceptors.request.use(function (config) {
-  console.log("请求：", config);
+  console.log("请求：",config);
   let token = Tool.getLoginUser().token;
   if (Tool.isNotEmpty(token)) {
     config.headers.token = token;
@@ -29,22 +27,11 @@ axios.interceptors.request.use(function (config) {
   return config;
 }, error => {});
 axios.interceptors.response.use(function (response) {
-  console.log("返回结果：", response);
+  console.log("返回结果：",response);
   return response;
-}, error => {});
+},error => {});
 
-// 全局过滤器
-Object.keys(filter).forEach(key => {
-  Vue.filter(key, filter[key])
-});
-// 在Vue构造函数时，需要配置一个el属性，如果没有没有el属性时，可以使用.$mount('#app')进行挂载。
-new Vue({
-  el:"#app",
-  router,
-  render: h => h(App),
-});
-
-// // 路由跳转之前拦截
+// 路由登录拦截
 router.beforeEach((to, from, next) => {
   // 要不要对meta.loginRequire属性做监控拦截
   if (to.matched.some(function (item) {
@@ -59,6 +46,17 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
+});
+
+// 全局过滤器
+Object.keys(filter).forEach(key => {
+  Vue.filter(key, filter[key])
+});
+// 在Vue构造函数时，需要配置一个el属性，如果没有没有el属性时，可以使用.$mount('#app')进行挂载。
+new Vue({
+  el:"#app",
+  router,
+  render: h => h(App),
 });
 
 // new Vue({

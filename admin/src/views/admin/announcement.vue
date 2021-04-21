@@ -12,10 +12,10 @@
         刷新
     </button>
       &nbsp;
-      <button v-on:click="search(str)" class="btn btn-white btn-default btn-round">
-        <i class="ace-icon fa fa-refresh"></i>
-        查找
-      </button>
+<!--      <button v-on:click="search(str)" class="btn btn-white btn-default btn-round">-->
+<!--        <i class="ace-icon fa fa-refresh"></i>-->
+<!--        查找-->
+<!--      </button>-->
     </p>
 
     <!-- 分页插件 -->
@@ -122,7 +122,7 @@
     components: {Pagination,ElementUI },
     data:function(){
       return{
-        str,
+        str:'',
         datetime_value:'',
         announcement:{},
         announcements:[],

@@ -22,7 +22,6 @@
         <th>登陆名</th>
         <th>昵称</th>
         <th>密码</th>
-        <th>权限</th>
         <th>操作按钮</th>
       </tr>
       </thead>
@@ -33,20 +32,16 @@
         <td>{{user.companyemail}}</td>
         <td>{{user.name}}</td>
         <td>{{user.password}}</td>
-        <td>{{ROLE | optionKV(user.role)}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="editPassword(user)" class="btn btn-xs btn-info">
-              <!--详情-->
               <i class="ace-icon fa fa-key bigger-120"></i>
             </button>
-
             <button v-on:click="edit(user)" class="btn btn-xs btn-info">
               <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-
-            <button v-on:click="del(user.jobNum)" class="btn btn-xs btn-danger">
+            <button v-on:click="del(user.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
@@ -88,12 +83,6 @@
                   <label class="col-sm-2 control-label">密码</label>
                   <div class="col-sm-10">
                     <input v-model="user.password" type="password" class="form-control" placeholder="密码">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">权限</label>
-                  <div class="col-sm-10">
-                    <input v-model="user.role" class="form-control" placeholder="权限">
                   </div>
                 </div>
             </form>
@@ -148,7 +137,6 @@
       return{
         user:{},
         users:[],
-        ROLE:ROLE,
       }
     },
     mounted: function () {
@@ -205,7 +193,6 @@
           || !Validator.length(_this.user.companyemail, "登陆名", 1, 50)
           || !Validator.length(_this.user.name, "昵称", 1, 50)
           || !Validator.require(_this.user.password, "密码")
-          || !Validator.require(_this.user.role, "权限")
         ) {
           return;
         }
@@ -231,11 +218,11 @@ _this.user).then((respond)=>{
       /**
        * 点击删除
        */
-      del(jobNum){
+      del(id){
         let _this=this;
         Confirm.show("删除用户后不可恢复，确认删除?",function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/system/admin/user/delete/'+user.jobNum).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/system/admin/user/delete/'+id).then((respond)=>{
             Loading.hide();
             // console.log("删除用户列表结果:",respond);
             let resp=respond.data;

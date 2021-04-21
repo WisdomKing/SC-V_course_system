@@ -42,11 +42,11 @@
             <artifactId>server</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>com.csii.ants.management</groupId>
             <artifactId>server</artifactId>
         </dependency>
+
 
     </dependencies>
 </project>

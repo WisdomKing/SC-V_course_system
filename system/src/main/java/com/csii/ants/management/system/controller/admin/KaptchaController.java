@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/admin/kaptcha")
 public class KaptchaController {
-    public static final String BUSINESS_NAME="图片验证码";
+    public static final String BUSINESS_NAME = "图片验证码";
 
     @Qualifier("getDefaultKaptcha")
     @Autowired
@@ -39,8 +39,9 @@ public class KaptchaController {
 
             // 将生成的验证码放入会话缓存中，后续验证的时候用到
             // request.getSession().setAttribute(imageCodeToken, createText);
-            // 将生成的验证码放入redis缓存中，后续验证的时候用到，超过300秒，redis会删除改token
+            // 将生成的验证码放入redis缓存中，后续验证的时候用到
             redisTemplate.opsForValue().set(imageCodeToken, createText, 300, TimeUnit.SECONDS);
+
 
             // 使用验证码字符串生成验证码图片
             BufferedImage challenge = defaultKaptcha.createImage(createText);

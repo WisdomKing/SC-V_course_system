@@ -1,43 +1,49 @@
 package com.csii.ants.management.server.dto;
 
 
-public class LoginUserDto {
+import java.util.HashSet;
+import java.util.List;
 
+public class LoginUserDto {
     /**
-     * 工号
+     * id
      */
-    private String jobNum;
+    private String id;
     /**
      * 登陆名
      */
-    private String companyemail;
+    private String loginName;
     /**
      * 昵称
      */
     private String name;
     /**
-     * 权限
-     */
-    private String role;
-    /**
-     * 登录标识
+     * 登录凭证
      */
     private String token;
+    /**
+     * 所有资源，用于前端界面控制
+     */
+    private List<ResourceDto> resources;
+    /**
+     * 所有资源中的请求，用于后端接口拦截
+     */
+    private HashSet<String> requests;
 
-    public String getJobNum() {
-        return jobNum;
+    public String getId() {
+        return id;
     }
 
-    public void setJobNum(String jobNum) {
-        this.jobNum = jobNum;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getCompanyemail() {
-        return companyemail;
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setCompanyemail(String companyemail) {
-        this.companyemail = companyemail;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 
     public String getName() {
@@ -48,14 +54,6 @@ public class LoginUserDto {
         this.name = name;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public String getToken() {
         return token;
     }
@@ -64,18 +62,32 @@ public class LoginUserDto {
         this.token = token;
     }
 
+    public List<ResourceDto> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<ResourceDto> resources) {
+        this.resources = resources;
+    }
+
+    public HashSet<String> getRequests() {
+        return requests;
+    }
+
+    public void setRequests(HashSet<String> requests) {
+        this.requests = requests;
+    }
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", jobNum=").append(jobNum);
-        sb.append(", companyemail=").append(companyemail);
-        sb.append(", name=").append(name);
-        sb.append(", role=").append(role);
-        sb.append(", token=").append(token);
-        sb.append("]");
+        final StringBuffer sb = new StringBuffer("LoginUserDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", loginName='").append(loginName).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", token='").append(token).append('\'');
+        sb.append(", resources=").append(resources);
+        sb.append(", requests=").append(requests);
+        sb.append('}');
         return sb.toString();
     }
 

@@ -282,7 +282,7 @@
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <img class="nav-user-photo" src="../../public/ace/assets/images/avatars/user.jpg" alt="Jason's Photo" />
                 <span class="user-info">
-									<small>Welcome </small>
+									<small>Welcome</small>
 									{{loginUser.name}}
 								</span>
 
@@ -357,8 +357,9 @@
           <li class="" id="welcome-sidebar">
             <router-link to="/welcome">
               <i class="menu-icon fa fa-tachometer"></i>
-              <span class="menu-text"> 欢迎：{{loginUser.name}} </span>
+              <span class="menu-text"> 欢迎&nbsp;:&nbsp;{{loginUser.name}}</span>
             </router-link>
+
             <b class="arrow"></b>
           </li>
 
@@ -379,13 +380,127 @@
                 <b class="arrow"></b>
               </li>
 
-              <li class="" id="system-role-sidebar">
+              <li class="" id="system-resource-sidebar">
                 <router-link to="/system/role">
                   <i class="menu-icon fa fa-caret-right"></i>
-                  权限管理
+                  资源管理
                 </router-link>
                 <b class="arrow"></b>
               </li>
+
+              <li class="" id="system-role-sidebar">
+                <router-link to="/system/role">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  角色管理
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-bullhorn"></i>
+              <span class="menu-text"> 通知管理 </span>
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+              <li class="" id="business-announcement-sidebar">
+                <router-link to="/business/announcement">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  公司公告
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+
+              <li class="" id="business-headline-sidebar">
+                <router-link to="/business/headline">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  公司头条
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+
+              <li class="" id="business-companyinfo-sidebar">
+                <router-link to="/business/companyinfo">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  公司信息
+                </router-link>
+
+                <b class="arrow"></b>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-bullhorn"></i>
+              <span class="menu-text"> 考勤管理 </span>
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+              <li class="" id="business-clockin-sidebar">
+                <router-link to="/business/clockin">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  报工
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+
+              <li class="" id="business-askforleave-sidebar">
+                <router-link to="/business/askforleave">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  请假
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+
+              <li class="" id="business-calendar-sidebar">
+                <router-link to="/business/calendar">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  日历
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-bullhorn"></i>
+              <span class="menu-text"> 个人信息管理 </span>
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+              <li class="" id="business-personalinfo-sidebar">
+                <router-link to="/business/personalinfo">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  个人信息
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+
+              <li class="" id="business-employeeinfo-sidebar">
+                <router-link to="/business/employeeinfo">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  员工信息
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+            </ul>
+          </li>
+
+          <li class="">
+            <a href="#" class="dropdown-toggle">
+              <i class="menu-icon fa fa-bullhorn"></i>
+              <span class="menu-text"> 部门管理 </span>
+              <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
               <li class="" id="business-department-sidebar">
                 <router-link to="/business/department">
                   <i class="menu-icon fa fa-caret-right"></i>
@@ -404,153 +519,6 @@
                 <router-link to="/business/test">
                   <i class="menu-icon fa fa-caret-right"></i>
                   test
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 公告 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-announcement-sidebar">
-                <router-link to="/business/announcement">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  公司公告
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 头条 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-headline-sidebar">
-                <router-link to="/business/headline">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  公司头条
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 公司信息 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-
-            <ul class="submenu">
-              <li class="" id="business-companyinfo-sidebar">
-                <router-link to="/business/companyinfo">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  公司信息
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 报工 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-clockin-sidebar">
-                <router-link to="/business/clockin">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  报工
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 请假 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-askforleave-sidebar">
-                <router-link to="/business/askforleave">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  请假
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 个人信息 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-personalinfo-sidebar">
-                <router-link to="/business/personalinfo">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  个人信息
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 员工信息 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-employeeinfo-sidebar">
-                <router-link to="/business/employeeinfo">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  员工信息
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-            </ul>
-          </li>
-
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-calendar"></i>
-              <span class="menu-text"> 日历 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-calendar-sidebar">
-                <router-link to="/business/calendar">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  日历
                 </router-link>
                 <b class="arrow"></b>
               </li>
@@ -582,21 +550,21 @@
         <div class="footer-inner">
           <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder">CSII</span>
+							<span class="blue bolder">COCOLI</span>
 							管理系统子平台 &copy; 2020-2021
 						</span>
 
             &nbsp; &nbsp;
             <span class="action-buttons">
-							<a href="#">
+							<a href="https://twitter.com">
 								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
 							</a>
 
-							<a href="#">
+							<a href="https://www.facebook.com/">
 								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
 							</a>
 
-							<a href="#">
+							<a href="https://www.baidu.com/">
 								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
 							</a>
 						</span>
@@ -614,9 +582,9 @@
 <script>
   export default {
     name: 'admin',
-    data:function(){
-      return{
-        loginUser:{},
+    data: function() {
+      return {
+        loginUser: {},
       }
     },
     mounted:function() {
@@ -628,8 +596,6 @@
       _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
 
       $.getScript('/ace/assets/js/ace.min.js');
-
-      // _this.loginUser=SessionStorage.get("USER");
       _this.loginUser = Tool.getLoginUser();
       },
     watch:{
@@ -653,7 +619,8 @@
        * @param id
        */
       activeSidebar:function (id) {
-        //兄弟菜单去掉active样式，自身增加active样式
+        //兄弟菜单去掉active、
+        // 样式，自身增加active样式
         $("#"+id).siblings().removeClass("active");
         $("#"+id).siblings().find("li").removeClass("active");
         $("#"+id).addClass("active");
@@ -666,14 +633,12 @@
           parentLi.addClass("active");
         }
       },
-      logout(){
-        let _this=this;
-
+      logout () {
+        let _this = this;
         Loading.show();
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout/' + _this.loginUser.token).then((respond) => {
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout/' + _this.loginUser.token).then((response)=>{
           Loading.hide();
-          // console.log("保存用户列表结果:",respond);
-          let resp = respond.data;
+          let resp = response.data;
           if (resp.success) {
             Tool.setLoginUser(null);
             _this.$router.push("/login")

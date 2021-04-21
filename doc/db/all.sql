@@ -159,37 +159,6 @@ INSERT INTO `personalinfo` VALUES ('9Ce7MH03','秦风', 'M', 'N01', '96000119990
 INSERT INTO `personalinfo` VALUES ('9Ce7MH04','秦风', 'M', 'N01', '96000119990101004X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', 'BJ市', 'N', 'BJ大学', '2021-07-01', '国际贸易', 'B', 'BJ', '魔都经开区XX镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
 INSERT INTO `personalinfo` VALUES ('9Ce7MH09','秦风', 'M', 'N01', '96000119990101005X', 'T', '19990101', 'qinfeng@xxxx.com.cn', '外阜城镇', 'BJ市', 'N', 'BJ大学', '2021-07-01', '国际贸易', 'B', 'BJ', '魔都经开区XX镇', '17620212021', '5201314', 'coco1016254', 'O', '唐仁', '13320212021');
 
-/*----role 权限---------------------------------------------------*/
-
-DROP TABLE IF EXISTS `role`;
-CREATE TABLE `role` (
-   `job_num` varchar(5) NOT NULL COMMENT '工号',
-   `role` char(3) NOT NULL COMMENT '权限',
-   primary key (`job_num`)
-) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='权限';
-
-INSERT INTO `role` (job_num, role)VALUES ('13901','ALL');
-INSERT INTO `role` (job_num, role)VALUES ('13902','PM');
-INSERT INTO `role` (job_num, role)VALUES ('13903','PD');
-INSERT INTO `role` (job_num, role)VALUES ('13904','HRD');
-INSERT INTO `role` (job_num, role)VALUES ('13905','ALL');
-/*----user 用户---------------------------------------------------*/
-drop table if exists `user`;
-create table `user` (
-    `job_num` char(5) not null comment '工号',
-    `companyEmail` varchar(50) not null comment '登陆名',
-    `name` varchar(50) comment '昵称',
-    `password` char(32) not null comment '密码',
-    `role` char(8) NOT NULL COMMENT '权限',
-    primary key (`job_num`),
-    unique key `companyEmail_unique` (`companyEmail`)
-) engine=innodb default charset=utf8mb4 comment='用户';
-
-insert into `user` (job_num, companyEmail, name, password,role) values ('13901', 'qinfeng@xxxx.com.cn', '秦风', '202cb962ac59075b964b07152d234b70','ALL');
-insert into `user` (job_num, companyEmail, name, password,role) values ('13902', 'zhangshan@xxxx.com.cn', '张珊', '202cb962ac59075b964b07152d234b70','PM');
-insert into `user` (job_num, companyEmail, name, password,role) values ('13903', 'lisi@xxxx.com.cn', '丽思', '202cb962ac59075b964b07152d234b70','PD');
-insert into `user` (job_num, companyEmail, name, password,role) values ('13904', 'wangwu@xxxx.com.cn', '王武', '202cb962ac59075b964b07152d234b70','HRD');
-
 /*----department 部门---------------------------------------------------*/
 drop table if exists `department`;
 create table `department` (
@@ -215,3 +184,89 @@ create table `project` (
 insert into `project` (proid, proname, depid) values ('p1001', '阿里云', 'd1001');
 insert into `project` (proid, proname, depid) values ('p1002', '阿里海', 'd1002');
 insert into `project` (proid, proname, depid) values ('p2001', '阿里山', 'd2001');
+
+/*----user 用户---------------------------------------------------*/
+drop table if exists `user`;
+create table `user` (
+    `job_num` char(5) not null comment '工号',
+    `companyEmail` varchar(50) not null comment '登陆名',
+    `name` varchar(50) comment '昵称',
+    `password` char(32) not null comment '密码',
+    primary key (`job_num`),
+    unique key `companyEmail_unique` (`companyEmail`)
+) engine=innodb default charset=utf8mb4 comment='用户';
+
+insert into `user` (job_num, companyEmail, name, password) values ('13901', 'qinfeng@xxxx.com.cn', '秦风', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, companyEmail, name, password) values ('13902', 'zhangshan@xxxx.com.cn', '张珊', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, companyEmail, name, password) values ('13903', 'lisi@xxxx.com.cn', '丽思', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, companyEmail, name, password) values ('13904', 'wangwu@xxxx.com.cn', '王武', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, companyEmail, name, password) values ('13911', 'test', '123456c', '4db71c791e6a5f87027698565abc76c8');
+
+
+/*----resource 资源---------------------------------------------------*/
+drop table if exists `resource`;
+create table `resource` (
+     `id` char(6) not null default '' comment 'id',
+     `name` varchar(100) not null comment '名称|菜单或按钮',
+     `page` varchar(50) null comment '页面|路由',
+     `request` varchar(200) null comment '请求|接口',
+     `parent` char(6) comment '父id',
+     primary key (`id`)
+) engine=innodb default charset=utf8 comment='资源';
+
+insert into `resource` values ('01', '系统管理', null, null, null);
+insert into `resource` values ('0101', '用户管理', '/system/user', null, '01');
+insert into `resource` values ('010101', '保存', null, '["/system/admin/user/list", "/system/admin/user/save"]', '0101');
+insert into `resource` values ('010102', '删除', null, '["/system/admin/user/delete"]', '0101');
+insert into `resource` values ('010103', '重置密码', null, '["/system/admin/user/save-password"]', '0101');
+insert into `resource` values ('0102', '资源管理', '/system/resource', null, '01');
+insert into `resource` values ('010201', '保存/显示', null, '["/system/admin/resource"]', '0102');
+insert into `resource` values ('0103', '角色管理', '/system/role', null, '01');
+insert into `resource` values ('010301', '角色/权限管理', null, '["/system/admin/role"]', '0103');
+
+/*----role 角色---------------------------------------------------*/
+
+drop table if exists `role`;
+create table `role` (
+     `id` char(8) not null default '' comment 'id',
+     `name` varchar(50) not null comment '角色',
+     `desc` varchar(100) not null comment '描述',
+     primary key (`id`)
+) engine=innodb default charset=utf8mb4 comment='角色';
+
+insert into `role` values ('00000000', '系统管理员', '管理用户、角色权限');
+insert into `role` values ('00000001', '开发', '维护资源');
+insert into `role` values ('00000002', '业务管理员', '负责业务管理');
+
+/*----role_resource 角色_资源---------------------------------------------------*/
+
+drop table if exists `role_resource`;
+create table `role_resource` (
+     `id` char(8) not null default '' comment 'id',
+     `role_id` char(8) not null comment '角色|id',
+     `resource_id` char(6) not null comment '资源|id',
+     primary key (`id`)
+) engine=innodb default charset=utf8mb4 comment='角色资源关联';
+
+insert into `role_resource` values ('00000000', '00000000', '01');
+insert into `role_resource` values ('00000001', '00000000', '0101');
+insert into `role_resource` values ('00000002', '00000000', '010101');
+insert into `role_resource` values ('00000003', '00000000', '010102');
+insert into `role_resource` values ('00000004', '00000000', '010103');
+insert into `role_resource` values ('00000005', '00000000', '0102');
+insert into `role_resource` values ('00000006', '00000000', '010201');
+insert into `role_resource` values ('00000007', '00000000', '0103');
+insert into `role_resource` values ('00000008', '00000000', '010301');
+
+/*----role_resource 角色_用户---------------------------------------------------*/
+
+drop table if exists `role_user`;
+create table `role_user` (
+     `id` char(8) not null default '' comment 'id',
+     `role_id` char(8) not null comment '角色|id',
+     `user_id` char(8) not null comment '用户|id',
+     primary key (`id`)
+) engine=innodb default charset=utf8mb4 comment='角色用户关联';
+
+insert into `role_user` values ('00000000', '00000000', '10000000');
+
