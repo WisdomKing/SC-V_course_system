@@ -59,7 +59,7 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">详情</label>
                 <div class="col-sm-10">
-                  <input type="file" v-on:change="uploadImage()">
+                  <input type="file" v-on:change="uploadImage()" id="file-upload-input">
                 </div>
               </div>
             </el-form>
@@ -177,10 +177,10 @@ _this.headline).then((respond)=>{
       uploadImage(){
         let _this=this;
         let formDate=new window.FormData();
-        //
+        //key:"file"必须和后盾controller参数名一致
         formDate.append('file',document.querySelector('#file-upload-input').files[0]);
         Loading.show();
-        _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/headline/delete/'+id).then((respond)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/upload'+formDate).then((respond)=>{
           Loading.hide();
           let resp=respond.data;
         });

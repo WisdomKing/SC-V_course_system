@@ -13,7 +13,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.util.pattern.PathPatternParser;
 
 /**
- * @author 曾晓明
+ * @author ZxM
  * @date 2021/2/1
  */
 @SpringBootApplication
