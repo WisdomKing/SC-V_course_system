@@ -60,6 +60,9 @@
                 <label class="col-sm-2 control-label">详情</label>
                 <div class="col-sm-10">
                   <input type="file" v-on:change="uploadImage()" id="file-upload-input">
+                  <el-image v-bind:src="headline.image" class="img-responsive">
+
+                  </el-image>
                 </div>
               </div>
             </el-form>
@@ -183,6 +186,9 @@ _this.headline).then((respond)=>{
         _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/upload'+formDate).then((respond)=>{
           Loading.hide();
           let resp=respond.data;
+          let image=resp.content;
+          console.log("图片地址：",image);
+          _this.headline.image=image;
         });
       },
     }

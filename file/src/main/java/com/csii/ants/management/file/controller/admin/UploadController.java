@@ -30,7 +30,7 @@ public class UploadController {
         //
         String fileName=file.getOriginalFilename();
         String key= UuidUtil.getShortUuid();
-        String fullPath="F:/file/imooc/upload/"+key+"-"+fileName;
+        String fullPath="F:/file/imooc/upload/" + key + "-" + fileName;
         //目标位置
         File dest=new File(fullPath);
         //写入目标位置
@@ -39,6 +39,9 @@ public class UploadController {
         LOG.info(dest.getAbsolutePath());
 
         ResponseDto responseDto = new ResponseDto();
+
+        responseDto.setContent("http://127.0.0.1:9000/file/f/"+ key + "-" + fileName);
+
         return responseDto;
     }
 
