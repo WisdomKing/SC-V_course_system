@@ -18,6 +18,7 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
+        <th>ID</th>
         <th>上传时间</th>
         <th>修改时间</th>
         <th>详情</th>
@@ -27,6 +28,7 @@
 
       <tbody>
       <tr v-for="headline in headlines">
+        <td>{{headline.id}}</td>
         <td>{{headline.createdtime}}</td>
         <td>{{headline.updatedtime}}</td>
         <td>{{headline.details}}</td>
@@ -79,10 +81,9 @@
 
 <script>
   import Pagination from "../../components/pagination";
-  import ElementUI from "element-ui";
   export default {
-    name: 'headline',
-    components: {Pagination,ElementUI},
+    name: 'business-headline',
+    components: {Pagination},
     data:function(){
       return{
         headline:{},
@@ -176,21 +177,7 @@ _this.headline).then((respond)=>{
             }
           })
         });
-      },
-      uploadImage(){
-        let _this=this;
-        let formDate=new window.FormData();
-        //key:"file"必须和后盾controller参数名一致
-        formDate.append('file',document.querySelector('#file-upload-input').files[0]);
-        Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/upload'+formDate).then((respond)=>{
-          Loading.hide();
-          let resp=respond.data;
-          let image=resp.content;
-          console.log("图片地址：",image);
-          _this.headline.image=image;
-        });
-      },
+      }
     }
   }
 </script>

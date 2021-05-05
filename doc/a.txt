@@ -442,7 +442,7 @@ https://www.cnblogs.com/caizhou520/p/14314356.html
 0316
 0546 img-responsive:bootstrap内置的样式，图片自适应
 0617-git
-
+0643 利用bootstrap栅格系统，一个div是12个，可以让图片只占4个宽度
 
 
 
