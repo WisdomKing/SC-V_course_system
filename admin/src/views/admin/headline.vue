@@ -15,37 +15,52 @@
     <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
     <!-- 表单数据 -->
-    <table id="simple-table" class="table  table-bordered table-hover">
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>上传时间</th>
-        <th>修改时间</th>
-        <th>详情</th>
-        <th>操作按钮</th>
-      </tr>
-      </thead>
+    <div class="row">
+      <div v-for="headline in headlines" class="col-md-3">
+        <div>
+          <span class="profile-picture">
+            <img v-show="!headline.image" class="editable img-responsive editable-click editable-empty" src="/static/image/头像1.jpg" v-bind:title="headline.title"/>
+            <img v-show="headline.image" class="editable img-responsive editable-click editable-empty" v-bind:src="headline.image" v-bind:title="headline.title"/>
+          </span>
 
-      <tbody>
-      <tr v-for="headline in headlines">
-        <td>{{headline.id}}</td>
-        <td>{{headline.createdtime}}</td>
-        <td>{{headline.updatedtime}}</td>
-        <td>{{headline.details}}</td>
-        <td>
-          <div class="hidden-sm hidden-xs btn-group">
-            <button v-on:click="edit(headline)" class="btn btn-xs btn-info">
-              <!--详情-->
-              <i class="ace-icon fa fa-pencil bigger-120"></i>
-            </button>
-            <button v-on:click="del(headline.id)" class="btn btn-xs btn-danger">
-              <i class="ace-icon fa fa-trash-o bigger-120"></i>
-            </button>
+          <div class="space-4"></div>
+
+          <div class="width-85 label label-info label-xlg arrowed-in arrowed-in-right">
+            <div class="inline position-relative">
+              <a href="javascript:;" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                <i class="ace-icon fa fa-circle light-green"></i>
+                &nbsp;
+                <span class="white">{{headline.title}}</span>
+              </a>
+            </div>
           </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        </div>
+
+        <div class="space-6"></div>
+
+        <div class="text-center">
+          <a href="javascript:;" class="text-info bigger-110" v-bind:title="headline.title">
+            <i class="ace-icon fa fa-user"></i>
+            {{headline.createdtime}}|{{headline.updatedtime}}
+          </a>
+        </div>
+
+        <div class="space-6"></div>
+
+        <div class="profile-social-links align-center">
+          <button v-on:click="edit(headline)" class="btn btn-xs btn-info">
+            <i class="ace-icon fa fa-pencil bigger-120"></i>
+          </button>
+          &nbsp;
+          <button v-on:click="del(headline.id)" class="btn btn-xs btn-danger">
+            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+          </button>
+        </div>
+
+        <div class="hr hr16 dotted"></div>
+
+      </div>
+    </div>
 
     <!-- 模态框 -->
     <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -104,6 +119,8 @@
         let _this=this;
         //模态框打开时清空上次的数据
         _this.headline={}
+        _this.headline.createdtime=new Date();
+
         $("#form-modal").modal("show");
       },
       /**
