@@ -12,6 +12,7 @@
         <i class="ace-icon fa fa-refresh"></i>
         刷新
       </button>
+      &nbsp;
     </p>
     <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>

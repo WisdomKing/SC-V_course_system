@@ -194,7 +194,21 @@ _this.headline).then((respond)=>{
             }
           })
         });
-      }
+      },
+      uploadImage () {
+        let _this = this;
+        let formData = new window.FormData();
+        // key："file"必须和后端controller参数名一致,得到图片
+        formData.append('file', document.querySelector('#file-upload-input').files[0]);
+        Loading.show();
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/file/admin/upload', formData).then((response)=>{
+          Loading.hide();
+          let resp = response.data;
+          let image = resp.content;
+          console.log("头像地址：", image);
+          _this.headline.image = image;
+        });
+      },
     }
   }
 </script>
