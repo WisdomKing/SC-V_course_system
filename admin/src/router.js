@@ -15,6 +15,7 @@ import Project from "./views/admin/project.vue"
 import Test from "./views/admin/test.vue"
 import User from "./views/admin/user.vue"
 // import Role from "./views/admin/role.vue"
+import File from "./views/admin/file.vue"
 
 import Calendar from "./views/admin/calendar.vue"
 
@@ -87,6 +88,10 @@ export default new Router({
             path: "business/test",
             name: "business/test",
             component: Test
+        },{
+            path: "business/file",
+            name: "business/file",
+            component: File
         },{
             path: "system/user",
             name: "system/user",
