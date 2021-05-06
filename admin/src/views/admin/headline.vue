@@ -198,6 +198,25 @@ _this.headline).then((respond)=>{
       uploadImage () {
         let _this = this;
         let formData = new window.FormData();
+
+        let file=_this.$refs.file.files[0];
+
+        // 判断文件格式
+        let suffixs = ["jpg", "jpeg", "png"];
+        let fileName = file.name;
+        let suffix = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length).toLowerCase();
+        let validateSuffix = false;
+        for (let i = 0; i < suffixs.length; i++) {
+          if (suffixs[i].toLowerCase() === suffix) {
+            validateSuffix = true;
+            break;
+          }
+        }
+        if (!validateSuffix) {
+          Toast.warning("文件格式不正确！只支持上传：" + suffixs.join(","));
+          return;
+        }
+
         // key："file"必须和后端controller参数名一致,得到图片
         formData.append('file', document.querySelector('#file-upload-input').files[0]);
         Loading.show();
@@ -207,7 +226,12 @@ _this.headline).then((respond)=>{
           let image = resp.content;
           console.log("头像地址：", image);
           _this.headline.image = image;
+          //强制触发回显
+          this.$forceUpdate();
         });
+      },
+      selectImage(){
+        $("#file-upload-input").trigger("click");
       },
     }
   }
