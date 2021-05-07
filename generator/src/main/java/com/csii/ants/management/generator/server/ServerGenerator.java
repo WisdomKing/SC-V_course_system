@@ -21,8 +21,8 @@ public class ServerGenerator {
      * 支持重复生成
      */
 //    static String MODULE = "business";
-//    static String MODULE = "system";
-    static String MODULE = "file";
+    static String MODULE = "system";
+//    static String MODULE = "file";
     static String toDtoPath = "server\\src\\main\\java\\com\\csii\\ants\\management\\server\\dto\\";
     static String toServicePath = "server\\src\\main\\java\\com\\csii\\ants\\management\\server\\service\\";
     static String toControllerPath =MODULE+ "\\src\\main\\java\\com\\csii\\ants\\management\\"+MODULE+"\\controller\\admin\\";
