@@ -198,9 +198,17 @@ _this.headline).then((respond)=>{
       },
       afterUpload(resp) {
         let _this = this;
-        let image = resp.content;
+        let image = resp.content.path;
         _this.headline.image = image;
       }
     }
   }
 </script>
+<!-- 视频样式调整，暂时不用 -->
+<style scoped>
+  video {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+</style>

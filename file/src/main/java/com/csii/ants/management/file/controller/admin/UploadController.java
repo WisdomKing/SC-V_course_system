@@ -43,8 +43,10 @@ public class UploadController {
         String key = UuidUtil.getShortUuid();
         String fileName = file.getOriginalFilename();
         String suffix = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-        String path = "teacher/" + key + "." + suffix;
+
+        String path = "headline/" + key + "." + suffix;
         String fullPath = FILE_PATH + path;
+
         //目标位置
         File dest = new File(fullPath);
         //写入目标位置
@@ -62,7 +64,8 @@ public class UploadController {
         fileService.save(fileDto);
 
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setContent(FILE_DOMAIN + path);
+        fileDto.setPath(FILE_DOMAIN + path);
+        responseDto.setContent(fileDto);
         return responseDto;
     }
 
