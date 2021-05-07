@@ -14,7 +14,8 @@ public class SpringMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //增加一个请求标识符，所有带/f的都认为是静态资源
-        registry.addResourceHandler("/f/**").addResourceLocations("file:"+FILE_PATH);
+        registry.addResourceHandler("/f/**").addResourceLocations("file:" + FILE_PATH);
+//        registry.addResourceHandler("/f/**").addResourceLocations("file:F:/file/imooc/course/");
         //全路径 http://127.0.0.1:9003/file/f/xxxx.jpg
     }
 }

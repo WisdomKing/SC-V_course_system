@@ -4,7 +4,7 @@
       <i class="ace-icon fa fa-upload"></i>
       {{text}}
     </button>
-    <input type="file" ref="file" v-on:change="uploadFile()" v-bind:id="inputId+'-input'">
+    <input class="hidden" type="file" ref="file" v-on:change="uploadFile()" v-bind:id="inputId+'-input'">
   </div>
 </template>
 
@@ -20,9 +20,6 @@
       },
       suffixs: {
         default: []
-      },
-      use: {
-        default: ""
       },
       afterUpload: {
         type: Function,
@@ -58,25 +55,18 @@
 
         // key："file"必须和后端controller参数名一致
         formData.append('file', file);
-        formData.append('use', _this.use);
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/file/admin/oss-simple', formData).then((response)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/file/admin/upload', formData).then((response)=>{
           Loading.hide();
           let resp = response.data;
           console.log("上传文件成功：", resp);
-
-          // console.log("头像地址：",image);
-          // _this.headline.image=image;
-
           _this.afterUpload(resp);
-          // 控件的值置空
           $("#" + _this.inputId + "-input").val("");
         });
       },
 
       selectFile () {
-        let _this = this;
-        $("#" + _this.inputId + "-input").trigger("click");
+        $("#file-upload-input").trigger("click");
       }
     }
   }

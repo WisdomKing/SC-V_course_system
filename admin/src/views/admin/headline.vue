@@ -120,7 +120,7 @@
         let _this=this;
         //模态框打开时清空上次的数据
         _this.headline={}
-        _this.headline.createdtime=new Date();
+        // _this.headline.createdtime=new Date();
 
         $("#form-modal").modal("show");
       },
@@ -198,12 +198,9 @@ _this.headline).then((respond)=>{
       },
       afterUpload(resp) {
         let _this = this;
-        // let image = resp.content.path;
-        let image = resp.content.path;
+        let image = resp.content;
         _this.headline.image = image;
-        // 新增讲师，上传头像后不能实时预览，解决方法二
-        _this.$forceUpdate();
-      },
+      }
     }
   }
 </script>

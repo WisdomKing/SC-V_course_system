@@ -89,8 +89,8 @@ export default new Router({
             name: "business/test",
             component: Test
         },{
-            path: "business/file",
-            name: "business/file",
+            path: "file/file",
+            name: "file/file",
             component: File
         },{
             path: "system/user",
