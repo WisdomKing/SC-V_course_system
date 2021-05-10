@@ -104,22 +104,19 @@ public class ClockinDto {
     }
 
 
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", id=").append(id);
-    sb.append(", projectname=").append(projectname);
-    sb.append(", manhourType=").append(manhourType);
-    sb.append(", manhour=").append(manhour);
-    sb.append(", delayed=").append(delayed);
-    sb.append(", worklog=").append(worklog);
-    sb.append(", status=").append(status);
-    sb.append(", clockinTime=").append(clockinTime);
-sb.append("]");
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("ClockinDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", projectname='").append(projectname).append('\'');
+        sb.append(", manhourType='").append(manhourType).append('\'');
+        sb.append(", manhour='").append(manhour).append('\'');
+        sb.append(", delayed='").append(delayed).append('\'');
+        sb.append(", worklog='").append(worklog).append('\'');
+        sb.append(", status='").append(status).append('\'');
+        sb.append(", clockinTime=").append(clockinTime);
+        sb.append('}');
+        return sb.toString();
+    }
 
 }

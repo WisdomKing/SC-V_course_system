@@ -79,21 +79,17 @@ public class FileDto {
     this.createdAt = createdAt;
     }
 
-
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", id=").append(id);
-    sb.append(", path=").append(path);
-    sb.append(", name=").append(name);
-    sb.append(", suffix=").append(suffix);
-    sb.append(", size=").append(size);
-    sb.append(", createdAt=").append(createdAt);
-sb.append("]");
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("FileDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", path='").append(path).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", suffix='").append(suffix).append('\'');
+        sb.append(", size=").append(size);
+        sb.append(", createdAt=").append(createdAt);
+        sb.append('}');
+        return sb.toString();
+    }
 
 }

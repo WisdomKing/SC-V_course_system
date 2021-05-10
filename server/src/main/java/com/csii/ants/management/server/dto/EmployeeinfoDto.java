@@ -302,38 +302,35 @@ public class EmployeeinfoDto {
     }
 
 
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", id=").append(id);
-    sb.append(", name=").append(name);
-    sb.append(", jobNum=").append(jobNum);
-    sb.append(", base=").append(base);
-    sb.append(", companyemail=").append(companyemail);
-    sb.append(", dependenceDep=").append(dependenceDep);
-    sb.append(", superiordep=").append(superiordep);
-    sb.append(", position=").append(position);
-    sb.append(", depDirector=").append(depDirector);
-    sb.append(", entryTime=").append(entryTime);
-    sb.append(", entryType=").append(entryType);
-    sb.append(", entryAddress=").append(entryAddress);
-    sb.append(", internshipbegin=").append(internshipbegin);
-    sb.append(", internshipending=").append(internshipending);
-    sb.append(", conversionregTime=").append(conversionregTime);
-    sb.append(", contractsigning=").append(contractsigning);
-    sb.append(", contractending=").append(contractending);
-    sb.append(", probationexpDate=").append(probationexpDate);
-    sb.append(", employeestatus=").append(employeestatus);
-    sb.append(", contractrenew=").append(contractrenew);
-    sb.append(", welfarearea=").append(welfarearea);
-    sb.append(", myrole=").append(myrole);
-    sb.append(", employeeccc=").append(employeeccc);
-    sb.append(", comment=").append(comment);
-sb.append("]");
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("EmployeeinfoDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", jobNum='").append(jobNum).append('\'');
+        sb.append(", base='").append(base).append('\'');
+        sb.append(", companyemail='").append(companyemail).append('\'');
+        sb.append(", dependenceDep='").append(dependenceDep).append('\'');
+        sb.append(", superiordep='").append(superiordep).append('\'');
+        sb.append(", position='").append(position).append('\'');
+        sb.append(", depDirector='").append(depDirector).append('\'');
+        sb.append(", entryTime=").append(entryTime);
+        sb.append(", entryType='").append(entryType).append('\'');
+        sb.append(", entryAddress='").append(entryAddress).append('\'');
+        sb.append(", internshipbegin=").append(internshipbegin);
+        sb.append(", internshipending=").append(internshipending);
+        sb.append(", conversionregTime=").append(conversionregTime);
+        sb.append(", contractsigning=").append(contractsigning);
+        sb.append(", contractending=").append(contractending);
+        sb.append(", probationexpDate=").append(probationexpDate);
+        sb.append(", employeestatus='").append(employeestatus).append('\'');
+        sb.append(", contractrenew='").append(contractrenew).append('\'');
+        sb.append(", welfarearea='").append(welfarearea).append('\'');
+        sb.append(", myrole='").append(myrole).append('\'');
+        sb.append(", employeeccc='").append(employeeccc).append('\'');
+        sb.append(", comment='").append(comment).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 
 }

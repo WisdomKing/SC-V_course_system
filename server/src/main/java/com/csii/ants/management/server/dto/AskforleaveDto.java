@@ -105,22 +105,19 @@ public class AskforleaveDto {
     }
 
 
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", id=").append(id);
-    sb.append(", jobNum=").append(jobNum);
-    sb.append(", leavetype=").append(leavetype);
-    sb.append(", leavetimebengin=").append(leavetimebengin);
-    sb.append(", leavetimeending=").append(leavetimeending);
-    sb.append(", leavestatus=").append(leavestatus);
-    sb.append(", cancellationleave=").append(cancellationleave);
-    sb.append(", details=").append(details);
-sb.append("]");
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("AskforleaveDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", jobNum='").append(jobNum).append('\'');
+        sb.append(", leavetype='").append(leavetype).append('\'');
+        sb.append(", leavetimebengin=").append(leavetimebengin);
+        sb.append(", leavetimeending=").append(leavetimeending);
+        sb.append(", leavestatus='").append(leavestatus).append('\'');
+        sb.append(", cancellationleave='").append(cancellationleave).append('\'');
+        sb.append(", details='").append(details).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 
 }

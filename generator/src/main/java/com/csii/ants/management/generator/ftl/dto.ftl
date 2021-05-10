@@ -33,17 +33,17 @@ public class ${Domain}Dto {
 
 </#list>
 
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-<#list fieldList as field>
-    sb.append(", ${field.nameHump}=").append(${field.nameHump});
-</#list>
-sb.append("]");
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        <#list fieldList as field>
+            sb.append(", ${field.nameHump}=").append(${field.nameHump});
+        </#list>
+        sb.append("]");
+        return sb.toString();
+    }
 
 }

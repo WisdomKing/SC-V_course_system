@@ -40,18 +40,13 @@ public class projectDto {
     this.depid = depid;
     }
 
-
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", proid=").append(proid);
-    sb.append(", proname=").append(proname);
-    sb.append(", depid=").append(depid);
-sb.append("]");
-return sb.toString();
-}
-
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("projectDto{");
+        sb.append("proid='").append(proid).append('\'');
+        sb.append(", proname='").append(proname).append('\'');
+        sb.append(", depid='").append(depid).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

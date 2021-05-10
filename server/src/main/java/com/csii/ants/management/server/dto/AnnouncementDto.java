@@ -78,17 +78,14 @@ public class AnnouncementDto {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", announcementtitle=").append(announcementtitle);
-        sb.append(", announcementtype=").append(announcementtype);
-        sb.append(", begintime=").append(begintime);
-        sb.append(", endingtime=").append(endingtime);
-        sb.append(", details=").append(details);
-        sb.append("]");
+        final StringBuffer sb = new StringBuffer("AnnouncementDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", announcementtitle='").append(announcementtitle).append('\'');
+        sb.append(", announcementtype='").append(announcementtype).append('\'');
+        sb.append(", begintime='").append(begintime).append('\'');
+        sb.append(", endingtime='").append(endingtime).append('\'');
+        sb.append(", details='").append(details).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 

@@ -1,20 +1,29 @@
 <template>
   <div>
-    <!-- 刷新按钮 -->
     <p>
-    <button v-on:click="add()" class="btn btn-white btn-default btn-round">
-      <i class="ace-icon fa fa-edit"></i>
-      新增
-    </button>
-      &nbsp;
-    <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
-      <i class="ace-icon fa fa-refresh"></i>
-      刷新
-    </button>
+      <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-refresh"></i>
+        刷新
+      </button>
     </p>
-    <!-- 分页插件 -->
-    <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
-    <!-- 表单数据 -->
+
+    <div class="row">
+      <div class="col-md-6">
+        <textarea id="resource-textarea" class="form-control" v-model="resourceStr" name="resource" rows="10"></textarea>
+
+        <br>
+        <button id="save-btn" type="button" class="btn btn-primary" v-on:click="save()">
+          保存
+        </button>
+      </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+
+    <hr>
+
+    <pagination ref="pagination" v-bind:list="list" v-bind:itemCount="8"></pagination>
+
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
@@ -23,7 +32,7 @@
         <th>页面</th>
         <th>请求</th>
         <th>父id</th>
-        <th>操作按钮</th>
+        <th>操作</th>
       </tr>
       </thead>
 
@@ -37,7 +46,6 @@
         <td>
           <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="edit(resource)" class="btn btn-xs btn-info">
-              <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
             <button v-on:click="del(resource.id)" class="btn btn-xs btn-danger">
@@ -49,151 +57,88 @@
       </tbody>
     </table>
 
-    <!-- 模态框 -->
-    <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">资源</h4>
-          </div>
-          <div class="modal-body">
-            <!-- 表单 -->
-            <form class="form-horizontal">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">名称</label>
-                  <div class="col-sm-10">
-                    <input v-model="resource.name" class="form-control" placeholder="名称">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">页面</label>
-                  <div class="col-sm-10">
-                    <input v-model="resource.page" class="form-control" placeholder="页面">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">请求</label>
-                  <div class="col-sm-10">
-                    <input v-model="resource.request" class="form-control" placeholder="请求">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 control-label">父id</label>
-                  <div class="col-sm-10">
-                    <input v-model="resource.parent" class="form-control" placeholder="父id">
-                  </div>
-                </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button v-on:click="save()" type="button" class="btn btn-primary">保存</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
   import Pagination from "../../components/pagination";
   export default {
-    name: 'system-resource',
     components: {Pagination},
-    data:function(){
-      return{
-        resource:{},
-        resources:[]
+    name: "system-resource",
+    data: function() {
+      return {
+        resource: {},
+        resources: [],
+        resourceStr: "",
       }
     },
-    mounted: function () {
-      let _this=this;
-      //自定义初始每页5条
-      _this.$refs.pagination.size=5;
-      _this.list();
-      },
+    mounted: function() {
+      let _this = this;
+      _this.$refs.pagination.size = 5;
+      _this.list(1);
+      // sidebar激活样式方法一
+      // this.$parent.activeSidebar("system-resource-sidebar");
+
+    },
     methods: {
-      /**
-       * 点击新增
-       */
-      add(){
-        let _this=this;
-        //模态框打开时清空上次的数据
-        _this.resource={}
-        $("#form-modal").modal("show");
-      },
-      /**
-       * 点击编辑
-       */
-      edit(resource){
-        let _this=this;
-        //将数据带到模态框里
-        _this.resource=$.extend({},resource);
-        $("#form-modal").modal("show");
-      },
       /**
        * 列表查询
        */
-      list(page){
-        let _this=this;
+      list(page) {
+        let _this = this;
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/system/admin/resource/list',{
-          page:page,
-          size:_this.$refs.pagination.size,
-        }).then((respond)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/resource/list', {
+          page: page,
+          size: _this.$refs.pagination.size,
+        }).then((response)=>{
           Loading.hide();
-          let resp=respond.data;
-          _this.resources=resp.content.list;
-          //重新渲染？5.5-1155
-          _this.$refs.pagination.render(page,resp.content.total);
+          let resp = response.data;
+          _this.resources = resp.content.list;
+          _this.$refs.pagination.render(page, resp.content.total);
+
         })
       },
+
       /**
-       * 点击保存
+       * 点击【保存】
        */
-      save(page){
-        let _this=this;
-        // 保存校验，非空和长度
-        if (1 != 1
-          || !Validator.require(_this.resource.name, "名称")
-          || !Validator.length(_this.resource.name, "名称", 1, 100)
-          || !Validator.length(_this.resource.page, "页面", 1, 50)
-          || !Validator.length(_this.resource.request, "请求", 1, 200)
-        ) {
+      save() {
+        let _this = this;
+
+        // 保存校验
+        if (Tool.isEmpty(_this.resourceStr)) {
+          Toast.warning("资源不能为空！");
           return;
         }
+        let json = JSON.parse(_this.resourceStr);
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/system/admin/resource/save',
-_this.resource).then((respond)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/resource/save', json).then((response)=>{
           Loading.hide();
-          // console.log("保存资源列表结果:",respond);
-          let resp=respond.data;
-          if (resp.success){
-            //如果成功了，隐藏modal和刷新列表
+          let resp = response.data;
+          if (resp.success) {
             $("#form-modal").modal("hide");
             _this.list(1);
-            Toast.success("保存成功");
-          }else {
+            Toast.success("保存成功！");
+          } else {
             Toast.warning(resp.message)
           }
         })
       },
+
       /**
-       * 点击删除
+       * 点击【删除】
        */
-      del(id){
-        let _this=this;
-        Confirm.show("删除资源后不可恢复，确认删除?",function () {
+      del(id) {
+        let _this = this;
+        Confirm.show("删除资源后不可恢复，确认删除？", function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/system/admin/resource/delete/'+id).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER + '/system/admin/resource/delete/' + id).then((response)=>{
             Loading.hide();
-            // console.log("删除资源列表结果:",respond);
-            let resp=respond.data;
-            if (resp.success){
+            let resp = response.data;
+            if (resp.success) {
               _this.list(1);
-              Toast.success("删除成功");
+              Toast.success("删除成功！");
             }
           })
         });

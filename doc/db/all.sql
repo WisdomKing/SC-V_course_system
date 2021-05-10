@@ -224,6 +224,7 @@ insert into `resource` values ('010201', '保存/显示', null, '["/system/admin
 insert into `resource` values ('0103', '角色管理', '/system/role', null, '01');
 insert into `resource` values ('010301', '角色/权限管理', null, '["/system/admin/role"]', '0103');
 
+
 /*----role 角色---------------------------------------------------*/
 
 drop table if exists `role`;

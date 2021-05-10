@@ -41,17 +41,14 @@ public class departmentDto {
     }
 
 
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", depid=").append(depid);
-    sb.append(", depname=").append(depname);
-    sb.append(", depdirector=").append(depdirector);
-sb.append("]");
-return sb.toString();
-}
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("departmentDto{");
+        sb.append("depid='").append(depid).append('\'');
+        sb.append(", depname='").append(depname).append('\'');
+        sb.append(", depdirector='").append(depdirector).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 
 }
