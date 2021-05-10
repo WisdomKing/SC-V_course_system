@@ -18,4 +18,32 @@
       {"id": "010301", "name": "角色/权限管理", "request": ["/system/admin/role"]}
     ]
   }]
+}, {
+  "id": "02", "name": "通知管理",
+  "children": [{
+    "id": "0201", "name": "公司公告", "page": "/business/announcement",
+    "children": [
+      {"id": "020101", "name": "保存", "request": ["/business/admin/announcement/list", "/business/admin/announcement/save"]},
+      {"id": "020102", "name": "删除", "request": ["/business/admin/announcement/delete"]},
+      {"id": "020103", "name": "重置密码", "request": ["/business/admin/announcement/save-password"]}
+    ]
+  }, {
+    "id": "0202", "name": "公司头条", "page": "/business/headline",
+    "children": [
+      {"id": "020201", "name": "保存/显示", "request": ["/business/admin/headline"]}
+    ]
+  }, {
+    "id": "0203", "name": "公司信息", "page": "/business/companyinfo",
+    "children": [
+      {"id": "020301", "name": "公司信息", "request": ["/business/admin/companyinfo"]}
+    ]
+  }]
+},{
+  "id": "03", "name": "文件管理",
+  "children": [{
+    "id": "0301", "name": "文件管理", "page": "/file/file",
+    "children": [
+      {"id": "030101", "name": "文件管理", "request": ["/file/admin/file"]}
+    ]
+  }]
 }]
