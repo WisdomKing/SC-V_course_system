@@ -106,7 +106,6 @@ public class RoleService {
     /**
      * 按角色保存资源
      */
-
     public void saveResource(RoleDto roleDto) {
         String roleId = roleDto.getId();
         List<String> resourceIds = roleDto.getResourceIds();
@@ -123,5 +122,19 @@ public class RoleService {
             roleResource.setResourceId(resourceIds.get(i));
             roleResourceMapper.insert(roleResource);
         }
+    }
+    /**
+     * 按角色加载资源
+     * @param roleId
+     */
+    public List<String> listResource(String roleId) {
+        RoleResourceExample example = new RoleResourceExample();
+        example.createCriteria().andRoleIdEqualTo(roleId);
+        List<RoleResource> roleResourceList = roleResourceMapper.selectByExample(example);
+        List<String> resourceIdList = new ArrayList<>();
+        for (int i = 0, l = roleResourceList.size(); i < l; i++) {
+            resourceIdList.add(roleResourceList.get(i).getResourceId());
+        }
+        return resourceIdList;
     }
 }
