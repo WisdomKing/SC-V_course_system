@@ -29,7 +29,7 @@
       <tbody>
       <tr v-for="user in users">
         <td>{{user.jobNum}}</td>
-        <td>{{user.companyemail}}</td>
+        <td>{{user.loginName}}</td>
         <td>{{user.name}}</td>
         <td>{{user.password}}</td>
         <td>
@@ -70,7 +70,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">登陆名</label>
                   <div class="col-sm-10">
-                    <input v-model="user.companyemail" v-bind:disabled="user.companyemail" class="form-control" placeholder="登陆名">
+                    <input v-model="user.loginName" v-bind:disabled="user.loginName" class="form-control" placeholder="登陆名">
                   </div>
                 </div>
                 <div class="form-group">
@@ -189,8 +189,8 @@
         // 保存校验，非空和长度
         if (1 != 1
           || !Validator.require(_this.user.jobNum, "工号")
-          || !Validator.require(_this.user.companyemail, "登陆名")
-          || !Validator.length(_this.user.companyemail, "登陆名", 1, 50)
+          || !Validator.require(_this.user.loginName, "登陆名")
+          || !Validator.length(_this.user.loginName, "登陆名", 1, 50)
           || !Validator.length(_this.user.name, "昵称", 1, 50)
           || !Validator.require(_this.user.password, "密码")
         ) {

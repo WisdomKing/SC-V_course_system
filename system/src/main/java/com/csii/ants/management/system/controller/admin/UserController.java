@@ -2,7 +2,7 @@ package com.csii.ants.management.system.controller.admin;
 
 import com.alibaba.fastjson.JSON;
 import com.csii.ants.management.server.dto.*;
-import com.csii.ants.management.server.service.userService;
+import com.csii.ants.management.server.service.UserService;
 import com.csii.ants.management.server.util.UuidUtil;
 import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
@@ -24,15 +24,15 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/admin/user")
-public class userController {
-    private static final Logger Log= LoggerFactory.getLogger(userController.class);
+public class UserController {
+    private static final Logger Log= LoggerFactory.getLogger(UserController.class);
     public static final String BUSINESS_NAME="用户";
 
     @Resource
     private RedisTemplate redisTemplate;
 
     @Resource
-    private userService userService;
+    private UserService userService;
 
     /**
      * 列表查询
@@ -54,14 +54,14 @@ public class userController {
      * @return responseDto
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody userDto userDto) {
+    public ResponseDto save(@RequestBody UserDto userDto) {
         Log.info("userDto:{}",userDto);
         //二次加密
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         // 保存校验
         ValidatorUtil.require(userDto.getJobNum(), "工号");
-        ValidatorUtil.require(userDto.getCompanyemail(), "登陆名");
-        ValidatorUtil.length(userDto.getCompanyemail(), "登陆名", 1, 50);
+        ValidatorUtil.require(userDto.getLoginName(), "登陆名");
+        ValidatorUtil.length(userDto.getLoginName(), "登陆名", 1, 50);
         ValidatorUtil.length(userDto.getName(), "昵称", 1, 50);
         ValidatorUtil.require(userDto.getPassword(), "密码");
 
@@ -87,7 +87,7 @@ public class userController {
      * 重置密码
      */
     @PostMapping("/save-password")
-    public ResponseDto savePassword(@RequestBody userDto userDto) {
+    public ResponseDto savePassword(@RequestBody UserDto userDto) {
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         ResponseDto responseDto = new ResponseDto();
         userService.savePassword(userDto);
@@ -98,7 +98,7 @@ public class userController {
      * 登录
      */
     @PostMapping("/login")
-    public ResponseDto login(@RequestBody userDto userDto, HttpServletRequest request) {
+    public ResponseDto login(@RequestBody UserDto userDto, HttpServletRequest request) {
         Log.info("用户登录开始");
         userDto.setPassword(DigestUtils.md5DigestAsHex(userDto.getPassword().getBytes()));
         ResponseDto responseDto = new ResponseDto();

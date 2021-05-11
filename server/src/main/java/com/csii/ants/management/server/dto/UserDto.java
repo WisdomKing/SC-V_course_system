@@ -1,7 +1,7 @@
 package com.csii.ants.management.server.dto;
 
 
-public class userDto {
+public class UserDto {
 
     /**
     * 工号
@@ -10,7 +10,7 @@ public class userDto {
     /**
     * 登陆名
     */
-    private String companyemail;
+    private String loginName;
     /**
     * 昵称
     */
@@ -36,12 +36,12 @@ public class userDto {
     this.jobNum = jobNum;
     }
 
-    public String getCompanyemail() {
-    return companyemail;
+    public String getLoginName() {
+    return loginName;
     }
 
-    public void setCompanyemail(String companyemail) {
-    this.companyemail = companyemail;
+    public void setLoginName(String companyemail) {
+    this.loginName = companyemail;
     }
 
     public String getName() {
@@ -80,7 +80,7 @@ public class userDto {
 public String toString() {
     final StringBuffer sb = new StringBuffer("userDto{");
     sb.append(", jobNum=").append(jobNum).append('\'');
-    sb.append(", companyemail=").append(companyemail).append('\'');
+    sb.append(", companyemail=").append(loginName).append('\'');
     sb.append(", name=").append(name).append('\'');
     sb.append(", password=").append(password).append('\'');
     sb.append(", imageCode=").append(imageCode).append('\'');

@@ -1,9 +1,9 @@
 package com.csii.ants.management.server.domain;
 
-public class user {
+public class User {
     private String jobNum;
 
-    private String companyemail;
+    private String loginName;
 
     private String name;
 
@@ -17,12 +17,12 @@ public class user {
         this.jobNum = jobNum;
     }
 
-    public String getCompanyemail() {
-        return companyemail;
+    public String getLoginName() {
+        return loginName;
     }
 
-    public void setCompanyemail(String companyemail) {
-        this.companyemail = companyemail;
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
     }
 
     public String getName() {
@@ -48,7 +48,7 @@ public class user {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", jobNum=").append(jobNum);
-        sb.append(", companyemail=").append(companyemail);
+        sb.append(", loginName=").append(loginName);
         sb.append(", name=").append(name);
         sb.append(", password=").append(password);
         sb.append("]");

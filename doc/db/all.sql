@@ -189,18 +189,18 @@ insert into `project` (proid, proname, depid) values ('p2001', '阿里山', 'd20
 drop table if exists `user`;
 create table `user` (
     `job_num` char(5) not null comment '工号',
-    `companyEmail` varchar(50) not null comment '登陆名',
+    `login_name` varchar(50) not null comment '登陆名',
     `name` varchar(50) comment '昵称',
     `password` char(32) not null comment '密码',
     primary key (`job_num`),
-    unique key `companyEmail_unique` (`companyEmail`)
+    unique key `companyEmail_unique` (`login_name`)
 ) engine=innodb default charset=utf8mb4 comment='用户';
 
-insert into `user` (job_num, companyEmail, name, password) values ('13901', 'qinfeng@xxxx.com.cn', '秦风', '202cb962ac59075b964b07152d234b70');
-insert into `user` (job_num, companyEmail, name, password) values ('13902', 'zhangshan@xxxx.com.cn', '张珊', '202cb962ac59075b964b07152d234b70');
-insert into `user` (job_num, companyEmail, name, password) values ('13903', 'lisi@xxxx.com.cn', '丽思', '202cb962ac59075b964b07152d234b70');
-insert into `user` (job_num, companyEmail, name, password) values ('13904', 'wangwu@xxxx.com.cn', '王武', '202cb962ac59075b964b07152d234b70');
-insert into `user` (job_num, companyEmail, name, password) values ('13911', '12345', 'cc', '4db71c791e6a5f87027698565abc76c8');
+insert into `user` (job_num, login_name, name, password) values ('13901', 'qinfeng@xxxx.com.cn', '秦风', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, login_name, name, password) values ('13902', 'zhangshan@xxxx.com.cn', '张珊', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, login_name, name, password) values ('13903', 'lisi@xxxx.com.cn', '丽思', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, login_name, name, password) values ('13904', 'wangwu@xxxx.com.cn', '王武', '202cb962ac59075b964b07152d234b70');
+insert into `user` (job_num, login_name, name, password) values ('13911', '12345', 'cc', '4db71c791e6a5f87027698565abc76c8');
 
 
 /*----resource 资源---------------------------------------------------*/
