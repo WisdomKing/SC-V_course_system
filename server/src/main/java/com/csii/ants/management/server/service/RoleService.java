@@ -2,9 +2,12 @@ package com.csii.ants.management.server.service;
 
 import com.csii.ants.management.server.domain.Role;
 import com.csii.ants.management.server.domain.RoleExample;
+import com.csii.ants.management.server.domain.RoleResource;
+import com.csii.ants.management.server.domain.RoleResourceExample;
 import com.csii.ants.management.server.dto.RoleDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.mapper.RoleMapper;
+import com.csii.ants.management.server.mapper.RoleResourceMapper;
 import com.csii.ants.management.server.util.CopyUtil;
 import com.csii.ants.management.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
@@ -27,6 +30,9 @@ import java.util.List;
 public class RoleService {
     @Resource
     private RoleMapper roleMapper;
+
+    @Resource
+    private RoleResourceMapper roleResourceMapper;
 
     /**
      * 列表查询
@@ -95,5 +101,27 @@ public class RoleService {
      */
     public void delete(String id) {
         roleMapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * 按角色保存资源
+     */
+
+    public void saveResource(RoleDto roleDto) {
+        String roleId = roleDto.getId();
+        List<String> resourceIds = roleDto.getResourceIds();
+        // 清空库中所有的当前角色下的记录
+        RoleResourceExample example = new RoleResourceExample();
+        example.createCriteria().andRoleIdEqualTo(roleId);
+        roleResourceMapper.deleteByExample(example);
+
+        // 保存角色资源
+        for (int i = 0; i < resourceIds.size(); i++) {
+            RoleResource roleResource = new RoleResource();
+            roleResource.setId(UuidUtil.getShortUuid());
+            roleResource.setRoleId(roleId);
+            roleResource.setResourceId(resourceIds.get(i));
+            roleResourceMapper.insert(roleResource);
+        }
     }
 }

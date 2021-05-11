@@ -400,7 +400,7 @@
 
           <li class="">
             <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
+              <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 通知管理 </span>
               <b class="arrow fa fa-angle-down"></b>
             </a>
