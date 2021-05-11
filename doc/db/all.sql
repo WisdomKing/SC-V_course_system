@@ -200,7 +200,7 @@ insert into `user` (job_num, companyEmail, name, password) values ('13901', 'qin
 insert into `user` (job_num, companyEmail, name, password) values ('13902', 'zhangshan@xxxx.com.cn', '张珊', '202cb962ac59075b964b07152d234b70');
 insert into `user` (job_num, companyEmail, name, password) values ('13903', 'lisi@xxxx.com.cn', '丽思', '202cb962ac59075b964b07152d234b70');
 insert into `user` (job_num, companyEmail, name, password) values ('13904', 'wangwu@xxxx.com.cn', '王武', '202cb962ac59075b964b07152d234b70');
-insert into `user` (job_num, companyEmail, name, password) values ('13911', 'test', '123456c', '4db71c791e6a5f87027698565abc76c8');
+insert into `user` (job_num, companyEmail, name, password) values ('13911', '12345', 'cc', '4db71c791e6a5f87027698565abc76c8');
 
 
 /*----resource 资源---------------------------------------------------*/
