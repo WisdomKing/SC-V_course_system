@@ -21,6 +21,18 @@ public class RoleDto {
      * 接收前端传来的资源id的list
      */
     private List<String> resourceIds;
+    /**
+     * 接收前端传来的用户id的list
+     */
+    private List<String> jobNums;
+
+    public List<String> getJobNums() {
+        return jobNums;
+    }
+
+    public void setJobNums(List<String> jobNums) {
+        this.jobNums = jobNums;
+    }
 
     public List<String> getResourceIds() {
         return resourceIds;
@@ -62,6 +74,7 @@ public class RoleDto {
         sb.append(", name='").append(name).append('\'');
         sb.append(", desc='").append(desc).append('\'');
         sb.append(", resourceIds=").append(resourceIds);
+        sb.append(", jobNums=").append(jobNums);
         sb.append('}');
         return sb.toString();
     }
