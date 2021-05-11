@@ -244,73 +244,73 @@ public class RoleUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
+        public Criteria andJobNumIsNull() {
+            addCriterion("job_num is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
+        public Criteria andJobNumIsNotNull() {
+            addCriterion("job_num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(String value) {
-            addCriterion("user_id =", value, "userId");
+        public Criteria andJobNumEqualTo(String value) {
+            addCriterion("job_num =", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(String value) {
-            addCriterion("user_id <>", value, "userId");
+        public Criteria andJobNumNotEqualTo(String value) {
+            addCriterion("job_num <>", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(String value) {
-            addCriterion("user_id >", value, "userId");
+        public Criteria andJobNumGreaterThan(String value) {
+            addCriterion("job_num >", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(String value) {
-            addCriterion("user_id >=", value, "userId");
+        public Criteria andJobNumGreaterThanOrEqualTo(String value) {
+            addCriterion("job_num >=", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(String value) {
-            addCriterion("user_id <", value, "userId");
+        public Criteria andJobNumLessThan(String value) {
+            addCriterion("job_num <", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(String value) {
-            addCriterion("user_id <=", value, "userId");
+        public Criteria andJobNumLessThanOrEqualTo(String value) {
+            addCriterion("job_num <=", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLike(String value) {
-            addCriterion("user_id like", value, "userId");
+        public Criteria andJobNumLike(String value) {
+            addCriterion("job_num like", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotLike(String value) {
-            addCriterion("user_id not like", value, "userId");
+        public Criteria andJobNumNotLike(String value) {
+            addCriterion("job_num not like", value, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<String> values) {
-            addCriterion("user_id in", values, "userId");
+        public Criteria andJobNumIn(List<String> values) {
+            addCriterion("job_num in", values, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<String> values) {
-            addCriterion("user_id not in", values, "userId");
+        public Criteria andJobNumNotIn(List<String> values) {
+            addCriterion("job_num not in", values, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(String value1, String value2) {
-            addCriterion("user_id between", value1, value2, "userId");
+        public Criteria andJobNumBetween(String value1, String value2) {
+            addCriterion("job_num between", value1, value2, "jobNum");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(String value1, String value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
+        public Criteria andJobNumNotBetween(String value1, String value2) {
+            addCriterion("job_num not between", value1, value2, "jobNum");
             return (Criteria) this;
         }
     }

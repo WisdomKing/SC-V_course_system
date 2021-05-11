@@ -36,7 +36,7 @@
               <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button v-on:click="del(department.id)" class="btn btn-xs btn-danger">
+            <button v-on:click="del(department.depid)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
@@ -173,11 +173,11 @@ _this.department).then((respond)=>{
       /**
        * 点击删除
        */
-      del(id){
+      del(depid){
         let _this=this;
         Confirm.show("删除部门后不可恢复，确认删除?",function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/department/delete/'+id).then((respond)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/department/delete/'+depid).then((respond)=>{
             Loading.hide();
             // console.log("删除部门列表结果:",respond);
             let resp=respond.data;

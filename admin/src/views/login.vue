@@ -28,7 +28,7 @@
                       <fieldset>
                         <label class="block clearfix">
                           <span class="block input-icon input-icon-right">
-                            <input v-model="user.companyemail" type="text" class="form-control" placeholder="用户名"/>
+                            <input v-model="user.loginName" type="text" class="form-control" placeholder="用户名"/>
                             <i class="ace-icon fa fa-user"></i>
                           </span>
                         </label>

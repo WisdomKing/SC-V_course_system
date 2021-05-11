@@ -1,6 +1,6 @@
 package com.csii.ants.management.server.domain;
 
-public class department {
+public class Department {
     private String depid;
 
     private String depname;

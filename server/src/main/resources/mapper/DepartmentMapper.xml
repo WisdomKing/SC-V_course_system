@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.csii.ants.management.server.mapper.departmentMapper">
-  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.department">
+<mapper namespace="com.csii.ants.management.server.mapper.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Department">
     <id column="depid" jdbcType="CHAR" property="depid" />
     <result column="depname" jdbcType="VARCHAR" property="depname" />
     <result column="depDirector" jdbcType="VARCHAR" property="depdirector" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     depid, depname, depDirector
   </sql>
-  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.departmentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.DepartmentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from department
     where depid = #{depid,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.departmentExample">
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.DepartmentExample">
     delete from department
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.csii.ants.management.server.domain.department">
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.Department">
     insert into department (depid, depname, depDirector
       )
     values (#{depid,jdbcType=CHAR}, #{depname,jdbcType=VARCHAR}, #{depdirector,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.department">
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Department">
     insert into department
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="depid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.departmentExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.DepartmentExample" resultType="java.lang.Long">
     select count(*) from department
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.department">
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Department">
     update department
     <set>
       <if test="depname != null">
@@ -172,17 +172,10 @@
     </set>
     where depid = #{depid,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.department">
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Department">
     update department
     set depname = #{depname,jdbcType=VARCHAR},
       depDirector = #{depdirector,jdbcType=VARCHAR}
     where depid = #{depid,jdbcType=CHAR}
   </update>
-
-  <insert id="replaceByPrimaryKey" parameterType="com.csii.ants.management.server.domain.department">
-    replace into department (depid, depname, depid
-    )
-    values (#{depid,jdbcType=CHAR}, #{depname,jdbcType=VARCHAR}, #{depid,jdbcType=VARCHAR}
-           )
-  </insert>
 </mapper>

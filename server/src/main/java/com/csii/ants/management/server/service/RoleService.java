@@ -155,8 +155,22 @@ public class RoleService {
             RoleUser roleUser = new RoleUser();
             roleUser.setId(UuidUtil.getShortUuid());
             roleUser.setRoleId(roleId);
-            roleUser.setUserId(jobNumList.get(i));
+            roleUser.setJobNum(jobNumList.get(i));
             roleUserMapper.insert(roleUser);
         }
+    }
+    /**
+     * 按角色加载用户
+     * @param roleId
+     */
+    public List<String> listUser(String roleId) {
+        RoleUserExample example = new RoleUserExample();
+        example.createCriteria().andRoleIdEqualTo(roleId);
+        List<RoleUser> roleUserList = roleUserMapper.selectByExample(example);
+        List<String> jobNumList = new ArrayList<>();
+        for (int i = 0, l = roleUserList.size(); i < l; i++) {
+            jobNumList.add(roleUserList.get(i).getJobNum());
+        }
+        return jobNumList;
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.csii.ants.management.server.mapper.projectMapper">
-  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.project">
+<mapper namespace="com.csii.ants.management.server.mapper.ProjectMapper">
+  <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Project">
     <id column="proid" jdbcType="CHAR" property="proid" />
     <result column="proname" jdbcType="VARCHAR" property="proname" />
     <result column="depid" jdbcType="VARCHAR" property="depid" />
@@ -67,7 +67,7 @@
   <sql id="Base_Column_List">
     proid, proname, depid
   </sql>
-  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.projectExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.ProjectExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -91,19 +91,19 @@
     delete from project
     where proid = #{proid,jdbcType=CHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.projectExample">
+  <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.ProjectExample">
     delete from project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.csii.ants.management.server.domain.project">
+  <insert id="insert" parameterType="com.csii.ants.management.server.domain.Project">
     insert into project (proid, proname, depid
       )
     values (#{proid,jdbcType=CHAR}, #{proname,jdbcType=VARCHAR}, #{depid,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.project">
+  <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Project">
     insert into project
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="proid != null">
@@ -128,7 +128,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.projectExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.csii.ants.management.server.domain.ProjectExample" resultType="java.lang.Long">
     select count(*) from project
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -160,7 +160,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.project">
+  <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Project">
     update project
     <set>
       <if test="proname != null">
@@ -172,17 +172,10 @@
     </set>
     where proid = #{proid,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.project">
+  <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Project">
     update project
     set proname = #{proname,jdbcType=VARCHAR},
       depid = #{depid,jdbcType=VARCHAR}
     where proid = #{proid,jdbcType=CHAR}
   </update>
-
-  <insert id="replaceByPrimaryKey" parameterType="com.csii.ants.management.server.domain.project">
-    replace into project (proid, proname, depid
-    )
-    values (#{proid,jdbcType=CHAR}, #{proname,jdbcType=VARCHAR}, #{depid,jdbcType=VARCHAR}
-           )
-  </insert>
 </mapper>

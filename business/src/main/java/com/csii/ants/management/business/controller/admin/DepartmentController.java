@@ -1,9 +1,9 @@
 package com.csii.ants.management.business.controller.admin;
 
-import com.csii.ants.management.server.dto.departmentDto;
+import com.csii.ants.management.server.dto.DepartmentDto;
 import com.csii.ants.management.server.dto.PageDto;
 import com.csii.ants.management.server.dto.ResponseDto;
-import com.csii.ants.management.server.service.departmentService;
+import com.csii.ants.management.server.service.DepartmentService;
 import com.csii.ants.management.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +19,12 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/admin/department")
-public class departmentController {
-    private static final Logger Log= LoggerFactory.getLogger(departmentController.class);
+public class DepartmentController {
+    private static final Logger Log= LoggerFactory.getLogger(DepartmentController.class);
     public static final String BUSINESS_NAME="部门";
 
     @Resource
-    private departmentService departmentService;
+    private DepartmentService departmentService;
 
     /**
      * 列表查询
@@ -46,7 +46,7 @@ public class departmentController {
      * @return responseDto
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody departmentDto departmentDto) {
+    public ResponseDto save(@RequestBody DepartmentDto departmentDto) {
         Log.info("departmentDto:{}",departmentDto);
 
         // 保存校验

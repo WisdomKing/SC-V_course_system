@@ -14,7 +14,7 @@ public class RoleUserDto {
     /**
     * 用户|id
     */
-    private String userId;
+    private String jobNum;
 
     public String getId() {
     return id;
@@ -32,26 +32,21 @@ public class RoleUserDto {
     this.roleId = roleId;
     }
 
-    public String getUserId() {
-    return userId;
+    public String getJobNum() {
+        return jobNum;
     }
 
-    public void setUserId(String userId) {
-    this.userId = userId;
+    public void setJobNum(String jobNum) {
+        this.jobNum = jobNum;
     }
-
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-            sb.append(", id=").append(id);
-            sb.append(", roleId=").append(roleId);
-            sb.append(", userId=").append(userId);
-        sb.append("]");
+        final StringBuffer sb = new StringBuffer("RoleUserDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", roleId='").append(roleId).append('\'');
+        sb.append(", jobNum='").append(jobNum).append('\'');
+        sb.append('}');
         return sb.toString();
     }
-
 }

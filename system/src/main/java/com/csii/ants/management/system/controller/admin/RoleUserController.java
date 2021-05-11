@@ -51,7 +51,7 @@ public class RoleUserController {
 
         // 保存校验
         ValidatorUtil.require(roleUserDto.getRoleId(), "角色");
-        ValidatorUtil.require(roleUserDto.getUserId(), "用户");
+        ValidatorUtil.require(roleUserDto.getJobNum(), "用户");
 
         ResponseDto responseDto=new ResponseDto();
         roleUserService.save(roleUserDto);

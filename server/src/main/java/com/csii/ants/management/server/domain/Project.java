@@ -1,6 +1,6 @@
 package com.csii.ants.management.server.domain;
 
-public class project {
+public class Project {
     private String proid;
 
     private String proname;

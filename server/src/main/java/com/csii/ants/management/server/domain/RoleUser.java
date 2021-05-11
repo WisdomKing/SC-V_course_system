@@ -5,7 +5,7 @@ public class RoleUser {
 
     private String roleId;
 
-    private String userId;
+    private String jobNum;
 
     public String getId() {
         return id;
@@ -23,12 +23,12 @@ public class RoleUser {
         this.roleId = roleId;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getJobNum() {
+        return jobNum;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setJobNum(String jobNum) {
+        this.jobNum = jobNum;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class RoleUser {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", roleId=").append(roleId);
-        sb.append(", userId=").append(userId);
+        sb.append(", jobNum=").append(jobNum);
         sb.append("]");
         return sb.toString();
     }

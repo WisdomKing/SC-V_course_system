@@ -1,10 +1,10 @@
 package com.csii.ants.management.server.service;
 
-import com.csii.ants.management.server.domain.project;
-import com.csii.ants.management.server.domain.projectExample;
-import com.csii.ants.management.server.dto.projectDto;
+import com.csii.ants.management.server.domain.Project;
+import com.csii.ants.management.server.domain.ProjectExample;
+import com.csii.ants.management.server.dto.ProjectDto;
 import com.csii.ants.management.server.dto.PageDto;
-import com.csii.ants.management.server.mapper.projectMapper;
+import com.csii.ants.management.server.mapper.ProjectMapper;
 import com.csii.ants.management.server.util.CopyUtil;
 import com.csii.ants.management.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
@@ -17,15 +17,16 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * @author ZxM
  * @date 2021/2/19
  * @Description:
  */
 @Service
-public class projectService {
+public class ProjectService {
     @Resource
-    private projectMapper projectMapper;
+    private ProjectMapper projectMapper;
 
     /**
      * 列表查询
@@ -35,21 +36,21 @@ public class projectService {
         //分页
         PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
 
-        projectExample projectExample = new projectExample();
+        ProjectExample projectExample = new ProjectExample();
         //如果表里有sort这个字段就感觉sort来排序
 
-        List<project> projectList = projectMapper.selectByExample(projectExample);
+        List<Project> projectList = projectMapper.selectByExample(projectExample);
 
-        PageInfo<project> pageInfo=new PageInfo<>(projectList);
+        PageInfo<Project> pageInfo=new PageInfo<>(projectList);
         pageDto.setTotal(pageInfo.getTotal());
 
-        List<projectDto> projectDtoList = new ArrayList<projectDto>();
+        List<ProjectDto> projectDtoList = new ArrayList<ProjectDto>();
         /**
          * 因为使用了dto的方法，所以需要将实体类的数据倒腾到dto里
          */
         for (int i = 0; i < projectList.size(); i++) {
-            project project = projectList.get(i);
-            projectDto projectDto = new projectDto();
+            Project project = projectList.get(i);
+            ProjectDto projectDto = new ProjectDto();
             /*BeanUtils.copyProperties(来源,目标);*/
             BeanUtils.copyProperties(project,projectDto);
             projectDtoList.add(projectDto);
@@ -58,40 +59,25 @@ public class projectService {
     }
 
     /**
-     * 保存，id有值时更新，无值时新增[应当修改为库里无值新增]
+     * 保存，id有值时更新，无值时新增
      * @param projectDto
      */
-    public void save(projectDto projectDto){
-        project project= CopyUtil.copy(projectDto,project.class);
-        this.replace(project);
-//        if (StringUtils.isEmpty(departmentDto.getProid())) {
-//            this.insert(project);
-//        }else {
-//            this.update(project);
-//        }
-    }
+    public void save(ProjectDto projectDto){
 
-    /**
-     * replace存在就更新,不存在就添加
-     */
-    public void replace(project project){
-        projectMapper.replaceByPrimaryKey(project);
-    }
-
-    /**
-     * 删除
-     * @param proid
-     */
-    public void delete(String proid) {
-        projectMapper.deleteByPrimaryKey(proid);
+        Project project= CopyUtil.copy(projectDto,Project.class);
+        if (StringUtils.isEmpty(projectDto.getProid())) {
+            this.insert(project);
+        }else {
+            this.update(project);
+        }
     }
 
     /**
      * 新增
      * @param project
      */
-    private void insert(project project){
-        project.setProid(project.getProid());
+    private void insert(Project project){
+        project.setProid(UuidUtil.getShortUuid());
         projectMapper.insert(project);
     }
 
@@ -99,8 +85,15 @@ public class projectService {
      * 修改
      * @param project
      */
-    private void update(project project){
+    private void update(Project project){
         projectMapper.updateByPrimaryKey(project);
     }
 
+    /**
+     * 删除
+     * @param id
+     */
+    public void delete(String id) {
+        projectMapper.deleteByPrimaryKey(id);
+    }
 }

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.RoleUser">
     <id column="id" jdbcType="CHAR" property="id" />
     <result column="role_id" jdbcType="CHAR" property="roleId" />
-    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="job_num" jdbcType="CHAR" property="jobNum" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, role_id, user_id
+    id, role_id, job_num
   </sql>
   <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.RoleUserExample" resultMap="BaseResultMap">
     select
@@ -98,8 +98,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.csii.ants.management.server.domain.RoleUser">
-    insert into role_user (id, role_id, user_id)
-    values (#{id,jdbcType=CHAR}, #{roleId,jdbcType=CHAR}, #{userId,jdbcType=CHAR})
+    insert into role_user (id, role_id, job_num)
+    values (#{id,jdbcType=CHAR}, #{roleId,jdbcType=CHAR}, #{jobNum,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.RoleUser">
     insert into role_user
@@ -110,8 +110,8 @@
       <if test="roleId != null">
         role_id,
       </if>
-      <if test="userId != null">
-        user_id,
+      <if test="jobNum != null">
+        job_num,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -121,8 +121,8 @@
       <if test="roleId != null">
         #{roleId,jdbcType=CHAR},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=CHAR},
+      <if test="jobNum != null">
+        #{jobNum,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -141,8 +141,8 @@
       <if test="record.roleId != null">
         role_id = #{record.roleId,jdbcType=CHAR},
       </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=CHAR},
+      <if test="record.jobNum != null">
+        job_num = #{record.jobNum,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -153,7 +153,7 @@
     update role_user
     set id = #{record.id,jdbcType=CHAR},
       role_id = #{record.roleId,jdbcType=CHAR},
-      user_id = #{record.userId,jdbcType=CHAR}
+      job_num = #{record.jobNum,jdbcType=CHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -164,8 +164,8 @@
       <if test="roleId != null">
         role_id = #{roleId,jdbcType=CHAR},
       </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=CHAR},
+      <if test="jobNum != null">
+        job_num = #{jobNum,jdbcType=CHAR},
       </if>
     </set>
     where id = #{id,jdbcType=CHAR}
@@ -173,7 +173,7 @@
   <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.RoleUser">
     update role_user
     set role_id = #{roleId,jdbcType=CHAR},
-      user_id = #{userId,jdbcType=CHAR}
+      job_num = #{jobNum,jdbcType=CHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>
