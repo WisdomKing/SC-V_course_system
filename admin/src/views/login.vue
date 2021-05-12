@@ -141,7 +141,7 @@
               // 新：这里保存密码密文，并保存密文md5，用于检测密码是否被重新输入过
               let md5 = hex_md5(_this.user.password);
               LocalStorage.set(LOCAL_KEY_REMEMBER_USER, {
-                loginName: loginUser.companyemail,
+                loginName: loginUser.loginName,
                 // password: _this.user.passwordShow,
                 password: _this.user.password,
                 md5: md5

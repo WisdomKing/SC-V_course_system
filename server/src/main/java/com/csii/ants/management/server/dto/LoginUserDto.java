@@ -8,7 +8,7 @@ public class LoginUserDto {
     /**
      * id
      */
-    private String id;
+    private String jobNum;
     /**
      * 登陆名
      */
@@ -30,12 +30,12 @@ public class LoginUserDto {
      */
     private HashSet<String> requests;
 
-    public String getId() {
-        return id;
+    public String getJobNum() {
+        return jobNum;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setJobNum(String jobNum) {
+        this.jobNum = jobNum;
     }
 
     public String getLoginName() {
@@ -81,7 +81,7 @@ public class LoginUserDto {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("LoginUserDto{");
-        sb.append("id='").append(id).append('\'');
+        sb.append("jobNum='").append(jobNum).append('\'');
         sb.append(", loginName='").append(loginName).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", token='").append(token).append('\'');
@@ -90,5 +90,4 @@ public class LoginUserDto {
         sb.append('}');
         return sb.toString();
     }
-
 }
