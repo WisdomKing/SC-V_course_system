@@ -441,6 +441,14 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
+              <li class="" id="business-reportwork-sidebar">
+                <router-link to="/business/reportwork">
+                  <i class="menu-icon fa fa-caret-right"></i>
+                  考勤
+                </router-link>
+                <b class="arrow"></b>
+              </li>
+
               <li class="" id="business-clockin-sidebar">
                 <router-link to="/business/clockin">
                   <i class="menu-icon fa fa-caret-right"></i>

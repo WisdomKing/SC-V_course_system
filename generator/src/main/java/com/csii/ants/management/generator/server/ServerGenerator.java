@@ -20,8 +20,8 @@ public class ServerGenerator {
      * 服务端的Controller、Service、Dto全部用这个启动类生成
      * 支持重复生成
      */
-//    static String MODULE = "business";
-    static String MODULE = "system";
+    static String MODULE = "business";
+//    static String MODULE = "system";
 //    static String MODULE = "file";
     static String toDtoPath = "server\\src\\main\\java\\com\\csii\\ants\\management\\server\\dto\\";
     static String toServicePath = "server\\src\\main\\java\\com\\csii\\ants\\management\\server\\service\\";

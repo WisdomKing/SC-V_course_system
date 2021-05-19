@@ -76,7 +76,6 @@
                   <select v-model="announcement.announcementtype" class="form-control">
                     <option v-for="o in ANNOUNCEMENT_TYPE" v-bind:value="o.key">{{o.value}}</option>
                   </select>
-
                 </div>
               </div>
 
@@ -252,10 +251,6 @@ _this.announcement).then((respond)=>{
           })
         });
       },
-      // select(announcementtitle){
-      //   let _this=this;
-      //
-      // },
     }
   }
 </script>

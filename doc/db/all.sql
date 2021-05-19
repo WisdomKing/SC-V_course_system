@@ -72,12 +72,12 @@ CREATE TABLE `employeeinfo`  (
     `conversionReg_Time` DATETIME(0) COMMENT '转正日期',
     `contractSigning` DATETIME(0) COMMENT '合同签订日',
     `contractEnding` DATETIME(0) COMMENT '合同截止日',
-    `probationExp_date` DATETIME(0) COMMENT '试用到期日',
-    `employeeStatus` char(3) COMMENT '人员状态',
+    `probationExp_date` DATETIME(0) COMMENT '试用到期日|想去掉',
+    `employeeStatus` char(3) COMMENT '人员状态|想去掉',
     `contractRenew` varchar(20) COMMENT '合同续签',
     `welfareArea` varchar(20) COMMENT '福利地区|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
-    `myRole` char(3) COMMENT '我的角色',
-    `employeeCCC` varchar(20) COMMENT '员工CCC',
+    `myRole` char(3) COMMENT '我的角色|想去掉',
+    `employeeCCC` varchar(20) COMMENT '员工CCC|想去掉',
     `comment` varchar(50) COMMENT '备注',
     primary key (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='员工信息';
@@ -279,9 +279,30 @@ create table `file` (
     `name` varchar(100) comment '文件名',
     `suffix` varchar(10) comment '后缀',
     `size` int comment '大小|字节B',
-#     `use` char(1) comment '用途|枚举[FileUseEnum]：COURSE("C", "讲师"), TEACHER("T", "课程")',
     `created_at` datetime(3) comment '创建时间',
 #     `updated_at` datetime(3) comment '修改时间',
     primary key (`id`),
     unique key `path_unique` (`path`)
 ) engine=innodb default charset=utf8mb4 comment='文件';
+
+-- report_work 考勤
+drop table if exists `report_work`;
+create table `report_work` (
+    `job_num` char(8) not null default '' comment '工号',
+    `clock_date` datetime(0) comment '报工日期',
+    `clock_state` char(8) comment '报工状态|01报工02请假',
+    `proname` char(50) comment '项目组名称',
+    `working_hours` char(8) comment '工时',
+    `delayed` char(8) comment '延时',
+    `details` char(200) comment '工作日志、请假理由',
+    `bengin_time` datetime(0) comment '开始时间',
+    `ending_time` datetime(0) comment '结束时间',
+    primary key (`job_num`)
+)engine=innodb default charset=utf8mb4 comment='考勤';
+
+insert into `report_work` values ('13911', '2021-05-05', '01','阿里海','8','2','世界那么大，我想去看看',now(),now());
+
+# alter table `employeeinfo` add column (`proname` char(32) comment 'proname|项目组名称');
+
+
+
