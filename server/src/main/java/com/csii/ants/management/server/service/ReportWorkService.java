@@ -66,7 +66,7 @@ public class ReportWorkService {
     public void save(ReportWorkDto reportWorkDto){
 
         ReportWork reportWork= CopyUtil.copy(reportWorkDto,ReportWork.class);
-        if (StringUtils.isEmpty(reportWorkDto.getJobNum())) {
+        if (StringUtils.isEmpty(reportWorkDto.getId())) {
             this.insert(reportWork);
         }else {
             this.update(reportWork);
@@ -79,7 +79,7 @@ public class ReportWorkService {
      */
     private void insert(ReportWork reportWork){
         Date now = new Date();
-        reportWork.setJobNum(UuidUtil.getShortUuid());
+        reportWork.setId(UuidUtil.getShortUuid());
         reportWorkMapper.insert(reportWork);
     }
 

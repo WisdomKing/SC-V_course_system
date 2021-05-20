@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.csii.ants.management.server.mapper.ReportWorkMapper">
   <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.ReportWork">
-    <id column="job_num" jdbcType="CHAR" property="jobNum" />
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="job_num" jdbcType="CHAR" property="jobNum" />
     <result column="clock_date" jdbcType="TIMESTAMP" property="clockDate" />
     <result column="clock_state" jdbcType="CHAR" property="clockState" />
     <result column="proname" jdbcType="CHAR" property="proname" />
@@ -71,8 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    job_num, clock_date, clock_state, proname, working_hours, `delayed`, details, bengin_time, 
-    ending_time
+    id, job_num, clock_date, clock_state, proname, working_hours, `delayed`, details, 
+    bengin_time, ending_time
   </sql>
   <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.ReportWorkExample" resultMap="BaseResultMap">
     select
@@ -92,11 +93,11 @@
     select 
     <include refid="Base_Column_List" />
     from report_work
-    where job_num = #{jobNum,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from report_work
-    where job_num = #{jobNum,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.csii.ants.management.server.domain.ReportWorkExample">
     delete from report_work
@@ -105,18 +106,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.csii.ants.management.server.domain.ReportWork">
-    insert into report_work (job_num, clock_date, clock_state, 
-      proname, working_hours, `delayed`, 
-      details, bengin_time, ending_time
-      )
-    values (#{jobNum,jdbcType=CHAR}, #{clockDate,jdbcType=TIMESTAMP}, #{clockState,jdbcType=CHAR}, 
-      #{proname,jdbcType=CHAR}, #{workingHours,jdbcType=CHAR}, #{delayed,jdbcType=CHAR}, 
-      #{details,jdbcType=CHAR}, #{benginTime,jdbcType=TIMESTAMP}, #{endingTime,jdbcType=TIMESTAMP}
-      )
+    insert into report_work (id, job_num, clock_date, 
+      clock_state, proname, working_hours, 
+      `delayed`, details, bengin_time, 
+      ending_time)
+    values (#{id,jdbcType=CHAR}, #{jobNum,jdbcType=CHAR}, #{clockDate,jdbcType=TIMESTAMP}, 
+      #{clockState,jdbcType=CHAR}, #{proname,jdbcType=CHAR}, #{workingHours,jdbcType=CHAR}, 
+      #{delayed,jdbcType=CHAR}, #{details,jdbcType=CHAR}, #{benginTime,jdbcType=TIMESTAMP}, 
+      #{endingTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.ReportWork">
     insert into report_work
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="jobNum != null">
         job_num,
       </if>
@@ -146,6 +150,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
       <if test="jobNum != null">
         #{jobNum,jdbcType=CHAR},
       </if>
@@ -184,6 +191,9 @@
   <update id="updateByExampleSelective" parameterType="map">
     update report_work
     <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=CHAR},
+      </if>
       <if test="record.jobNum != null">
         job_num = #{record.jobNum,jdbcType=CHAR},
       </if>
@@ -218,7 +228,8 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update report_work
-    set job_num = #{record.jobNum,jdbcType=CHAR},
+    set id = #{record.id,jdbcType=CHAR},
+      job_num = #{record.jobNum,jdbcType=CHAR},
       clock_date = #{record.clockDate,jdbcType=TIMESTAMP},
       clock_state = #{record.clockState,jdbcType=CHAR},
       proname = #{record.proname,jdbcType=CHAR},
@@ -234,6 +245,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.ReportWork">
     update report_work
     <set>
+      <if test="jobNum != null">
+        job_num = #{jobNum,jdbcType=CHAR},
+      </if>
       <if test="clockDate != null">
         clock_date = #{clockDate,jdbcType=TIMESTAMP},
       </if>
@@ -259,11 +273,12 @@
         ending_time = #{endingTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where job_num = #{jobNum,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.ReportWork">
     update report_work
-    set clock_date = #{clockDate,jdbcType=TIMESTAMP},
+    set job_num = #{jobNum,jdbcType=CHAR},
+      clock_date = #{clockDate,jdbcType=TIMESTAMP},
       clock_state = #{clockState,jdbcType=CHAR},
       proname = #{proname,jdbcType=CHAR},
       working_hours = #{workingHours,jdbcType=CHAR},
@@ -271,6 +286,6 @@
       details = #{details,jdbcType=CHAR},
       bengin_time = #{benginTime,jdbcType=TIMESTAMP},
       ending_time = #{endingTime,jdbcType=TIMESTAMP}
-    where job_num = #{jobNum,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
   </update>
 </mapper>

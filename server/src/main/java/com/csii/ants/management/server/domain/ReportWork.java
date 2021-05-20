@@ -3,6 +3,8 @@ package com.csii.ants.management.server.domain;
 import java.util.Date;
 
 public class ReportWork {
+    private String id;
+
     private String jobNum;
 
     private Date clockDate;
@@ -20,6 +22,14 @@ public class ReportWork {
     private Date benginTime;
 
     private Date endingTime;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getJobNum() {
         return jobNum;
@@ -99,6 +109,7 @@ public class ReportWork {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
         sb.append(", jobNum=").append(jobNum);
         sb.append(", clockDate=").append(clockDate);
         sb.append(", clockState=").append(clockState);

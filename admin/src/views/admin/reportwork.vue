@@ -18,6 +18,7 @@
     <table id="simple-table" class="table  table-bordered table-hover">
       <thead>
       <tr>
+        <th>id</th>
         <th>工号</th>
         <th>报工日期</th>
         <th>报工状态</th>
@@ -33,6 +34,7 @@
 
       <tbody>
       <tr v-for="reportWork in reportWorks">
+        <td>{{reportWork.id}}</td>
         <td>{{reportWork.jobNum}}</td>
         <td>{{reportWork.clockDate}}</td>
         <td>{{reportWork.clockState}}</td>

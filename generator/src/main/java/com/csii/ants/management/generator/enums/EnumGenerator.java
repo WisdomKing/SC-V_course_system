@@ -44,6 +44,8 @@ public class EnumGenerator {
             toJson(EmployeeStatusEnum.class, bufferObject, bufferArray);
             toJson(RoleEnum.class, bufferObject, bufferArray);
 
+            toJson(ReportWorkEnum.class, bufferObject, bufferArray);
+
             StringBuffer buffer = bufferObject.append("\r\n").append(bufferArray);
             //
             //StringBuffer buffer = bufferObject;

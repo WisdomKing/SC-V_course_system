@@ -6,6 +6,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class ReportWorkDto {
 
     /**
+    * id
+    */
+    private String id;
+    /**
     * 工号
     */
     private String jobNum;
@@ -44,6 +48,14 @@ public class ReportWorkDto {
     */
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date endingTime;
+
+    public String getId() {
+    return id;
+    }
+
+    public void setId(String id) {
+    this.id = id;
+    }
 
     public String getJobNum() {
     return jobNum;
@@ -124,6 +136,7 @@ public class ReportWorkDto {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
+            sb.append(", id=").append(id);
             sb.append(", jobNum=").append(jobNum);
             sb.append(", clockDate=").append(clockDate);
             sb.append(", clockState=").append(clockState);

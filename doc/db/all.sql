@@ -280,7 +280,6 @@ create table `file` (
     `suffix` varchar(10) comment '后缀',
     `size` int comment '大小|字节B',
     `created_at` datetime(3) comment '创建时间',
-#     `updated_at` datetime(3) comment '修改时间',
     primary key (`id`),
     unique key `path_unique` (`path`)
 ) engine=innodb default charset=utf8mb4 comment='文件';
@@ -288,7 +287,8 @@ create table `file` (
 -- report_work 考勤
 drop table if exists `report_work`;
 create table `report_work` (
-    `job_num` char(8) not null default '' comment '工号',
+    `id` char(8) not null default '' comment 'id',
+    `job_num` char(5) not null default '' comment '工号',
     `clock_date` datetime(0) comment '报工日期',
     `clock_state` char(8) comment '报工状态|01报工02请假',
     `proname` char(50) comment '项目组名称',
@@ -297,10 +297,12 @@ create table `report_work` (
     `details` char(200) comment '工作日志、请假理由',
     `bengin_time` datetime(0) comment '开始时间',
     `ending_time` datetime(0) comment '结束时间',
-    primary key (`job_num`)
+    primary key (`id`)
 )engine=innodb default charset=utf8mb4 comment='考勤';
 
-insert into `report_work` values ('13911', '2021-05-05', '01','阿里海','8','2','世界那么大，我想去看看',now(),now());
+insert into `report_work` values ('9Ce7MH01','13911', '2021-05-15', '01','阿里海','8','2','我想工作',now(),now());
+insert into `report_work` values ('9Ce7MH02','13911', '2021-05-05', '02','阿里海','8','2','我想请假',now(),now());
+insert into `report_work` values ('9Ce7MH03','13911', '2021-05-11', '02','阿里海','8','2','我想请假',now(),now());
 
 # alter table `employeeinfo` add column (`proname` char(32) comment 'proname|项目组名称');
 

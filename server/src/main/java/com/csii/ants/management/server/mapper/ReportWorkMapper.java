@@ -10,7 +10,7 @@ public interface ReportWorkMapper {
 
     int deleteByExample(ReportWorkExample example);
 
-    int deleteByPrimaryKey(String jobNum);
+    int deleteByPrimaryKey(String id);
 
     int insert(ReportWork record);
 
@@ -18,7 +18,7 @@ public interface ReportWorkMapper {
 
     List<ReportWork> selectByExample(ReportWorkExample example);
 
-    ReportWork selectByPrimaryKey(String jobNum);
+    ReportWork selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") ReportWork record, @Param("example") ReportWorkExample example);
 
