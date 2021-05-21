@@ -19,11 +19,12 @@
               <el-tooltip :content="item.details" placement="right">
                 <div class="mark">{{item.details}}</div>
               </el-tooltip>
-
+              <p class="addBtn" v-show="data.isSelected == true" @click="edit(item)">编辑日程</p>
             </div>
             <div v-else></div>
+
           </div>
-            <p class="addBtn" v-show="data.isSelected == true" @click="edit()">编辑日程</p>
+
         </div>
       </template>
 
@@ -43,7 +44,7 @@
               <el-button type="primary" @click="clockInadd()">报工</el-button>
               <el-button type="primary" @click="leaveadd()">请假</el-button>
 
-              <el-button type="primary" v-for="reportWork in reportWorks"
+              <el-button type="primary"
                          @click="del(reportWork.id)">删除</el-button>
             </form>
           </div>
@@ -189,21 +190,20 @@
     },
     methods: {
       calClick(item){
-        console.log(item)
+        console.log(item,'data')
         this.formData.data = item.day
       },
 
       /**
        * 点击添加日程
        */
-      edit(){
+      edit(item){
         let _this=this;
         //模态框打开时清空上次的数据
-        _this.reportWork={}
-
+        _this.reportWork=item;
+        console.log(_this.reportWork,'rw');
         // 如果超过了10天则不允许报工
         // if(true){
-        //
         //
         // }
 
@@ -286,6 +286,7 @@
        * 点击删除
        */
       del(id){
+        // console.log(id);
         let _this=this;
         Confirm.show("删除考勤后不可恢复，确认删除?",function () {
           Loading.show();
@@ -296,6 +297,7 @@
             if (resp.success){
               _this.list();
               Toast.success("删除成功");
+              $("#form-modal").modal("hide");
             }
           })
         });
