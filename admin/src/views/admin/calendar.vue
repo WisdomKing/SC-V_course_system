@@ -21,10 +21,10 @@
               </el-tooltip>
               <p class="addBtn" v-show="data.isSelected == true" @click="edit(item)">编辑日程</p>
             </div>
-            <div v-else></div>
-
+            <div v-else>
+            </div>
           </div>
-
+            <p class="addBtn" v-show="data.isSelected == true" @click="add()">编辑日程</p>
         </div>
       </template>
 
@@ -190,24 +190,29 @@
     },
     methods: {
       calClick(item){
-        console.log(item,'data')
-        this.formData.data = item.day
+        console.log(item,'data');
+        this.formData.data = item.day;
       },
-
+      /**
+       * 点击添加日程
+       */
+      add(){
+        let _this=this;
+        //模态框打开时清空上次的数据
+        _this.reportWork={};
+        $("#form-modal").modal("show");
+      },
       /**
        * 点击添加日程
        */
       edit(item){
         let _this=this;
         //模态框打开时清空上次的数据
+        _this.reportWork={};
         _this.reportWork=item;
-        console.log(_this.reportWork,'rw');
-        // 如果超过了10天则不允许报工
-        // if(true){
-        //
-        // }
 
         $("#form-modal").modal("show");
+
       },
 
       /**
