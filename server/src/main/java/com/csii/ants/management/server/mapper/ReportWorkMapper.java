@@ -12,6 +12,8 @@ public interface ReportWorkMapper {
 
     int deleteByPrimaryKey(String id);
 
+
+
     int insert(ReportWork record);
 
     int insertSelective(ReportWork record);

@@ -7,6 +7,7 @@
           <p class="dayItem"  v-if="data.day.substr(-2) < 10">{{ data.day.substr(-1)}}</p>
           <p class="dayItem"  v-else>{{ data.day.substr(-2)}}</p>
 
+
           <div v-for="(item,index) in reportWorks" :key="index" >
             <!-- 判断clockDate的天是否和日历里的天一致，是就显示详情 -->
             <div v-if="
@@ -22,11 +23,11 @@
             </div>
             <div v-else></div>
           </div>
-          <!--点击出现 添加 按钮-->
-          <p class="addBtn" v-show="data.isSelected == true" @click="add()">添加日程</p>
-          <p v-show="data.isSelected == true" v-on:click="del(reportWork.id)">删除日程</p>
+            <p class="addBtn" v-show="data.isSelected == true" @click="edit()">编辑日程</p>
         </div>
       </template>
+
+
     </el-calendar>
 
     <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -41,6 +42,9 @@
             <form class="form-horizontal">
               <el-button type="primary" @click="clockInadd()">报工</el-button>
               <el-button type="primary" @click="leaveadd()">请假</el-button>
+
+              <el-button type="primary" v-for="reportWork in reportWorks"
+                         @click="del(reportWork.id)">删除</el-button>
             </form>
           </div>
           <div class="modal-footer">
@@ -192,10 +196,17 @@
       /**
        * 点击添加日程
        */
-      add(){
+      edit(){
         let _this=this;
         //模态框打开时清空上次的数据
         _this.reportWork={}
+
+        // 如果超过了10天则不允许报工
+        // if(true){
+        //
+        //
+        // }
+
         $("#form-modal").modal("show");
       },
 
@@ -221,7 +232,6 @@
        */
       save(){
         let _this=this;
-
         // 保存校验，非空和长度
         if (1 != 1 || !Validator.require(_this.reportWork.jobNum, "工号")) {
           //判断是否是请假
@@ -235,8 +245,7 @@
         }
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/reportWork/save',
-          _this.reportWork).then((respond)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/reportWork/save',_this.reportWork).then((respond)=>{
           Loading.hide();
           // console.log("保存考勤列表结果:",respond);
           let resp=respond.data;
@@ -258,7 +267,7 @@
         _this.reportWork={};
         //表单数据填入报工状态和日历日期
         _this.reportWork.clockState="01";
-        _this.reportWork.clockDate=_this.formData.data;
+        _this.reportWork.clockDate=_this.formData.data+" 00:00:00";
 
         $("#clockIn-form-modal").modal("show");
       },
@@ -270,8 +279,26 @@
         //表单数据填入报工状态和日历日期
 
         _this.reportWork.clockState="01";
-        _this.reportWork.clockDate=_this.formData.data;
+        _this.reportWork.clockDate=_this.formData.data+" 00:00:00";
         $("#leave-form-modal").modal("show");
+      },
+      /**
+       * 点击删除
+       */
+      del(id){
+        let _this=this;
+        Confirm.show("删除考勤后不可恢复，确认删除?",function () {
+          Loading.show();
+          _this.$ajax.delete(process.env.VUE_APP_SERVER+'/business/admin/reportWork/delete/'+id).then((respond)=>{
+            Loading.hide();
+            // console.log("删除考勤列表结果:",respond);
+            let resp=respond.data;
+            if (resp.success){
+              _this.list();
+              Toast.success("删除成功");
+            }
+          })
+        });
       },
     }
   }
