@@ -79,9 +79,15 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="col-sm-2 control-label">工时</label>
+                <label class="col-sm-2 control-label">标题</label>
                 <div class="col-sm-10">
-                  <input v-model="clockin.manhour" class="form-control" placeholder="工时">
+                  <input v-model="clockin.title" class="form-control" placeholder="工时">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">标题</label>
+                <div class="col-sm-10">
+                  <input v-model="clockin.title" class="form-control" placeholder="工时">
                 </div>
               </div>
               <div class="form-group">

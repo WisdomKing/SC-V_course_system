@@ -24,6 +24,10 @@ public class HeadlineDto {
     */
     private String details;
 
+    private String image;
+
+    private String title;
+
     public String getId() {
     return id;
     }
@@ -56,19 +60,33 @@ public class HeadlineDto {
     this.details = details;
     }
 
+    public String getImage() {
+        return image;
+    }
 
-@Override
-public String toString() {
-StringBuilder sb = new StringBuilder();
-sb.append(getClass().getSimpleName());
-sb.append(" [");
-sb.append("Hash = ").append(hashCode());
-    sb.append(", id=").append(id);
-    sb.append(", createdtime=").append(createdtime);
-    sb.append(", updatedtime=").append(updatedtime);
-    sb.append(", details=").append(details);
-sb.append("]");
-return sb.toString();
-}
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("HeadlineDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", createdtime=").append(createdtime);
+        sb.append(", updatedtime=").append(updatedtime);
+        sb.append(", details='").append(details).append('\'');
+        sb.append(", image='").append(image).append('\'');
+        sb.append(", title='").append(title).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 
 }

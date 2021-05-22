@@ -3,6 +3,8 @@
 <mapper namespace="com.csii.ants.management.server.mapper.HeadlineMapper">
   <resultMap id="BaseResultMap" type="com.csii.ants.management.server.domain.Headline">
     <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="CreatedTime" jdbcType="TIMESTAMP" property="createdtime" />
     <result column="UpdatedTime" jdbcType="TIMESTAMP" property="updatedtime" />
     <result column="Details" jdbcType="VARCHAR" property="details" />
@@ -66,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, CreatedTime, UpdatedTime, Details
+    ID, image, title, CreatedTime, UpdatedTime, Details
   </sql>
   <select id="selectByExample" parameterType="com.csii.ants.management.server.domain.HeadlineExample" resultMap="BaseResultMap">
     select
@@ -99,16 +101,24 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.csii.ants.management.server.domain.Headline">
-    insert into headline (ID, CreatedTime, UpdatedTime, 
-      Details)
-    values (#{id,jdbcType=VARCHAR}, #{createdtime,jdbcType=TIMESTAMP}, #{updatedtime,jdbcType=TIMESTAMP}, 
-      #{details,jdbcType=VARCHAR})
+    insert into headline (ID, image, title, 
+      CreatedTime, UpdatedTime, Details
+      )
+    values (#{id,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{createdtime,jdbcType=TIMESTAMP}, #{updatedtime,jdbcType=TIMESTAMP}, #{details,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.csii.ants.management.server.domain.Headline">
     insert into headline
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="title != null">
+        title,
       </if>
       <if test="createdtime != null">
         CreatedTime,
@@ -123,6 +133,12 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
       </if>
       <if test="createdtime != null">
         #{createdtime,jdbcType=TIMESTAMP},
@@ -147,6 +163,12 @@
       <if test="record.id != null">
         ID = #{record.id,jdbcType=VARCHAR},
       </if>
+      <if test="record.image != null">
+        image = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
       <if test="record.createdtime != null">
         CreatedTime = #{record.createdtime,jdbcType=TIMESTAMP},
       </if>
@@ -164,6 +186,8 @@
   <update id="updateByExample" parameterType="map">
     update headline
     set ID = #{record.id,jdbcType=VARCHAR},
+      image = #{record.image,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
       CreatedTime = #{record.createdtime,jdbcType=TIMESTAMP},
       UpdatedTime = #{record.updatedtime,jdbcType=TIMESTAMP},
       Details = #{record.details,jdbcType=VARCHAR}
@@ -174,6 +198,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.csii.ants.management.server.domain.Headline">
     update headline
     <set>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
       <if test="createdtime != null">
         CreatedTime = #{createdtime,jdbcType=TIMESTAMP},
       </if>
@@ -188,7 +218,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.csii.ants.management.server.domain.Headline">
     update headline
-    set CreatedTime = #{createdtime,jdbcType=TIMESTAMP},
+    set image = #{image,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      CreatedTime = #{createdtime,jdbcType=TIMESTAMP},
       UpdatedTime = #{updatedtime,jdbcType=TIMESTAMP},
       Details = #{details,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=VARCHAR}

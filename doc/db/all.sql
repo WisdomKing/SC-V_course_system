@@ -98,14 +98,20 @@ INSERT INTO `employeeinfo` VALUES ('00010010','刘昊然', '13910', 'SH', 'liuha
 DROP TABLE IF EXISTS `headline`;
 CREATE TABLE `headline`  (
     `ID` varchar(8) NOT NULL COMMENT 'ID',
+    `image` varchar(100)  COMMENT '图片',
+    `title` varchar(20)  COMMENT '标题',
     `CreatedTime` DATETIME(0) COMMENT '上传时间',
     `UpdatedTime` DATETIME(0) COMMENT '修改时间',
     `Details` varchar(50) COMMENT '详情',
     primary key (`ID`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='头条';
 
-INSERT INTO `headline`(ID,CreatedTime,UpdatedTime,Details)
-VALUES ('12345678',now(), now(),'[这里应该放表扬信图片]');
+INSERT INTO `headline`(ID,title,image,CreatedTime,UpdatedTime,Details)
+VALUES ('12345678','第一个头条','http://127.0.0.1:9000/file/f/headline/FOcQDdyW.jpg',now(), now(),'无限火力OK');
+INSERT INTO `headline`(ID,title,image,CreatedTime,UpdatedTime,Details)
+VALUES ('JW5f1PNz','第一个头条','http://127.0.0.1:9000/file/f/headline/PxTTyNfO.jpg',now(), now(),'emmmm');
+INSERT INTO `headline`(ID,title,image,CreatedTime,UpdatedTime,Details)
+VALUES ('WMQ2iD7M','第一个头条','http://127.0.0.1:9000/file/f/headline/klmkMRni.jpg',now(), now(),'23333');
 
 /*----leave 请假---------------------------------------------------*/
 

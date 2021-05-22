@@ -72,16 +72,32 @@
           </div>
           <div class="modal-body">
             <!-- 表单 -->
-            <el-form ref="employeeinfo" :rules="rules" :model="employeeinfo" label-width="120px">
-              <div class="form-group">
-                <label class="col-sm-2 control-label">详情</label>
-                <div class="col-sm-10">
-                  <input type="file" v-on:change="uploadImage()" id="file-upload-input">
-                  <el-image v-bind:src="headline.image" class="img-responsive">
+            <el-form ref="headline" :rules="rules" :model="headline" label-width="120px">
 
-                  </el-image>
-                </div>
-              </div>
+              <el-form-item label="标题">
+                <el-input v-model="headline.title"></el-input>
+              </el-form-item>
+
+              <el-form-item label="详情">
+                <el-input v-model="headline.details"></el-input>
+              </el-form-item>
+
+              <el-form-item label="图片">
+                <file v-bind:id="'image-upload'"
+                      v-bind:text="'上传头像'"
+                      v-bind:suffixs="['jpg', 'jpeg', 'png']"
+                      v-bind:after-upload="afterUpload"></file>
+              </el-form-item>
+
+<!--              <div class="form-group">-->
+<!--                <label class="col-sm-2 control-label">图片</label>-->
+<!--                <div class="col-sm-10">-->
+<!--                  <file v-bind:id="'image-upload'"-->
+<!--                        v-bind:text="'上传头像'"-->
+<!--                        v-bind:suffixs="['jpg', 'jpeg', 'png']"-->
+<!--                        v-bind:after-upload="afterUpload"></file>-->
+<!--                </div>-->
+<!--              </div>-->
             </el-form>
           </div>
           <div class="modal-footer">

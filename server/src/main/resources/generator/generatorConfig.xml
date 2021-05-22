@@ -43,7 +43,7 @@
 <!--        <table tableName="announcement" domainObjectName="Announcement"/>-->
 <!--        <table tableName="clockin" domainObjectName="Clockin"/>-->
 <!--        <table tableName="employeeinfo" domainObjectName="Employeeinfo"/>-->
-<!--        <table tableName="headline" domainObjectName="Headline"/>-->
+        <table tableName="headline" domainObjectName="Headline"/>
 <!--        <table tableName="askforleave" domainObjectName="Askforleave"/>-->
 <!--        <table tableName="personalinfo" domainObjectName="Personalinfo"/>-->
 <!--        <table tableName="project" domainObjectName="Project"/>-->
@@ -53,7 +53,7 @@
 <!--        <table tableName="role" domainObjectName="Role"/>-->
 <!--        <table tableName="role_resource" domainObjectName="RoleResource"/>-->
 <!--        <table tableName="role_user" domainObjectName="RoleUser"/>-->
-        <table tableName="report_work" domainObjectName="ReportWork"/>
+<!--        <table tableName="report_work" domainObjectName="ReportWork"/>-->
 
     </context>
 </generatorConfiguration>
