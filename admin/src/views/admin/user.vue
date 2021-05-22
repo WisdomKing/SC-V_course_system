@@ -70,7 +70,8 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">登陆名</label>
                   <div class="col-sm-10">
-                    <input v-model="user.loginName" v-bind:disabled="user.loginName" class="form-control" placeholder="登陆名">
+<!--                    <input v-model="user.loginName" v-bind:disabled="user.loginName" class="form-control" placeholder="登陆名">-->
+                    <input v-model="user.loginName" class="form-control" placeholder="登陆名">
                   </div>
                 </div>
                 <div class="form-group">
@@ -79,7 +80,8 @@
                     <input v-model="user.name" class="form-control" placeholder="昵称">
                   </div>
                 </div>
-                <div v-show="!user.jobNum" class="form-group">
+<!--                <div v-show="!user.jobNum" class="form-group">-->
+                <div class="form-group">
                   <label class="col-sm-2 control-label">密码</label>
                   <div class="col-sm-10">
                     <input v-model="user.password" type="password" class="form-control" placeholder="密码">
@@ -125,6 +127,50 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <div id="edit—form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">用户</h4>
+          </div>
+          <div class="modal-body">
+            <!-- 表单 -->
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="col-sm-2 control-label">工号</label>
+                <div class="col-sm-10">
+                  <input v-model="user.jobNum" v-bind:disabled="user.loginName" class="form-control" placeholder="工号">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">登陆名</label>
+                <div class="col-sm-10">
+                  <input v-model="user.loginName" v-bind:disabled="user.loginName" class="form-control" placeholder="登陆名">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">昵称</label>
+                <div class="col-sm-10">
+                  <input v-model="user.name" class="form-control" placeholder="昵称">
+                </div>
+              </div>
+              <div v-show="!user.jobNum" class="form-group">
+                <label class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                  <input v-model="user.password" type="password" class="form-control" placeholder="密码">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button v-on:click="save()" type="button" class="btn btn-primary">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -162,7 +208,7 @@
         let _this=this;
         //将数据带到模态框里
         _this.user=$.extend({},user);
-        $("#form-modal").modal("show");
+        $("#edit—form-modal").modal("show");
       },
       /**
        * 列表查询
