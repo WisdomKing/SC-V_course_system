@@ -50,8 +50,6 @@ public class AnnouncementController {
         Log.info("announcementDto:{}",announcementDto);
 
         // 保存校验
-        ValidatorUtil.require(announcementDto.getId(), "ID");
-        ValidatorUtil.length(announcementDto.getId(), "ID", 1, 8);
         ValidatorUtil.require(announcementDto.getAnnouncementtitle(), "公告标题");
         ValidatorUtil.length(announcementDto.getAnnouncementtitle(), "公告标题", 1, 20);
         ValidatorUtil.require(announcementDto.getAnnouncementtype(), "公告类型");

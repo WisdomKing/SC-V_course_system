@@ -175,15 +175,15 @@
             <!-- 表单 -->
             <el-form ref="employeeinfo" :rules="rules" :model="employeeinfo" label-width="120px">
 
-              <el-form-item label="姓名">
+              <el-form-item label="姓名" prop="name">
                 <el-input v-model="employeeinfo.name"></el-input>
               </el-form-item>
 
-              <el-form-item label="工号">
+              <el-form-item label="工号" prop="jobNum">
                 <el-input v-model="employeeinfo.jobNum"></el-input>
               </el-form-item>
 
-              <el-form-item label="归属公司" >
+              <el-form-item label="归属公司" prop="base">
                 <el-select v-model="employeeinfo.base" filterable placeholder="请选择归属公司">
                   <el-option
                     v-for="o in BASE"
@@ -198,11 +198,11 @@
                 <el-input v-model="employeeinfo.companyemail"></el-input>
               </el-form-item>
 
-              <el-form-item label="所属部门">
+              <el-form-item label="所属部门" prop="dependenceDep">
                 <el-input v-model="employeeinfo.dependenceDep"></el-input>
               </el-form-item>
 
-              <el-form-item label="职位">
+              <el-form-item label="职位" prop="position">
                 <el-input v-model="employeeinfo.position"></el-input>
               </el-form-item>
 
@@ -221,7 +221,7 @@
                 </el-select>
               </el-form-item>
 
-              <el-form-item label="入职地点" >
+              <el-form-item label="入职地点" prop="entryAddress">
                 <el-select v-model="employeeinfo.entryAddress" filterable placeholder="请选择入职地点">
                   <el-option
                     v-for="o in BASE"
@@ -312,6 +312,25 @@
         BASE:BASE,
         ENTRY_TYPE:ENTRY_TYPE,
         rules: {
+          name:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          jobNum:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          base:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          dependenceDep:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          position:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          entryAddress:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+
           companyemail: [
             { validator: checkEmail, trigger: 'blur' ,required: true,}
           ],

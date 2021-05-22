@@ -506,6 +506,26 @@
         POLITICAL_OUTLOOK:POLITICAL_OUTLOOK,
         PROVINCE:PROVINCE,
         NATIONALITY:NATIONALITY,
+        rules: {
+          name:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          sex:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          ethnicity:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          idnum:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          personalEmail:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+          telephone:[
+            { validator: true, trigger: 'blur' ,required: true,}
+          ],
+        },
       }
     },
     mounted: function () {

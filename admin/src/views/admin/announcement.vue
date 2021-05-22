@@ -11,11 +11,6 @@
         <i class="ace-icon fa fa-refresh"></i>
         刷新
     </button>
-      &nbsp;
-<!--      <button v-on:click="search(str)" class="btn btn-white btn-default btn-round">-->
-<!--        <i class="ace-icon fa fa-refresh"></i>-->
-<!--        查找-->
-<!--      </button>-->
     </p>
 
     <!-- 分页插件 -->

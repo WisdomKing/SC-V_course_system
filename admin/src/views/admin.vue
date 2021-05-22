@@ -449,21 +449,21 @@
                 <b class="arrow"></b>
               </li>
 
-              <li class="" id="business-clockin-sidebar">
-                <router-link to="/business/clockin">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  报工
-                </router-link>
-                <b class="arrow"></b>
-              </li>
+<!--              <li class="" id="business-clockin-sidebar">-->
+<!--                <router-link to="/business/clockin">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  报工-->
+<!--                </router-link>-->
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
 
-              <li class="" id="business-askforleave-sidebar">
-                <router-link to="/business/askforleave">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  请假
-                </router-link>
-                <b class="arrow"></b>
-              </li>
+<!--              <li class="" id="business-askforleave-sidebar">-->
+<!--                <router-link to="/business/askforleave">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  请假-->
+<!--                </router-link>-->
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
 
               <li class="" id="business-calendar-sidebar">
                 <router-link to="/business/calendar">
@@ -501,7 +501,7 @@
             </ul>
           </li>
 
-          <li class="active open">
+          <li class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 文件管理 </span>
@@ -520,37 +520,37 @@
             </ul>
           </li>
 
-          <li class="">
-            <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
-              <span class="menu-text"> 部门管理 </span>
-              <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-              <li class="" id="business-department-sidebar">
-                <router-link to="/business/department">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  部门管理
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-              <li class="" id="business-project-sidebar">
-                <router-link to="/business/project">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  项目管理
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-              <li class="" id="business-test-sidebar">
-                <router-link to="/business/test">
-                  <i class="menu-icon fa fa-caret-right"></i>
-                  test
-                </router-link>
-                <b class="arrow"></b>
-              </li>
-            </ul>
-          </li>
+<!--          <li class="">-->
+<!--            <a href="#" class="dropdown-toggle">-->
+<!--              <i class="menu-icon fa fa-bullhorn"></i>-->
+<!--              <span class="menu-text"> 部门管理 </span>-->
+<!--              <b class="arrow fa fa-angle-down"></b>-->
+<!--            </a>-->
+<!--            <b class="arrow"></b>-->
+<!--            <ul class="submenu">-->
+<!--              <li class="" id="business-department-sidebar">-->
+<!--                <router-link to="/business/department">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  部门管理-->
+<!--                </router-link>-->
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
+<!--              <li class="" id="business-project-sidebar">-->
+<!--                <router-link to="/business/project">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  项目管理-->
+<!--                </router-link>-->
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
+<!--              <li class="" id="business-test-sidebar">-->
+<!--                <router-link to="/business/test">-->
+<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
+<!--                  test-->
+<!--                </router-link>-->
+<!--                <b class="arrow"></b>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--          </li>-->
 
         </ul><!-- /.nav-list -->
 
