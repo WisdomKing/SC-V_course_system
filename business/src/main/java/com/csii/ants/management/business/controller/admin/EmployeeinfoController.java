@@ -59,16 +59,16 @@ public class EmployeeinfoController {
         ValidatorUtil.length(employeeinfoDto.getCompanyemail(), "企业邮箱", 1, 50);
         ValidatorUtil.require(employeeinfoDto.getDependenceDep(), "所属部门");
         ValidatorUtil.length(employeeinfoDto.getDependenceDep(), "所属部门", 1, 20);
-        ValidatorUtil.length(employeeinfoDto.getSuperiordep(), "上级部门", 1, 20);
         ValidatorUtil.require(employeeinfoDto.getPosition(), "职位");
         ValidatorUtil.length(employeeinfoDto.getPosition(), "职位", 1, 20);
         ValidatorUtil.length(employeeinfoDto.getDepDirector(), "部门总监", 1, 20);
-        ValidatorUtil.require(employeeinfoDto.getEntryTime(), "入职时间");
         ValidatorUtil.require(employeeinfoDto.getEntryAddress(), "入职地点");
-        ValidatorUtil.length(employeeinfoDto.getContractrenew(), "合同续签", 1, 20);
+        ValidatorUtil.length(employeeinfoDto.getInternshipbegin(), "实习起始日", 1, 20);
+        ValidatorUtil.length(employeeinfoDto.getInternshipending(), "实习到期日", 1, 20);
+        ValidatorUtil.length(employeeinfoDto.getConversionregTime(), "转正日期", 1, 20);
+        ValidatorUtil.length(employeeinfoDto.getContractsigning(), "合同签订日", 1, 20);
+        ValidatorUtil.length(employeeinfoDto.getContractending(), "合同截止日", 1, 20);
         ValidatorUtil.length(employeeinfoDto.getWelfarearea(), "福利地区", 1, 20);
-        ValidatorUtil.length(employeeinfoDto.getEmployeeccc(), "员工CCC", 1, 20);
-        ValidatorUtil.length(employeeinfoDto.getComment(), "备注", 1, 50);
 
         ResponseDto responseDto=new ResponseDto();
         employeeinfoService.save(employeeinfoDto);

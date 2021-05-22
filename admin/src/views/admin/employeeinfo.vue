@@ -15,75 +15,153 @@
     <!-- 分页插件 -->
     <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
     <!-- 表单数据 -->
-    <table id="simple-table" class="table  table-bordered table-hover">
-      <thead>
-      <tr>
-        <th>姓名</th>
-        <th>工号</th>
-        <th>归属公司</th>
-        <th>企业邮箱</th>
-        <th>所属部门</th>
-        <th>上级部门</th>
-        <th>职位</th>
-        <th>部门总监</th>
-        <th>入职时间</th>
-        <th>入职方式</th>
-        <th>入职地点</th>
-        <th>实习起始日</th>
-        <th>实习到期日</th>
-        <th>转正日期</th>
-        <th>合同签订日</th>
-        <th>合同截止日</th>
-        <th>试用到期日</th>
-        <th>人员状态</th>
-        <th>合同续签</th>
-        <th>福利地区</th>
-        <th>我的角色</th>
-        <th>员工CCC</th>
-        <th>备注</th>
-        <th>操作按钮</th>
-      </tr>
-      </thead>
+    <el-table
+      :data="employeeinfos"
+      border
+      style="width: 100%">
 
-      <tbody>
-      <tr v-for="employeeinfo in employeeinfos">
-        <td>{{employeeinfo.name}}</td>
-        <td>{{employeeinfo.jobNum}}</td>
-        <td>{{BASE | optionKV(employeeinfo.base)}}</td>
-        <td>{{employeeinfo.companyemail}}</td>
-        <td>{{employeeinfo.dependenceDep}}</td>
-        <td>{{employeeinfo.superiordep}}</td>
-        <td>{{employeeinfo.position}}</td>
-        <td>{{employeeinfo.depDirector}}</td>
-        <td>{{employeeinfo.entryTime}}</td>
-        <td>{{ENTRY_TYPE | optionKV(employeeinfo.entryType)}}</td>
-        <td>{{BASE | optionKV(employeeinfo.entryAddress)}}</td>
-        <td>{{employeeinfo.internshipbegin}}</td>
-        <td>{{employeeinfo.internshipending}}</td>
-        <td>{{employeeinfo.conversionregTime}}</td>
-        <td>{{employeeinfo.contractsigning}}</td>
-        <td>{{employeeinfo.contractending}}</td>
-        <td>{{employeeinfo.probationexpDate}}</td>
-        <td>{{EMPLOYEE_STATUS | optionKV(employeeinfo.employeestatus)}}</td>
-        <td>{{employeeinfo.contractrenew}}</td>
-        <td>{{BASE | optionKV(employeeinfo.welfarearea)}}</td>
-        <td>{{ROLE | optionKV(employeeinfo.myrole)}}</td>
-        <td>{{employeeinfo.employeeccc}}</td>
-        <td>{{employeeinfo.comment}}</td>
-        <td>
+      <el-table-column
+        fixed
+        label="姓名"
+        :show-overflow-tooltip="true"
+        width="120"
+        prop="name">
+        <template slot-scope="scope">
+          {{(scope.row.name)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="工号"
+        width="80">
+        <template slot-scope="scope">
+          {{(scope.row.jobNum)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="归属公司"
+        width="80">
+        <template slot-scope="scope">
+          {{BASE | optionKV(scope.row.base)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="企业邮箱"
+        width="200">
+        <template slot-scope="scope">
+          {{(scope.row.companyemail)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="所属部门"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.dependenceDep)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="职位"
+        width="200">
+        <template slot-scope="scope">
+          {{(scope.row.position)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="部门总监"
+        width="120">
+        <template slot-scope="scope">
+          {{(scope.row.depDirector)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="入职方式"
+        width="80">
+        <template slot-scope="scope">
+          {{ENTRY_TYPE | optionKV(scope.row.entryType)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="入职地点"
+        width="120">
+        <template slot-scope="scope">
+          {{BASE | optionKV(scope.row.entryAddress)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="实习起始日"
+        width="180">
+        <template slot-scope="scope">
+          {{(scope.row.internshipbegin)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="实习到期日"
+        width="180">
+        <template slot-scope="scope">
+          {{(scope.row.internshipending)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="转正日期"
+        width="180">
+        <template slot-scope="scope">
+          {{(scope.row.conversionregTime)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="合同签订日"
+        width="180">
+        <template slot-scope="scope">
+          {{(scope.row.contractsigning)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="合同截止日"
+        width="180">
+        <template slot-scope="scope">
+          {{(scope.row.contractending)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="福利地区"
+        width="120">
+        <template slot-scope="scope">
+          {{BASE | optionKV(scope.row.welfarearea)}}
+        </template>
+      </el-table-column>
+
+      <el-table-column
+        label="操作按钮"
+        width="120"
+        fixed="right">
+        <template slot-scope="scope">
           <div class="hidden-sm hidden-xs btn-group">
-            <button v-on:click="edit(employeeinfo)" class="btn btn-xs btn-info">
+            <button v-on:click="edit(scope.row)" class="btn btn-xs btn-info">
               <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button v-on:click="del(employeeinfo.id)" class="btn btn-xs btn-danger">
+            <button v-on:click="del(scope.row.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        </template>
+      </el-table-column>
+
+    </el-table>
+
 
     <!-- 模态框 -->
     <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -124,20 +202,12 @@
                 <el-input v-model="employeeinfo.dependenceDep"></el-input>
               </el-form-item>
 
-              <el-form-item label="上级部门">
-                <el-input v-model="employeeinfo.superiordep"></el-input>
-              </el-form-item>
-
               <el-form-item label="职位">
                 <el-input v-model="employeeinfo.position"></el-input>
               </el-form-item>
 
               <el-form-item label="部门总监">
                 <el-input v-model="employeeinfo.depDirector"></el-input>
-              </el-form-item>
-
-              <el-form-item label="入职时间">
-                <el-input v-model="employeeinfo.entryTime"></el-input>
               </el-form-item>
 
               <el-form-item label="入职方式" >
@@ -162,14 +232,6 @@
                 </el-select>
               </el-form-item>
 
-<!--              <el-form-item label="实习起始日">-->
-<!--                <el-input v-model="employeeinfo.internshipbegin"></el-input>-->
-<!--              </el-form-item>-->
-
-<!--              <el-form-item label="实习到期日">-->
-<!--                <el-input v-model="employeeinfo.internshipending"></el-input>-->
-<!--              </el-form-item>-->
-
               <el-form-item label="实习起止日">
                 <el-date-picker
                   v-model="internship_date"
@@ -186,12 +248,6 @@
                 <el-input v-model="employeeinfo.conversionregTime"></el-input>
               </el-form-item>
 
-<!--              <el-date-picker-->
-<!--                type="dates"-->
-<!--                value-format="yyyy-MM-dd"-->
-<!--                v-model="contract_date"-->
-<!--                placeholder="合同起止日">-->
-<!--              </el-date-picker>-->
               <el-form-item label="合同起止日">
                 <el-date-picker
                   v-model="contract_date"
@@ -202,36 +258,6 @@
                   start-placeholder="合同签订日"
                   end-placeholder="合同截止日">
                 </el-date-picker>
-              </el-form-item>
-
-<!--              <el-form-item label="合同签订日">-->
-<!--                <el-input v-model="employeeinfo.contractsigning"></el-input>-->
-<!--              </el-form-item>-->
-
-<!--              <el-form-item label="合同截止日">-->
-<!--                <el-input v-model="employeeinfo.contractending"></el-input>-->
-<!--              </el-form-item>-->
-
-              <el-form-item label="试用到期日">
-                <el-input v-model="employeeinfo.probationexpDate"></el-input>
-              </el-form-item>
-
-<!--              <el-form-item label="人员状态">-->
-<!--                <el-input v-model="employeeinfo.employeestatus"></el-input>-->
-<!--              </el-form-item>-->
-              <el-form-item label="人员状态" >
-                <el-select v-model="employeeinfo.employeestatus" filterable placeholder="请选择人员状态">
-                  <el-option
-                    v-for="o in EMPLOYEE_STATUS"
-                    :key="o.value"
-                    :label="o.value"
-                    :value="o.key">
-                  </el-option>
-                </el-select>
-              </el-form-item>
-
-              <el-form-item label="合同续签">
-                <el-input v-model="employeeinfo.contractrenew"></el-input>
               </el-form-item>
 
               <el-form-item label="福利地区" >
@@ -245,28 +271,6 @@
                 </el-select>
               </el-form-item>
 
-<!--              <el-form-item label="我的角色">-->
-<!--                <el-input v-model="employeeinfo.myrole"></el-input>-->
-<!--              </el-form-item>-->
-
-                <el-form-item label="我的角色" >
-                  <el-select v-model="employeeinfo.myrole" filterable placeholder="请选择角色">
-                    <el-option
-                      v-for="o in ROLE"
-                      :key="o.value"
-                      :label="o.value"
-                      :value="o.key">
-                    </el-option>
-                  </el-select>
-                </el-form-item>
-
-              <el-form-item label="员工CCC">
-                <el-input v-model="employeeinfo.employeeccc"></el-input>
-              </el-form-item>
-
-              <el-form-item label="备注">
-                <el-input v-model="employeeinfo.comment"></el-input>
-              </el-form-item>
             </el-form>
           </div>
           <div class="modal-footer">
@@ -307,8 +311,6 @@
         internship_date:'',
         BASE:BASE,
         ENTRY_TYPE:ENTRY_TYPE,
-        ROLE:ROLE,
-        EMPLOYEE_STATUS:EMPLOYEE_STATUS,
         rules: {
           companyemail: [
             { validator: checkEmail, trigger: 'blur' ,required: true,}
@@ -380,18 +382,11 @@
           || !Validator.length(_this.employeeinfo.companyemail, "企业邮箱", 1, 50)
           || !Validator.require(_this.employeeinfo.dependenceDep, "所属部门")
           || !Validator.length(_this.employeeinfo.dependenceDep, "所属部门", 1, 20)
-          || !Validator.length(_this.employeeinfo.superiordep, "上级部门", 1, 20)
           || !Validator.require(_this.employeeinfo.position, "职位")
           || !Validator.length(_this.employeeinfo.position, "职位", 1, 20)
           || !Validator.length(_this.employeeinfo.depDirector, "部门总监", 1, 20)
-          || !Validator.require(_this.employeeinfo.entryTime, "入职时间")
           || !Validator.require(_this.employeeinfo.entryAddress, "入职地点")
-          || !Validator.length(_this.employeeinfo.employeestatus, "人员状态", 1, 20)
-          || !Validator.length(_this.employeeinfo.contractrenew, "合同续签", 1, 20)
           || !Validator.length(_this.employeeinfo.welfarearea, "福利地区", 1, 20)
-          || !Validator.length(_this.employeeinfo.myrole, "我的角色", 1, 20)
-          || !Validator.length(_this.employeeinfo.employeeccc, "员工CCC", 1, 20)
-          || !Validator.length(_this.employeeinfo.comment, "备注", 1, 50)
         ) {
           return;
         }

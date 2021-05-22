@@ -54,44 +54,35 @@ INSERT INTO `clockin` VALUES ('9Ce7MH02','F-20-1569_2020富邦华一银行外籍
 
 DROP TABLE IF EXISTS `employeeinfo`;
 CREATE TABLE `employeeinfo`  (
-    `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
-#     `id` varchar(8)  NOT NULL COMMENT 'ID',
+    `id` varchar(8)  NOT NULL COMMENT 'ID',
     `name` varchar(20) NOT NULL COMMENT '姓名',
     `job_num` varchar(5) NOT NULL COMMENT '工号',
     `base` char(2) NOT NULL COMMENT '归属公司|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
     `companyEmail` varchar(50) NOT NULL COMMENT '企业邮箱',
     `dependence_Dep` varchar(20) NOT NULL COMMENT '所属部门',
-    `superiorDep` varchar(20)  COMMENT '上级部门',
     `position` varchar(20) NOT NULL COMMENT '职位',
     `dep_Director` varchar(20) COMMENT '部门总监',
-    `entry_Time` DATETIME(0) NOT NULL COMMENT '入职时间',
     `entry_Type` char(1) COMMENT '入职方式|Xiaozhao("X","校招"),Shezhao("S","社招")',
     `entry_Address` char(2) NOT NULL COMMENT '入职地点|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
-    `internshipBegin` DATETIME(0) COMMENT '实习起始日',
-    `internshipEnding` DATETIME(0) COMMENT '实习到期日',
-    `conversionReg_Time` DATETIME(0) COMMENT '转正日期',
-    `contractSigning` DATETIME(0) COMMENT '合同签订日',
-    `contractEnding` DATETIME(0) COMMENT '合同截止日',
-    `probationExp_date` DATETIME(0) COMMENT '试用到期日|想去掉',
-    `employeeStatus` char(3) COMMENT '人员状态|想去掉',
-    `contractRenew` varchar(20) COMMENT '合同续签',
+    `internshipBegin` varchar(20) COMMENT '实习起始日',
+    `internshipEnding` varchar(20) COMMENT '实习到期日',
+    `conversionReg_Time` varchar(20) COMMENT '转正日期',
+    `contractSigning` varchar(20) COMMENT '合同签订日',
+    `contractEnding` varchar(20) COMMENT '合同截止日',
     `welfareArea` varchar(20) COMMENT '福利地区|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")',
-    `myRole` char(3) COMMENT '我的角色|想去掉',
-    `employeeCCC` varchar(20) COMMENT '员工CCC|想去掉',
-    `comment` varchar(50) COMMENT '备注',
     primary key (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET =utf8mb4 COMMENT ='员工信息';
 
-INSERT INTO `employeeinfo` VALUES ('00010001','秦风', '13901', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010002','张珊', '13902', 'SH', 'zhangshan@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010003','丽思', '13903', 'SH', 'lisi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010004','王武', '13904', 'SH', 'wangwu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010005','赵柳', '13905', 'SH', 'zhaoliu@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010006','周琦', '13906', 'SH', 'zhouqi@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010007','奇葩', '13907', 'SH', 'qipa_hr@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010008','孙悟空', '13908', 'SH', 'sunwukong@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010009','迪丽热巴', '13909', 'SH', 'dilireba@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
-INSERT INTO `employeeinfo` VALUES ('00010010','刘昊然', '13910', 'SH', 'liuhaoran@xxxx.com.cn', '蚂蚁', '蚂蚁事业部', '实习JAVA开发工程师', '向川', '2020-11-30 00:00:00', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', NULL, NULL, NULL, NULL, '实习', NULL, 'SH', 'ALL', '5010208018', NULL);
+INSERT INTO `employeeinfo` (id,name,job_num,base,companyEmail,dependence_Dep,position,dep_Director,entry_Type,entry_Address,internshipBegin,internshipEnding,conversionReg_Time,contractSigning,contractEnding,welfareArea) VALUES
+('00010001','秦风', '13901', 'SH', 'qinfeng@xxxx.com.cn', '蚂蚁', '实习JAVA开发工程师', '向川', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', '2021-07-01 00:00:00', '2021-07-01 00:00:00', '2024-07-01 00:00:00','SH');
+INSERT INTO `employeeinfo` (id,name,job_num,base,companyEmail,dependence_Dep,position,dep_Director,entry_Type,entry_Address,internshipBegin,internshipEnding,conversionReg_Time,contractSigning,contractEnding,welfareArea) VALUES
+('00010002','张珊', '13902', 'SH', 'zhangshan@xxxx.com.cn', '蚂蚁', '实习JAVA开发工程师', '向川', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', '2021-07-01 00:00:00', '2021-07-01 00:00:00', '2024-07-01 00:00:00','SH');
+INSERT INTO `employeeinfo` (id,name,job_num,base,companyEmail,dependence_Dep,position,dep_Director,entry_Type,entry_Address,internshipBegin,internshipEnding,conversionReg_Time,contractSigning,contractEnding,welfareArea) VALUES
+('00010003','丽思', '13903', 'SH', 'lisi@xxxx.com.cn', '蚂蚁', '实习JAVA开发工程师', '向川', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', '2021-07-01 00:00:00', '2021-07-01 00:00:00', '2024-07-01 00:00:00','SH');
+INSERT INTO `employeeinfo` (id,name,job_num,base,companyEmail,dependence_Dep,position,dep_Director,entry_Type,entry_Address,internshipBegin,internshipEnding,conversionReg_Time,contractSigning,contractEnding,welfareArea) VALUES
+('00010004','王武', '13904', 'SH', 'wangwu@xxxx.com.cn', '蚂蚁', '实习JAVA开发工程师', '向川', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', '2021-07-01 00:00:00', '2021-07-01 00:00:00', '2024-07-01 00:00:00','SH');
+INSERT INTO `employeeinfo` (id,name,job_num,base,companyEmail,dependence_Dep,position,dep_Director,entry_Type,entry_Address,internshipBegin,internshipEnding,conversionReg_Time,contractSigning,contractEnding,welfareArea) VALUES
+('00010005','cc', '13911', 'SH', '12345', '蚂蚁', '实习JAVA开发工程师', '向川', 'X', 'SH', '2020-11-30 00:00:00', '2021-06-30 00:00:00', '2021-07-01 00:00:00', '2021-07-01 00:00:00', '2024-07-01 00:00:00','SH');
 
 /*----headline 头条---------------------------------------------------*/
 

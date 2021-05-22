@@ -1,7 +1,5 @@
 package com.csii.ants.management.server.dto;
 
-import java.util.Date;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EmployeeinfoDto {
 
@@ -30,10 +28,6 @@ public class EmployeeinfoDto {
     */
     private String dependenceDep;
     /**
-    * 上级部门
-    */
-    private String superiordep;
-    /**
     * 职位
     */
     private String position;
@@ -41,11 +35,6 @@ public class EmployeeinfoDto {
     * 部门总监
     */
     private String depDirector;
-    /**
-    * 入职时间
-    */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date entryTime;
     /**
     * 入职方式|Xiaozhao("X","校招"),Shezhao("S","社招")
     */
@@ -57,57 +46,27 @@ public class EmployeeinfoDto {
     /**
     * 实习起始日
     */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date internshipbegin;
+    private String internshipbegin;
     /**
     * 实习到期日
     */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date internshipending;
+    private String internshipending;
     /**
     * 转正日期
     */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date conversionregTime;
+    private String conversionregTime;
     /**
     * 合同签订日
     */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date contractsigning;
+    private String contractsigning;
     /**
     * 合同截止日
     */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date contractending;
-    /**
-    * 试用到期日
-    */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date probationexpDate;
-    /**
-    * 人员状态
-    */
-    private String employeestatus;
-    /**
-    * 合同续签
-    */
-    private String contractrenew;
+    private String contractending;
     /**
     * 福利地区|Beijing("BJ","北京"),Shanghai("SH","上海"),Guangzhou("GZ","广州"),Shenzhen("SZ","深圳"),Hangzhou("HZ","杭州"),Chengdu("CD","成都"),Wuhan("WH","武汉"),Xian("XA","西安"),Nanjing("NJ","南京"),Changsha("CS","长沙"),Nanchang("NC","南昌"),Xiamen("XM","厦门")  ,Dalian("DL","大连")
     */
     private String welfarearea;
-    /**
-    * 我的角色
-    */
-    private String myrole;
-    /**
-    * 员工CCC
-    */
-    private String employeeccc;
-    /**
-    * 备注
-    */
-    private String comment;
 
     public String getId() {
     return id;
@@ -157,14 +116,6 @@ public class EmployeeinfoDto {
     this.dependenceDep = dependenceDep;
     }
 
-    public String getSuperiordep() {
-    return superiordep;
-    }
-
-    public void setSuperiordep(String superiordep) {
-    this.superiordep = superiordep;
-    }
-
     public String getPosition() {
     return position;
     }
@@ -179,14 +130,6 @@ public class EmployeeinfoDto {
 
     public void setDepDirector(String depDirector) {
     this.depDirector = depDirector;
-    }
-
-    public Date getEntryTime() {
-    return entryTime;
-    }
-
-    public void setEntryTime(Date entryTime) {
-    this.entryTime = entryTime;
     }
 
     public String getEntryType() {
@@ -205,68 +148,44 @@ public class EmployeeinfoDto {
     this.entryAddress = entryAddress;
     }
 
-    public Date getInternshipbegin() {
+    public String getInternshipbegin() {
     return internshipbegin;
     }
 
-    public void setInternshipbegin(Date internshipbegin) {
+    public void setInternshipbegin(String internshipbegin) {
     this.internshipbegin = internshipbegin;
     }
 
-    public Date getInternshipending() {
+    public String getInternshipending() {
     return internshipending;
     }
 
-    public void setInternshipending(Date internshipending) {
+    public void setInternshipending(String internshipending) {
     this.internshipending = internshipending;
     }
 
-    public Date getConversionregTime() {
+    public String getConversionregTime() {
     return conversionregTime;
     }
 
-    public void setConversionregTime(Date conversionregTime) {
+    public void setConversionregTime(String conversionregTime) {
     this.conversionregTime = conversionregTime;
     }
 
-    public Date getContractsigning() {
+    public String getContractsigning() {
     return contractsigning;
     }
 
-    public void setContractsigning(Date contractsigning) {
+    public void setContractsigning(String contractsigning) {
     this.contractsigning = contractsigning;
     }
 
-    public Date getContractending() {
+    public String getContractending() {
     return contractending;
     }
 
-    public void setContractending(Date contractending) {
+    public void setContractending(String contractending) {
     this.contractending = contractending;
-    }
-
-    public Date getProbationexpDate() {
-    return probationexpDate;
-    }
-
-    public void setProbationexpDate(Date probationexpDate) {
-    this.probationexpDate = probationexpDate;
-    }
-
-    public String getEmployeestatus() {
-    return employeestatus;
-    }
-
-    public void setEmployeestatus(String employeestatus) {
-    this.employeestatus = employeestatus;
-    }
-
-    public String getContractrenew() {
-    return contractrenew;
-    }
-
-    public void setContractrenew(String contractrenew) {
-    this.contractrenew = contractrenew;
     }
 
     public String getWelfarearea() {
@@ -277,59 +196,30 @@ public class EmployeeinfoDto {
     this.welfarearea = welfarearea;
     }
 
-    public String getMyrole() {
-    return myrole;
-    }
-
-    public void setMyrole(String myrole) {
-    this.myrole = myrole;
-    }
-
-    public String getEmployeeccc() {
-    return employeeccc;
-    }
-
-    public void setEmployeeccc(String employeeccc) {
-    this.employeeccc = employeeccc;
-    }
-
-    public String getComment() {
-    return comment;
-    }
-
-    public void setComment(String comment) {
-    this.comment = comment;
-    }
-
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("EmployeeinfoDto{");
-        sb.append("id='").append(id).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", jobNum='").append(jobNum).append('\'');
-        sb.append(", base='").append(base).append('\'');
-        sb.append(", companyemail='").append(companyemail).append('\'');
-        sb.append(", dependenceDep='").append(dependenceDep).append('\'');
-        sb.append(", superiordep='").append(superiordep).append('\'');
-        sb.append(", position='").append(position).append('\'');
-        sb.append(", depDirector='").append(depDirector).append('\'');
-        sb.append(", entryTime=").append(entryTime);
-        sb.append(", entryType='").append(entryType).append('\'');
-        sb.append(", entryAddress='").append(entryAddress).append('\'');
-        sb.append(", internshipbegin=").append(internshipbegin);
-        sb.append(", internshipending=").append(internshipending);
-        sb.append(", conversionregTime=").append(conversionregTime);
-        sb.append(", contractsigning=").append(contractsigning);
-        sb.append(", contractending=").append(contractending);
-        sb.append(", probationexpDate=").append(probationexpDate);
-        sb.append(", employeestatus='").append(employeestatus).append('\'');
-        sb.append(", contractrenew='").append(contractrenew).append('\'');
-        sb.append(", welfarearea='").append(welfarearea).append('\'');
-        sb.append(", myrole='").append(myrole).append('\'');
-        sb.append(", employeeccc='").append(employeeccc).append('\'');
-        sb.append(", comment='").append(comment).append('\'');
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+            sb.append(", id=").append(id);
+            sb.append(", name=").append(name);
+            sb.append(", jobNum=").append(jobNum);
+            sb.append(", base=").append(base);
+            sb.append(", companyemail=").append(companyemail);
+            sb.append(", dependenceDep=").append(dependenceDep);
+            sb.append(", position=").append(position);
+            sb.append(", depDirector=").append(depDirector);
+            sb.append(", entryType=").append(entryType);
+            sb.append(", entryAddress=").append(entryAddress);
+            sb.append(", internshipbegin=").append(internshipbegin);
+            sb.append(", internshipending=").append(internshipending);
+            sb.append(", conversionregTime=").append(conversionregTime);
+            sb.append(", contractsigning=").append(contractsigning);
+            sb.append(", contractending=").append(contractending);
+            sb.append(", welfarearea=").append(welfarearea);
+        sb.append("]");
         return sb.toString();
     }
 

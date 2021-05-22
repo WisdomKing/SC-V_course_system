@@ -17,7 +17,6 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-        import java.util.Date;
 
 /**
  * @author ZxM
@@ -78,7 +77,6 @@ public class EmployeeinfoService {
      * @param employeeinfo
      */
     private void insert(Employeeinfo employeeinfo){
-        Date now = new Date();
         employeeinfo.setId(UuidUtil.getShortUuid());
         employeeinfoMapper.insert(employeeinfo);
     }

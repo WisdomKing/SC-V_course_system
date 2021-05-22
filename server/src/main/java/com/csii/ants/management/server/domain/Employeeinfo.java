@@ -1,7 +1,5 @@
 package com.csii.ants.management.server.domain;
 
-import java.util.Date;
-
 public class Employeeinfo {
     private String id;
 
@@ -15,41 +13,25 @@ public class Employeeinfo {
 
     private String dependenceDep;
 
-    private String superiordep;
-
     private String position;
 
     private String depDirector;
-
-    private Date entryTime;
 
     private String entryType;
 
     private String entryAddress;
 
-    private Date internshipbegin;
+    private String internshipbegin;
 
-    private Date internshipending;
+    private String internshipending;
 
-    private Date conversionregTime;
+    private String conversionregTime;
 
-    private Date contractsigning;
+    private String contractsigning;
 
-    private Date contractending;
-
-    private Date probationexpDate;
-
-    private String employeestatus;
-
-    private String contractrenew;
+    private String contractending;
 
     private String welfarearea;
-
-    private String myrole;
-
-    private String employeeccc;
-
-    private String comment;
 
     public String getId() {
         return id;
@@ -99,14 +81,6 @@ public class Employeeinfo {
         this.dependenceDep = dependenceDep;
     }
 
-    public String getSuperiordep() {
-        return superiordep;
-    }
-
-    public void setSuperiordep(String superiordep) {
-        this.superiordep = superiordep;
-    }
-
     public String getPosition() {
         return position;
     }
@@ -121,14 +95,6 @@ public class Employeeinfo {
 
     public void setDepDirector(String depDirector) {
         this.depDirector = depDirector;
-    }
-
-    public Date getEntryTime() {
-        return entryTime;
-    }
-
-    public void setEntryTime(Date entryTime) {
-        this.entryTime = entryTime;
     }
 
     public String getEntryType() {
@@ -147,68 +113,44 @@ public class Employeeinfo {
         this.entryAddress = entryAddress;
     }
 
-    public Date getInternshipbegin() {
+    public String getInternshipbegin() {
         return internshipbegin;
     }
 
-    public void setInternshipbegin(Date internshipbegin) {
+    public void setInternshipbegin(String internshipbegin) {
         this.internshipbegin = internshipbegin;
     }
 
-    public Date getInternshipending() {
+    public String getInternshipending() {
         return internshipending;
     }
 
-    public void setInternshipending(Date internshipending) {
+    public void setInternshipending(String internshipending) {
         this.internshipending = internshipending;
     }
 
-    public Date getConversionregTime() {
+    public String getConversionregTime() {
         return conversionregTime;
     }
 
-    public void setConversionregTime(Date conversionregTime) {
+    public void setConversionregTime(String conversionregTime) {
         this.conversionregTime = conversionregTime;
     }
 
-    public Date getContractsigning() {
+    public String getContractsigning() {
         return contractsigning;
     }
 
-    public void setContractsigning(Date contractsigning) {
+    public void setContractsigning(String contractsigning) {
         this.contractsigning = contractsigning;
     }
 
-    public Date getContractending() {
+    public String getContractending() {
         return contractending;
     }
 
-    public void setContractending(Date contractending) {
+    public void setContractending(String contractending) {
         this.contractending = contractending;
-    }
-
-    public Date getProbationexpDate() {
-        return probationexpDate;
-    }
-
-    public void setProbationexpDate(Date probationexpDate) {
-        this.probationexpDate = probationexpDate;
-    }
-
-    public String getEmployeestatus() {
-        return employeestatus;
-    }
-
-    public void setEmployeestatus(String employeestatus) {
-        this.employeestatus = employeestatus;
-    }
-
-    public String getContractrenew() {
-        return contractrenew;
-    }
-
-    public void setContractrenew(String contractrenew) {
-        this.contractrenew = contractrenew;
     }
 
     public String getWelfarearea() {
@@ -217,30 +159,6 @@ public class Employeeinfo {
 
     public void setWelfarearea(String welfarearea) {
         this.welfarearea = welfarearea;
-    }
-
-    public String getMyrole() {
-        return myrole;
-    }
-
-    public void setMyrole(String myrole) {
-        this.myrole = myrole;
-    }
-
-    public String getEmployeeccc() {
-        return employeeccc;
-    }
-
-    public void setEmployeeccc(String employeeccc) {
-        this.employeeccc = employeeccc;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     @Override
@@ -255,10 +173,8 @@ public class Employeeinfo {
         sb.append(", base=").append(base);
         sb.append(", companyemail=").append(companyemail);
         sb.append(", dependenceDep=").append(dependenceDep);
-        sb.append(", superiordep=").append(superiordep);
         sb.append(", position=").append(position);
         sb.append(", depDirector=").append(depDirector);
-        sb.append(", entryTime=").append(entryTime);
         sb.append(", entryType=").append(entryType);
         sb.append(", entryAddress=").append(entryAddress);
         sb.append(", internshipbegin=").append(internshipbegin);
@@ -266,13 +182,7 @@ public class Employeeinfo {
         sb.append(", conversionregTime=").append(conversionregTime);
         sb.append(", contractsigning=").append(contractsigning);
         sb.append(", contractending=").append(contractending);
-        sb.append(", probationexpDate=").append(probationexpDate);
-        sb.append(", employeestatus=").append(employeestatus);
-        sb.append(", contractrenew=").append(contractrenew);
         sb.append(", welfarearea=").append(welfarearea);
-        sb.append(", myrole=").append(myrole);
-        sb.append(", employeeccc=").append(employeeccc);
-        sb.append(", comment=").append(comment);
         sb.append("]");
         return sb.toString();
     }

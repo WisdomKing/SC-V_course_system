@@ -54,7 +54,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">表单</h4>
+            <h4 class="modal-title">新增角色</h4>
           </div>
           <div class="modal-body">
             <form class="form-horizontal">
@@ -86,7 +86,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">角色资源关联配置</h4>
+            <h4 class="modal-title">角色关联资源配置</h4>
           </div>
           <div class="modal-body">
             <ul id="tree" class="ztree"></ul>
@@ -111,7 +111,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">角色用户关联配置</h4>
+            <h4 class="modal-title">用户关联角色配置</h4>
           </div>
           <div class="modal-body">
             <div class="row">
