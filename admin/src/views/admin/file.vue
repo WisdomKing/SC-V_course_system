@@ -30,6 +30,9 @@
       </tr>
       </tbody>
     </table>
+
+    <el-backtop target=".page-component__scroll .el-scrollbar__wrap" :bottom="100"></el-backtop>
+
   </div>
 </template>
 

@@ -34,6 +34,15 @@
               </a>
             </div>
           </div>
+          <div class="width-85 label label-info label-xlg arrowed-in arrowed-in-right">
+            <div class="inline position-relative">
+              <a href="javascript:;" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                <i class="ace-icon fa fa-circle light-red"></i>
+                &nbsp;
+                <span class="white">{{headline.details}}</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="space-6"></div>
