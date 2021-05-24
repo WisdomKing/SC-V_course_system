@@ -10,12 +10,13 @@
   }, {
     "id": "0102", "name": "资源管理", "page": "/system/resource",
     "children": [
-      {"id": "010201", "name": "保存/显示", "request": ["/system/admin/resource"]}
+      {"id": "010201", "name": "保存/显示", "request": ["/system/admin/resource/list","/system/admin/resource/save"]}
     ]
   }, {
     "id": "0103", "name": "角色管理", "page": "/system/role",
     "children": [
-      {"id": "010301", "name": "角色/权限管理", "request": ["/system/admin/role"]}
+      {"id": "010301", "name": "角色/权限管理", "request": ["/system/admin/role/list","/system/admin/role/save"]},
+      {"id": "010302", "name": "角色/权限管理", "request": ["/system/admin/role/delete"]}
     ]
   }]
 }, {

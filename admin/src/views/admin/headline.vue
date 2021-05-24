@@ -2,7 +2,7 @@
   <div>
     <!-- 刷新按钮 -->
     <p>
-    <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+    <button v-show="hasResource('020201')" v-on:click="add()" class="btn btn-white btn-default btn-round">
       <i class="ace-icon fa fa-edit"></i>
       新增
     </button>
@@ -57,11 +57,11 @@
         <div class="space-6"></div>
 
         <div class="profile-social-links align-center">
-          <button v-on:click="edit(headline)" class="btn btn-xs btn-info">
+          <button v-show="hasResource('020201')" v-on:click="edit(headline)" class="btn btn-xs btn-info">
             <i class="ace-icon fa fa-pencil bigger-120"></i>
           </button>
           &nbsp;
-          <button v-on:click="del(headline.id)" class="btn btn-xs btn-danger">
+          <button v-show="hasResource('020202')" v-on:click="del(headline.id)" class="btn btn-xs btn-danger">
             <i class="ace-icon fa fa-trash-o bigger-120"></i>
           </button>
         </div>
@@ -134,6 +134,13 @@
       _this.list();
       },
     methods: {
+      /**
+       * 查找是否有权限,没有权限就不显示相应的资源
+       * @param id
+       */
+      hasResource(id) {
+        return Tool.hasResource(id);
+      },
       /**
        * 点击新增
        */

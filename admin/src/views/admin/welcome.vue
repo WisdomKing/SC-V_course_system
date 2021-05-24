@@ -7,8 +7,8 @@
 <!--    <div class="front">-->
     <div>
       <template  v-bind:list="list">
-        <el-carousel :interval="4000" type="card" height="200px">
-          <el-carousel-item v-for="announcement in announcements" :key="announcement">
+        <el-carousel :interval="4000" type="card" height="200px" ref=“carousel”>
+          <el-carousel-item v-for="(announcement,index) in announcements" :key="index">
             <h3 class="medium" :style="font_family">{{ announcement.announcementtitle+':'}}</h3>
             <h5 class="medium">{{ announcement.details }}</h5>
           </el-carousel-item>

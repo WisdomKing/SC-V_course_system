@@ -2,7 +2,7 @@
   <div>
     <!-- 刷新按钮 -->
     <p>
-      <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+      <button v-show="hasResource('020101')" v-on:click="add()" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-edit"></i>
         新增
     </button>
@@ -35,11 +35,11 @@
         <td>{{announcement.endingtime}}</td>
         <td>
           <div class="hidden-sm hidden-xs btn-group">
-            <button v-on:click="edit(announcement)" class="btn btn-xs btn-info">
+            <button v-show="hasResource('020101')" v-on:click="edit(announcement)" class="btn btn-xs btn-info">
               <!--详情-->
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>
-            <button v-on:click="del(announcement.id)" class="btn btn-xs btn-danger">
+            <button v-show="hasResource('020102')" v-on:click="del(announcement.id)" class="btn btn-xs btn-danger">
               <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </button>
           </div>
@@ -132,6 +132,13 @@
       // this.$parent.activeSidebar("business-announcement-sidebar");   //以后通过watch监听来激活菜单了，不再通过这条语句去激活，免于每一个页面都要写
     },
     methods: {
+      /**
+       * 查找是否有权限,没有权限就不显示相应的资源
+       * @param id
+       */
+      hasResource(id) {
+        return Tool.hasResource(id);
+      },
       /**
        * 支持模糊查询
        */

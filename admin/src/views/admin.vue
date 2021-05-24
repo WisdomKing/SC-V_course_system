@@ -109,7 +109,7 @@
             <b class="arrow"></b>
           </li>
 
-          <li class="">
+          <li v-show="hasResource('01')" class="" >
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 系统管理 </span>
@@ -118,7 +118,7 @@
             <b class="arrow"></b>
             <ul class="submenu">
 
-              <li class="" id="system-user-sidebar">
+              <li v-show="hasResource('0101')" class="" id="system-user-sidebar">
                 <router-link to="/system/user">
                   <i class="menu-icon fa fa-caret-right"></i>
                   用户管理
@@ -126,7 +126,7 @@
                 <b class="arrow"></b>
               </li>
 
-              <li class="" id="system-resource-sidebar">
+              <li v-show="hasResource('0102')" class="" id="system-resource-sidebar">
                 <router-link to="/system/resource">
                   <i class="menu-icon fa fa-caret-right"></i>
                   资源管理
@@ -134,7 +134,7 @@
                 <b class="arrow"></b>
               </li>
 
-              <li class="" id="system-role-sidebar">
+              <li v-show="hasResource('0103')" class="" id="system-role-sidebar">
                 <router-link to="/system/role">
                   <i class="menu-icon fa fa-caret-right"></i>
                   角色管理
@@ -144,7 +144,7 @@
             </ul>
           </li>
 
-          <li class="">
+          <li v-show="hasResource('02')" class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 通知管理 </span>
@@ -152,7 +152,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-              <li class="" id="business-announcement-sidebar">
+              <li v-show="hasResource('0201')" class="" id="business-announcement-sidebar">
                 <router-link to="/business/announcement">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司公告
@@ -160,7 +160,7 @@
                 <b class="arrow"></b>
               </li>
 
-              <li class="" id="business-headline-sidebar">
+              <li v-show="hasResource('0202')" class="" id="business-headline-sidebar">
                 <router-link to="/business/headline">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司头条
@@ -168,7 +168,7 @@
                 <b class="arrow"></b>
               </li>
 
-              <li class="" id="business-companyinfo-sidebar">
+              <li v-show="hasResource('0203')" class="" id="business-companyinfo-sidebar">
                 <router-link to="/business/companyinfo">
                   <i class="menu-icon fa fa-caret-right"></i>
                   公司信息
@@ -179,7 +179,7 @@
             </ul>
           </li>
 
-          <li class="">
+          <li v-show="hasResource('03')" class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 考勤管理 </span>
@@ -187,7 +187,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-              <li class="" id="business-reportwork-sidebar">
+              <li v-show="hasResource('0301')" class="" id="business-reportwork-sidebar">
                 <router-link to="/business/reportwork">
                   <i class="menu-icon fa fa-caret-right"></i>
                   考勤
@@ -195,23 +195,7 @@
                 <b class="arrow"></b>
               </li>
 
-<!--              <li class="" id="business-clockin-sidebar">-->
-<!--                <router-link to="/business/clockin">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  报工-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
-
-<!--              <li class="" id="business-askforleave-sidebar">-->
-<!--                <router-link to="/business/askforleave">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  请假-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
-
-              <li class="" id="business-calendar-sidebar">
+              <li v-show="hasResource('0302')" class="" id="business-calendar-sidebar">
                 <router-link to="/business/calendar">
                   <i class="menu-icon fa fa-caret-right"></i>
                   日历
@@ -221,7 +205,7 @@
             </ul>
           </li>
 
-          <li class="">
+          <li v-show="hasResource('04')" class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-bullhorn"></i>
               <span class="menu-text"> 个人信息管理 </span>
@@ -229,7 +213,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-              <li class="" id="business-personalinfo-sidebar">
+              <li v-show="hasResource('0401')" class="" id="business-personalinfo-sidebar">
                 <router-link to="/business/personalinfo">
                   <i class="menu-icon fa fa-caret-right"></i>
                   个人信息
@@ -237,7 +221,7 @@
                 <b class="arrow"></b>
               </li>
 
-              <li class="" id="business-employeeinfo-sidebar">
+              <li v-show="hasResource('0402')" class="" id="business-employeeinfo-sidebar">
                 <router-link to="/business/employeeinfo">
                   <i class="menu-icon fa fa-caret-right"></i>
                   员工信息
@@ -247,7 +231,7 @@
             </ul>
           </li>
 
-          <li class="">
+          <li v-show="hasResource('05')" class="">
             <a href="#" class="dropdown-toggle">
               <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 文件管理 </span>
@@ -255,7 +239,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-              <li class="active" id="file-file-sidebar">
+              <li v-show="hasResource('0501')" class="active" id="file-file-sidebar">
                 <router-link to="/file/file">
                   <i class="menu-icon fa fa-caret-right"></i>
                   文件管理
@@ -265,38 +249,6 @@
 
             </ul>
           </li>
-
-<!--          <li class="">-->
-<!--            <a href="#" class="dropdown-toggle">-->
-<!--              <i class="menu-icon fa fa-bullhorn"></i>-->
-<!--              <span class="menu-text"> 部门管理 </span>-->
-<!--              <b class="arrow fa fa-angle-down"></b>-->
-<!--            </a>-->
-<!--            <b class="arrow"></b>-->
-<!--            <ul class="submenu">-->
-<!--              <li class="" id="business-department-sidebar">-->
-<!--                <router-link to="/business/department">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  部门管理-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
-<!--              <li class="" id="business-project-sidebar">-->
-<!--                <router-link to="/business/project">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  项目管理-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
-<!--              <li class="" id="business-test-sidebar">-->
-<!--                <router-link to="/business/test">-->
-<!--                  <i class="menu-icon fa fa-caret-right"></i>-->
-<!--                  test-->
-<!--                </router-link>-->
-<!--                <b class="arrow"></b>-->
-<!--              </li>-->
-<!--            </ul>-->
-<!--          </li>-->
 
         </ul><!-- /.nav-list -->
 
@@ -384,6 +336,16 @@
       }
     },
     methods:{
+      /**
+       * 查找是否有权限,没有权限就不显示相应的资源
+       * @param id
+       */
+      hasResource(id) {
+        return Tool.hasResource(id);
+      },
+      /**
+       * 登录
+       */
       login(){
         this.$router.push("/admin")
       },
