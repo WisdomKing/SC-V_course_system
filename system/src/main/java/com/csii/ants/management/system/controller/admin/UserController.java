@@ -136,8 +136,11 @@ public class UserController {
         responseDto.setContent(loginUserDto);
         return responseDto;
     }
+
     /**
      * 退出登录
+     * @param token
+     * @return responseDto
      */
     @GetMapping("/logout/{token}")
     public ResponseDto logout(@PathVariable String token) {

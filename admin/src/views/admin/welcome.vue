@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: #0f496a" >
 <!--    <div class="background" >-->
 <!--      <el-image :src="src" >-->
 <!--      </el-image>-->

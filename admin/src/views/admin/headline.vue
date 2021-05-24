@@ -96,6 +96,12 @@
                       v-bind:text="'上传头像'"
                       v-bind:suffixs="['jpg', 'jpeg', 'png']"
                       v-bind:after-upload="afterUpload"></file>
+                <!-- 实时显示图片的 -->
+                <div v-show="headline.image" class="row">
+                  <div class="col-md-4">
+                    <img v-bind:src="headline.image" class="img-responsive">
+                  </div>
+                </div>
               </el-form-item>
             </el-form>
           </div>

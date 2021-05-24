@@ -122,7 +122,7 @@
         if (md5 !== rememberUser.md5) {
           _this.user.password = hex_md5(_this.user.password + KEY);
         }
-
+        //将后端生成的token传到前端
         _this.user.imageCodeToken = _this.imageCodeToken;
 
         Loading.show();

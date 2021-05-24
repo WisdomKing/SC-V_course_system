@@ -14,19 +14,21 @@
 
     <pagination ref="pagination" v-bind:list="list" v-bind:itemCount="8"></pagination>
 
-    <table id="simple-table" class="table  table-bordered table-hover">
+
+
+    <table id="simple-table" class="table table-bordered table-hover" width="100%">
       <thead>
       <tr>
-        <th>id</th>
-        <th>角色</th>
-        <th>描述</th>
-        <th>操作</th>
+        <th width="200">角色</th>
+        <th width="660">描述</th>
+        <th width="150">用户角色操作</th>
+        <th width="150">角色资源操作</th>
+        <th width="150">角色操作</th>
       </tr>
       </thead>
 
       <tbody>
       <tr v-for="role in roles">
-        <td>{{role.id}}</td>
         <td>{{role.name}}</td>
         <td>{{role.desc}}</td>
         <td>
@@ -34,9 +36,17 @@
             <button v-on:click="editUser(role)" class="btn btn-xs btn-info">
               <i class="ace-icon fa fa-user bigger-120"></i>
             </button>
+          </div>
+        </td>
+        <td>
+          <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="editResource(role)" class="btn btn-xs btn-info">
               <i class="ace-icon fa fa-list bigger-120"></i>
             </button>
+          </div>
+        </td>
+        <td>
+          <div class="hidden-sm hidden-xs btn-group">
             <button v-on:click="edit(role)" class="btn btn-xs btn-info">
               <i class="ace-icon fa fa-pencil bigger-120"></i>
             </button>

@@ -517,13 +517,13 @@
             { validator: true, trigger: 'blur' ,required: true,}
           ],
           idnum:[
-            { validator: true, trigger: 'blur' ,required: true,}
+            { validator: checkIdnum, trigger: 'blur' ,required: true,}
           ],
           personalEmail:[
-            { validator: true, trigger: 'blur' ,required: true,}
+            { validator: checkEmail, trigger: 'blur' ,required: true,}
           ],
           telephone:[
-            { validator: true, trigger: 'blur' ,required: true,}
+            { validator: checkPhone, trigger: 'blur' ,required: true,}
           ],
         },
       }

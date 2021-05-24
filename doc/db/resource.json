@@ -23,14 +23,14 @@
   "children": [{
     "id": "0201", "name": "公司公告", "page": "/business/announcement",
     "children": [
-      {"id": "020101", "name": "保存", "request": ["/business/admin/announcement/list", "/business/admin/announcement/save"]},
-      {"id": "020102", "name": "删除", "request": ["/business/admin/announcement/delete"]},
-      {"id": "020103", "name": "重置密码", "request": ["/business/admin/announcement/save-password"]}
+      {"id": "020101", "name": "保存/显示", "request": ["/business/admin/announcement/list", "/business/admin/announcement/save"]},
+      {"id": "020102", "name": "删除", "request": ["/business/admin/announcement/delete"]}
     ]
   }, {
     "id": "0202", "name": "公司头条", "page": "/business/headline",
     "children": [
-      {"id": "020201", "name": "保存/显示", "request": ["/business/admin/headline"]}
+      {"id": "020201", "name": "保存/显示", "request": ["/business/admin/headline/list","/business/admin/headline/save"]},
+      {"id": "020202", "name": "删除", "request": ["/business/admin/headline/delete"]}
     ]
   }, {
     "id": "0203", "name": "公司信息", "page": "/business/companyinfo",
@@ -39,11 +39,40 @@
     ]
   }]
 },{
-  "id": "03", "name": "文件管理",
+  "id": "03", "name": "考勤管理",
   "children": [{
-    "id": "0301", "name": "文件管理", "page": "/file/file",
+    "id": "0301", "name": "考勤记录", "page": "/business/reportwork",
     "children": [
-      {"id": "030101", "name": "文件管理", "request": ["/file/admin/file"]}
+      {"id": "030101", "name": "保存", "request": ["/business/admin/reportwork/list", "/business/admin/reportwork/save"]},
+      {"id": "030102", "name": "删除", "request": ["/business/admin/reportwork/delete"]}
+    ]
+  }, {
+    "id": "0302", "name": "考勤日历", "page": "/business/calendar",
+    "children": [
+      {"id": "030201", "name": "保存/显示", "request": ["/business/admin/calendar"]}
+    ]
+  }]
+},{
+  "id": "04", "name": "个人信息管理",
+  "children": [{
+    "id": "0401", "name": "个人信息管理", "page": "/business/personalinfo",
+    "children": [
+      {"id": "040101", "name": "保存", "request": ["/business/admin/personalinfo/list", "/business/admin/personalinfo/save"]},
+      {"id": "040102", "name": "删除", "request": ["/business/admin/personalinfo/delete"]}
+    ]
+  }, {
+    "id": "0402", "name": "员工信息管理", "page": "/business/employeeinfo",
+    "children": [
+      {"id": "040201", "name": "保存", "request": ["/business/admin/employeeinfo/list", "/business/admin/employeeinfo/save"]},
+      {"id": "040202", "name": "删除", "request": ["/business/admin/employeeinfo/delete"]}
+    ]
+  }]
+},{
+  "id": "05", "name": "文件管理",
+  "children": [{
+    "id": "0501", "name": "文件管理", "page": "/file/file",
+    "children": [
+      {"id": "050101", "name": "文件管理", "request": ["/file/admin/file"]}
     ]
   }]
 }]

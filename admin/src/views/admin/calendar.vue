@@ -6,8 +6,6 @@
           <!-- 显示日期 -->
           <p class="dayItem"  v-if="data.day.substr(-2) < 10">{{ data.day.substr(-1)}}</p>
           <p class="dayItem"  v-else>{{ data.day.substr(-2)}}</p>
-
-
           <div v-for="(item,index) in reportWorks" :key="index" >
             <!-- 判断clockDate的天是否和日历里的天一致，是就显示详情 -->
             <div v-if="

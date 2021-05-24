@@ -190,8 +190,10 @@ public class UserService {
             }
         }
     }
+
     /**
      * 为登录用户读取权限
+     * @param loginUserDto
      */
     private void setAuth(LoginUserDto loginUserDto) {
         List<ResourceDto> resourceDtoList = myUserMapper.findResources(loginUserDto.getJobNum());
