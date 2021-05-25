@@ -35,15 +35,10 @@ public class AnnouncementService {
     public void list(PageDto pageDto){
         //分页
         PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
-
         AnnouncementExample announcementExample = new AnnouncementExample();
-        //如果表里有sort这个字段就感觉sort来排序
-
         List<Announcement> announcementList = announcementMapper.selectByExample(announcementExample);
-
         PageInfo<Announcement> pageInfo=new PageInfo<>(announcementList);
         pageDto.setTotal(pageInfo.getTotal());
-
         List<AnnouncementDto> announcementDtoList = new ArrayList<AnnouncementDto>();
         /**
          * 因为使用了dto的方法，所以需要将实体类的数据倒腾到dto里
@@ -71,7 +66,6 @@ public class AnnouncementService {
             this.update(announcement);
         }
     }
-
     /**
      * 新增
      * @param announcement
@@ -80,7 +74,6 @@ public class AnnouncementService {
         announcement.setId(UuidUtil.getShortUuid());
         announcementMapper.insert(announcement);
     }
-
     /**
      * 修改
      * @param announcement

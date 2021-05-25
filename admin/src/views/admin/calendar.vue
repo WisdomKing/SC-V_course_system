@@ -6,6 +6,9 @@
           <!-- 显示日期 -->
           <p class="dayItem"  v-if="data.day.substr(-2) < 10">{{ data.day.substr(-1)}}</p>
           <p class="dayItem"  v-else>{{ data.day.substr(-2)}}</p>
+
+          <p class="addBtn" v-show="data.isSelected == true" @click="add()">编辑日程</p>
+
           <div v-for="(item,index) in reportWorks" :key="index" >
             <!-- 判断clockDate的天是否和日历里的天一致，是就显示详情 -->
             <div v-if="
@@ -17,12 +20,13 @@
               <el-tooltip :content="item.details" placement="right">
                 <div class="mark">{{item.details}}</div>
               </el-tooltip>
-              <p class="addBtn" v-show="data.isSelected == true" @click="edit(item)">编辑日程</p>
+
+<!--              <p class="addBtn" v-show="data.isSelected == true" @click="edit(item)">编辑日程</p>-->
             </div>
-            <div v-else>
+            <div v-else-if="item.id== null">
+<!--              <p class="addBtn" v-show="data.isSelected == true" @click="add()">编辑日程</p>-->
             </div>
           </div>
-            <p class="addBtn" v-show="data.isSelected == true" @click="add()">编辑日程</p>
         </div>
       </template>
 
@@ -320,5 +324,18 @@
     padding: 8px 8px 0 8px;
     color: #F8A535;
     z-index: -1;
+  }
+  .calItem {
+    box-sizing: border-box;
+    padding: 8px;
+    height: 200px;
+  }
+
+</style>
+<style>
+  .el-calendar-table .el-calendar-day {
+    box-sizing: border-box;
+    padding: 8px;
+    height: 120px !important;
   }
 </style>

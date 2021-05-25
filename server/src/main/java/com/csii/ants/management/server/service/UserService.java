@@ -48,15 +48,11 @@ public class UserService {
     public void list(PageDto pageDto){
         //分页
         PageHelper.startPage(pageDto.getPage(),pageDto.getSize());
-
         UserExample userExample = new UserExample();
         //如果表里有sort这个字段就感觉sort来排序
-
         List<User> userList = userMapper.selectByExample(userExample);
-
         PageInfo<User> pageInfo=new PageInfo<>(userList);
         pageDto.setTotal(pageInfo.getTotal());
-
         List<UserDto> userDtoList = new ArrayList<UserDto>();
         /**
          * 因为使用了dto的方法，所以需要将实体类的数据倒腾到dto里

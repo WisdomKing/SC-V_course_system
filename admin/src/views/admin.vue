@@ -181,7 +181,7 @@
 
           <li v-show="hasResource('03')" class="">
             <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
+              <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 考勤管理 </span>
               <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -207,7 +207,7 @@
 
           <li v-show="hasResource('04')" class="">
             <a href="#" class="dropdown-toggle">
-              <i class="menu-icon fa fa-bullhorn"></i>
+              <i class="menu-icon fa fa-list"></i>
               <span class="menu-text"> 个人信息管理 </span>
               <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -371,7 +371,8 @@
       logout () {
         let _this = this;
         Loading.show();
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout/' + _this.loginUser.token).then((response)=>{
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout/'
+          + _this.loginUser.token).then((response)=>{
           Loading.hide();
           let resp = response.data;
           if (resp.success) {

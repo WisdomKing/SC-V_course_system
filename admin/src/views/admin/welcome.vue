@@ -6,11 +6,22 @@
 <!--    </div>-->
 <!--    <div class="front">-->
     <div>
-      <template  v-bind:list="list">
+      <template v-bind:list="list">
         <el-carousel :interval="4000" type="card" height="200px" ref=“carousel”>
           <el-carousel-item v-for="(announcement,index) in announcements" :key="index">
-            <h3 class="medium" :style="font_family">{{ announcement.announcementtitle+':'}}</h3>
-            <h5 class="medium">{{ announcement.details }}</h5>
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <h3 class="medium" :style="font_family">{{ announcement.announcementtitle+':'}}</h3>
+              </div>
+              <div v-for="o in 1" :key="o" class="text item">
+                {{announcement.details}}
+              </div>
+            </el-card>
+
+<!--              <h3 class="medium" :style="font_family">{{ announcement.announcementtitle+':'}}</h3>-->
+
+
+<!--            <h5 class="medium">{{ announcement.details }}</h5>-->
           </el-carousel-item>
         </el-carousel>
       </template>
@@ -36,6 +47,19 @@
       _this.list();
     },
     methods: {
+      open1() {
+        let _this=this;
+
+        this.$alert(_this.announcement.details, '标题名称', {
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
+      },
       /**
        * 列表查询
        */
