@@ -7,20 +7,25 @@
       新增
     </button>
       &nbsp;
-    <button v-on:click="list(1)" class="btn btn-white btn-default btn-round">
+    <button v-on:click="list()" class="btn btn-white btn-default btn-round">
       <i class="ace-icon fa fa-refresh"></i>
       刷新
     </button>
     </p>
     <!-- 分页插件 -->
-    <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>
+<!--    <pagination ref="pagination" v-bind:list="list" v-bind:item-count="5"></pagination>-->
     <!-- 表单数据 -->
     <div class="row">
       <div v-for="headline in headlines" class="col-md-3">
         <div>
           <span class="profile-picture">
-            <img v-show="!headline.image" class="editable img-responsive editable-click editable-empty" src="/static/image/头像1.jpg" v-bind:title="headline.title"/>
-            <img v-show="headline.image" class="editable img-responsive editable-click editable-empty" v-bind:src="headline.image" v-bind:title="headline.title"/>
+            <img v-show="!headline.image"
+                 style="width: 100%;height: auto;"
+                 class="editable img-responsive editable-click editable-empty"
+                 src="/static/image/背景图01.jpg" v-bind:title="headline.title"/>
+            <img v-show="headline.image"
+                 class="editable img-responsive editable-click editable-empty"
+                 v-bind:src="headline.image" v-bind:title="headline.title"/>
           </span>
 
           <div class="space-4"></div>
@@ -35,13 +40,11 @@
             </div>
           </div>
           <div class="width-85 label label-info label-xlg arrowed-in arrowed-in-right">
-            <div class="inline position-relative">
-              <a href="javascript:;" class="user-title-label dropdown-toggle" data-toggle="dropdown">
-                <i class="ace-icon fa fa-circle light-red"></i>
-                &nbsp;
-                <span class="white">{{headline.details}}</span>
-              </a>
-            </div>
+            <el-card class="box-card">
+                <el-tooltip :content="headline.details" prefix="">
+                  <div class="hoveTitle">{{headline.details}}</div>
+                </el-tooltip>
+              </el-card>
           </div>
         </div>
 
@@ -65,6 +68,7 @@
             <i class="ace-icon fa fa-trash-o bigger-120"></i>
           </button>
         </div>
+
 
         <div class="hr hr16 dotted"></div>
 
@@ -130,7 +134,7 @@
     mounted: function () {
       let _this=this;
       //自定义初始每页5条
-      _this.$refs.pagination.size=5;
+      // _this.$refs.pagination.size=5;
       _this.list();
       },
     methods: {
@@ -168,14 +172,15 @@
         let _this=this;
         Loading.show();
         _this.$ajax.post(process.env.VUE_APP_SERVER+'/business/admin/headline/list',{
-          page:page,
-          size:_this.$refs.pagination.size,
+          // page:page,
+          // size:_this.$refs.pagination.size,
         }).then((respond)=>{
           Loading.hide();
           let resp=respond.data;
           _this.headlines=resp.content.list;
           //重新渲染？5.5-1155
-          _this.$refs.pagination.render(page,resp.content.total);
+          // _this.$refs.pagination.render(page,resp.content.total);
+          _this.$refs.render(resp.content.total);
         })
       },
       /**
@@ -199,7 +204,8 @@ _this.headline).then((respond)=>{
           if (resp.success){
             //如果成功了，隐藏modal和刷新列表
             $("#form-modal").modal("hide");
-            _this.list(1);
+            // _this.list(1);
+            _this.list();
             Toast.success("保存成功");
           }else {
             Toast.warning(resp.message)
@@ -218,7 +224,8 @@ _this.headline).then((respond)=>{
             // console.log("删除头条列表结果:",respond);
             let resp=respond.data;
             if (resp.success){
-              _this.list(1);
+              // _this.list(1);
+              _this.list();
               Toast.success("删除成功");
             }
           })
@@ -238,5 +245,20 @@ _this.headline).then((respond)=>{
     width: 100%;
     height: auto;
     margin-top: 10px;
+  }
+</style>
+<style>
+  .hoveTitle{
+    overflow: hidden;
+  }
+.el-card__body {
+  padding: 8px !important;
+}
+  .label-xlg {
+    padding: .3em .7em .4em;
+    font-size: 9px;
+    line-height: 1.5;
+    height: 28px;
+    width: auto;
   }
 </style>
